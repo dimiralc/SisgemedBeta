@@ -14,7 +14,7 @@ class AdministrarInstituciones extends CI_Controller {
 		$this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
                 $this->load->view('componentes/sidebar.php');
-		$this->load->view('agregarInstitucion.php');		
+		$this->load->view('administrador/agregarInstitucion.php');		
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
 	}
@@ -25,7 +25,7 @@ class AdministrarInstituciones extends CI_Controller {
 		$this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
                 $this->load->view('componentes/sidebar.php');
-		$this->load->view('eliminarInstitucion.php');		
+		$this->load->view('administrador/eliminarInstitucion.php');		
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
 	}
@@ -36,7 +36,7 @@ class AdministrarInstituciones extends CI_Controller {
 		$this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
                 $this->load->view('componentes/sidebar.php');
-		$this->load->view('actualizarInstitucion.php');		
+		$this->load->view('administrador/actualizarInstitucion.php');		
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
 	}

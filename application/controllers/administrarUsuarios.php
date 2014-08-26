@@ -14,7 +14,7 @@ class AdministrarUsuarios extends CI_Controller {
 		$this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
                 $this->load->view('componentes/sidebar.php');
-		$this->load->view('agregarUsuario.php');		
+		$this->load->view('administrador/agregarUsuario.php');		
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
 	}
@@ -25,7 +25,7 @@ class AdministrarUsuarios extends CI_Controller {
 		$this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
                 $this->load->view('componentes/sidebar.php');
-		$this->load->view('eliminarUsuario.php');		
+		$this->load->view('administrador/eliminarUsuario.php');		
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
 	}
@@ -36,7 +36,7 @@ class AdministrarUsuarios extends CI_Controller {
 		$this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
                 $this->load->view('componentes/sidebar.php');
-		$this->load->view('actualizarUsuario.php');		
+		$this->load->view('administrador/actualizarUsuario.php');		
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
 	}

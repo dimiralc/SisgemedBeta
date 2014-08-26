@@ -17,7 +17,7 @@ class AdministrarPacientes extends CI_Controller {
 		$this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');		
 		$this->load->view('componentes/sidebar.php');
-                $this->load->view('agregarPaciente.php');
+                $this->load->view('profesional/agregarPaciente.php');
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
 
@@ -29,7 +29,7 @@ class AdministrarPacientes extends CI_Controller {
                 $this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
                 $this->load->view('componentes/sidebar.php');
-		$this->load->view('administrarPaciente.php');                
+		$this->load->view('profesional/administrarPaciente.php');                
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
                 
@@ -41,7 +41,7 @@ class AdministrarPacientes extends CI_Controller {
 		$this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
                 $this->load->view('componentes/sidebar.php');
-		$this->load->view('actualizarDatos.php');		
+		$this->load->view('profesional/actualizarDatos.php');		
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
 	}

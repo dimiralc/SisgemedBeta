@@ -5,7 +5,7 @@ class Bloqueo extends CI_Controller {
 		parent::__construct();
 	}
 	function index(){
-		$this->load->view('bloqueo.php');
+		$this->load->view('profesional/bloqueo.php');
 		
 	}
 }

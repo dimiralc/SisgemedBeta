@@ -14,7 +14,7 @@ class AdministrarCME extends CI_Controller {
 		$this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
                 $this->load->view('componentes/sidebar.php');
-		$this->load->view('agregarConsulta.php');		
+		$this->load->view('profesional/agregarConsulta.php');		
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
 	}
@@ -25,7 +25,7 @@ class AdministrarCME extends CI_Controller {
 		$this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
                 $this->load->view('componentes/sidebar.php');
-		$this->load->view('eliminarCME.php');		
+		$this->load->view('profesional/eliminarCME.php');		
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
 	}
@@ -36,7 +36,7 @@ class AdministrarCME extends CI_Controller {
 		$this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
                 $this->load->view('componentes/sidebar.php');
-		$this->load->view('editarConsulta.php');    	
+		$this->load->view('profesional/editarConsulta.php');    	
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
 	}

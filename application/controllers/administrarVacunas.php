@@ -12,7 +12,7 @@ class AdministrarVacunas extends CI_Controller {
 		$this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
                 $this->load->view('componentes/sidebar.php');
-		$this->load->view('administrarVacunas.php');		
+		$this->load->view('profesional/administrarVacunas.php');		
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
 	}
