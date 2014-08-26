@@ -1,78 +1,101 @@
-<aside class="left-side sidebar-offcanvas">
-                <!-- sidebar: style can be found in sidebar.less -->
-                <section class="sidebar">
-                    <!-- Sidebar user panel -->
-                    <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="http://localhost/CodeIgniter/img/avatar.png" class="img-circle" alt="User Image" />
-                        </div>
-                        <div class="pull-left info">
-                            <p>Administrador del Sistema</p>
-
-                            <a href="#"><i class="fa fa-circle text-success"></i> En Línea</a>
-                        </div>
-                    </div>
-                    <!-- search form -->
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="Buscar instituciones..."/>
-                            <span class="input-group-btn">
-                                <button type='submit' name='seach' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
-                    <!-- /.search form -->
-                    <!-- sidebar menu: : style can be found in sidebar.less -->
-                    <ul class="sidebar-menu">
-                        <li class="active">
-                            <a href="indexAdm.html">
-                                <i class="fa fa-dashboard"></i> <span>Actividades</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="PerfilAdm.html">
-                                <i class="fa fa-th"></i> <span>Perfil</span></a>    
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-bar-chart-o"></i>
-                                <span>Instituciones</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="agregarInstitucion.html"><i class="fa fa-angle-double-right"></i> Registrar instituciones </a></li>
-                                <li><a href="actualizarInstitucion.html"><i class="fa fa-angle-double-right"></i> Actualizar Insitituciones</a></li>
-                                <li><a href="eliminarInstitucion.html"><i class="fa fa-angle-double-right"></i> Eliminar Insitituciones</a></li>
-                            </ul>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-bar-chart-o"></i>
-                                <span>Usuarios</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="agregarUsuario.html"><i class="fa fa-angle-double-right"></i> Registrar Usuarios</a></li>
-                                <li><a href="actualizarUsuario.html"><i class="fa fa-angle-double-right"></i> Actualizar Usuario</a></li>
-                                <li><a href="eliminarUsuario.html"><i class="fa fa-angle-double-right"></i> Eliminar Usuario</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="calendarioAdm.html">
-                                <i class="fa fa-calendar"></i> <span>Calendario</span>                                
-                            </a>
-                        </li>
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="fa fa-folder"></i> <span>Soporte</span>
-                                <i class="fa fa-angle-left pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a data-toggle="modal" href="#myModal1"><i class="fa fa-angle-double-right"></i> Contacto</a></li>
-                                <li><a data-toggle="modal" href="#myModal"><i class="fa fa-angle-double-right"></i> Acerca de Sisgemed</a></li>
-                            </ul>
-                        </li>
+<!-- Sidebar start-->   
+<div id="main" class="container-fluid">
+    <div class="row">
+        <div id="sidebar-left" class="col-xs-2 col-sm-2">
+            <ul class="nav main-menu">
+                <li>
+                    <a href="<?=$url_base;?>index">
+                            <i class="fa fa-dashboard"></i>
+                            <span class="hidden-xs">Inicio</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?=$url_base;?>perfil">
+                            <i class="fa fa-dashboard"></i>
+                            <span class="hidden-xs">Perfil</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="<?=$url_base;?>calendario">
+                            <i class="fa fa-calendar"></i>
+                            <span class="hidden-xs">Calendario</span>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-bar-chart-o"></i>
+                            <span class="hidden-xs">Pacientes</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                            <li><a href="<?=$url_base;?>administrarPacientes/registrarPaciente">Nuevo Paciente</a></li>
+                            <li><a href="<?=$url_base;?>administrarPacientes/administrarPaciente">Administrar Pacientes</a></li>                            
                     </ul>
-                </section>
-                <!-- /.sidebar -->
-            </aside>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-table"></i>
+                             <span class="hidden-xs">Gestor de Datos</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                            <li><a  href="<?=$url_base;?>administrarMedicamentos">Medicamentos</a></li>
+                            <li><a  href="<?=$url_base;?>administrarAlergia">Alergias</a></li>
+                            <li><a  href="<?=$url_base;?>administrarEnfermedad">Patologías</a></li>
+                            <li><a  href="<?=$url_base;?>administrarTratamientos">Tratamientos</a></li>
+                            <li><a  href="<?=$url_base;?>administrarVacunas">Vacunas</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-pencil-square-o"></i>
+                             <span class="hidden-xs">Ficha Clínica Electrónica</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                            <li><a  href="<?=$url_base;?>administrarFCE/registrarFCE">Registro de FCE</a></li>
+                            <li><a  href="<?=$url_base;?>administrarFCE/actualizarFCE">Actualizacion de FCE</a></li>
+                            <li><a  href="<?=$url_base;?>administrarFCE/eliminarFCE">Eliminación de FCE</a></li>
+                            
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-desktop"></i>
+                             <span class="hidden-xs">Órden Médica Electrónica</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                            <li><a  href="<?=$url_base;?>administrarOME/agregarOME">Registro de OME</a></li>
+                            <li><a  href="<?=$url_base;?>administrarOME/eliminarOME">Eliminación de OME</a></li>                            
+                    </ul>
+                </li>              
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="fa fa-desktop"></i>
+                        <span class="hidden-xs">Con. Médico Informado</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a  href="<?=$url_base;?>administrarCIE/agregarCIE">Registro de CIE</a></li>
+                        <li><a  href="<?=$url_base;?>administrarCIE/eliminarCIE">Eliminación de CIE</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-picture-o"></i>
+                             <span class="hidden-xs">Cons. Médica Electrónica</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                            <li><a  href="<?=$url_base;?>administrarCME/agregarCME">Registro de CME</a></li>
+                            <li><a  href="<?=$url_base;?>administrarCME/actualizarCME">Eliminacion de CME</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-picture-o"></i>
+                             <span class="hidden-xs">Soporte</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                            <li><a data-toggle="modal" href="#myModal1">Contactenos</a></li>
+                            <li><a data-toggle="modal" href="#myModal">Acerca de Sisgemed</a></li>
+                    </ul>
+                </li>               
+            </ul>
+        </div>
+<!-- Sidebar end -->

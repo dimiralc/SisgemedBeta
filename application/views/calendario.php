@@ -1,3 +1,4 @@
+<div id="content" class="col-xs-12 col-sm-10">  
 <div class="row full-calendar">
 	<div class="col-sm-3">
 		<div id="add-new-event">
@@ -40,4 +41,4 @@ $(document).ready(function() {
 	DrawFullCalendar();
 });
 </script>
-        
+</div>

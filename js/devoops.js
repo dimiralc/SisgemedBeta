@@ -13,7 +13,7 @@
 function LoadCalendarScript(callback){
 	function LoadFullCalendarScript(){
 		if(!$.fn.fullCalendar){
-			$.getScript('<?=$url_base;?>plugins/fullcalendar/fullcalendar.js', callback);
+			$.getScript('plugins/fullcalendar/fullcalendar.js', callback);
 		}
 		else {
 			if (callback && typeof(callback) === "function") {
@@ -22,7 +22,7 @@ function LoadCalendarScript(callback){
 		}
 	}
 	if (!$.fn.moment){
-		$.getScript('<?=$url_base;?>plugins/moment/moment.min.js', LoadFullCalendarScript);
+		$.getScript('plugins/moment/moment.min.js', LoadFullCalendarScript);
 	}
 	else {
 		LoadFullCalendarScript();
@@ -48,7 +48,7 @@ function LoadOpenLayersScript(callback){
 //
 function LoadTimePickerScript(callback){
 	if (!$.fn.timepicker){
-		$.getScript('plugins/jquery-ui-timepicker-addon/jquery-ui-timepicker-addon.min.js', callback);
+		$.getScript('/plugins/jquery-ui-timepicker-addon/jquery-ui-timepicker-addon.min.js', callback);
 	}
 	else {
 		if (callback && typeof(callback) === "function") {
@@ -2300,9 +2300,11 @@ $(document).ready(function () {
 		setTimeout(MessagesMenuWidth, 250);
 	});
 	var ajax_url = location.hash.replace(/^#/, '');
+        /*
 	if (ajax_url.length < 1) {
 		ajax_url = 'ajax/dashboard.html';
 	}
+        */
 	LoadAjaxContent(ajax_url);
 	$('.main-menu').on('click', 'a', function (e) {
 		var parents = $(this).parents('li');

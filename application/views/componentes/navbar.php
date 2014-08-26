@@ -1,4 +1,4 @@
-<header class="navbar">
+    <header class="navbar">
     <div class="container-fluid expanded-panel">
         <div class="row">
             <div id="logo" class="col-xs-12 col-sm-2">
@@ -24,7 +24,7 @@
                                 </a>
                             </li>
                             <li class="hidden-xs">
-                                <a class="ajax-link" href="<?=$url_base;?>ajax/calendar.html">
+                                <a  href="<?=$url_base;?>calendario">
                                         <i class="fa fa-calendar"></i>
                                         <span class="badge">7</span>
                                 </a>
@@ -38,49 +38,43 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
                                     <div class="avatar">
-                                            <img src="<?=$url_base;?>img/avatar.jpg" class="img-rounded" alt="avatar" />
+                                            <img src="<?=$url_base;?>img/avatar5.png" class="img-rounded" alt="avatar" />
                                     </div>
                                     <i class="fa fa-angle-down pull-right"></i>
                                     <div class="user-mini pull-right">
-                                            <span class="welcome">Welcome,</span>
-                                            <span>Jane Devoops</span>
+                                            <span class="welcome">Bienvenido,</span>
+                                            <span>Daniel Montero</span>
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
                                         <a href="#">
                                                 <i class="fa fa-user"></i>
-                                                <span>Profile</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="<?=$url_base;?>ajax/page_messages.html" class="ajax-link">
-                                                <i class="fa fa-envelope"></i>
-                                                <span>Messages</span>
+                                                <span>Perfil</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="<?=$url_base;?>ajax/gallery_simple.html" class="ajax-link">
                                                 <i class="fa fa-picture-o"></i>
-                                                <span>Albums</span>
+                                                <span>Pacientes</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="<?=$url_base;?>ajax/calendar.html" class="ajax-link">
                                                 <i class="fa fa-tasks"></i>
-                                                <span>Tasks</span>
+                                                <span>Actividades</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
                                                 <i class="fa fa-cog"></i>
-                                                <span>Settings</span>
+                                                <span>Configuración</span>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
                                                 <i class="fa fa-power-off"></i>
-                                                <span>Logout</span>
+                                                <span>Salir del Sistema</span>
                                         </a>
                                     </li>
                                 </ul>

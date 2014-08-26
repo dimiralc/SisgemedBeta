@@ -82,7 +82,7 @@ class AdministrarPacientes extends CI_Controller {
             $this->load->view('componentes/navbar.php');
             $data = array ('run' => $this->input->post('Rut'));
             $data['pacientes'] = $this->administrarpacientes_model->buscarPaciente($data);
-            $this->load->view('eliminarPaciente.php', $data);
+            $this->load->view('administrarPaciente.php', $data);
             $this->load->view('componentes/sidebar.php');
             $this->load->view('componentes/modal.php');
             $this->load->view('componentes/footer.php');
