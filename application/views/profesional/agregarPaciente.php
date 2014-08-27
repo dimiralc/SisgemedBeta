@@ -196,6 +196,39 @@
 			</div>
 		</div>
 	</div>
+        <div class="col-xs-12">
+		<div class="box">
+			<div class="box-header">
+                                <div class="box-name">
+					<i class="fa fa-search"></i>
+					<span>Imagen de Paciente</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+					<a class="expand-link">
+						<i class="fa fa-expand"></i>
+					</a>
+					<a class="close-link">
+						<i class="fa fa-times"></i>
+					</a>
+				</div>
+				<div class="no-move"></div>
+			</div>
+			<div class="box-content">
+				<h4 class="page-header">Adjuntar Imágen</h4>   
+                                <form enctype="multipart/form-data" action="uploader.php" method="POST" class="form-group">
+                                    <input name="uploadedfile" type="file"/>
+                                    <div class="clearfix"></div>
+                                    <label class="control-label">Archivos Permitidos: JPG, PNG, JEPG</label> 
+                                    <div class="clearfix"></div>
+                                    <input type="submit" value="Subir archivo" class="btn btn-primary btn-label-left" />
+                                </form> 
+					
+			</div>
+		</div>
+	</div>
 </div>
 
 <script type="text/javascript">

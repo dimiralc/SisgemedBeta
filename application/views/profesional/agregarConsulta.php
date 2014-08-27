@@ -204,10 +204,12 @@
 				<div class="no-move"></div>
 			</div>
 			<div class="box-content">
-				<h4 class="page-header">Adjuntar un archivo o Imágen</h4>   
+				<h4 class="page-header">Adjuntar Archivo</h4>   
                                 <form enctype="multipart/form-data" action="uploader.php" method="POST" class="form-group">
-                                    <input name="uploadedfile" type="file" />
-                                    <br>
+                                    <input name="uploadedfile" type="file"/>
+                                    <div class="clearfix"></div>
+                                    <label class="control-label">Archivos Permitidos: JPG, PDF, DOC, DOCX</label> 
+                                    <div class="clearfix"></div>
                                     <input type="submit" value="Subir archivo" class="btn btn-primary btn-label-left" />
                                 </form> 
 					
