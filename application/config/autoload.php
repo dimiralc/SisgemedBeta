@@ -53,8 +53,6 @@ $autoload['packages'] = array();
 */
 
 $autoload['libraries'] = array('database','form_validation');
-
-
 /*
 | -------------------------------------------------------------------
 |  Auto-load Helper Files
@@ -64,7 +62,7 @@ $autoload['libraries'] = array('database','form_validation');
 |	$autoload['helper'] = array('url', 'file');
 */
 
-$autoload['helper'] = array();
+$autoload['helper'] = array('url','form');
 
 
 /*

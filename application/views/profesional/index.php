@@ -3,9 +3,10 @@
     <div class="row">
 	<div id="breadcrumb" class="col-xs-12">
 		<ol class="breadcrumb">
-			<li><a href="index.html">Dashboard</a></li>
-			<li><a href="#">Tables</a></li>
-			<li><a href="#">Simple Tables</a></li>
+			<li><a href="<?=  base_url();?>prfesional">Dashboard</a></li>
+            <li><a href="<?=  base_url();?>profesional"><?=$institucion;?></a></li>
+            <li><a href="<?=  base_url();?>profesional"><?=$perfil;?></a></li>
+            <li><a href="<?=  base_url();?>profesional"><?=$profesional;?></a></li>
 		</ol>
 	</div>
 </div>

@@ -24,13 +24,13 @@
                                 </a>
                             </li>
                             <li class="hidden-xs">
-                                <a  href="<?=$url_base;?>calendario">
+                                <a  href="<?=base_url();?>calendario">
                                         <i class="fa fa-calendar"></i>
                                         <span class="badge">7</span>
                                 </a>
                             </li>
                             <li class="hidden-xs">
-                                <a href="<?=$url_base;?>ajax/page_messages.html" class="ajax-link">
+                                <a href="<?=base_url();?>ajax/page_messages.html" class="ajax-link">
                                         <i class="fa fa-envelope"></i>
                                         <span class="badge">7</span>
                                 </a>
@@ -38,12 +38,12 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
                                     <div class="avatar">
-                                            <img src="<?=$url_base;?>img/avatar5.png" class="img-rounded" alt="avatar" />
+                                            <img src="<?=base_url();?>img/profesionales/<?=$imagen_prof;?>" class="img-rounded" alt="avatar" />
                                     </div>
                                     <i class="fa fa-angle-down pull-right"></i>
                                     <div class="user-mini pull-right">
                                             <span class="welcome">Bienvenido,</span>
-                                            <span>Daniel Montero</span>
+                                            <span><?=$profesional;?></span>
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu">
@@ -54,13 +54,13 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?=$url_base;?>ajax/gallery_simple.html" class="ajax-link">
+                                        <a href="<?=base_url();?>ajax/gallery_simple.html" class="ajax-link">
                                                 <i class="fa fa-picture-o"></i>
                                                 <span>Pacientes</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?=$url_base;?>ajax/calendar.html" class="ajax-link">
+                                        <a href="<?=base_url();?>ajax/calendar.html" class="ajax-link">
                                                 <i class="fa fa-tasks"></i>
                                                 <span>Actividades</span>
                                         </a>
@@ -72,7 +72,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
+                                        <a href="<?=base_url();?>login/logout">
                                                 <i class="fa fa-power-off"></i>
                                                 <span>Salir del Sistema</span>
                                         </a>

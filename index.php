@@ -1,5 +1,7 @@
 <?php
-
+// es necesario colocar esto por tema de seguridad, problemas con boton retroceder de los nevegadores
+header("Expires: Thu, 19 Nov 1981 08:52:00 GMT");
+header("Cache-Control: no-store, no-cache, must-revalidate");
 /*
  *---------------------------------------------------------------
  * APPLICATION ENVIRONMENT

@@ -3,9 +3,10 @@
     <div class="row">
 	<div id="breadcrumb" class="col-md-12">
 		<ol class="breadcrumb">
-			<li><a href="index.html">Dashboard</a></li>
-			<li><a href="#">Forms</a></li>
-			<li><a href="#">Forms layouts</a></li>
+            <li><a href="<?=  base_url();?>administrador">Dashboard</a></li>
+            <li><a href="<?=  base_url();?>administrador"><?=$institucion;?></a></li>
+            <li><a href="<?=  base_url();?>administrador"><?=$perfil;?></a></li>
+            <li><a href="<?=  base_url();?>administrador"><?=$administrador;?></a></li>
 		</ol>
 	</div>
     </div>
