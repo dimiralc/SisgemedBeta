@@ -31,76 +31,150 @@
 			</div>
 			<div class="box-content">
 				<h4 class="page-header">Registro de Pacientes en el sistema</h4>
-				<form class="form-horizontal" role="form">
+                                <?php
+                                    $attributes = 'class= "form-horizontal"';
+                                    $run = array(
+                                            'name'=> 'Run',
+                                            'placeholder'=>'Ingrese el Rut del Paciente',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Rol Único Nacional'                                                                                  
+                                        );
+                                    $pnombre = array(
+                                            'name'=> 'Pnombre',
+                                            'placeholder'=> 'Ingrese su Nombre',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Su Primer Nombre'
+                                        );
+                                    $snombre = array(
+                                            'name'=> 'Snombre',
+                                            'placeholder'=>'Ingrese su segundo nombre',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Su segundo nombre'
+                                        );
+                                    $paterno = array(
+                                            'name'=> 'Paterno',
+                                            'placeholder'=>'Ingrese su apellido paterno',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Su apellido paterno'
+                                        );
+                                    $materno = array(
+                                            'name'=> 'Materno',
+                                            'placeholder'=>'Ingrese su apellido materno',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Su apellido materno'
+                                        );
+                                    $telefono = array(
+                                            'name'=> 'Telefono',
+                                            'placeholder'=>'Ingrese su telefono de contacto',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Celular o Fijo'
+                                        ); 
+                                    $fecnac = array(
+                                            'name'=> 'Fecnac',
+                                            'placeholder'=>'Fecha de Nacimiento',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Su fecha de Naciemiento'
+                                            
+                                        );
+                                    $direccion = array(
+                                            'name'=> 'Direccion',
+                                            'placeholder'=>'Direccion de residencia',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Su direccion personal',
+                                            'rows' => '2'
+                                        );
+                                ?>				
+				<?= form_open('administrarPacientes/recibirdatos', $attributes)?>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Rut</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" placeholder="Rut" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-						</div>
+                                                <div class="col-sm-4">
+                                                    <?=form_input($run)?>
+                                                </div>
 						<label class="col-sm-2 control-label">Primer Nombre</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" placeholder="Primer Nombre" data-toggle="tooltip" data-placement="bottom" title="Tooltip for last name">
-						</div>
+                                                <div class="col-sm-4">
+                                                    <?=form_input($pnombre)?>
+                                                </div>
 					</div>
 					<div class="form-group has-success">
 						<label class="col-sm-2 control-label">Segundo Nombre</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" placeholder="Segundo Nombre">
-						</div>
+                                                    <?=form_input($snombre)?>
+                                                </div>
 						<label class="col-sm-2 control-label">Apellido Paterno</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" placeholder="Apellido Paterno">
-							<span class="form-control-feedback"></span>
-						</div>
+                                                <div class="col-sm-4">
+                                                    <?=form_input($paterno)?>
+                                                </div>
 					</div>
 					<div class="form-group has-warning has-feedback">
 						<label class="col-sm-2 control-label">Apellido Materno</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" placeholder="Apellido Materno">
-							<span class="fa fa-key txt-warning form-control-feedback"></span>
-						</div>
+                                                <div class="col-sm-4">
+                                                    <?=form_input($materno)?>
+                                                </div>
 						<label class="col-sm-2 control-label">Teléfono</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" placeholder="Teléfono" data-toggle="tooltip" data-placement="top" title="Hello world!">
-						</div>						
+                                                <div class="col-sm-4">
+                                                    <?=form_input($telefono)?>
+                                                </div>						
 					</div>
 					<div class="form-group has-warning has-feedback">
 						<label class="col-sm-2 control-label">País de Orígen</label>
 						<div class="col-sm-4">
-							<select class="col-sm-8">
-								<option>Chile</option>
-								<option>Perú</option>
-								<option>Brasil</option>
-								<option>Ecuador</option>
-								<option>Venezuela</option>
-								<option>Argentina</option>
-								<option>Colombia</option>
-								<option>Uruguay</option>
-								<option>Paraguay</option>
-								<option>México</option>
-								<option>Panamá</option>
+							<select class="col-sm-8" name="pais" id="pais">
+								<option value="Chile">Chile</option>
+								<option value="Perú">Perú</option>
+								<option value="Brasil">Brasil</option>
+								<option value="Ecuador">Ecuador</option>
+								<option value="Venezuela">Venezuela</option>
+								<option value="Argentina">Argentina</option>
+								<option value="Colombia">Colombia</option>
+								<option value="Uruguay">Uruguay</option>
+								<option value="Paraguay">Paraguay</option>
+								<option value="México">México</option>
+								<option value="Panamá">Panamá</option>
 							</select>
 						</div>						
 					</div>                                        
 					<div class="form-group has-error has-feedback">
                                                 <label class="col-sm-2 control-label">Fecha de Nacimiento</label>
 						<div class="col-sm-3">
-							<input type="text" id="input_date" class="form-control" placeholder="Fecha de Nacimiento">
-							<span class="fa fa-calendar txt-danger form-control-feedback"></span>
-						</div>						
+                                                    <?=form_input($fecnac)?>
+                                                </div>						
 					</div>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">Género</label>                                            
                                                     <div class="col-sm-4">
                                                             <div class="radio">
                                                                     <label>
-                                                                            <input type="radio" name="radio"> Hombre
+                                                                            <input type="radio" name="genero" value="Masculino"> Masculino
                                                                             <i class="fa fa-circle-o"></i>
                                                                     </label>
                                                             </div>
                                                             <div class="radio">
                                                                     <label>
-                                                                            <input type="radio" name="radio"> Mujer
+                                                                            <input type="radio" name="genero" value="Femenino"> Femenino
                                                                             <i class="fa fa-circle-o"></i>
                                                                     </label>
                                                             </div>                                                        
@@ -109,25 +183,25 @@
                                                     <div class="col-sm-4">
                                                             <div class="radio">
                                                                     <label>
-                                                                            <input type="radio" name="radio"> Soltero
+                                                                            <input type="radio" name="ecivil" value="Soltero"> Soltero
                                                                             <i class="fa fa-circle-o"></i>
                                                                     </label>
                                                             </div>
                                                             <div class="radio">
                                                                     <label>
-                                                                            <input type="radio" name="radio"> Casado
+                                                                            <input type="radio" name="ecivil" value="Casado"> Casado
                                                                             <i class="fa fa-circle-o"></i>
                                                                     </label>
                                                             </div>         
                                                             <div class="radio">
                                                                     <label>
-                                                                            <input type="radio" name="radio"> Viudo
+                                                                            <input type="radio" name="ecivil" value="Viudo"> Viudo
                                                                             <i class="fa fa-circle-o"></i>
                                                                     </label>
                                                             </div> 
                                                             <div class="radio">
                                                                     <label>
-                                                                            <input type="radio" name="radio"> Separado
+                                                                            <input type="radio" name="ecivil" value="Separado"> Separado
                                                                             <i class="fa fa-circle-o"></i>
                                                                     </label>
                                                             </div> 
@@ -136,43 +210,43 @@
                                         </div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label" for="form-styles">Dirección</label>
-						<div class="col-sm-10">
-								<textarea class="form-control" rows="2"></textarea>
-						</div>
+                                                <div class="col-sm-10">
+                                                    <?= form_textarea($direccion)?>
+                                                </div>
 					</div>
                                         <div class="form-group has-feedback">
 						<label class="col-sm-2 control-label">Nivel de Estudios</label>
-						<div class="col-sm-4">
-							<select class="col-sm-8">
-								<option>Sin Estudios</option>
-								<option>Básica Incompleta</option>
-								<option>Básica Completa</option>
-								<option>Media Incompleta</option>
-								<option>Medica Completa</option>
-								<option>Técnico</option>
-								<option>Técnico Profesional</option>
-								<option>Universitaria Incompleta</option>
-								<option>Universitaria Completa</option>
-								<option>Postgrado</option>	
+						<div class="col-sm-6">
+							<select class="col-sm-5" name="nivelestudios" id="nivelestudios">
+								<option value="Sin Estudios">Sin Estudios</option>
+								<option value="Básica Incompleta">Básica Incompleta</option>
+								<option value="Básica Completa">Básica Completa</option>
+								<option value="Media Incompleta">Media Incompleta</option>
+								<option value="Medica Completa">Medica Completa</option>
+								<option value="Técnico">Técnico</option>
+								<option value="Técnico Profesional">Técnico Profesional</option>
+								<option value="Universitaria Incompleta">Universitaria Incompleta</option>
+								<option value="Universitaria Completa">Universitaria Completa</option>
+								<option value="Postgrado">Postgrado</option>								
 							</select>
 						</div>						
 					</div> 
                                         <div class="form-group has-feedback">
 						<label class="col-sm-2 control-label">Preexistencias</label>
-						<div class="col-sm-4">
-							<select class="col-sm-8">
-                                                                <option>Sin Preexistencias</option>
-								<option>Hipertensión Arterial</option>
-								<option>Arteriopatía obstructiva periférica y aneurismas</option>
-								<option>Cardiopatía isquémica</option>
-								<option>Valvulopatías congénitas o adquiridas</option>
-								<option>Miocardiopatías</option>
-								<option>Arritmias crónicas</option>
-								<option>Tumores</option>
-								<option>Otopatías</option>
-								<option>Laringopatías</option>
-								<option>Rinosinusal</option>
-								<option>Misceláneas</option>
+						<div class="col-sm-6">
+							<select class="col-sm-5" name="preexistencias" id="preexistencias">
+                                                                <option value="Sin preexistencias">Sin Preexistencias</option>
+								<option value="Hipertensión Arterial">Hipertensión Arterial</option>
+								<option value="Arteriopatía obstructiva">Arteriopatía obstructiva</option>
+								<option value="Cardiopatía isquémica">Cardiopatía isquémica</option>
+								<option value="Valvulopatías congénitas">Valvulopatías congénitas</option>
+								<option value="Miocardiopatías">Miocardiopatías</option>
+								<option value="Arritmias crónicas">Arritmias crónicas</option>
+								<option value="Tumores">Tumores</option>
+								<option value="Otopatías">Otopatías</option>
+								<option value="Laringopatías">Laringopatías</option>
+								<option value="Rinosinusal">Rinosinusal</option>
+								<option value="Misceláneas">Misceláneas</option>
 							</select>
 						</div>						
 					</div>            
@@ -180,17 +254,11 @@
                                         <div class="clearfix"></div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-2">
-							<button type="cancel" class="btn btn-default btn-label-left">
+							<button type="cancel" class="btn btn-default btn-label-left" value="Agregar" name="btoPacientes">
 							<span><i class="fa fa-clock-o txt-danger"></i></span>
-								Cancelar
+								Agregar Paciente
 							</button>
-						</div>
-						<div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-label-left">
-							<span><i class="fa fa-clock-o"></i></span>
-								Guardar Cambios
-							</button>
-						</div>
+						</div>						
 					</div>
 				</form>
 			</div>

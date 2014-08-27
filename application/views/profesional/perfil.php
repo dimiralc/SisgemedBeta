@@ -124,10 +124,8 @@
                                             'data-placement' => 'bottom',
                                             'data-toggle' => 'tooltip',
                                             'title'=> 'Su cnueva contraseña'                                            
-                                        );
-                                    
-                                ?>
-				<!-- Fin Metadatos del Formulario de Registro de Medicamentos -->
+                                        );                                    
+                                ?>				
                                 <?= form_open('perfil/recibirdatos', $attributes)?>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Run</label>
