@@ -9,7 +9,7 @@
 	</div>
     </div>
     <div class="row">
-	<div class="col-xs-8">
+	<div class="col-xs-12">
 		<div class="box">
 			<div class="box-header">
                                 <div class="box-name">
@@ -183,7 +183,7 @@
 			</div>
 		</div>
 	</div>
-        <div class="col-xs-4">
+        <div class="col-xs-12">
 		<div class="box">
 			<div class="box-header">
                                 <div class="box-name">
@@ -204,7 +204,12 @@
 				<div class="no-move"></div>
 			</div>
 			<div class="box-content">
-				<h4 class="page-header">Adjuntar un archivo o Imágen</h4>                                
+				<h4 class="page-header">Adjuntar un archivo o Imágen</h4>   
+                                <form enctype="multipart/form-data" action="uploader.php" method="POST" class="form-group">
+                                    <input name="uploadedfile" type="file" />
+                                    <br>
+                                    <input type="submit" value="Subir archivo" class="btn btn-primary btn-label-left" />
+                                </form> 
 					
 			</div>
 		</div>
@@ -233,45 +238,45 @@
 				<h4 class="page-header">Recomendaciones Clínicas</h4>
                                 <?= form_open('administrarMedicamentos/recibirdatos', $attributes)?>
 					<div class="form-group">
-						<label class="col-sm-2 control-label">ID del Medicamento</label>
+						<label class="col-sm-2 control-label">Exémenes a Realizar</label>
 						<div class="col-sm-4">
 							<?=form_input($id)?>
 						</div>
-						<label class="col-sm-2 control-label">Nombre</label>
+						<label class="col-sm-2 control-label">Medicamentos Sugeridos</label>
 						<div class="col-sm-4">
 							<?=form_input($nombre)?>
                                                 </div>
 					</div>
 					<div class="form-group has-success">
-						<label class="col-sm-2 control-label">Generico</label>
+						<label class="col-sm-2 control-label">Indicación de Reposo</label>
 						<div class="col-sm-4">
 							<?=form_input($generico)?>
 						</div>
-						<label class="col-sm-2 control-label">Componente Activo</label>
+						<label class="col-sm-2 control-label">Remitir a especialidad Médica </label>
 						<div class="col-sm-4">
 							<?=form_input($componente)?>
 							<span class="form-control-feedback"></span>
 						</div>
 					</div>
 					<div class="form-group has-warning has-feedback">
-						<label class="col-sm-2 control-label">Laboratorio</label>
+						<label class="col-sm-2 control-label">Intervenciones Quirúrgicas</label>
 						<div class="col-sm-4">
 							<?=form_input($laboratorio)?>
 							<span class="txt-warning form-control-feedback"></span>
 						</div>
-						<label class="col-sm-2 control-label">Formato</label>
+						<label class="col-sm-2 control-label">Fecha de Control</label>
                                                 <div class="col-sm-4">
                                                         <?=form_input($formato)?>
                                                 </div>						
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2 control-label" for="form-styles">Usos Medicos / Indicaciones</label>
+						<label class="col-sm-2 control-label" for="form-styles">Observaciones / Recomendaciones</label>
 						<div class="col-sm-10">
 							<?=  form_textarea($descripcion)?>
 						</div>
 					</div>
                                         <div class="form-group">
-						<label class="col-sm-2 control-label" for="form-styles">Contraindicaciones</label>
+						<label class="col-sm-2 control-label" for="form-styles">Diagnóstico Preliminar</label>
                                                 <div class="col-sm-10">
                                                         <?=  form_textarea($contraindicaciones)?>
                                                 </div>
