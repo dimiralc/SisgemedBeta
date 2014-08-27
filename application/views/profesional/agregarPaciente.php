@@ -260,7 +260,7 @@
 							</button>
 						</div>						
 					</div>
-				</form>
+				<?= form_close()?>
 			</div>
 		</div>
 	</div>
