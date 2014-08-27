@@ -11,7 +11,7 @@
                 </li>
                 <li>
                     <a href="<?=$url_base;?>perfil">
-                            <i class="fa fa-dashboard"></i>
+                            <i class="fa fa-pencil-square-o"></i>
                             <span class="hidden-xs">Perfil</span>
                     </a>
                 </li>
@@ -23,17 +23,59 @@
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle">
-                            <i class="fa fa-bar-chart-o"></i>
+                            <i class="fa fa-user"></i>
                             <span class="hidden-xs">Pacientes</span>
                     </a>
                     <ul class="dropdown-menu">
                             <li><a href="<?=$url_base;?>administrarPacientes/registrarPaciente">Nuevo Paciente</a></li>
                             <li><a href="<?=$url_base;?>administrarPacientes/administrarPaciente">Administrar Pacientes</a></li>                            
                     </ul>
+                </li>               
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-chain"></i>
+                             <span class="hidden-xs">Cons. Médica Electrónica</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                            <li><a  href="<?=$url_base;?>administrarCME/agregarCME">Registro de CME</a></li>
+                            <li><a  href="<?=$url_base;?>administrarCME/actualizarCME">Eliminacion de CME</a></li>
+                    </ul>
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle">
-                            <i class="fa fa-table"></i>
+                            <i class="fa fa-tablet"></i>
+                             <span class="hidden-xs">Ficha Clínica Electrónica</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                            <li><a  href="<?=$url_base;?>administrarFCE/registrarFCE">Registro de FCE</a></li>
+                            <li><a  href="<?=$url_base;?>administrarFCE/actualizarFCE">Actualizacion de FCE</a></li>
+                            <li><a  href="<?=$url_base;?>administrarFCE/eliminarFCE">Eliminación de FCE</a></li>
+                            
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-upload"></i>
+                             <span class="hidden-xs">Órden Médica Electrónica</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                            <li><a  href="<?=$url_base;?>administrarOME/agregarOME">Registro de OME</a></li>
+                            <li><a  href="<?=$url_base;?>administrarOME/eliminarOME">Eliminación de OME</a></li>                            
+                    </ul>
+                </li>              
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="fa fa-dedent"></i>
+                        <span class="hidden-xs">Con. Médico Informado</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a  href="<?=$url_base;?>administrarCIE/agregarCIE">Registro de CIE</a></li>
+                        <li><a  href="<?=$url_base;?>administrarCIE/eliminarCIE">Eliminación de CIE</a></li>
+                    </ul>
+                </li> 
+                 <li class="dropdown">
+                    <a href="#" class="dropdown-toggle">
+                            <i class="fa fa-paperclip"></i>
                              <span class="hidden-xs">Gestor de Datos</span>
                     </a>
                     <ul class="dropdown-menu">
@@ -46,49 +88,7 @@
                 </li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle">
-                            <i class="fa fa-pencil-square-o"></i>
-                             <span class="hidden-xs">Ficha Clínica Electrónica</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                            <li><a  href="<?=$url_base;?>administrarFCE/registrarFCE">Registro de FCE</a></li>
-                            <li><a  href="<?=$url_base;?>administrarFCE/actualizarFCE">Actualizacion de FCE</a></li>
-                            <li><a  href="<?=$url_base;?>administrarFCE/eliminarFCE">Eliminación de FCE</a></li>
-                            
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">
-                            <i class="fa fa-desktop"></i>
-                             <span class="hidden-xs">Órden Médica Electrónica</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                            <li><a  href="<?=$url_base;?>administrarOME/agregarOME">Registro de OME</a></li>
-                            <li><a  href="<?=$url_base;?>administrarOME/eliminarOME">Eliminación de OME</a></li>                            
-                    </ul>
-                </li>              
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">
-                        <i class="fa fa-desktop"></i>
-                        <span class="hidden-xs">Con. Médico Informado</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a  href="<?=$url_base;?>administrarCIE/agregarCIE">Registro de CIE</a></li>
-                        <li><a  href="<?=$url_base;?>administrarCIE/eliminarCIE">Eliminación de CIE</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">
-                            <i class="fa fa-picture-o"></i>
-                             <span class="hidden-xs">Cons. Médica Electrónica</span>
-                    </a>
-                    <ul class="dropdown-menu">
-                            <li><a  href="<?=$url_base;?>administrarCME/agregarCME">Registro de CME</a></li>
-                            <li><a  href="<?=$url_base;?>administrarCME/actualizarCME">Eliminacion de CME</a></li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle">
-                            <i class="fa fa-picture-o"></i>
+                            <i class="fa fa-superscript"></i>
                              <span class="hidden-xs">Soporte</span>
                     </a>
                     <ul class="dropdown-menu">

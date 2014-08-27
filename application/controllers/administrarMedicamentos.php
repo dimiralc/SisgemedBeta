@@ -26,19 +26,19 @@ class AdministrarMedicamentos extends CI_Controller {
 				'descripcion' => $this->input->post('Descripcion')
 			);
                 switch( $_POST['btomedicamento'] ) {
-                    case "Añadir Medicamento":                       
+                    case "Agregar":                       
                         $this->administrarmedicamentos_model->anadirMedicamento($data);
                         $this->index();
                     break;
-                    case "Actualizar Medicamento":                       
+                    case "Actualizar":                       
                         $this->administrarmedicamentos_model->actualizarMedicamento($data);
                         $this->index();
                     break;
-                    case "Quitar Medicamento":
+                    case "Eliminar":
                         $this->administrarmedicamentos_model->eliminarMedicamento($data);
                         $this->index();                        
                     break;
-                    case "Buscar Medicamento":
+                    case "Buscar":
                         $this->administrarmedicamentos_model->buscarMedicamento($data);
                         $this->index();                        
                     break;
