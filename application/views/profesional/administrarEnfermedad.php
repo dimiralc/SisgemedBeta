@@ -45,58 +45,110 @@
                                         </div>
                                     </div>                                    
                                 </form>                                
-                                <h4 class="page-header">Datos de la Patología</h4>   
-				<form class="form-horizontal" role="form">
+                                <h4 class="page-header">Datos de la Patología</h4> 
+                                <?php
+                                    $attributes = 'class="form-horizontal"';
+                                    $id = array(
+                                        'name' => 'Id',
+                                        'placeholder'=>'Ingrese el Código de la Patología',
+                                        'size' => '90',
+                                        'class' => 'form-control',
+                                        'data-placement' => 'bottom',
+                                        'data-toggle' => 'tooltip',
+                                        'title'=> 'Código Patología'  
+                                    );
+                                    $nombre = array(
+                                        'name' => 'Nombre',
+                                        'placeholder'=>'Ingrese el Nombre de la Patología',
+                                        'size' => '90',
+                                        'class' => 'form-control',
+                                        'data-placement' => 'bottom',
+                                        'data-toggle' => 'tooltip',
+                                        'title'=> 'Nombre Patología'  
+                                    );
+                                    $sistema = array(
+                                        'name' => 'Sistema',
+                                        'placeholder'=>'Ingrese el Sistema comprometido',
+                                        'size' => '90',
+                                        'class' => 'form-control',
+                                        'data-placement' => 'bottom',
+                                        'data-toggle' => 'tooltip',
+                                        'title'=> 'Sistema Comprometido'  
+                                    );
+                                    $sintomatologia = array(
+                                        'name' => 'Sintomatologia',
+                                        'placeholder'=>'Ingrese los síntomas asociados',
+                                        'size' => '90',
+                                        'class' => 'form-control',
+                                        'data-placement' => 'bottom',
+                                        'data-toggle' => 'tooltip',
+                                        'title'=> 'Síntomas Asociados',
+                                        'rows' => '3'
+                                    );
+                                    $indicaciones = array(
+                                        'name' => 'Indeicaciones',
+                                        'placeholder'=>'Ingrese las Indicaciones preliminares',
+                                        'size' => '90',
+                                        'class' => 'form-control',
+                                        'data-placement' => 'bottom',
+                                        'data-toggle' => 'tooltip',
+                                        'title'=> 'Indicaciones Preliminares' ,
+                                        'rows' => '3'
+                                    );
+                                    
+                                    
+                                ?>
+				<?= form_open('administrarEnfermedad/recibirDatos', $attributes)?>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">ID de la Patología</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" placeholder="ID" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-						</div>
+                                                <div class="col-sm-4">
+                                                    <?= form_input($id)?>
+                                                </div>
 						<label class="col-sm-2 control-label">Nombre</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" placeholder="Nombre Patología" data-toggle="tooltip" data-placement="bottom" title="Tooltip for last name">
-						</div>
+                                                <div class="col-sm-4">
+                                                    <?= form_input($nombre)?>
+                                                </div>
 					</div>
 					<div class="form-group has-success">
 						<label class="col-sm-2 control-label">Sistema Afectado</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" placeholder="Nombre de Patología">
-						</div>						
+                                                <div class="col-sm-4">
+                                                    <?=form_input($sistema)?>
+                                                </div>						
 					</div>
-					<div class="form-group">
+					<div class="form-group has-warning">
 						<label class="col-sm-2 control-label" for="form-styles">Sintomatología</label>
-						<div class="col-sm-10">
-								<textarea class="form-control" rows="2"></textarea>
-						</div>
+                                                <div class="col-sm-10">
+                                                    <?= form_textarea($sintomatologia)?>
+                                                </div>
 					</div>
-                                        <div class="form-group">
-						<label class="col-sm-2 control-label" for="form-styles">Indicaciones Preliminares</label>
-						<div class="col-sm-10">
-								<textarea class="form-control" rows="2"></textarea>
-						</div>
+                                        <div class="form-group has-error">
+						<label class="col-sm-2 control-label " for="form-styles">Indicaciones Preliminares</label>
+                                                <div class="col-sm-10">
+                                                    <?= form_textarea($indicaciones)?>
+                                                </div>
 					</div>
                                         <div class="clearfix"></div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-2">
-							<button type="cancel" class="btn btn-primary btn-label-left">
+                                                    <button type="cancel" class="btn btn-primary btn-label-left" name="btopatologia" value="Agregar">
 							<span><i class="fa fa-clock-o txt-danger"></i></span>
 								Agregar
 							</button>
 						</div>
 						<div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-label-left">
+                                                    <button type="submit" class="btn btn-primary btn-label-left" name="btopatologia" value="Actualizar">
 							<span><i class="fa fa-clock-o txt-danger"></i></span>
 								Actualizar
 							</button>
 						</div>
                                                 <div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-label-left">
+							<button type="submit" class="btn btn-primary btn-label-left" name="btopatologia" value="Eliminar">
 							<span><i class="fa fa-clock-o txt-danger"></i></span>
 								Eliminar
 							</button>
 						</div>
                                                 <div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-label-left">
+							<button type="submit" class="btn btn-primary btn-label-left" name="btopatologia" value="Cancelar">
 							<span><i class="fa fa-clock-o txt-danger"></i></span>
 								Cancelar
 							</button>

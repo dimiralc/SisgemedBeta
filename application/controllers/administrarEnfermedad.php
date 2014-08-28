@@ -25,19 +25,19 @@ class AdministrarEnfermedad extends CI_Controller {
 				'sintomatologia' => $this->input->post('Sintomatologia')
 			);
             switch( $_POST['btopatologia'] ) {
-                    case "Añadir Patología":                       
+                    case "Agregar":                       
                         $this->administrarpatologias_model->anadirPatologia($data);
                         $this->index();
                     break;
-                    case "Actualizar Patología":                       
+                    case "Actualizar":                       
                         $this->administrarpatologias_model->ActualizarPatologia($data);
                         $this->index();
                     break;
-                    case "Quitar Patología":
+                    case "Eliminar":
                         $this->administrarpatologias_model->eliminarPatologia($data);
                         $this->index();                        
                     break;
-                    case "Buscar Patología":
+                    case "Buscar":
                         $this->administrarpatologias_model->buscarPatologia($data);
                         $this->index();                        
                     break;

@@ -25,19 +25,19 @@ class AdministrarTratamientos extends CI_Controller {
 				'descripcion' => $this->input->post('Descripcion')
 			);
                 switch( $_POST['btotratamiento'] ) {
-                    case "Añadir Tratamiento":                       
+                    case "Agregar":                       
                         $this->administrartratamientos_model->anadirTratamiento($data);
                         $this->index();
                     break;
-                    case "Actualizar Tratamiento":                       
+                    case "Actualizar":                       
                         $this->administrartratamientos_model->actualizarTratamiento($data);
                         $this->index();
                     break;
-                    case "Quitar Tratamiento":
+                    case "Eliminar":
                         $this->administrartratamientos_model->eliminarTratamiento($data);
                         $this->index();                        
                     break;
-                    case "Buscar Tratamiento":
+                    case "Buscar":
                         $this->administrartratamientos_model->buscarTratamiento($data);
                         $this->index();                        
                     break;

@@ -24,19 +24,19 @@ class AdministrarAlergia extends CI_Controller {
 				'sintomatologia' => $this->input->post('Sintomatologia')
 			);
             switch( $_POST['btoalergia'] ) {
-                    case "Añadir Alergia":                       
+                    case "Agregar":                       
                         $this->administraralergias_model->anadirAlergia($data);
                         $this->index();
                     break;
-                    case "Actualizar Alergia":                       
+                    case "Actualizar":                       
                         $this->administraralergias_model->actualizarAlergia($data);
                         $this->index();
                     break;
-                    case "Quitar Alergia":
+                    case "Eliminar":
                         $this->administraralergias_model->eliminarAlergia($data);
                         $this->index();                        
                     break;
-                    case "Buscar Alergia":
+                    case "Buscar":
                         $this->administraralergias_model->buscarAlergia($data);
                         $this->index();                        
                     break;

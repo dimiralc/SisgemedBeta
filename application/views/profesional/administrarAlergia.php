@@ -45,63 +45,123 @@
                                         </div>
                                     </div>                                    
                                 </form>                                
-                                <h4 class="page-header">Datos de la Alergia</h4>   
-				<form class="form-horizontal" role="form">
+                                <h4 class="page-header">Datos de la Alergia</h4>
+                                <?php
+                                    $attributes = 'class="form-horizontal"';
+                                    $id = array(
+                                        'name' => 'Id',
+                                        'placeholder'=>'Ingrese el Código de la Alergia',
+                                        'size' => '90',
+                                        'class' => 'form-control',
+                                        'data-placement' => 'bottom',
+                                        'data-toggle' => 'tooltip',
+                                        'title'=> 'Código Patología'  
+                                    );
+                                    $nombre = array(
+                                        'name' => 'Nombre',
+                                        'placeholder'=>'Ingrese el Nombre de la Alergia',
+                                        'size' => '90',
+                                        'class' => 'form-control',
+                                        'data-placement' => 'bottom',
+                                        'data-toggle' => 'tooltip',
+                                        'title'=> 'Nombre Alergia'  
+                                    );
+                                    $alergeno = array(
+                                        'name' => 'Alergeno',
+                                        'placeholder'=>'Ingrese el Alergeno detectado',
+                                        'size' => '90',
+                                        'class' => 'form-control',
+                                        'data-placement' => 'bottom',
+                                        'data-toggle' => 'tooltip',
+                                        'title'=> 'Alergeno Detectado'  
+                                    );
+                                    $zona = array(
+                                        'name' => 'Zona',
+                                        'placeholder'=>'Ingrese la Zona comprometida',
+                                        'size' => '90',
+                                        'class' => 'form-control',
+                                        'data-placement' => 'bottom',
+                                        'data-toggle' => 'tooltip',
+                                        'title'=> 'Zona Comprometida'  
+                                    );
+                                    $sintomatologia = array(
+                                        'name' => 'Sintomatologia',
+                                        'placeholder'=>'Ingrese los síntomas asociados',
+                                        'size' => '90',
+                                        'class' => 'form-control',
+                                        'data-placement' => 'bottom',
+                                        'data-toggle' => 'tooltip',
+                                        'title'=> 'Síntomas Asociados',
+                                        'rows' => '3'
+                                    );
+                                    $indicaciones = array(
+                                        'name' => 'Indeicaciones',
+                                        'placeholder'=>'Ingrese las Indicaciones preliminares',
+                                        'size' => '90',
+                                        'class' => 'form-control',
+                                        'data-placement' => 'bottom',
+                                        'data-toggle' => 'tooltip',
+                                        'title'=> 'Indicaciones Preliminares' ,
+                                        'rows' => '3'
+                                    );
+                                    
+                                    
+                                ?>
+				<?= form_open('administrarAlergia/recibirDatos', $attributes)?>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">ID de la Alergia</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" placeholder="ID" data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-						</div>
+                                                <div class="col-sm-4">
+                                                    <?= form_input($id)?>
+                                                </div>
 						<label class="col-sm-2 control-label">Nombre</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" placeholder="Nombre Alergia" data-toggle="tooltip" data-placement="bottom" title="Tooltip for last name">
-						</div>
+                                                <div class="col-sm-4">
+                                                    <?= form_input($nombre)?>
+                                                </div>
 					</div>
 					<div class="form-group has-success">
 						<label class="col-sm-2 control-label">Alérgeno Detectado</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" placeholder="Nombre del Alérgeno">
-						</div>
+                                                <div class="col-sm-4">
+                                                    <?= form_input($alergeno)?>
+                                                </div>
 						<label class="col-sm-2 control-label">Zona Afectada</label>
-						<div class="col-sm-4">
-							<input type="text" class="form-control" placeholder="Zona Afectada">
-							<span class="form-control-feedback"></span>
-						</div>
+                                                <div class="col-sm-4">
+                                                    <?= form_input($zona)?>
+                                                </div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label" for="form-styles">Sintomatología</label>
-						<div class="col-sm-10">
-								<textarea class="form-control" rows="2"></textarea>
-						</div>
+                                                <div class="col-sm-10">
+                                                    <?= form_textarea($sintomatologia)?>
+                                                </div>
 					</div>
                                         <div class="form-group">
 						<label class="col-sm-2 control-label" for="form-styles">Indicaciones Preliminares</label>
-						<div class="col-sm-10">
-								<textarea class="form-control" rows="2"></textarea>
-						</div>
+                                                <div class="col-sm-10">
+                                                    <?= form_textarea($indicaciones)?>
+                                                </div>
 					</div>
                                         <div class="clearfix"></div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-2">
-							<button type="cancel" class="btn btn-primary btn-label-left">
+                                                    <button type="cancel" class="btn btn-primary btn-label-left" name="btoalergia" value="Agregar">
 							<span><i class="fa fa-clock-o txt-danger"></i></span>
 								Agregar
 							</button>
 						</div>
 						<div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-label-left">
+							<button type="submit" class="btn btn-primary btn-label-left" name="btoalergia" value="Actualizar">
 							<span><i class="fa fa-clock-o txt-danger"></i></span>
 								Actualizar
 							</button>
 						</div>
                                                 <div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-label-left">
+							<button type="submit" class="btn btn-primary btn-label-left" name="btoalergia" value="Eliminar">
 							<span><i class="fa fa-clock-o txt-danger"></i></span>
 								Eliminar
 							</button>
 						</div>
                                                 <div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-label-left">
+							<button type="submit" class="btn btn-primary btn-label-left" name="btoalergia" value="Cancelar">
 							<span><i class="fa fa-clock-o txt-danger"></i></span>
 								Cancelar
 							</button>

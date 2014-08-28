@@ -26,19 +26,19 @@ class AdministrarVacunas extends CI_Controller {
 			);
 
 		switch( $_POST['btovacunas'] ) {
-                    case "Añadir Vacuna":                       
+                    case "Agregar":                       
                         $this->administrarvacunas_model->anadirVacuna($data);
                         $this->index();
                     break;
-                    case "Actualizar Vacuna":                       
+                    case "Actualizar":                       
                         $this->administrarvacunas_model->actualizarVacuna($data);
                         $this->index();
                     break;
-                    case "Quitar Vacuna":
+                    case "Eliminar":
                         $this->administrarvacunas_model->eliminarVacuna($data);
                         $this->index();                        
                     break;
-                    case "Buscar Vacuna":
+                    case "Buscar":
                         $this->administrarvacunas_model->buscarVacuna($data);
                         $this->index();                        
                     break;

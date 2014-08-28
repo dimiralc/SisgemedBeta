@@ -38,12 +38,14 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
                                     <div class="avatar">
-                                            <img src="<?=base_url();?>img/profesionales/<?=$imagen_prof;?>" class="img-rounded" alt="avatar" />
+                                            <img src="<?=base_url();?>img/profesionales/" class="img-rounded" alt="avatar" />
+                                            <!-- solucionar problema con la carga de imagenes -->
                                     </div>
                                     <i class="fa fa-angle-down pull-right"></i>
                                     <div class="user-mini pull-right">
                                             <span class="welcome">Bienvenido,</span>
-                                            <span><?=$profesional;?></span>
+                                            <span>Usuario</span>
+                                            <!-- solucionar problema con la carga de datos de usuario -->
                                     </div>
                                 </a>
                                 <ul class="dropdown-menu">
