@@ -54,7 +54,7 @@ class Administrarpacientes_model extends CI_Model {
         }
         
         function buscarPaciente($data){
-            $this->db->where('rut', $data['run']);
+            $this->db->where('rut', $data['runInfo']);
             $query = $this->db->get('pacientes');            
             if($query->num_rows() > 0){
                 return $query;

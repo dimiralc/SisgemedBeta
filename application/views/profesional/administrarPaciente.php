@@ -8,13 +8,63 @@
 		</ol>
 	</div>
     </div>
+    <!-- Formulario de Búsqueda de Pacientes en el sistema -->
+    <div class="row">
+        <div class="col-xs-12 col-sm-12">
+		<div class="box">
+			<div class="box-header">
+                            <div class="box-name">
+					<i class="fa fa-search"></i>
+					<span>Actualización o Eliminación de Pacientes en el Sistema</span>
+				</div>
+				<div class="box-icons">
+					<a class="collapse-link">
+						<i class="fa fa-chevron-up"></i>
+					</a>
+					<a class="expand-link">
+						<i class="fa fa-expand"></i>
+					</a>
+					<a class="close-link">
+						<i class="fa fa-times"></i>
+					</a>
+				</div>  
+                        </div>
+                    <div class="box-content">
+                        <h4 class="page-header">Búsqueda de Datos</h4>
+                        <?= form_open('administrarPacientes/buscarPaciente') ?>
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Búsqueda por Rut  </label>
+                                <div class="col-sm-4">
+                                        <input type="text" 
+                                               class="form-control" placeholder="Rut del paciente" 
+                                               data-toggle="tooltip" data-placement="bottom" 
+                                               title="Ingrese el rut del paciente que desea encontrar" 
+                                               name="Run">
+                                </div>                                        
+                                <div class="col-sm-4">
+                                    <button type="submit" class="btn btn-primary btn-label-left" name="btoPaciente">
+                                        <span><i class="fa fa-clock-o"></i></span>
+                                                Buscar
+                                    </button>
+                                </div>                                                                                        
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+        </div>        
+    </div>
+    <!-- Fin del Formulario de Busqueda -->
+    <?php 
+    if(isset($pacientes)){
+        foreach ($pacientes -> result() as $paciente){?>
     <div class="row">
 	<div class="col-xs-12 col-sm-12">
 		<div class="box">
 			<div class="box-header">
                                 <div class="box-name">
 					<i class="fa fa-search"></i>
-					<span>Actualización o Eliminación de Pacientes en el Sistema</span>
+					<span>Datos del Paciente</span>
 				</div>
 				<div class="box-icons">
 					<a class="collapse-link">
@@ -30,32 +80,18 @@
 				<div class="no-move"></div>
 			</div>
 			<div class="box-content">
-				<h4 class="page-header">Búsqueda de Datos</h4>
-                                <form class="form-horizontal" role="form">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Rut</label>
-                                        <div class="col-sm-4">
-                                                <input type="text" class="form-control" placeholder="Ingrese el Rut del paciente que desea administrar  " data-toggle="tooltip" data-placement="bottom" title="Tooltip for name">
-                                        </div>                                        
-                                        <div class="col-sm-4">
-                                            <button type="submit" class="btn btn-primary btn-label-left">
-						<span><i class="fa fa-clock-o"></i></span>
-							Buscar
-                                            </button>
-                                        </div>
-                                    </div>                                    
-                                </form>                                
-                                <h4 class="page-header">Datos del Paciente</h4>
+				<h4 class="page-header">Datos del Paciente</h4>
                                  <?php
                                     $attributes = 'class= "form-horizontal"';
                                     $run = array(
                                             'name'=> 'Run',
-                                            'placeholder'=>'Ingrese el Rut del Paciente',
                                             'size' => '90',
                                             'class' => 'form-control',
                                             'data-placement' => 'bottom',
                                             'data-toggle' => 'tooltip',
-                                            'title'=> 'Rol Único Nacional'                                                                                  
+                                            'title'=> 'Rol Único Nacional'
+                                            
+                                        
                                         );
                                     $pnombre = array(
                                             'name'=> 'Pnombre',
@@ -123,10 +159,10 @@
                                             'rows' => '2'
                                         );
                                 ?>				
-				<?= form_open('administrarPacientes/recibirdatos', $attributes)?>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Rut</label>
                                                 <div class="col-sm-4">
+                                                    <input type="text" class="form-control" name="infoRut"  value="<?php echo $paciente->rut;?>">
                                                     <?=form_input($run)?>
                                                 </div>
 						<label class="col-sm-2 control-label">Primer Nombre</label>
@@ -269,24 +305,37 @@
                                         <div class="clearfix"></div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-2">
-							<button type="cancel" class="btn btn-default btn-label-left" value="Actualizar" name="btoPacientes">
+							<button type="cancel" class="btn btn-default btn-label-left" value="Actualizar" name="btoPaciente">
 							<span><i class="fa fa-clock-o txt-danger"></i></span>
 								Actualizar Datos
 							</button>
 						</div>
 						<div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-label-left" value="Eliminar" name="btoPacientes">
+							<button type="submit" class="btn btn-primary btn-label-left" value="Eliminar" name="btoPaciente">
 							<span><i class="fa fa-clock-o"></i></span>
 								Eliminar Paciente
 							</button>
 						</div>
 					</div>
-				</form>
+				<?= form_close() ?> 
 			</div>
 		</div>
 	</div>
 </div>
-
+    
+    <?php
+    }    
+    
+    }else{
+    echo 'Paciente no ha sido Ingresado al sistema';
+    }
+        
+        
+        
+    
+    
+    
+/**
 <script type="text/javascript">
 // Run Select2 plugin on elements
 function DemoSelect2(){
@@ -319,4 +368,6 @@ $(document).ready(function() {
 
     </div>
 </div>
-<!--End Content-->
+-->
+ * */
+ 

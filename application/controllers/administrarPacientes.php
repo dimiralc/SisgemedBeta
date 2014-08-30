@@ -25,7 +25,7 @@ class AdministrarPacientes extends CI_Controller {
 
 	function administrarPaciente(){
                 $data["titulo"] = 'Administrar Pacientes';
-		$data["url_base"]  = $this->config->base_url();                
+		$data["url_base"]  = $this->config->base_url(); 
                 $this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
                 $this->load->view('componentes/sidebar.php');
@@ -80,13 +80,13 @@ class AdministrarPacientes extends CI_Controller {
             $data["url_base"]  = $this->config->base_url();                
             $this->load->view('componentes/header.php', $data);
             $this->load->view('componentes/navbar.php');
-            $data = array ('run' => $this->input->post('Rut'));
+            $data = array ('runInfo' => $this->input->post('Run'));
             $data['pacientes'] = $this->administrarpacientes_model->buscarPaciente($data);
-            $this->load->view('administrarPaciente.php', $data);
+            $this->load->view('profesional/administrarPaciente.php', $data);
             $this->load->view('componentes/sidebar.php');
             $this->load->view('componentes/modal.php');
             $this->load->view('componentes/footer.php');
-            $data = array ('runInfo' =>  $this->input->post('infoRut'));
+            $data = array ('runInfo' =>  $this->input->post('Run'));
             switch( $_POST['btoPaciente'] ) {
                     case "Eliminar Paciente":  
                         $this->administrarpacientes_model->eliminarPaciente($data);
