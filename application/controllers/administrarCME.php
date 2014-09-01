@@ -3,9 +3,10 @@
 class AdministrarCME extends CI_Controller {
 	function __construct(){
 		parent::__construct();
+                
 	}
 	function index(){
-		$this->agregarCME();
+		$this->agregarCME();                
 	}
 
 	function agregarCME(){
@@ -14,32 +15,46 @@ class AdministrarCME extends CI_Controller {
 		$this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
                 $this->load->view('componentes/sidebar.php');
-		$this->load->view('profesional/agregarConsulta.php');		
+		$this->load->view('profesional/agregarCME.php');		
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
 	}
 
-	function eliminarCME(){
-		$data["titulo"] = 'Eliminar Consulta Medica';
+	function administrarConsulta(){
+		$data["titulo"] = 'Administrar Consulta Medica';
 		$data["url_base"]  = $this->config->base_url();
 		$this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
                 $this->load->view('componentes/sidebar.php');
-		$this->load->view('profesional/eliminarCME.php');		
+		$this->load->view('profesional/administrarCME.php');		
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
 	}
 
-	function actualizarCME(){
-		$data["titulo"] = 'Actualizar Consulta Medica';
-		$data["url_base"]  = $this->config->base_url();
-		$this->load->view('componentes/header.php', $data);
-		$this->load->view('componentes/navbar.php');
-                $this->load->view('componentes/sidebar.php');
-		$this->load->view('profesional/editarConsulta.php');    	
-		$this->load->view('componentes/modal.php');
-		$this->load->view('componentes/footer.php');
-	}
+	function recibirDatos()
+        {
+            $data = array(
+                        'nombre' => $this->input->post('Nombre'), 
+                        'snombre' => $this->input->post('Snombre'),
+                        'paterno' => $this->input->post('Paterno'),
+                        'materno' => $this->input->post('Materno'),
+                        'peso' => $this->input->post('Peso'),
+                        'estatura' => $this->input->post('Estatura'),
+                        'patologia'=> $this->input->post('Patologia'),
+                        'estadoSalud' => $this->input->post('EstadoSalud'),
+                        'habitos' => $this->input->post('Habitos'),
+                        'examenes' => $this->input->post('Examenes'),
+                        'medicamentos' => $this->input->post('Medicamentos'),
+                        'reposo' => $this->input->post('Reposo'),
+                        'especialidadSugerida' => $this->input->post('EspecialidadSugerida'),
+                        'cirugias' => $this->input->post('Cirugias'),
+                        'fechaControl' => $this->input->post('FechaControl'),
+                        'observaciones' => $this->input->post('Observaciones'),
+                        'preliminar' => $this->input->post('Preliminar')
+			);
+                        
+                        return $data;
+        }
 
 
 }

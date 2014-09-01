@@ -8,13 +8,14 @@
 		</ol>
 	</div>
     </div>
+    <?= form_open('administrarCME/recibirDatos')?>
     <div class="row">
 	<div class="col-xs-12">
 		<div class="box">
 			<div class="box-header">
                                 <div class="box-name">
 					<i class="fa fa-search"></i>
-					<span>Consulta Médica Electrónica CME</span>
+					<span>Consulta Médica Electrónica</span>
 				</div>
 				<div class="box-icons">
 					<a class="collapse-link">
@@ -28,158 +29,232 @@
 					</a>
 				</div>
 				<div class="no-move"></div>
-			</div>
+			</div>                    
 			<div class="box-content">
-				<h4 class="page-header">Búsqueda de Datos</h4>
-                                <form class="form-horizontal" role="form">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">Rut</label>
-                                        <div class="col-sm-4">
-                                                <input type="text" class="form-control" placeholder="Ingrese el Rut del Paciente" data-toggle="tooltip" data-placement="bottom" title="Si el Rut no esta en el sistema, debe ingresar al paciente">
-                                        </div>                                        
-                                        <div class="col-sm-4">
-                                            <button type="submit" class="btn btn-primary btn-label-left">
-						<span><i class="fa fa-clock-o"></i></span>
-							Buscar
-                                            </button>
-                                        </div>
-                                    </div>                                    
-                                </form>                                
-                                <h4 class="page-header">Ingreso de Datos</h4>
+				<h4 class="page-header">Nueva Consulta Médica</h4>
                                 <!-- Metadatos del Formulario de Ingreso de Medicamentos -->
                                 <?php
                                     $attributes = 'class= "form-horizontal"';
-                                    $id = array(
-                                            'name'=> 'Id',
-                                            'placeholder'=>'Ingrese el Código del Medicamento',
-                                            'size' => '90',
-                                            'class' => 'form-control',
-                                            'data-placement' => 'bottom',
-                                            'data-toggle' => 'tooltip',
-                                            'title'=> 'Tooltip for name'                                                                                  
-                                        );
                                     $nombre = array(
                                             'name'=> 'Nombre',
-                                            'placeholder'=> 'Ingrese el nombre del Medicamento',
+                                            'placeholder'=>'Nombre del Paciente',
                                             'size' => '90',
                                             'class' => 'form-control',
                                             'data-placement' => 'bottom',
                                             'data-toggle' => 'tooltip',
-                                            'title'=> 'Tooltip for name'
+                                            'title'=> 'Nombre del paciente'                                                                                  
                                         );
-                                    $generico = array(
-                                            'name'=> 'Generico',
-                                            'placeholder'=>'Ingrese el Nombre Genérico del M.',
+                                    $snombre = array(
+                                            'name'=> 'Snombre',
+                                            'placeholder'=> 'Segundo Nombre',
                                             'size' => '90',
                                             'class' => 'form-control',
                                             'data-placement' => 'bottom',
                                             'data-toggle' => 'tooltip',
-                                            'title'=> 'Tooltip for name'
+                                            'title'=> 'Segundo Nombre'
                                         );
-                                    $componente = array(
-                                            'name'=> 'Componente',
-                                            'placeholder'=>'Ingrese el Componente Activo del M.',
+                                    $paterno = array(
+                                            'name'=> 'Paterno',
+                                            'placeholder'=>'Apellido Paterno',
                                             'size' => '90',
                                             'class' => 'form-control',
                                             'data-placement' => 'bottom',
                                             'data-toggle' => 'tooltip',
-                                            'title'=> 'Tooltip for name'
+                                            'title'=> 'Apellido Paterno'
                                         );
-                                    $laboratorio = array(
-                                            'name'=> 'Laboratorio',
-                                            'placeholder'=>'Ingrese el Laboratorio',
+                                    $materno = array(
+                                            'name'=> 'Materno',
+                                            'placeholder'=>'Apellido Materno',
                                             'size' => '90',
                                             'class' => 'form-control',
                                             'data-placement' => 'bottom',
                                             'data-toggle' => 'tooltip',
-                                            'title'=> 'Tooltip for name'
+                                            'title'=> 'Apellido Materno'
                                         );
-                                    $formato = array(
-                                            'name'=> 'Formato',
-                                            'placeholder'=>'Ingrese el Formato del M.',
+                                    $peso = array(
+                                            'name'=> 'Peso',
+                                            'placeholder'=>'Peso del Paciente',
                                             'size' => '90',
                                             'class' => 'form-control',
                                             'data-placement' => 'bottom',
                                             'data-toggle' => 'tooltip',
-                                            'title'=> 'Tooltip for name'
+                                            'title'=> 'Peso del Paciente'
                                         );
-                                    $descripcion = array(
-                                            'name'=> 'Indicaciones',
-                                            'placeholder'=>'Indicaciones Preliminares',
+                                    $estatura = array(
+                                            'name'=> 'Estatura',
+                                            'placeholder'=>'Estatura del Paciente',
                                             'size' => '90',
                                             'class' => 'form-control',
                                             'data-placement' => 'bottom',
                                             'data-toggle' => 'tooltip',
-                                            'title'=> 'Tooltip for name',
+                                            'title'=> 'Estatura del Paciente'
+                                        );
+                                    $patologia = array(
+                                            'name'=> 'Patologia',
+                                            'placeholder'=>'Patologia detectada',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Patologia detectada',
                                             'rows' => '2'
                                         );
-                                    $contraindicaciones = array(
-                                            'name'=> 'Indicaciones',
-                                            'placeholder'=>'Contraindicaciones',
+                                    $estadoSalud = array(
+                                            'name'=> 'EstadoSalud',
+                                            'placeholder'=>'Estado de Salud del Paciente',
                                             'size' => '90',
                                             'class' => 'form-control',
                                             'data-placement' => 'bottom',
                                             'data-toggle' => 'tooltip',
-                                            'title'=> 'Contraindicaciones del Medicamento   ',
+                                            'title'=> 'Estado de Salud del paciente',
+                                            'rows' => '2'
+                                        );
+                                    $habitos = array(
+                                            'name'=> 'Habitos',
+                                            'placeholder'=>'Hábitos contraindicados',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Hábitos contraindicados',
+                                            'rows' => '2'
+                                        );
+                                    $examenes = array(
+                                            'name'=> 'Examenes',
+                                            'placeholder'=>'Exámenes sugeridos',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Exámenes a realizar',
+                                            'rows' => '2'
+                                        );
+                                    $medicamentos = array(
+                                            'name'=> 'Medicamentos',
+                                            'placeholder'=>'Medicamentos Sugeridos',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'No reemplazan a la Receta Médica',
+                                            'rows' => '2'
+                                        );
+                                    $reposo = array(
+                                            'name'=> 'Reposo',
+                                            'placeholder'=>'Período de Reposo',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Período de Reposo',
+                                            'rows' => '2'
+                                        );
+                                    $espacialidadSugerida = array(
+                                            'name'=> 'EspecialidadSugerida',
+                                            'placeholder'=>'Remitir a una especialidad',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Remitir a una especialidad',
+                                            'rows' => '2'
+                                        );
+                                    $cirugias = array(
+                                            'name'=> 'Cirugias',
+                                            'placeholder'=>'Cirugias previas',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Cirugias previas',
+                                            'rows' => '2'
+                                        );
+                                    $fechaControl = array(
+                                            'name'=> 'FechaControl',
+                                            'placeholder'=>'Fecha del Control',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Fecha del Control',
+                                            'rows' => '2'
+                                        );
+                                    $observaciones = array(
+                                            'name'=> 'Observaciones',
+                                            'placeholder'=>'Observaciones',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Observaciones',
+                                            'rows' => '2'
+                                        );
+                                    $preliminar = array(
+                                            'name'=> 'Preliminar',
+                                            'placeholder'=>'Diagnóstico Preliminar',
+                                            'size' => '90',
+                                            'class' => 'form-control',
+                                            'data-placement' => 'bottom',
+                                            'data-toggle' => 'tooltip',
+                                            'title'=> 'Primeras impresiones',
                                             'rows' => '2'
                                         );
                                     
                                 ?>
                                 <!-- Fin Metadatos del Formulario de Registro de Medicamentos -->
-                                <?= form_open('administrarMedicamentos/recibirdatos', $attributes)?>
+                                
+                                <div class="form-horizontal">
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Nombre</label>
 						<div class="col-sm-4">
-							<?=form_input($id)?>
+							<?=form_input($nombre)?>
 						</div>
 						<label class="col-sm-2 control-label">Segundo N.</label>
 						<div class="col-sm-4">
-							<?=form_input($nombre)?>
+							<?=form_input($snombre)?>
                                                 </div>
 					</div>
 					<div class="form-group has-success">
 						<label class="col-sm-2 control-label">A. Materno</label>
 						<div class="col-sm-4">
-							<?=form_input($generico)?>
+							<?=form_input($paterno)?>
 						</div>
 						<label class="col-sm-2 control-label">A. Paterno</label>
 						<div class="col-sm-4">
-							<?=form_input($componente)?>
+							<?=form_input($materno)?>
 							<span class="form-control-feedback"></span>
 						</div>
 					</div>
                                         <div class="form-group has-warning">
 						<label class="col-sm-2 control-label">Peso (Kg)</label>
 						<div class="col-sm-4">
-							<?=form_input($generico)?>
+							<?=form_input($peso)?>
 						</div>
 						<label class="col-sm-2 control-label">Estatura (Cms)</label>
 						<div class="col-sm-4">
-							<?=form_input($componente)?>
+							<?=form_input($estatura)?>
 							<span class="form-control-feedback"></span>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label" for="form-styles">Patología detectada</label>
 						<div class="col-sm-10">
-							<?=  form_textarea($descripcion)?>
+							<?=  form_textarea($patologia)?>
 						</div>
 					</div>
                                         <div class="form-group has-warning">
 						<label class="col-sm-2 control-label" for="form-styles">Estado de Salud</label>
                                                 <div class="col-sm-10">
-                                                        <?=  form_textarea($contraindicaciones)?>
+                                                        <?=  form_textarea($estadoSalud)?>
                                                 </div>
 					</div>
                                         <div class="form-group has-error">
 						<label class="col-sm-2 control-label" for="form-styles">Malos Hábitos</label>
                                                 <div class="col-sm-10">
-                                                        <?=  form_textarea($contraindicaciones)?>
+                                                        <?=  form_textarea($habitos)?>
                                                 </div>
 					</div>
-                                        <div class="clearfix"></div>
-					
-				<?= form_close()?>
+                                        <div class="clearfix"></div>    
 			</div>
 		</div>
 	</div>
@@ -238,49 +313,49 @@
 			</div>
 			<div class="box-content">
 				<h4 class="page-header">Recomendaciones Clínicas</h4>
-                                <?= form_open('administrarMedicamentos/recibirdatos', $attributes)?>
-					<div class="form-group">
+                                <div class="form-horizontal">
+                                        <div class="form-group">
 						<label class="col-sm-2 control-label">Exémenes a Realizar</label>
 						<div class="col-sm-4">
-							<?=form_input($id)?>
+							<?=form_input($examenes)?>
 						</div>
 						<label class="col-sm-2 control-label">Medicamentos Sugeridos</label>
 						<div class="col-sm-4">
-							<?=form_input($nombre)?>
+							<?=form_input($medicamentos)?>
                                                 </div>
 					</div>
 					<div class="form-group has-success">
 						<label class="col-sm-2 control-label">Indicación de Reposo</label>
 						<div class="col-sm-4">
-							<?=form_input($generico)?>
+							<?=form_input($reposo)?>
 						</div>
 						<label class="col-sm-2 control-label">Remitir a especialidad Médica </label>
 						<div class="col-sm-4">
-							<?=form_input($componente)?>
+							<?=form_input($espacialidadSugerida)?>
 							<span class="form-control-feedback"></span>
 						</div>
 					</div>
 					<div class="form-group has-warning has-feedback">
 						<label class="col-sm-2 control-label">Intervenciones Quirúrgicas</label>
 						<div class="col-sm-4">
-							<?=form_input($laboratorio)?>
+							<?=form_input($cirugias)?>
 							<span class="txt-warning form-control-feedback"></span>
 						</div>
 						<label class="col-sm-2 control-label">Fecha de Control</label>
                                                 <div class="col-sm-4">
-                                                        <?=form_input($formato)?>
+                                                        <?=form_input($fechaControl)?>
                                                 </div>						
 					</div>
 					<div class="form-group">
 						<label class="col-sm-2 control-label" for="form-styles">Observaciones / Recomendaciones</label>
 						<div class="col-sm-10">
-							<?=  form_textarea($descripcion)?>
+							<?=  form_textarea($observaciones)?>
 						</div>
 					</div>
                                         <div class="form-group">
 						<label class="col-sm-2 control-label" for="form-styles">Diagnóstico Preliminar</label>
                                                 <div class="col-sm-10">
-                                                        <?=  form_textarea($contraindicaciones)?>
+                                                        <?=  form_textarea($preliminar)?>
                                                 </div>
 					</div>
                                         <div class="clearfix"></div>
@@ -310,42 +385,13 @@
 							</button>
 						</div>
 					</div>
-				<?= form_close()?>
+				
 			</div>
 		</div>
 	</div>
 </div>
 
-<script type="text/javascript">
-// Run Select2 plugin on elements
-function DemoSelect2(){
-	$('#s2_with_tag').select2({placeholder: "Select OS"});
-	$('#s2_country').select2();
-}
-// Run timepicker
-function DemoTimePicker(){
-	$('#input_time').timepicker({setDate: new Date()});
-}
-$(document).ready(function() {
-	// Create Wysiwig editor for textare
-	TinyMCEStart('#wysiwig_simple', null);
-	TinyMCEStart('#wysiwig_full', 'extreme');
-	// Add slider for change test input length
-	FormLayoutExampleInputLength($( ".slider-style" ));
-	// Initialize datepicker
-	$('#input_date').datepicker({setDate: new Date()});
-	// Load Timepicker plugin
-	LoadTimePickerScript(DemoTimePicker);
-	// Add tooltip to form-controls
-	$('.form-control').tooltip();
-	LoadSelect2Script(DemoSelect2);
-	// Load example of form validation
-	LoadBootstrapValidatorScript(DemoFormValidator);
-	// Add drag-n-drop feature to boxes
-	WinMove();
-});
-</script>
-
+<?= form_close()?>
     </div>
 </div>
 <!--End Content-->
