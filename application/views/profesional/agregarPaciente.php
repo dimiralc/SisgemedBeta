@@ -254,7 +254,7 @@
                                         <div class="clearfix"></div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-2">
-							<button type="cancel" class="btn btn-default btn-label-left" value="Agregar" name="btoPacientes">
+							<button type="cancel" class="btn btn-default btn-label-left" value="Agregar" name="btoPaciente">
 							<span><i class="fa fa-clock-o txt-danger"></i></span>
 								Agregar Paciente
 							</button>

@@ -53,6 +53,10 @@
                 </div>
         </div>        
     </div>
+    <!-- Fin del Formulario de Busqueda -->
+    <?php 
+    if(isset($consulta)){
+        foreach ($pacientes -> result() as $paciente){?>
     <div class="row">
 	<div class="col-xs-12">
 		<div class="box">
@@ -83,6 +87,7 @@
                                             'name'=> 'Nombre',
                                             'placeholder'=>'Nombre del Paciente',
                                             'size' => '90',
+                                            'value' => '<?php echo $paciente->rut;?>',
                                             'class' => 'form-control',
                                             'data-placement' => 'bottom',
                                             'data-toggle' => 'tooltip',
@@ -259,11 +264,11 @@
                                                 </div>
 					</div>
 					<div class="form-group has-success">
-						<label class="col-sm-2 control-label">A. Materno</label>
+						<label class="col-sm-2 control-label">A. Paterno</label>
 						<div class="col-sm-4">
 							<?=form_input($paterno)?>
 						</div>
-						<label class="col-sm-2 control-label">A. Paterno</label>
+						<label class="col-sm-2 control-label">A. Materno</label>
 						<div class="col-sm-4">
 							<?=form_input($materno)?>
 							<span class="form-control-feedback"></span>
@@ -405,25 +410,19 @@
                                         <div class="clearfix"></div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-2">
-							<button type="cancel" class="btn btn-primary btn-label-left" value="Agregar" name="btomedicamento">
-							<span><i class="fa fa-clock-o txt-danger"></i></span>
-								Agregar
-							</button>
-						</div>
-						<div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-label-left" value="Actualizar" name="btomedicamento">
+							<button type="submit" class="btn btn-primary btn-label-left" value="Actualizar" name="btoConsulta">
 							<span><i class="fa fa-clock-o txt-danger"></i></span>
 								Actualizar
 							</button>
 						</div>
                                                 <div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-label-left" value="Eliminar" name="btomedicamento">
+							<button type="submit" class="btn btn-primary btn-label-left" value="Eliminar" name="btoConsulta">
 							<span><i class="fa fa-clock-o txt-danger"></i></span>
 								Eliminar
 							</button>
 						</div>
                                                 <div class="col-sm-2">
-                                                    <button type="submit" class="btn btn-primary btn-label-left" value="Cancelar" name="btomedicamento">
+                                                    <button type="submit" class="btn btn-primary btn-label-left" value="Cancelar" name="btoConsulta">
 							<span><i class="fa fa-clock-o txt-danger"></i></span>
 								Cancelar
 							</button>
@@ -438,4 +437,8 @@
 <?= form_close()?>
     </div>
 </div>
+    <?php
+    }   
+    }?>
+    
 <!--End Content-->

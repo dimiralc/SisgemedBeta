@@ -22,7 +22,9 @@ class AdministrarEnfermedad extends CI_Controller {
 				'id' => $this->input->post('Id'), 
 				'nombre' => $this->input->post('Nombre'),
 				'sistema' => $this->input->post('Sistema'),
-				'sintomatologia' => $this->input->post('Sintomatologia')
+				'sintomatologia' => $this->input->post('Sintomatologia'),
+                                
+                    
 			);
             switch( $_POST['btopatologia'] ) {
                     case "Agregar":                       

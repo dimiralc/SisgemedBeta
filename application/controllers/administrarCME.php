@@ -3,6 +3,7 @@
 class AdministrarCME extends CI_Controller {
 	function __construct(){
 		parent::__construct();
+                $this->load->model('administrarcme_model');                        
                 
 	}
 	function index(){
@@ -51,10 +52,19 @@ class AdministrarCME extends CI_Controller {
                         'fechaControl' => $this->input->post('FechaControl'),
                         'observaciones' => $this->input->post('Observaciones'),
                         'preliminar' => $this->input->post('Preliminar')
-			);
-                        
-                        return $data;
+			);                        
+            switch( $_POST['btoConsulta'] ) {
+                    case "Agregar":                       
+                        $this->administrarcme_model->anadirCME($data);
+                        $this->index();
+                    break;                    
+                    case "Cancelar":
+                        $this->index();
+                    }
         }
+        
+        
+        
 
 
 }

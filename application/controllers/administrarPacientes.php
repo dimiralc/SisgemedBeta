@@ -61,14 +61,10 @@ class AdministrarPacientes extends CI_Controller {
 			);
 
 		switch( $_POST['btoPaciente'] ) {
-                    case "Añadir Paciente":                       
+                    case "Agregar":                       
                         $this->administrarpacientes_model->anadirPaciente($data);
                         $this->index();
                     break;                    
-                    case "Eliminar Paciente":
-                        $this->administrarpacientes_model->eliminarPaciente($data);
-                        $this->administrarPaciente();                        
-                    break;
                     case "Cancelar":
                         $this->index();
                     }

@@ -8,7 +8,7 @@ class Administrarpacientes_model extends CI_Model {
 
 	function anadirPaciente($data){
 		$this->db->insert(
-			'pacientes', 
+			'paciente', 
 			array('rut'=>$data['run'], 
 				'nombre'=>$data['nombre'], 
 				'paterno'=>$data['paterno'],
@@ -24,7 +24,7 @@ class Administrarpacientes_model extends CI_Model {
         function actualizarPaciente($data){
             $this->db->where('rut', $data[run]);
             $this->db->update(
-                    'pacientes',
+                    'paciente',
                     array('rut'=>$data['run'], 
 				'nombre'=>$data['nombre'], 
 				'paterno'=>$data['paterno'],
@@ -44,7 +44,7 @@ class Administrarpacientes_model extends CI_Model {
         }
         
         function obtenerPacientes(){
-            $query = $this->db->get('pacientes');            
+            $query = $this->db->get('paciente');            
             if($query->num_rows() > 0){
                 return $query;
             }
@@ -55,7 +55,7 @@ class Administrarpacientes_model extends CI_Model {
         
         function buscarPaciente($data){
             $this->db->where('rut', $data['runInfo']);
-            $query = $this->db->get('pacientes');            
+            $query = $this->db->get('paciente');            
             if($query->num_rows() > 0){
                 return $query;
             }

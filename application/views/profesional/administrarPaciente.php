@@ -83,6 +83,7 @@
 				<h4 class="page-header">Datos del Paciente</h4>
                                  <?php
                                     $attributes = 'class= "form-horizontal"';
+                                    $inputattr = 'value="<?php echo $paciente->rut;?>"';
                                     $run = array(
                                             'name'=> 'Run',
                                             'size' => '90',
@@ -162,8 +163,7 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Rut</label>
                                                 <div class="col-sm-4">
-                                                    <input type="text" class="form-control" name="infoRut"  value="<?php echo $paciente->rut;?>">
-                                                    <?=form_input($run)?>
+                                                    <?=form_input($run, $inputattr)?>                                                    
                                                 </div>
 						<label class="col-sm-2 control-label">Primer Nombre</label>
                                                 <div class="col-sm-4">
@@ -324,18 +324,14 @@
 </div>
     
     <?php
-    }    
-    
-    }else{
-    echo 'Paciente no ha sido Ingresado al sistema';
-    }
+    }   
+    }?>
         
         
         
     
     
     
-/**
 <script type="text/javascript">
 // Run Select2 plugin on elements
 function DemoSelect2(){
@@ -367,7 +363,6 @@ $(document).ready(function() {
 </script>
 
     </div>
-</div>
--->
- * */
+
+
  

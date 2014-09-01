@@ -361,25 +361,13 @@
                                         <div class="clearfix"></div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-2">
-							<button type="cancel" class="btn btn-primary btn-label-left" value="Agregar" name="btomedicamento">
+							<button type="cancel" class="btn btn-primary btn-label-left" value="Agregar" name="btoConsulta">
 							<span><i class="fa fa-clock-o txt-danger"></i></span>
 								Agregar
 							</button>
 						</div>
 						<div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-label-left" value="Actualizar" name="btomedicamento">
-							<span><i class="fa fa-clock-o txt-danger"></i></span>
-								Actualizar
-							</button>
-						</div>
-                                                <div class="col-sm-2">
-							<button type="submit" class="btn btn-primary btn-label-left" value="Eliminar" name="btomedicamento">
-							<span><i class="fa fa-clock-o txt-danger"></i></span>
-								Eliminar
-							</button>
-						</div>
-                                                <div class="col-sm-2">
-                                                    <button type="submit" class="btn btn-primary btn-label-left" value="Cancelar" name="btomedicamento">
+                                                    <button type="submit" class="btn btn-primary btn-label-left" value="Cancelar" name="btoConsulta">
 							<span><i class="fa fa-clock-o txt-danger"></i></span>
 								Cancelar
 							</button>
