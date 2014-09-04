@@ -5,7 +5,7 @@ class Administrarpacientes_model extends CI_Model {
 		parent:: __construct();
 		$this->load->database();
 	}
-
+ 
 	function anadirPaciente($data){
 		$this->db->insert(
 			'paciente', 

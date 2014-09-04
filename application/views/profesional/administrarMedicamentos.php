@@ -44,7 +44,8 @@
                                             </button>
                                         </div>
                                     </div>                                    
-                                </form>                                
+                                </form>     
+                                <div id="Datos">
                                 <h4 class="page-header">Datos del Medicamento</h4>
                                 <!-- Metadatos del Formulario de Ingreso de Medicamentos -->
                                 <?php
@@ -200,6 +201,7 @@
 					</div>
 				<?= form_close()?>
 			</div>
+                    </div>
 		</div>
 	</div>
 </div>

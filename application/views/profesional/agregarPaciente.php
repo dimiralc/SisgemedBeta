@@ -34,7 +34,7 @@
                                 <?php
                                     $attributes = 'class= "form-horizontal"';
                                     $run = array(
-                                            'name'=> 'Run',
+                                            'name'=> 'Rut',
                                             'placeholder'=>'Ingrese el Rut del Paciente',
                                             'size' => '90',
                                             'class' => 'form-control',
@@ -107,8 +107,8 @@
                                             'title'=> 'Su direccion personal',
                                             'rows' => '2'
                                         );
-                                ?>				
-				<?= form_open('administrarPacientes/recibirdatos', $attributes)?>
+                                ?>
+                                <?=form_open_multipart(base_url()."administrarPacientes/recibirdatos", $attributes)?>
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Rut</label>
                                                 <div class="col-sm-4">
@@ -249,8 +249,22 @@
 								<option value="Misceláneas">Misceláneas</option>
 							</select>
 						</div>						
-					</div>            
-										
+					</div>
+                                <div class="form-group">
+					<label class="col-sm-2 control-label">Imagen del Paciente</label>
+					<!--$ERROR MUESTRA LOS ERRORES QUE PUEDAN HABER AL SUBIR LA IMAGEN-->
+                                        <?=@$error?>                                        
+                                        <div id="formulario_imagenes" class="col-sm-4">
+                                            <span class="form-group has-feedback">
+                                                <?php echo validation_errors(); ?>
+                                            </span>
+                                            <label class="control-label">Rut del Paciente</label>
+                                            <input type="text" name="titulo" class="form-control" />
+                                            <label class="control-label">Arvhivos Permitidos: JPG, BMP, PNG, JEPG</label>
+                                            <br>
+                                            <input type="file" name="userfile" /><br />                                            
+                                        </div>
+                                </div>
                                         <div class="clearfix"></div>
 					<div class="form-group">
 						<div class="col-sm-offset-2 col-sm-2">
@@ -264,71 +278,5 @@
 			</div>
 		</div>
 	</div>
-        <div class="col-xs-12">
-		<div class="box">
-			<div class="box-header">
-                                <div class="box-name">
-					<i class="fa fa-search"></i>
-					<span>Imagen de Paciente</span>
-				</div>
-				<div class="box-icons">
-					<a class="collapse-link">
-						<i class="fa fa-chevron-up"></i>
-					</a>
-					<a class="expand-link">
-						<i class="fa fa-expand"></i>
-					</a>
-					<a class="close-link">
-						<i class="fa fa-times"></i>
-					</a>
-				</div>
-				<div class="no-move"></div>
-			</div>
-			<div class="box-content">
-				<h4 class="page-header">Adjuntar Imágen</h4>   
-                                <form enctype="multipart/form-data" action="uploader.php" method="POST" class="form-group">
-                                    <input name="uploadedfile" type="file"/>
-                                    <div class="clearfix"></div>
-                                    <label class="control-label">Archivos Permitidos: JPG, PNG, JEPG</label> 
-                                    <div class="clearfix"></div>
-                                    <input type="submit" value="Subir archivo" class="btn btn-primary btn-label-left" />
-                                </form> 
-					
-			</div>
-		</div>
-	</div>
-</div>
-
-<script type="text/javascript">
-// Run Select2 plugin on elements
-function DemoSelect2(){
-	$('#s2_with_tag').select2({placeholder: "Select OS"});
-	$('#s2_country').select2();
-}
-// Run timepicker
-function DemoTimePicker(){
-	$('#input_time').timepicker({setDate: new Date()});
-}
-$(document).ready(function() {
-	// Create Wysiwig editor for textare
-	TinyMCEStart('#wysiwig_simple', null);
-	TinyMCEStart('#wysiwig_full', 'extreme');
-	// Add slider for change test input length
-	FormLayoutExampleInputLength($( ".slider-style" ));
-	// Initialize datepicker
-	$('#input_date').datepicker({setDate: new Date()});
-	// Load Timepicker plugin
-	LoadTimePickerScript(DemoTimePicker);
-	// Add tooltip to form-controls
-	$('.form-control').tooltip();
-	LoadSelect2Script(DemoSelect2);
-	// Load example of form validation
-	LoadBootstrapValidatorScript(DemoFormValidator);
-	// Add drag-n-drop feature to boxes
-	WinMove();
-});
-</script>
-
     </div>
 </div>
-<!--End Content-->
