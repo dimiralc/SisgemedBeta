@@ -18,6 +18,15 @@ class AdministrarMedicamentos extends CI_Controller {
 	}
 
 	function recibirDatos(){
+            $this->form_validation->set_rules('txtBuscar', 'Buscar', 'required|min_length[3]');
+            $this->form_validation->set_rules('Id', 'id', 'required|min_length[3]');
+            $this->form_validation->set_rules('Nombre', 'nombre', 'required|min_length[5]');
+            $this->form_validation->set_rules('Componente', 'componente', 'required|min_length[5]');
+            $this->form_validation->set_rules('Laboratorio', 'laboratorio', 'required|min_length[5]');
+            $this->form_validation->set_rules('Descripcion', 'descripcion', 'required|min_length[3]');
+            
+            if($this->form_validation->run()== TRUE)
+            {
 		$data = array(
 				'id' => $this->input->post('Id'), 
 				'nombre' => $this->input->post('Nombre'),
@@ -45,6 +54,9 @@ class AdministrarMedicamentos extends CI_Controller {
                     case "Cancelar":
                         $this->index();
                     }
+            }
+            
+                
 	}
 }
 ?>

@@ -31,20 +31,20 @@
 			</div>
 			<div class="box-content">
 				<h4 class="page-header">Búsqueda de Datos</h4>
-                                <form class="form-horizontal" role="form">
+                                <form class="form-horizontal" role="form" id="fat" method="post" name="fo3">
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">ID Medicamento</label>
                                         <div class="col-sm-4">
-                                                <input type="text" class="form-control" placeholder="Ingrese el Id del medicamento" data-toggle="tooltip" data-placement="bottom" title="Si no conoce la ID, agregue un nuevo Medicamento">
+                                                <input name="txtBuscar" type="text" class="form-control" placeholder="Ingrese el Id del medicamento" data-toggle="tooltip" data-placement="bottom" title="Si no conoce la ID, agregue un nuevo Medicamento">
                                         </div>                                        
                                         <div class="col-sm-4">
-                                            <button type="submit" class="btn btn-primary btn-label-left">
+                                            <button type="submit"  name="mysubmit" class="btn btn-primary btn-label-left" >
 						<span><i class="fa fa-clock-o"></i></span>
 							Buscar
                                             </button>
                                         </div>
                                     </div>                                    
-                                </form>     
+                                </form>
                                 <div id="Datos">
                                 <h4 class="page-header">Datos del Medicamento</h4>
                                 <!-- Metadatos del Formulario de Ingreso de Medicamentos -->
@@ -131,8 +131,10 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">ID del Medicamento</label>
 						<div class="col-sm-4">
-							<?=form_input($id)?>
+							<?=form_input($id)?>                                                   
 						</div>
+                                                <?php echo form_error('id'); ?>
+                                                   
 						<label class="col-sm-2 control-label">Nombre</label>
 						<div class="col-sm-4">
 							<?=form_input($nombre)?>
