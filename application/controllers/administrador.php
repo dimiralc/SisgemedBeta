@@ -13,18 +13,15 @@ class Administrador extends CI_Controller {
     {
         //varificar que el id perfil sea administrador
     	if($this->session->userdata('idperfil') == 1 && $this->session->userdata('is_logued_in')==TRUE){
-            
             //cargar id de sesion del usuario
 			$idusername 		   = $this->session->userdata('idusuario');
             //obtener los datos del administrador
 			$data['datos_administrador'] = $this->datos_administrador->datosAdministrador($idusername);
-            
             //nombre del perfil  
             $data['perfil']        = $this->session->userdata('perfil');
 			$data['username']      = $this->session->userdata('username');
             //nombre de la institucion medica
             $data['institucion']   = $this->session->userdata('institucion');
-            
 			$data['titulo']        = 'Bienvenido '.ucwords($data['datos_administrador']->primer_nombre)." ".ucwords($data['datos_administrador']->apellido_paterno);
 			//nombre + apellido del administrador
             $data["administrador"] = ucwords($data['datos_administrador']->primer_nombre)." ".ucwords($data['datos_administrador']->apellido_paterno);
@@ -34,7 +31,7 @@ class Administrador extends CI_Controller {
             $this->load->view('administrador/header.php', $data);
             $this->load->view('administrador/navbar.php');
             $this->load->view('administrador/sidebar.php');
-            $this->load->view('administrador/perfilAdministrador.php');
+            $this->load->view('administrador/indexAdm.php');
             $this->load->view('administrador/modal.php');
             $this->load->view('administrador/footer.php');
             
@@ -43,5 +40,33 @@ class Administrador extends CI_Controller {
     		redirect(base_url().'login');
     	}	
     	
+    }
+    
+    public function perfil(){
+        
+        //varificar que el id perfil sea administrador
+    	if($this->session->userdata('idperfil') == 1 && $this->session->userdata('is_logued_in')==TRUE){
+            
+			$idusername 		   = $this->session->userdata('idusuario');
+			$data['datos_administrador'] = $this->datos_administrador->datosAdministrador($idusername);
+            $data['perfil']        = $this->session->userdata('perfil');
+			$data['username']      = $this->session->userdata('username');
+            $data['institucion']   = $this->session->userdata('institucion');
+			$data['titulo']        = 'Perfil '.ucwords($data['datos_administrador']->primer_nombre)." ".ucwords($data['datos_administrador']->apellido_paterno);
+            $data["administrador"] = ucwords($data['datos_administrador']->primer_nombre)." ".ucwords($data['datos_administrador']->apellido_paterno);
+            $data["imagen_admin"]  = $data['datos_administrador']->imagen;
+            
+            $this->load->view('administrador/header.php', $data);
+            $this->load->view('administrador/navbar.php');
+            $this->load->view('administrador/sidebar.php');
+            $this->load->view('administrador/perfil.php');
+            $this->load->view('administrador/modal.php');
+            $this->load->view('administrador/footer.php');
+            
+    	}else{
+    		
+    		redirect(base_url().'login');
+    	}
+        
     }
 }
