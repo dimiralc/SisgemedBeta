@@ -7,7 +7,7 @@
 <script src="<?=base_url();?>plugins/jquery-ui-timepicker-addon/jquery-ui-timepicker-addon.css"></script>
 <!-- All functions for this theme + document.ready processing -->
 <script src="<?=base_url();?>js/devoops.js"></script>
-<script type="text/javascript" src="<?=base_url();?>js/funciones.js"></script>
+
 <!-- validar campos -->
 <script type="text/javascript" src="<?=base_url();?>js/validar/bootstrapValidator.js"></script>
 

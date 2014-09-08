@@ -15,10 +15,9 @@
         <!-- Bootstrap Tags Input- css para el autollenado de los input -->
         <link rel="stylesheet" href="<?=base_url();?>css/tags_input/bootstrap-tagsinput.css"> 
         <link rel="stylesheet" href="<?= base_url();?>css/tags_input/app.css">
+        <script type="text/javascript" src="<?=base_url();?>js/funciones.js"></script>
         <!-- fin css Bootstrap Tags Input-->
-        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="http://code.jquery.com/ui/1.10.1/jquery-ui.js"></script>
-       
+     
            
         <script type="text/javascript">
             //ingresar FCE via AJAX
