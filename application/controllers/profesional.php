@@ -6,6 +6,7 @@ class Profesional extends CI_Controller {
         parent::__construct();
         //cargamos modelo
         $this->load->model('datos_profesional');
+        $this->load->model('ficha_clinica');
         
         //cargamos libreria de sesion
         $this->load->library(array('session','form_validation'));
@@ -105,36 +106,24 @@ class Profesional extends CI_Controller {
         //Validar session usuario
         if($this->session->userdata('idperfil') == 2 && $this->session->userdata('is_logued_in')==TRUE){
             
-            //creamos arreglos
-            $vacunas       = [];
-            $alergias      = [];
-            $medicamentos  = [];
-            $enfermedades  = [];
-            $accidentes    = [];
-            
            //accion a realizar
             switch($_POST['accion']) {
                 
                 case "agregarFCE":
                     
-                    //setiamos nuestros arreglos
-                    $vacunas        = $this->input->post('vacunas');
-                    $alergias       = $this->input->post('alergias');
-                    $medicamentos   = $this->input->post('medicamentos');
-                    $enfermedades   = $this->input->post('enfermedades');
-                    $accidentes     = $this->input->post('accidentes');
                     //creamos nuestro arreglo de datos que seran enviado a nuestro modelo
                     $data = array(
                         'rut'           => $this->input->post('rut'), 
                         'desc_breve'    => $this->input->post('desc_breve'),
-                        'vacunas'       => $vacunas,				
-                        'alergias'      => $alergias,
-                        'medicamentos'  => $medicamentos,
-                        'enfermedades'  => $enfermedades,
-                        'accidentes'    => $accidentes,
+                        'vacunas'       => $this->input->post('vacunas'),				
+                        'alergias'      => $this->input->post('alergias'),
+                        'medicamentos'  => $this->input->post('medicamentos'),
+                        'enfermedades'  => $this->input->post('enfermedades'),
+                        'accidentes'    => $this->input->post('accidentes'),
                         'observaciones' => $this->input->post('observaciones'),
                         'idusuario'     => $this->session->userdata('idusuario'),
                     );
+                    
                     //validar datos formulario.
                     $this->form_validation->set_rules("rut",'rut','required|trim|min_length[9]|max_length[30]|xss_clean');
                     
@@ -202,6 +191,7 @@ class Profesional extends CI_Controller {
             $data["profesional"] =  ucwords($data['datos_profesional']->primer_nombre)." ".ucwords($data['datos_profesional']->apellido_paterno);
             $data['imagen_prof'] =  $data['datos_profesional']->imagen;
             
+            
             $this->load->view('componentes/header.php',$data);
             $this->load->view('componentes/navbar.php');
             $this->load->view('componentes/sidebar.php');
@@ -214,4 +204,31 @@ class Profesional extends CI_Controller {
     		redirect(base_url().'login/logout');
     	}
     }
+    
+    public function jsonMedicamentos(){
+        
+        echo $this->ficha_clinica->listadoMedicamentos();
+        
+    }
+    
+    public function jsonVacunas(){
+        
+        echo $this->ficha_clinica->listadoVacunas();
+    }
+    
+    public function jsonAlergias(){
+        
+        echo $this->ficha_clinica->listadoAlergias();
+    }
+    
+    public function jsonEnfermedades(){
+        
+        echo $this->ficha_clinica->listadoEnfermedades();
+    }
+    
+    public function jsonAccidente(){
+        
+        echo $this->ficha_clinica->listadoAccidentes();
+    }
+    
 }
