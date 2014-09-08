@@ -1,62 +1,116 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
 class AdministrarMedicamentos extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		$this->load->helper('form');
 		$this->load->model('administrarmedicamentos_model');
+                $this->load->helper('url');
 	}
 	function index(){
 		$data["titulo"] = 'Medicamentos';
 		$data["url_base"] = $this->config->base_url();
-		$this->load->view('componentes/header.php', $data);
+                $dataMed["medicamentos"] = $this->administrarmedicamentos_model->obtenerMedicamento();
+                $this->load->view('componentes/header.php', $data, $dataMed);
 		$this->load->view('componentes/navbar.php');
 		$this->load->view('componentes/sidebar.php');
                 $this->load->view('profesional/administrarMedicamentos.php');
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
-	}
+                
+	}   
+         
 
 	function recibirDatos(){
-            $this->form_validation->set_rules('txtBuscar', 'Buscar', 'required|min_length[3]');
-            $this->form_validation->set_rules('Id', 'id', 'required|min_length[3]');
-            $this->form_validation->set_rules('Nombre', 'nombre', 'required|min_length[5]');
-            $this->form_validation->set_rules('Componente', 'componente', 'required|min_length[5]');
-            $this->form_validation->set_rules('Laboratorio', 'laboratorio', 'required|min_length[5]');
-            $this->form_validation->set_rules('Descripcion', 'descripcion', 'required|min_length[3]');
             
-            if($this->form_validation->run()== TRUE)
-            {
-		$data = array(
-				'id' => $this->input->post('Id'), 
-				'nombre' => $this->input->post('Nombre'),
-				'componente' => $this->input->post('Componente'),
-				'laboratorio' => $this->input->post('Laboratorio'),
-				'descripcion' => $this->input->post('Descripcion')
-			);
-                switch( $_POST['btomedicamento'] ) {
-                    case "Agregar":                       
-                        $this->administrarmedicamentos_model->anadirMedicamento($data);
-                        $this->index();
-                    break;
-                    case "Actualizar":                       
-                        $this->administrarmedicamentos_model->actualizarMedicamento($data);
-                        $this->index();
-                    break;
-                    case "Eliminar":
-                        $this->administrarmedicamentos_model->eliminarMedicamento($data);
-                        $this->index();                        
-                    break;
-                    case "Buscar":
-                        $this->administrarmedicamentos_model->buscarMedicamento($data);
-                        $this->index();                        
-                    break;
-                    case "Cancelar":
-                        $this->index();
-                    }
-            }
-            
+                $this->form_validation->set_rules('txtBuscar', 'Buscar', 'required|min_length[3]');
+                $this->form_validation->set_rules('Id', 'id', 'required|min_length[3]');
+                $this->form_validation->set_rules('Nombre', 'nombre', 'required|min_length[5]');
+                $this->form_validation->set_rules('Componente', 'componente', 'required|min_length[5]');
+                $this->form_validation->set_rules('Laboratorio', 'laboratorio', 'required|min_length[5]');
+                $this->form_validation->set_rules('Descripcion', 'descripcion', 'required|min_length[3]');
+
+                if($this->form_validation->run()== FALSE)
+                {
+                    $data = array(
+                                    'id' => $this->input->post('Id'), 
+                                    'nombre' => $this->input->post('Nombre'),
+                                    'componente' => $this->input->post('Componente'),
+                                    'laboratorio' => $this->input->post('Laboratorio'),
+                                    'descripcion' => $this->input->post('Descripcion')
+                            );
+                    switch($_POST['btomedicamento'])
+                    {
+                        case "Agregar":                       
+                            $this->administrarmedicamentos_model->anadirMedicamento($data);
+                            echo 'Agregado Existosamente';
+                        break;
+                        case "Actualizar":                       
+                            $this->administrarmedicamentos_model->actualizarMedicamento($data);
+                            $this->index();
+                        break;
+                        case "Eliminar":
+                            $this->administrarmedicamentos_model->eliminarMedicamento($data);
+                            $this->index();                        
+                        break;
+                        case "Buscar":
+                            $this->administrarmedicamentos_model->buscarMedicamento($data);
+                            $this->index();                        
+                        break;
+                        case "Cancelar":
+                            $this->index();
+                        }                        
                 
+            }                  
+            
 	}
+        
+        
+        //Funcion para eliminar medicamentos
+        public function eliminar_Medicamento(){
+            if($this->input->is_ajax_request() && $this->input->post('Id'))
+            {
+                $id = $this->input->post('Id');
+                $this->administrarmedicamentos_model->eliminarMedicamento($id);
+            }
+        }
+        
+        //Funcion que agrega y edita usuarios 
+        public function multi_user(){
+            //Comprobamos si la peticion es por AJAX
+            if($this->input->is_ajax_request())
+            {
+                if($this->form_validation->run()==False)
+                {
+                    $errors = array(
+                        'nombre'=> form_error('nombre'),
+                        'respuesta' => 'error'
+                        );
+                        echo json_encode($errors);
+                        return FALSE;
+                }
+            }else{
+                $nombre = $this->input->post('Nombre');
+                
+                //Verificamos si estamos editando
+                if($this->input->post('id')){
+                    $id = $this->input->post('Id');
+                    $this->administrarMedicamentos_model->actualizarMedicamento($id);
+                }else{
+                //De otra forma agregamos
+                $this->administrarMedicamentos_model->anadirMedicamento($nombre);
+                }
+                
+                $response = array(
+                    'respuesta' => 'ok'
+                );
+                
+                echo json_encode($response);
+                    
+            }
+        }
+        
+        
+        
+        
 }
 ?>

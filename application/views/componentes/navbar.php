@@ -1,4 +1,4 @@
-    <header class="navbar">
+<header class="navbar">
     <div class="container-fluid expanded-panel">
         <div class="row">
             <div id="logo" class="col-xs-12 col-sm-2">
