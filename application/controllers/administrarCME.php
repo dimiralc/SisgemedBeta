@@ -16,7 +16,7 @@ class AdministrarCME extends CI_Controller {
 		$this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
                 $this->load->view('componentes/sidebar.php');
-		$this->load->view('profesional/agregarCME.php');		
+		$this->load->view('profesional/agregarConsulta.php');		
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
 	}

@@ -18,19 +18,19 @@
                     <div class="col-xs-4 col-sm-8 top-panel-right">
                         <ul class="nav navbar-nav pull-right panel-menu">
                             <li class="hidden-xs">
-                                <a href="index.html" class="modal-link">
+                                <a href="#" class="modal-link">
                                         <i class="fa fa-bell"></i>
                                         <span class="badge">7</span>
                                 </a>
                             </li>
                             <li class="hidden-xs">
-                                <a  href="<?=base_url();?>calendario">
+                                <a  href="#">
                                         <i class="fa fa-calendar"></i>
                                         <span class="badge">7</span>
                                 </a>
                             </li>
                             <li class="hidden-xs">
-                                <a href="<?=base_url();?>ajax/page_messages.html" class="ajax-link">
+                                <a href="#" class="ajax-link">
                                         <i class="fa fa-envelope"></i>
                                         <span class="badge">7</span>
                                 </a>
@@ -38,13 +38,13 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
                                     <div class="avatar">
-                                            <img src="<?=base_url();?>img/profesionales/" class="img-rounded" alt="avatar" />
+                                            <img src="<?=base_url();?>img/avatar04.png" class="img-rounded" alt="avatar" />
                                             <!-- solucionar problema con la carga de imagenes -->
                                     </div>
                                     <i class="fa fa-angle-down pull-right"></i>
                                     <div class="user-mini pull-right">
-                                            <span class="welcome">Bienvenido,</span>
-                                            <span>Usuario</span>
+                                            <span class="welcome">¡Hola!</span>
+                                            <span>Usuario Registrado</span>
                                             <!-- solucionar problema con la carga de datos de usuario -->
                                     </div>
                                 </a>
@@ -56,13 +56,13 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?=base_url();?>ajax/gallery_simple.html" class="ajax-link">
+                                        <a href="#" class="ajax-link">
                                                 <i class="fa fa-picture-o"></i>
                                                 <span>Pacientes</span>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="<?=base_url();?>ajax/calendar.html" class="ajax-link">
+                                        <a href="#" class="ajax-link">
                                                 <i class="fa fa-tasks"></i>
                                                 <span>Actividades</span>
                                         </a>

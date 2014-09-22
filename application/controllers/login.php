@@ -66,7 +66,7 @@ class Login extends CI_Controller {
 		$data["titulo"]    = "Acceso al Sistema"; //titulo de la pagin web
 		$data["url_base"]  = $this->config->base_url(); //url base de la pagina
 		$data['token'] 	   = $this->token(); //se crea clave de sesion
-        $data["instituciones"]= $this->login_model->listar_instituciones();
+                $data["instituciones"]= $this->login_model->listar_instituciones();
 		$this->load->view('login/inciar_sesion_view.php',$data);
     }
 

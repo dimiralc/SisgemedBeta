@@ -7,6 +7,7 @@ class AdministrarPacientes extends CI_Controller {
                 $this->load->model('administrarpacientes_model');
                 $this->load->model('upload_model');
                 $this->load->helper('url');
+                
 		
 	}
 	function index(){

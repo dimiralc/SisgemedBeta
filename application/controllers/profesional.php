@@ -1,7 +1,10 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
- 
 class Profesional extends CI_Controller {
-    
+/************************************************************************************************/
+        /* Inicio Controlador Profesional */
+/************************************************************************************************/
+
+
     public function __construct() {
         parent::__construct();
         //cargamos modelo
@@ -13,20 +16,20 @@ class Profesional extends CI_Controller {
         //cargamos funciones para uso de funciones especificas
         $this->load->helper(array('url','form'));
     }
-    
-    
+/************************************************************************************************/
+        /* Funcion Index Profesional */
+/************************************************************************************************/
+        
     public function index()
     {
     	if($this->session->userdata('idperfil') == 2 && $this->session->userdata('is_logued_in')==TRUE){
 
             $idusername 		 =  $this->session->userdata('idusuario');
             $data['datos_profesional'] = $this->datos_profesional->datosProfesional($idusername);
-            
-			$data['perfil']      =  $this->session->userdata('perfil');
-			$data['username']    =  $this->session->userdata('username');
+            $data['perfil']      =  $this->session->userdata('perfil');
+            $data['username']    =  $this->session->userdata('username');
             $data['institucion'] =  $this->session->userdata('institucion');
-                   
-			$data['titulo']      =  'Bienvenido '.ucwords($data['datos_profesional']->primer_nombre)." ".ucwords($data['datos_profesional']->apellido_paterno);
+            $data['titulo']      =  'Bienvenido '.ucwords($data['datos_profesional']->primer_nombre)." ".ucwords($data['datos_profesional']->apellido_paterno);
             $data["profesional"] =   ucwords($data['datos_profesional']->primer_nombre)." ".ucwords($data['datos_profesional']->apellido_paterno);
             $data['imagen_prof'] =  $data['datos_profesional']->imagen;
             
@@ -43,6 +46,10 @@ class Profesional extends CI_Controller {
     	}	
     	
     }
+/************************************************************************************************/
+        /* Funcion Perfil Profesional */
+/************************************************************************************************/
+
     
     public function perfil(){
         
@@ -50,12 +57,10 @@ class Profesional extends CI_Controller {
 
             $idusername 		 =  $this->session->userdata('idusuario');
             $data['datos_profesional'] = $this->datos_profesional->datosProfesional($idusername);
-            
-			$data['perfil']      =  $this->session->userdata('perfil');
-			$data['username']    =  $this->session->userdata('username');
+            $data['perfil']      =  $this->session->userdata('perfil');
+            $data['username']    =  $this->session->userdata('username');
             $data['institucion'] =  $this->session->userdata('institucion');
-                   
-			$data['titulo']      =  'Perfil '.ucwords($data['datos_profesional']->primer_nombre)." ".ucwords($data['datos_profesional']->apellido_paterno);
+            $data['titulo']      =  'Perfil '.ucwords($data['datos_profesional']->primer_nombre)." ".ucwords($data['datos_profesional']->apellido_paterno);
             $data["profesional"] =   ucwords($data['datos_profesional']->primer_nombre)." ".ucwords($data['datos_profesional']->apellido_paterno);
             $data['imagen_prof'] =  $data['datos_profesional']->imagen;
             
@@ -72,18 +77,20 @@ class Profesional extends CI_Controller {
     	}	
     }
     
+/************************************************************************************************/
+        /* Funcion Registrar Ficha Clinica Profesional */
+/************************************************************************************************/
+    
     public function registrarFCE(){
         
         if($this->session->userdata('idperfil') == 2 && $this->session->userdata('is_logued_in')==TRUE){
 
-            $idusername 		 =  $this->session->userdata('idusuario');
+            $idusername          =  $this->session->userdata('idusuario');
             $data['datos_profesional'] = $this->datos_profesional->datosProfesional($idusername);
-            
-			$data['perfil']      =  $this->session->userdata('perfil');
-			$data['username']    =  $this->session->userdata('username');
+            $data['perfil']      =  $this->session->userdata('perfil');
+            $data['username']    =  $this->session->userdata('username');
             $data['institucion'] =  $this->session->userdata('institucion');
-                   
-			$data['titulo']      =  'Ficha Clinica Electronica';
+            $data['titulo']      =  'Ficha Clinica Electronica';
             $data["profesional"] =  ucwords($data['datos_profesional']->primer_nombre)." ".ucwords($data['datos_profesional']->apellido_paterno);
             $data['imagen_prof'] =  $data['datos_profesional']->imagen;
             
@@ -99,7 +106,12 @@ class Profesional extends CI_Controller {
     		redirect(base_url().'login/logout');
     	}
         
-    } 
+    }
+
+/************************************************************************************************/
+        /* Funcion Recibir Datos de Ficha Clinica Electronica Profesional */
+/************************************************************************************************/
+
     
     public function recibirdatosFCE(){
        
@@ -176,18 +188,21 @@ class Profesional extends CI_Controller {
     	}    
     }
     
+/************************************************************************************************/
+        /* Funcion Ficha Clinica Profesionl */
+/************************************************************************************************/
+
+    
     public function ficha_clinica(){
         
         if($this->session->userdata('idperfil') == 2 && $this->session->userdata('is_logued_in')==TRUE){
 
-            $idusername 		 =  $this->session->userdata('idusuario');
+            $idusername  =  $this->session->userdata('idusuario');
             $data['datos_profesional'] = $this->datos_profesional->datosProfesional($idusername);
-            
-			$data['perfil']      =  $this->session->userdata('perfil');
-			$data['username']    =  $this->session->userdata('username');
+            $data['perfil']      =  $this->session->userdata('perfil');
+            $data['username']    =  $this->session->userdata('username');
             $data['institucion'] =  $this->session->userdata('institucion');
-                   
-			$data['titulo']      =  'Ficha Clinica';
+            $data['titulo']      =  'Ficha Clinica';
             $data["profesional"] =  ucwords($data['datos_profesional']->primer_nombre)." ".ucwords($data['datos_profesional']->apellido_paterno);
             $data['imagen_prof'] =  $data['datos_profesional']->imagen;
             
@@ -204,6 +219,38 @@ class Profesional extends CI_Controller {
     		redirect(base_url().'login/logout');
     	}
     }
+    
+/************************************************************************************************/
+        /* Historias Clinicas */
+/************************************************************************************************/
+    function historiasClinicas(){
+        if($this->session->userdata('idperfil') == 2 && $this->session->userdata('is_logued_in')==TRUE){
+
+            $idusername  =  $this->session->userdata('idusuario');
+            $data['datos_profesional'] = $this->datos_profesional->datosProfesional($idusername);
+            $data['perfil']      =  $this->session->userdata('perfil');
+            $data['username']    =  $this->session->userdata('username');
+            $data['institucion'] =  $this->session->userdata('institucion');
+            $data['titulo']      =  'Historia Clinica';
+            $data["profesional"] =  ucwords($data['datos_profesional']->primer_nombre)." ".ucwords($data['datos_profesional']->apellido_paterno);
+            $data['imagen_prof'] =  $data['datos_profesional']->imagen;
+            
+            $this->load->view('componentes/header.php', $data);
+            $this->load->view('componentes/navbar.php');
+            $this->load->view('componentes/sidebar.php');
+            $this->load->view('profesional/historiaClinica.php');
+            $this->load->view('componentes/modal.php');
+            $this->load->view('componentes/footer.php');
+        }else{
+            redirect(base_url().'login/logout');
+        }
+            
+    }
+    
+/************************************************************************************************/
+        /* Recepcion de Datos Via JSON */
+/************************************************************************************************/
+
     
     public function jsonMedicamentos(){
         
@@ -232,3 +279,7 @@ class Profesional extends CI_Controller {
     }
     
 }
+
+/************************************************************************************************/
+        /* Fin Controlador Profesional */
+/************************************************************************************************/
