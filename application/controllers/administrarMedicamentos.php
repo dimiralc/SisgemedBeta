@@ -65,49 +65,7 @@ class AdministrarMedicamentos extends CI_Controller {
 	}
         
         
-        //Funcion para eliminar medicamentos
-        public function eliminar_Medicamento(){
-            if($this->input->is_ajax_request() && $this->input->post('Id'))
-            {
-                $id = $this->input->post('Id');
-                $this->administrarmedicamentos_model->eliminarMedicamento($id);
-            }
-        }
-        
-        //Funcion que agrega y edita usuarios 
-        public function multi_user(){
-            //Comprobamos si la peticion es por AJAX
-            if($this->input->is_ajax_request())
-            {
-                if($this->form_validation->run()==False)
-                {
-                    $errors = array(
-                        'nombre'=> form_error('nombre'),
-                        'respuesta' => 'error'
-                        );
-                        echo json_encode($errors);
-                        return FALSE;
-                }
-            }else{
-                $nombre = $this->input->post('Nombre');
-                
-                //Verificamos si estamos editando
-                if($this->input->post('id')){
-                    $id = $this->input->post('Id');
-                    $this->administrarMedicamentos_model->actualizarMedicamento($id);
-                }else{
-                //De otra forma agregamos
-                $this->administrarMedicamentos_model->anadirMedicamento($nombre);
-                }
-                
-                $response = array(
-                    'respuesta' => 'ok'
-                );
-                
-                echo json_encode($response);
-                    
-            }
-        }
+       
         
         
         
