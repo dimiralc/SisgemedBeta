@@ -33,4 +33,3 @@ class AdministrarCME_model extends CI_Model {
 }
 
 ?>
-
