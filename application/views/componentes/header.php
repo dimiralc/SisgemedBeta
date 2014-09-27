@@ -9,19 +9,12 @@
         <link href="<?=base_url();?>css/iniciarSesion.css" rel="stylesheet" type="text/css" />        
         <link href="<?=base_url();?>plugins/bootstrap/bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="<?=base_url();?>css/validar/bootstrapValidator.css"/>
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="<?=base_url();?>css/font-awesome-4.2.0/css/font-awesome.css" rel="stylesheet">
         <link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
         <link href="<?=base_url();?>css/style.css" rel="stylesheet">
         <!-- Bootstrap Tags Input- css para el autollenado de los input -->
         <link rel="stylesheet" href="<?=base_url();?>css/tags_input/bootstrap-tagsinput.css"> 
         <link rel="stylesheet" href="<?= base_url();?>css/tags_input/app.css">
-       
-        <link rel="stylesheet" href="/resources/demos/style.css">
-         <script>
-        $(function() {
-        $( "#datepicker" ).datepicker();
-        });
-        </script>
         <script type="text/javascript" src="<?=base_url();?>js/funciones.js"></script>
         <!-- fin css Bootstrap Tags Input-->
      
