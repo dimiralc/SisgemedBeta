@@ -3,7 +3,9 @@
 class AdministrarCME extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-                $this->load->model('administrarcme_model');                        
+                $this->load->model('administrarcme_model');  
+                $this->load->helper('form');
+                $this->load->library('form_validation');
                 
 	}
 	function index(){
@@ -116,6 +118,24 @@ class AdministrarCME extends CI_Controller {
                     case "Cancelar":
                         $this->index();
                     }
+        }
+        
+        function validar_datos_consulta(){
+            
+            $this->form_validation->set_rules('nombre', 'Nombre', 'required|min_length[3]');
+            $this->form_validation->set_rules('sueldo', 'Sueldo', 'required|numeric');
+
+            if($this->form_validation->run() === true){
+                //Si la validación es correcta, cogemos los datos de la variable POST
+                //y los enviamos al modelo
+                $nombre = $this->input->post('nombre');
+                $sueldo = $this->input->post('sueldo');
+
+                $this->load->model('empleados_model');
+                $this->empleados_model->insertar_empleado($nombre, $sueldo);
+            }
+
+            $this->load->view("formulario");
         }
         
         

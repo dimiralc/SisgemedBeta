@@ -15,9 +15,7 @@
         <!-- Bootstrap Tags Input- css para el autollenado de los input -->
         <link rel="stylesheet" href="<?=base_url();?>css/tags_input/bootstrap-tagsinput.css"> 
         <link rel="stylesheet" href="<?= base_url();?>css/tags_input/app.css">
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/smoothness/jquery-ui.css">
-        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="//code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+       
         <link rel="stylesheet" href="/resources/demos/style.css">
          <script>
         $(function() {
