@@ -108,6 +108,30 @@
         );
     
     /*Antecedentes gineccoobstetricos*/
+    $fog = array(
+            'name'=> 'txtFog',
+            'id' => 'fog',
+            'class'=>'form-control',
+            'type'=> 'number',
+            'min'=> '0',
+            'max'=> '20'
+        );
+    $fop = array(
+            'name'=> 'txtFop',
+            'id' => 'fop',
+            'class'=>'form-control',
+            'type'=> 'number',
+            'min'=> '0',
+            'max'=> '20'
+        );
+    $foa = array(
+            'name'=> 'txtFoa',
+            'id' => 'foa',
+            'class'=>'form-control',
+            'type'=> 'number',
+            'min'=> '0',
+            'max'=> '20'
+        );
     $fur = array(
             'name'=> 'txtFur',
             'id' => 'fur',

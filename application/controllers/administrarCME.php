@@ -97,6 +97,9 @@ class AdministrarCME extends CI_Controller {
                         'traumatismos' => $this->input->post('txtTraumatismos'),
                         'operaciones' => $this->input->post('txtOperaciones'),
                         'fur'=> $this->input->post('txtFur'),
+                        'fog'=> $this->input->post('txtFog'),
+                        'fop'=> $this->input->post('txtFop'),
+                        'foa'=> $this->input->post('txtFoa'),
                         'ginecoObs' => $this->input->post('txtGinecoObs'),
                         'tabaquismos' => $this->input->post('txtTabaquismo'),
                         'alcoholismo' => $this->input->post('txtAlcoholismo'),
@@ -162,6 +165,9 @@ class AdministrarCME extends CI_Controller {
             $this->form_validation->set_rules('txtEnfermedades', 'Motivo Consulta', 'required');
             $this->form_validation->set_rules('txtTraumatismos', 'Motivo Consulta', 'required');
             $this->form_validation->set_rules('txtOperaciones', 'Motivo Consulta', 'required');
+            $this->form_validation->set_rules('txtFog', 'Gestaciones', 'required|number');            
+            $this->form_validation->set_rules('txtFop', 'Partos', 'required|number');            
+            $this->form_validation->set_rules('txtFoa', 'Abortos', 'required|number');
             $this->form_validation->set_rules('txtFur', 'FUR', 'regex_match[(0[1-9]|1[0-9]|2[0-9]|3(0|1))-(0[1-9]|1[0-2])-\d{4}]'); 
             $this->form_validation->set_rules('txtGinecoObs', 'Observaciones', 'required');
             $this->form_validation->set_rules('txtTabaquismo', 'Tabaquismo', 'required');
