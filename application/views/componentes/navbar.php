@@ -44,7 +44,7 @@
                                     <i class="fa fa-angle-down pull-right"></i>
                                     <div class="user-mini pull-right">
                                             <span class="welcome">¡Hola!</span>
-                                            <span>Usuario Registrado</span>
+                                            <span>Carlos Perez</span>
                                             <!-- solucionar problema con la carga de datos de usuario -->
                                     </div>
                                 </a>

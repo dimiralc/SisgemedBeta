@@ -5,6 +5,7 @@ class AdministrarMedicamentos extends CI_Controller {
 		$this->load->helper('form');
 		$this->load->model('administrarmedicamentos_model');
                 $this->load->helper('url');
+                
 	}
 	function index(){
 		$data["titulo"] = 'Medicamentos';
