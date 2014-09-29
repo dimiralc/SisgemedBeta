@@ -41,7 +41,7 @@ class AdministrarCME extends CI_Controller {
         $this->form_validation->set_message('required', 'El campo no puede ir vacío!');
         $this->form_validation->set_message('min_length', 'El campo debe tener al menos %s carácteres');
         $this->form_validation->set_message('max_length', 'El campo no puede tener más de %s carácteres');
-        //SI EL FORMULARIO PASA LA VALIDACIÓN HACEMOS TODO LO QUE SIGUE
+        
         if ($this->form_validation->run() == FALSE) 
         {
         $config['upload_path'] = './upload/';
@@ -51,16 +51,14 @@ class AdministrarCME extends CI_Controller {
         $config['max_height'] = '2008';
 
         $this->load->library('upload', $config);
-        //SI LA IMAGEN FALLA AL SUBIR MOSTRAMOS EL ERROR EN LA VISTA UPLOAD_VIEW
+       
         if (!$this->upload->do_upload()) {
             $error = array('error' => $this->upload->display_errors());
             
         } else {
-        //EN OTRO CASO SUBIMOS LA IMAGEN, CREAMOS LA MINIATURA Y HACEMOS 
-        //ENVÍAMOS LOS DATOS AL MODELO PARA HACER LA INSERCIÓN
+        
             $file_info = $this->upload->data();
-            //USAMOS LA FUNCIÓN create_thumbnail Y LE PASAMOS EL NOMBRE DE LA IMAGEN,
-            //ASÍ YA TENEMOS LA IMAGEN REDIMENSIONADA
+            
             $this->_create_thumbnail($file_info['file_name']);
             $data = array('upload_data' => $this->upload->data());
             $titulo = $this->input->post('titulo');
@@ -71,18 +69,18 @@ class AdministrarCME extends CI_Controller {
             $this->load->view('imagen_subida_view', $data);
         }
         }else{
-        //SI EL FORMULARIO NO SE VÁLIDA LO MOSTRAMOS DE NUEVO CON LOS ERRORES
+        
             $this->index();
         }
         }
-        //FUNCIÓN PARA CREAR LA MINIATURA A LA MEDIDA QUE LE DIGAMOS
+        
         function _create_thumbnail($filename){
             $config['image_library'] = 'gd2';
-            //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
+            
             $config['source_image'] = 'upload/'.$filename;
             $config['create_thumb'] = TRUE;
             $config['maintain_ratio'] = TRUE;
-            //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
+            
             $config['new_image']='upload/thumbs/';
             $config['width'] = 150;
             $config['height'] = 150;
@@ -93,55 +91,55 @@ class AdministrarCME extends CI_Controller {
 	function recibirDatos()
         {
             $data = array(
-                        'snombre' => $this->input->post('txtMotivoConsulta'),
-                        'paterno' => $this->input->post('txtAnamnesisProximarno'),
-                        'materno' => $this->input->post('txtEnfermedades'),
-                        'peso' => $this->input->post('txtTraumatismos'),
-                        'estatura' => $this->input->post('txtOperaciones'),
-                        'patologia'=> $this->input->post('txtFur'),
-                        'estadoSalud' => $this->input->post('txtGinecoObs'),
-                        'habitos' => $this->input->post('txtTabaquismo'),
-                        'examenes' => $this->input->post('txtAlcoholismo'),
-                        'medicamentos' => $this->input->post('txtDrogas'),
-                        'reposo' => $this->input->post('txtDesordenes'),
-                        'especialidadSugerida' => $this->input->post('txtNombreMed'),
-                        'cirugias' => $this->input->post('txtAlimentos'),
-                        'fechaControl' => $this->input->post('txtMedicamentos'),
-                        'observaciones' => $this->input->post('txtAmbiente'),
-                        'preliminar' => $this->input->post('txtAnimales'),
-                        'preliminar' => $this->input->post('txtContactoPiel'),
-                        'preliminar' => $this->input->post('txtSociales'),
-                        'preliminar' => $this->input->post('txtFamiliares'),
-                        'preliminar' => $this->input->post('txtInmunoObs'),
-                        'preliminar' => $this->input->post('txtSisObs'),
-                        'preliminar' => $this->input->post('txtResObs'),
-                        'preliminar' => $this->input->post('txtCardioObs'),
-                        'preliminar' => $this->input->post('txtGastroObs'),
-                        'preliminar' => $this->input->post('txtGenitoObs'),
-                        'preliminar' => $this->input->post('txtNeuroObs'),
-                        'preliminar' => $this->input->post('txtEndoObs'),
-                        'preliminar' => $this->input->post('txtPosicion'),
-                        'preliminar' => $this->input->post('txtDecubito'),
-                        'preliminar' => $this->input->post('txtDeambuObs'),
-                        'preliminar' => $this->input->post('txtFacieObs'),
-                        'preliminar' => $this->input->post('txtTiempo'),
-                        'preliminar' => $this->input->post('txtEspacio'),
-                        'preliminar' => $this->input->post('txtPersonas'),
-                        'preliminar' => $this->input->post('txtConsObs'),
-                        'preliminar' => $this->input->post('txtPeso'),
-                        'preliminar' => $this->input->post('txtAltura'),
-                        'preliminar' => $this->input->post('txtColor'),
-                        'preliminar' => $this->input->post('txtHumedad'),
-                        'preliminar' => $this->input->post('txtUntuosidad'),
-                        'preliminar' => $this->input->post('txtTurgor'),
-                        'preliminar' => $this->input->post('txtElasticidad'),
-                        'preliminar' => $this->input->post('txtPielObs'),
-                        'preliminar' => $this->input->post('txtAdenopatia'),
-                        'preliminar' => $this->input->post('txtLinfaObsr'),
-			'preliminar' => $this->input->post('txtRPM'),
-			'preliminar' => $this->input->post('txtCelsius'),
-			'preliminar' => $this->input->post('txtPresion'),
-			'preliminar' => $this->input->post('txtPulso'),
+                        'motivoConsulta' => $this->input->post('txtMotivoConsulta'),
+                        'anamnesisProxima' => $this->input->post('txtAnamnesisProxima'),
+                        'enfermedades' => $this->input->post('txtEnfermedades'),
+                        'traumatismos' => $this->input->post('txtTraumatismos'),
+                        'operaciones' => $this->input->post('txtOperaciones'),
+                        'fur'=> $this->input->post('txtFur'),
+                        'ginecoObs' => $this->input->post('txtGinecoObs'),
+                        'tabaquismos' => $this->input->post('txtTabaquismo'),
+                        'alcoholismo' => $this->input->post('txtAlcoholismo'),
+                        'drogas' => $this->input->post('txtDrogas'),
+                        'desordenes' => $this->input->post('txtDesordenes'),
+                        'nombreMed' => $this->input->post('txtNombreMed'),
+                        'alimentos' => $this->input->post('txtAlimentos'),
+                        'medicamentos' => $this->input->post('txtMedicamentos'),
+                        'ambiente' => $this->input->post('txtAmbiente'),
+                        'animales' => $this->input->post('txtAnimales'),
+                        'contactoPiel' => $this->input->post('txtContactoPiel'),
+                        'sociales' => $this->input->post('txtSociales'),
+                        'familiares' => $this->input->post('txtFamiliares'),
+                        'inmunoObs' => $this->input->post('txtInmunoObs'),
+                        'sisObs' => $this->input->post('txtSisObs'),
+                        'resObs' => $this->input->post('txtResObs'),
+                        'cardioObs' => $this->input->post('txtCardioObs'),
+                        'gastroObs' => $this->input->post('txtGastroObs'),
+                        'genitoObs' => $this->input->post('txtGenitoObs'),
+                        'neuroObs' => $this->input->post('txtNeuroObs'),
+                        'endoObs' => $this->input->post('txtEndoObs'),
+                        'posicion' => $this->input->post('txtPosicion'),
+                        'decubito' => $this->input->post('txtDecubito'),
+                        'deambuObs' => $this->input->post('txtDeambuObs'),
+                        'facieObs' => $this->input->post('txtFacieObs'),
+                        'tiempo' => $this->input->post('txtTiempo'),
+                        'esapcio' => $this->input->post('txtEspacio'),
+                        'personas' => $this->input->post('txtPersonas'),
+                        'consObs' => $this->input->post('txtConsObs'),
+                        'peso' => $this->input->post('txtPeso'),
+                        'altura' => $this->input->post('txtAltura'),
+                        'color' => $this->input->post('txtColor'),
+                        'humedad' => $this->input->post('txtHumedad'),
+                        'untuosidad' => $this->input->post('txtUntuosidad'),
+                        'turgor' => $this->input->post('txtTurgor'),
+                        'elastisidad' => $this->input->post('txtElasticidad'),
+                        'pielObs' => $this->input->post('txtPielObs'),
+                        'adenopatia' => $this->input->post('txtAdenopatia'),
+                        'lifaObs' => $this->input->post('txtLinfaObsr'),
+			'rpm' => $this->input->post('txtRPM'),
+			'celcius' => $this->input->post('txtCelsius'),
+			'presion' => $this->input->post('txtPresion'),
+			'pulso' => $this->input->post('txtPulso'),
 			'preliminar' => $this->input->post('txtDiagnosticoPreliminar'),
 			
 			);                        
