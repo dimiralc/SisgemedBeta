@@ -212,7 +212,7 @@ class AdministrarCME extends CI_Controller {
                $this->recibirDatos();
             }
 
-                echo 'Los datos ingresados son incorrectos';
+                echo 'alert(Los datos ingresados son incorrectos)';
         }
         
         

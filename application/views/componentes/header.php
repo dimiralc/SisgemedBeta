@@ -17,7 +17,14 @@
         <link rel="stylesheet" href="<?= base_url();?>css/tags_input/app.css">
         <script type="text/javascript" src="<?=base_url();?>js/funciones.js"></script>
         <!-- fin css Bootstrap Tags Input-->
-     
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>
+        $(document).ready(function(){
+          $("#nuevaConsulta").click(function(){
+            $("#content").load("agregarConsulta.php");
+          });
+        });
+        </script>
            
         <script type="text/javascript">
             //ingresar FCE via AJAX
