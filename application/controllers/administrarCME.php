@@ -154,8 +154,7 @@ class AdministrarCME extends CI_Controller {
                     }
         }
         
-        function validar_datos_consulta(){
-            
+        function validar_datos_consulta(){            
             $this->form_validation->set_rules('txtBuscar', 'Buscar', 'required|max_length[10]');
             $this->form_validation->set_rules('txtMotivoConsulta', 'Motivo Consulta', 'required');
             $this->form_validation->set_rules('txtAnamnesisProxima', 'Motivo Consulta', 'required');

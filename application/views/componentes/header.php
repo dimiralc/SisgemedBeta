@@ -3,8 +3,6 @@
     <head>
         <meta charset="utf-8">
         <title><?=$titulo;?> </title>
-        <meta name="description" content="description">
-        <meta name="author" content="DevOOPS">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="<?=base_url();?>css/iniciarSesion.css" rel="stylesheet" type="text/css" />        
         <link href="<?=base_url();?>plugins/bootstrap/bootstrap.css" rel="stylesheet">

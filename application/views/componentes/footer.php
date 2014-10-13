@@ -1,20 +1,13 @@
 <script src="<?=base_url();?>plugins/jquery/jquery.min.js"></script>
 <script src="<?=base_url();?>plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="<?=base_url();?>plugins/bootstrap/bootstrap.min.js"></script>
 <script src="<?=base_url();?>plugins/justified-gallery/jquery.justifiedgallery.min.js"></script>
 <script src="<?=base_url();?>plugins/jquery-ui-timepicker-addon/jquery-ui-timepicker-addon.css"></script>
-<!-- All functions for this theme + document.ready processing -->
 <script src="<?=base_url();?>js/devoops.js"></script>
-
-<!-- validar campos -->
 <script type="text/javascript" src="<?=base_url();?>js/validar/bootstrapValidator.js"></script>
-
-<!-- Bootstrap Tags Input (script para el autollenado en los input) -->
 <script src="<?=base_url();?>js/tags_input/typeahead.bundle.min.js"></script>
 <script src="<?=base_url();?>js/tags_input/bootstrap-tagsinput.min.js"></script>
-<!--<script src="<?=base_url();?>js/tags_input/app.js"></script>-->
-<!-- bootstrap-tags input AUTOLLENADO JSON -->
+<script src="<?=base_url();?>js/validarGenero.js"></script>
 <script type="text/javascript">
 /* TAGS VACUNAS */
 var vacunas = new Bloodhound({

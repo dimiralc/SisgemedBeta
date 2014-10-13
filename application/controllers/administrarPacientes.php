@@ -13,48 +13,40 @@ class AdministrarPacientes extends CI_Controller {
 	function index(){
 		$this->registrarPaciente();
 	}
+        
+        function validarDatos_paciente(){
+                        
+            $this->form_validation->set_rules('txtRut', 'Rut', 'required|max_length[10]');
+            $this->form_validation->set_rules('txtNombres', 'Nombres', 'required');
+            $this->form_validation->set_rules('txtPaterno', 'Paterno', 'required');
+            $this->form_validation->set_rules('txtMaterno', 'Materno', 'required');
+            $this->form_validation->set_rules('txtSexo', 'Sexo', 'required');
+            $this->form_validation->set_rules('txtEdad', 'Edad', 'required');
+            $this->form_validation->set_rules('txtNacionalidad', 'Nacionalidad', 'required'); 
+            $this->form_validation->set_rules('txtEcivil', 'Estado Civil', 'required');
+            $this->form_validation->set_rules('txtDate', 'Fecha Actual', 'required');
+            $this->form_validation->set_rules('txtNhce', 'Numero Historia CLinica', 'required');
+            $this->form_validation->set_rules('txtMail', 'Correo Electronico', 'required');
+            $this->form_validation->set_rules('txtFecing', 'Fecha de Ingreso', 'required');
+            $this->form_validation->set_rules('txtFecnac', 'Fecha de Naciemiento', 'required');
+            $this->form_validation->set_rules('txtDireccion', 'Direccion', 'required');
+            if($this->form_validation->run() === true){
+               $this->do_upload();
+               $this->recibirDatos();
+            }
 
-	function registrarPaciente(){
-		$data["titulo"] = 'Agregar Paciente';
-		$data["url_base"] = $this->config->base_url();
-		$this->load->view('componentes/header.php', $data);
-		$this->load->view('componentes/navbar.php');		
-		$this->load->view('componentes/sidebar.php');
-                $this->load->view('profesional/agregarPaciente.php');
-		$this->load->view('componentes/modal.php');
-		$this->load->view('componentes/footer.php');
-
-	}
-
-	function administrarPaciente(){
-                $data["titulo"] = 'Administrar Pacientes';
-		$data["url_base"]  = $this->config->base_url(); 
-                $this->load->view('componentes/header.php', $data);
-		$this->load->view('componentes/navbar.php');
-                $this->load->view('componentes/sidebar.php');
-		$this->load->view('profesional/administrarPaciente.php');                
-		$this->load->view('componentes/modal.php');
-		$this->load->view('componentes/footer.php');
-                
-	}
-
-	function actualizarPaciente(){
-		$data["titulo"] = 'Actualizar Paciente';
-		$data["url_base"]  = $this->config->base_url();
-		$this->load->view('componentes/header.php', $data);
-		$this->load->view('componentes/navbar.php');
-                $this->load->view('componentes/sidebar.php');
-		$this->load->view('profesional/actualizarDatos.php');		
-		$this->load->view('componentes/modal.php');
-		$this->load->view('componentes/footer.php');
-	}
+                echo 'alert(Los datos ingresados son incorrectos)';
+           
+            
+            
+        }
 
 	function recibirDatos(){
 		$data = array(
-				'rut' => $this->input->post('Rut'), 
-				'nombre' => $this->input->post('Nombre'),
-				'paterno' => $this->input->post('Paterno'),
-				'materno' => $this->input->post('Materno'),
+				'rut' => $this->input->post('txtRut'), 
+				'nombres' => $this->input->post('txtNombres'),
+				'paterno' => $this->input->post('txtPaterno'),
+				'materno' => $this->input->post('txtMaterno'),
 				'telefono' => $this->input->post('Telefono'),
 				'direccion' => $this->input->post('Direccion'),
 				'ecivil' => $this->input->post('ecivil'),
@@ -97,8 +89,42 @@ class AdministrarPacientes extends CI_Controller {
                     break;
             }
         }
+        
+        function registrarPaciente(){
+		$data["titulo"] = 'Agregar Paciente';
+		$data["url_base"] = $this->config->base_url();
+		$this->load->view('componentes/header.php', $data);
+		$this->load->view('componentes/navbar.php');		
+		$this->load->view('componentes/sidebar.php');
+                $this->load->view('profesional/agregarPaciente.php');
+		$this->load->view('componentes/modal.php');
+		$this->load->view('componentes/footer.php');
 
-            //FUNCIÓN PARA SUBIR LA IMAGEN Y VALIDAR EL TÍTULO
+	}
+
+	function administrarPaciente(){
+                $data["titulo"] = 'Administrar Pacientes';
+		$data["url_base"]  = $this->config->base_url(); 
+                $this->load->view('componentes/header.php', $data);
+		$this->load->view('componentes/navbar.php');
+                $this->load->view('componentes/sidebar.php');
+		$this->load->view('profesional/administrarPaciente.php');                
+		$this->load->view('componentes/modal.php');
+		$this->load->view('componentes/footer.php');
+                
+	}
+
+	function actualizarPaciente(){
+		$data["titulo"] = 'Actualizar Paciente';
+		$data["url_base"]  = $this->config->base_url();
+		$this->load->view('componentes/header.php', $data);
+		$this->load->view('componentes/navbar.php');
+                $this->load->view('componentes/sidebar.php');
+		$this->load->view('profesional/actualizarDatos.php');		
+		$this->load->view('componentes/modal.php');
+		$this->load->view('componentes/footer.php');
+	}
+
        function do_upload() {
            $this->form_validation->set_rules('titulo', 'titulo', 'required|min_length[5]|max_length[10]|trim|xss_clean');
            $this->form_validation->set_message('required', 'El campo no puede ir vacío!');

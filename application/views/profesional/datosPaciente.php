@@ -89,6 +89,6 @@
             'name'=> 'txtDireccion',
             'id' => 'direccion',
             'class'=>'form-control',
-            'rows'=> '2'
+            'rows'=> '5'
         );
 ?>
