@@ -7,6 +7,7 @@ class AdministrarPacientes extends CI_Controller {
                 $this->load->model('administrarpacientes_model');
                 $this->load->model('upload_model');
                 $this->load->helper('url');
+                $this->load->library('form_validation');
                 
 		
 	}
@@ -15,7 +16,10 @@ class AdministrarPacientes extends CI_Controller {
 	}
         
         function validarDatos_paciente(){
-                        
+            $this->form_validation->set_rules('ddlPais', 'Nacionalidad', 'required');
+            $this->form_validation->set_rules('rbtGenero', 'Genero / Sexo', 'required');
+            $this->form_validation->set_rules('rbtEcivil', 'Estado Civil', 'required');
+            $this->form_validation->set_rules('txtTelefono', 'Telefono', 'required|numeric');
             $this->form_validation->set_rules('txtRut', 'Rut', 'required|max_length[10]');
             $this->form_validation->set_rules('txtNombres', 'Nombres', 'required');
             $this->form_validation->set_rules('txtPaterno', 'Paterno', 'required');
@@ -30,20 +34,22 @@ class AdministrarPacientes extends CI_Controller {
             $this->form_validation->set_rules('txtFecing', 'Fecha de Ingreso', 'required');
             $this->form_validation->set_rules('txtFecnac', 'Fecha de Naciemiento', 'required');
             $this->form_validation->set_rules('txtDireccion', 'Direccion', 'required');
+            $this->form_validation->set_message('required', 'Este Campo es obligatorio');
+            
             if($this->form_validation->run() === true){
-               $this->do_upload();
-               $this->recibirDatos();
+                echo 'Datos Validos';
             }
-
-                echo 'alert(Los datos ingresados son incorrectos)';
-           
-            
-            
+            else
+            {
+                
+                $this->index();
+                 
+            }
         }
 
 	function recibirDatos(){
 		$data = array(
-				'rut' => $this->input->post('txtRut'), 
+				'rut' => $this->input-> post('txtRut'), 
 				'nombres' => $this->input->post('txtNombres'),
 				'paterno' => $this->input->post('txtPaterno'),
 				'materno' => $this->input->post('txtMaterno'),
@@ -130,7 +136,6 @@ class AdministrarPacientes extends CI_Controller {
            $this->form_validation->set_message('required', 'El campo no puede ir vacío!');
            $this->form_validation->set_message('min_length', 'El campo debe tener al menos %s carácteres');
            $this->form_validation->set_message('max_length', 'El campo no puede tener más de %s carácteres');
-           //SI EL FORMULARIO PASA LA VALIDACIÓN HACEMOS TODO LO QUE SIGUE
            if ($this->form_validation->run() == TRUE) 
            {
            $config['upload_path'] = './uploads/';
@@ -138,18 +143,12 @@ class AdministrarPacientes extends CI_Controller {
            $config['max_size'] = '2000';
            $config['max_width'] = '2024';
            $config['max_height'] = '2008';
-
            $this->load->library('upload', $config);
-           //SI LA IMAGEN FALLA AL SUBIR MOSTRAMOS EL ERROR EN LA VISTA UPLOAD_VIEW
            if (!$this->upload->do_upload()) {
                $error = array('error' => $this->upload->display_errors());
                $this->load->view('registrarPaciente', $error);
            } else {
-           //EN OTRO CASO SUBIMOS LA IMAGEN, CREAMOS LA MINIATURA Y HACEMOS 
-           //ENVÍAMOS LOS DATOS AL MODELO PARA HACER LA INSERCIÓN
                $file_info = $this->upload->data();
-               //USAMOS LA FUNCIÓN create_thumbnail Y LE PASAMOS EL NOMBRE DE LA IMAGEN,
-               //ASÍ YA TENEMOS LA IMAGEN REDIMENSIONADA
                $this->_create_thumbnail($file_info['file_name']);
                $data = array('upload_data' => $this->upload->data());
                $titulo = $this->input->post('titulo');
@@ -160,18 +159,15 @@ class AdministrarPacientes extends CI_Controller {
                $this->load->view('profesional/agregarPaciente', $data);
            }
            }else{
-           //SI EL FORMULARIO NO SE VÁLIDA LO MOSTRAMOS DE NUEVO CON LOS ERRORES
                $this->index();
            }
        }
-       //FUNCIÓN PARA CREAR LA MINIATURA A LA MEDIDA QUE LE DIGAMOS
+
        function _create_thumbnail($filename){
            $config['image_library'] = 'gd2';
-           //CARPETA EN LA QUE ESTÁ LA IMAGEN A REDIMENSIONAR
            $config['source_image'] = 'uploads/'.$filename;
            $config['create_thumb'] = TRUE;
            $config['maintain_ratio'] = TRUE;
-           //CARPETA EN LA QUE GUARDAMOS LA MINIATURA
            $config['new_image']='uploads/thumbs/';
            $config['width'] = 150;
            $config['height'] = 150;
@@ -179,4 +175,3 @@ class AdministrarPacientes extends CI_Controller {
            $this->image_lib->resize();
        }
 }
-?>

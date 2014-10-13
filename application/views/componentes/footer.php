@@ -5,7 +5,7 @@
 <script type="text/javascript" src="<?=base_url();?>js/validar/bootstrapValidator.js"></script>
 <script src="<?=base_url();?>js/tags_input/typeahead.bundle.min.js"></script>
 <script src="<?=base_url();?>js/tags_input/bootstrap-tagsinput.min.js"></script>
-<script src="<?=base_url();?>js/validarGenero.js"></script>
+<script src="<?=base_url();?>js/validarDatosPaciente.js"></script>
 <script type="text/javascript">
 // 
 ///* TAGS VACUNAS */
@@ -112,6 +112,5 @@
 ///* FIN TAGS OPERACIONES */
 //
 //</script>
-
 </body>
 </html>

@@ -1,22 +1,21 @@
 <?php
-   
+    
     $rut = array(
             'name'=> 'txtRut',
             'id' => 'rut',
-            'class'=>'form-control',
-            
+            'class'=>'form-control'            
         );
   
     $nombres = array(
             'name'=> 'txtNombres',
             'id' => 'nombres',
-            'class'=>'form-control',
+            'class'=>'form-control'
             
         );
     $paterno = array(
             'name'=> 'txtPaterno',
             'id' => 'paterno',
-            'class'=>'form-control',
+            'class'=>'form-control'
             
         );
     $materno = array(
