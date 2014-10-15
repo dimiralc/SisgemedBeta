@@ -16,7 +16,7 @@ class AdministrarPacientes extends CI_Controller {
 	}
         
         function validarDatos_paciente(){
-            $this->form_validation->set_rules('ddlPais', 'Nacionalidad', 'required');
+            
             $this->form_validation->set_rules('rbtGenero', 'Genero / Sexo', 'required');
             $this->form_validation->set_rules('rbtEcivil', 'Estado Civil', 'required');
             $this->form_validation->set_rules('txtTelefono', 'Telefono', 'required|numeric');
