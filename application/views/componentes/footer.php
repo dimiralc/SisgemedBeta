@@ -6,6 +6,38 @@
 <script src="<?=base_url();?>js/tags_input/typeahead.bundle.min.js"></script>
 <script src="<?=base_url();?>js/tags_input/bootstrap-tagsinput.min.js"></script>
 <script src="<?=base_url();?>js/validarDatosPaciente.js"></script>
+<script src="<?=base_url();?>js/jquery.Rut.min.js" type="text/javascript"></script>
+<script src="<?=base_url();?>js/funciones.js" type="text/javascript"></script>
+<script src="<?= base_url();?>/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function() {
+    $( "#fecnac" ).datepicker();
+  });
+</script>
+<script type="text/javascript">
+    $(function() {
+    $( "#fecing" ).datepicker();
+  });
+</script>
+<script type="text/javascript">
+    $(function() {
+    $('#rut').Rut({
+        on_error: function(){ 
+            alert('Rut inválido. Ingreselo nuevamente'); 
+            $('#rut').val('');
+            $('#rut').focus();
+        }
+      });
+  });
+</script>
+<script language=javascript type=text/javascript>
+    function stopRKey(evt) {
+        var evt = (evt) ? evt : ((event) ? event : null);
+        var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+        if ((evt.keyCode == 13) && (node.type=="text")) {return false;}
+    }
+    document.onkeypress = stopRKey; 
+</script>
 <script type="text/javascript">
 // 
 ///* TAGS VACUNAS */

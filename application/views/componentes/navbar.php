@@ -16,8 +16,10 @@
                                     <i class="fa fa-search"></i>
                             </div>
                     </div>
+                    
                     <div class="col-xs-4 col-sm-8 top-panel-right">
                         <ul class="nav navbar-nav pull-right panel-menu">
+                            <!--
                             <li class="hidden-xs">
                                 <a href="#" class="modal-link">
                                         <i class="fa fa-bell"></i>
@@ -36,6 +38,7 @@
                                         <span class="badge">7</span>
                                 </a>
                             </li>
+                            -->
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
                                     <div class="avatar">

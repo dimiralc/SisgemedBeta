@@ -16,51 +16,47 @@ class AdministrarPacientes extends CI_Controller {
 	}
         
         function validarDatos_paciente(){
-            
-            $this->form_validation->set_rules('rbtGenero', 'Genero / Sexo', 'required');
-            $this->form_validation->set_rules('rbtEcivil', 'Estado Civil', 'required');
-            $this->form_validation->set_rules('txtTelefono', 'Telefono', 'required|numeric');
             $this->form_validation->set_rules('txtRut', 'Rut', 'required|max_length[10]');
             $this->form_validation->set_rules('txtNombres', 'Nombres', 'required');
             $this->form_validation->set_rules('txtPaterno', 'Paterno', 'required');
             $this->form_validation->set_rules('txtMaterno', 'Materno', 'required');
-            $this->form_validation->set_rules('txtSexo', 'Sexo', 'required');
+            $this->form_validation->set_rules('txtTelefono', 'Telefono', 'required|numeric');
             $this->form_validation->set_rules('txtEdad', 'Edad', 'required');
-            $this->form_validation->set_rules('txtNacionalidad', 'Nacionalidad', 'required'); 
-            $this->form_validation->set_rules('txtEcivil', 'Estado Civil', 'required');
-            $this->form_validation->set_rules('txtDate', 'Fecha Actual', 'required');
-            $this->form_validation->set_rules('txtNhce', 'Numero Historia CLinica', 'required');
-            $this->form_validation->set_rules('txtMail', 'Correo Electronico', 'required');
-            $this->form_validation->set_rules('txtFecing', 'Fecha de Ingreso', 'required');
             $this->form_validation->set_rules('txtFecnac', 'Fecha de Naciemiento', 'required');
+            $this->form_validation->set_rules('txtMail', 'Correo Electronico', 'required');
+            $this->form_validation->set_rules('txtFecing', 'Fecha de Ingreso', 'required');            
             $this->form_validation->set_rules('txtDireccion', 'Direccion', 'required');
-            $this->form_validation->set_message('required', 'Este Campo es obligatorio');
-            
+            $this->form_validation->set_rules('rbtGenero', 'Genero / Sexo', 'required');
+            $this->form_validation->set_rules('rbtEcivil', 'Estado Civil', 'required');
+            $this->form_validation->set_message('required', 'Este Campo es obligatorio');            
             if($this->form_validation->run() === true){
                 echo 'Datos Validos';
             }
             else
-            {
-                
-                $this->index();
-                 
+            {                
+                $this->index();                 
             }
         }
 
 	function recibirDatos(){
 		$data = array(
-				'rut' => $this->input-> post('txtRut'), 
-				'nombres' => $this->input->post('txtNombres'),
-				'paterno' => $this->input->post('txtPaterno'),
-				'materno' => $this->input->post('txtMaterno'),
-				'telefono' => $this->input->post('Telefono'),
-				'direccion' => $this->input->post('Direccion'),
-				'ecivil' => $this->input->post('ecivil'),
-				'genero' => $this->input->post('genero'),
-				'estudios' =>$this->input->post('estudios'),
-				'enfermedades' =>$this->input->post('enfermedades')
+                        'rut' => $this->input-> post('txtRut'), 
+                        'nombres' => $this->input->post('txtNombres'),
+                        'paterno' => $this->input->post('txtPaterno'),
+                        'materno' => $this->input->post('txtMaterno'),
+                        'telefono' => $this->input->post('txtTelefono'),
+                        'edad' => $this->input->post('txtEdad'),
+                        'genero' => $this->input->post('rbtGenero'),
+                        'nacionalidad'=>  $this->input->post('ddlPais'),
+                        'fecnac' => $this->input->post('txtFecnac'),
+                        'ecivil' => $this->input->post('rbtEcivil'),                        
+                        'direccion' =>$this->input->post('txtDireccion'),
+                        'fecing' =>$this->input->post('txtFecing'),
+                        'mail' =>$this->input->post('txtMail'),
+                        'prevmedica'=>  $this->input->post('ddlPrevision'),
+                        'ocupacion'=>  $this->input->post('ddlOcupacion'),
+                        'nivelestudios'=>  $this->input->post('ddlNivelestudios')
 			);
-
 		switch( $_POST['btoPaciente'] ) {
                     case "Agregar":                       
                         $this->do_upload();
@@ -71,8 +67,7 @@ class AdministrarPacientes extends CI_Controller {
                     }
 	}   
         
-        function buscarPaciente(){
-            
+        function buscarPaciente(){            
             $data["titulo"] = 'Administrar Pacientes';
             $data["url_base"]  = $this->config->base_url();                
             $this->load->view('componentes/header.php', $data);

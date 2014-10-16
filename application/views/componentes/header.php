@@ -4,7 +4,6 @@
         <meta charset="utf-8">
         <title><?=$titulo;?> </title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="<?=base_url();?>img/favicon.ico">
         <link href="<?=base_url();?>css/iniciarSesion.css" rel="stylesheet" type="text/css" />        
         <link href="<?=base_url();?>plugins/bootstrap/bootstrap.css" rel="stylesheet">
         <link rel="stylesheet" href="<?=base_url();?>css/validar/bootstrapValidator.css"/>
@@ -13,15 +12,14 @@
         <link href="<?=base_url();?>css/style.css" rel="stylesheet">
         <link rel="stylesheet" href="<?=base_url();?>css/tags_input/bootstrap-tagsinput.css"> 
         <link rel="stylesheet" href="<?= base_url();?>css/tags_input/app.css">
-        <script type="text/javascript" src="<?=base_url();?>js/funciones.js"></script>
+        <link href="<?= base_url();?>css/datepicker.css" rel="stylesheet" type="text/css"/>        
         <script>
         $(document).ready(function(){
           $("#nuevaConsulta").click(function(){
             $("#content").load("agregarConsulta.php");
           });
         });
-        </script>
-           
+        </script>           
         <script type="text/javascript">
             //ingresar FCE via AJAX
             function ingresarFCE($this){
