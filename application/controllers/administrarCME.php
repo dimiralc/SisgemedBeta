@@ -206,6 +206,7 @@ class AdministrarCME extends CI_Controller {
             $this->form_validation->set_rules('txtPresion', 'Presion', 'required');
             $this->form_validation->set_rules('txtPulso', 'Pulso', 'required');
             $this->form_validation->set_rules('txtDiagnosticoPreliminar', 'Diagnostico Preliminar', 'required');
+            $this->form_validation->set_message('required', 'Este campo es requerido');
             
             if($this->form_validation->run() === true){                
                $this->recibirDatos();

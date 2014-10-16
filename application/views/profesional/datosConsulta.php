@@ -4,7 +4,7 @@
     
     $buscarPaciente = array(
             'name'=> 'txtBuscar',
-            'id' => 'buscarPaciente',
+            'id' => 'buscarRut',
             'placeholder'=>'DNI, Rut o Codigo de Paciente',
             'class' => 'form-control'                                                                                  
             );

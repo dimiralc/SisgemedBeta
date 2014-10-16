@@ -2,7 +2,7 @@
 <script src="<?=base_url();?>plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="<?=base_url();?>plugins/bootstrap/bootstrap.min.js"></script>
 <script src="<?=base_url();?>js/devoops.js"></script>
-<script type="text/javascript" src="<?=base_url();?>js/validar/bootstrapValidator.js"></script>
+<script src="<?=base_url();?>js/validar/bootstrapValidator.js" type="text/javascript" ></script>
 <script src="<?=base_url();?>js/tags_input/typeahead.bundle.min.js"></script>
 <script src="<?=base_url();?>js/tags_input/bootstrap-tagsinput.min.js"></script>
 <script src="<?=base_url();?>js/validarDatosPaciente.js"></script>
@@ -30,14 +30,38 @@
       });
   });
 </script>
+<script type="text/javascript">
+    $(function() {
+    $('#buscarRut').Rut({
+        on_error: function(){ 
+            alert('Rut inválido. Ingreselo nuevamente'); 
+            $('#buscarRut').val('');
+            $('#buscarRut').focus();
+        }
+      });
+  });
+</script>
 <script language=javascript type=text/javascript>
     function stopRKey(evt) {
         var evt = (evt) ? evt : ((event) ? event : null);
         var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
-        if ((evt.keyCode == 13) && (node.type=="text")) {return false;}
+        if ((evt.keyCode === 13) && (node.type === "text")) {return false;}
     }
     document.onkeypress = stopRKey; 
 </script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#mail').blur(function(){
+        if($("#mail").val().indexOf('@', 0) === -1 || $("#mail").val().indexOf('.', 0) === -1) {
+            alert('El correo electrónico introducido no es correcto.');
+            $('#mail').val('');
+            $('#mail').focus();
+            return false;
+        }
+    });
+});
+</script>
+
 <script type="text/javascript">
 // 
 ///* TAGS VACUNAS */
