@@ -8,7 +8,8 @@
 <script src="<?=base_url();?>js/validarDatosPaciente.js"></script>
 <script src="<?=base_url();?>js/jquery.Rut.min.js" type="text/javascript"></script>
 <script src="<?=base_url();?>js/funciones.js" type="text/javascript"></script>
-<script src="<?= base_url();?>/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="<?=base_url();?>/js/bootstrap-datepicker.js" type="text/javascript"></script>
+<script src="<?=base_url();?>js/sweet-alert.min.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function() {
     $( "#fecnac" ).datepicker();
@@ -21,9 +22,14 @@
 </script>
 <script type="text/javascript">
     $(function() {
+    $( "#fur" ).datepicker();
+  });
+</script>
+<script type="text/javascript">
+    $(function() {
     $('#rut').Rut({
         on_error: function(){ 
-            alert('Rut inválido. Ingreselo nuevamente'); 
+            sweetAlert('Rut Inválido', 'Debe ingresar un rut válido', 'error');
             $('#rut').val('');
             $('#rut').focus();
         }
@@ -34,7 +40,7 @@
     $(function() {
     $('#buscarRut').Rut({
         on_error: function(){ 
-            alert('Rut inválido. Ingreselo nuevamente'); 
+            sweetAlert('Rut Inválido', 'Debe ingresar un rut válido', 'error');
             $('#buscarRut').val('');
             $('#buscarRut').focus();
         }
@@ -53,7 +59,7 @@
 $(document).ready(function() {
     $('#mail').blur(function(){
         if($("#mail").val().indexOf('@', 0) === -1 || $("#mail").val().indexOf('.', 0) === -1) {
-            alert('El correo electrónico introducido no es correcto.');
+            sweetAlert('Email Inválido', 'El formato correcto es nombre@correo.com', 'alert');
             $('#mail').val('');
             $('#mail').focus();
             return false;

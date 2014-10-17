@@ -161,7 +161,7 @@ class AdministrarCME extends CI_Controller {
             $this->form_validation->set_rules('txtEnfermedades', 'Motivo Consulta', 'required');
             $this->form_validation->set_rules('txtTraumatismos', 'Motivo Consulta', 'required');
             $this->form_validation->set_rules('txtOperaciones', 'Motivo Consulta', 'required');
-            $this->form_validation->set_rules('txtFur', 'FUR', 'regex_match[(0[1-9]|1[0-9]|2[0-9]|3(0|1))-(0[1-9]|1[0-2])-\d{4}]'); 
+            $this->form_validation->set_rules('txtFur', 'FUR', 'requeired'); 
             $this->form_validation->set_rules('txtGinecoObs', 'Observaciones', 'required');
             $this->form_validation->set_rules('txtTabaquismo', 'Tabaquismo', 'required');
             $this->form_validation->set_rules('txtAlcoholismo', 'Alcoholismo', 'required');
