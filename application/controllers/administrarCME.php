@@ -87,6 +87,94 @@ class AdministrarCME extends CI_Controller {
             $this->load->library('image_lib', $config); 
             $this->image_lib->resize();
         }
+        
+        function buscarPaciente(){
+             $this->form_validation->set_rules('txtBuscar', 'Buscar', 'required|max_length[10]');
+             if ($this->form_validation->run()===true){
+                 
+             }else{
+                 echo 'Faltan datos';
+             }
+        }
+        
+        function ingresarAntecedentesGenerales(){            
+            $this->form_validation->set_rules('txtMotivoConsulta', 'Motivo Consulta', 'required');
+            $this->form_validation->set_rules('txtAnamnesisProxima', 'Anamnesis Proxima', 'required');
+            $this->form_validation->set_rules('txtDiagnosticoPreliminar', 'Diagnostico Preliminar', 'required');
+            if($this->form_validation->run()===true){
+                
+            }else{
+                echo 'Faltan datos';
+            }
+        }
+        
+        function ingresarAntecedentesMorbidos(){            
+            $this->form_validation->set_rules('txtEnfermedades', 'Motivo Consulta', 'required');
+            $this->form_validation->set_rules('txtTraumatismos', 'Motivo Consulta', 'required');
+            $this->form_validation->set_rules('txtOperaciones', 'Motivo Consulta', 'required');
+            if($this->fomr_validation->run()===true){
+                
+            }else{
+                echo 'Faltan Datos';
+            }
+                
+        }
+        
+        function ingresarAntecedentesGinecoobstetricos(){
+            
+        }
+        
+        function ingresarHabitos(){
+            
+        }
+        
+        function ingresarMedicamentos(){
+            
+        }
+        
+        function ingresarAlergias(){
+            
+        }
+        
+        function ingresarAntecedentesSP(){
+                
+        }
+        
+        function ingresarAntecedentesFamiliares(){
+            
+        }
+        
+        function ingresarInmunizaciones(){
+            
+        }
+        
+        function ingresarSintomasGenerales(){
+            
+        }
+        
+        function ingresarSintomasRespiratorio(){
+            
+        }
+        
+        function ingresarSintomasCardiovascular(){
+            
+        }
+        
+        function ingresarSintomasGastrointestinal(){
+            
+        }
+        
+        function ingresarSintomasGenitourinario(){
+            
+        }
+        
+        function ingresarSintomasNeurologico(){
+            
+        }
+        
+        function ingresarSintomasEndocrino(){
+            
+        }
 
 	function recibirDatos()
         {
@@ -155,12 +243,8 @@ class AdministrarCME extends CI_Controller {
         }
         
         function validar_datos_consulta(){            
-            $this->form_validation->set_rules('txtBuscar', 'Buscar', 'required|max_length[10]');
-            $this->form_validation->set_rules('txtMotivoConsulta', 'Motivo Consulta', 'required');
-            $this->form_validation->set_rules('txtAnamnesisProxima', 'Motivo Consulta', 'required');
-            $this->form_validation->set_rules('txtEnfermedades', 'Motivo Consulta', 'required');
-            $this->form_validation->set_rules('txtTraumatismos', 'Motivo Consulta', 'required');
-            $this->form_validation->set_rules('txtOperaciones', 'Motivo Consulta', 'required');
+           
+       
             $this->form_validation->set_rules('txtFur', 'FUR', 'requeired'); 
             $this->form_validation->set_rules('txtGinecoObs', 'Observaciones', 'required');
             $this->form_validation->set_rules('txtTabaquismo', 'Tabaquismo', 'required');
@@ -205,7 +289,7 @@ class AdministrarCME extends CI_Controller {
             $this->form_validation->set_rules('txtCelsius', 'Temperatura', 'required');
             $this->form_validation->set_rules('txtPresion', 'Presion', 'required');
             $this->form_validation->set_rules('txtPulso', 'Pulso', 'required');
-            $this->form_validation->set_rules('txtDiagnosticoPreliminar', 'Diagnostico Preliminar', 'required');
+            
             $this->form_validation->set_message('required', 'Este campo es requerido');
             
             if($this->form_validation->run() === true){                

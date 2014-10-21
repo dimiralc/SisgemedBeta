@@ -62,7 +62,7 @@
 $(document).ready(function() {
     $('#mail').blur(function(){
         if($("#mail").val().indexOf('@', 0) === -1 || $("#mail").val().indexOf('.', 0) === -1) {
-            sweetAlert('Email Inválido', 'El formato correcto es nombre@correo.com', 'alert');
+            sweetAlert('Email Inválido', 'El formato correcto es nombre@correo.com', 'error');
             $('#mail').val('');
             $('#mail').focus();
             return false;
