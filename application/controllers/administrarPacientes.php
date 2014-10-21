@@ -16,7 +16,7 @@ class AdministrarPacientes extends CI_Controller {
 	}
         
         function validarDatos_paciente(){
-            $this->form_validation->set_rules('txtRut', 'Rut', 'required|max_length[10]');
+            $this->form_validation->set_rules('txtRut', 'Rut', 'required|max_length[15]');
             $this->form_validation->set_rules('txtNombres', 'Nombres', 'required');
             $this->form_validation->set_rules('txtPaterno', 'Paterno', 'required');
             $this->form_validation->set_rules('txtMaterno', 'Materno', 'required');
@@ -30,7 +30,7 @@ class AdministrarPacientes extends CI_Controller {
             $this->form_validation->set_rules('rbtEcivil', 'Estado Civil', 'required');
             $this->form_validation->set_message('required', 'Este Campo es obligatorio');            
             if($this->form_validation->run() === true){
-                echo 'Datos Validos';
+                $this->recibirDatos_paciente();
             }
             else
             {                
@@ -38,7 +38,7 @@ class AdministrarPacientes extends CI_Controller {
             }
         }
 
-	function recibirDatos(){
+	function recibirDatos_paciente(){
 		$data = array(
                         'rut' => $this->input-> post('txtRut'), 
                         'nombres' => $this->input->post('txtNombres'),
@@ -57,10 +57,11 @@ class AdministrarPacientes extends CI_Controller {
                         'ocupacion'=>  $this->input->post('ddlOcupacion'),
                         'nivelestudios'=>  $this->input->post('ddlNivelestudios')
 			);
-		switch( $_POST['btoPaciente'] ) {
-                    case "Agregar":                       
+		switch( $_POST['btoPacientes'] ) {
+                    case "Agregar":  
                         $this->do_upload();
-                        $this->administrarpacientes_model->anadirPaciente($data);                        
+                        $this->administrarpacientes_model->anadirUsuario($data);
+                        $this->administrarpacientes_model->anadirPaciente($data);
                     break;                    
                     case "Cancelar":
                         $this->index();

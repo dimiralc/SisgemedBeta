@@ -28,7 +28,7 @@ class Ficha_clinica extends CI_Model {
          );
         //obtenemos el id de la ficha clinica recien ingresada
         $id_ficha_clinica = $this->db->insert_id();
-       //verificar error en la transaccion. 
+        //verificar error en la transaccion. 
         if ($this->db->trans_status() === FALSE)
         {
             $this->db->trans_rollback();
