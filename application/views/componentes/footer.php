@@ -2,6 +2,9 @@
 <script src="<?=base_url();?>plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="<?=base_url();?>plugins/bootstrap/bootstrap.min.js"></script>
 <script src="<?=base_url();?>js/devoops.js"></script>
+<!-- js tablas historia medica -->
+<script src="<?=base_url();?>js/bootstrap-table.js"></script>
+<!-- fin --->
 <script src="<?=base_url();?>js/validar/bootstrapValidator.js" type="text/javascript" ></script>
 <script src="<?=base_url();?>js/tags_input/typeahead.bundle.min.js"></script>
 <script src="<?=base_url();?>js/tags_input/bootstrap-tagsinput.min.js"></script>
@@ -67,7 +70,7 @@ $(document).ready(function() {
     });
 });
 </script>
-
+<script src="<?=base_url();?>js/table-master.js"></script>
 <script type="text/javascript">
 // 
 ///* TAGS VACUNAS */

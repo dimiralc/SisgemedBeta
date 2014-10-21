@@ -76,7 +76,7 @@ function LoadBootstrapValidatorScript(callback){
 //
 function LoadSelect2Script(callback){
 	if (!$.fn.select2){
-		$.getScript('plugins/select2/select2.min.js', callback);
+		$.getScript('http://localhost/sisgemed/js/select2.min.js', callback);
 	}
 	else {
 		if (callback && typeof(callback) === "function") {
@@ -90,10 +90,10 @@ function LoadSelect2Script(callback){
 //
 function LoadDataTablesScripts(callback){
 	function LoadDatatables(){
-		$.getScript('plugins/datatables/jquery.dataTables.js', function(){
-			$.getScript('plugins/datatables/ZeroClipboard.js', function(){
-				$.getScript('plugins/datatables/TableTools.js', function(){
-					$.getScript('plugins/datatables/dataTables.bootstrap.js', callback);
+		$.getScript('http://localhost/sisgemed/js/datatables/jquery.dataTables.js', function(){
+			$.getScript('http://localhost/sisgemed/js/datatables/ZeroClipboard.js', function(){
+				$.getScript('http://localhost/sisgemed/js/datatables/TableTools.js', function(){
+					$.getScript('http://localhost/sisgemed/js/datatables/dataTables.bootstrap.js', callback);
 				});
 			});
 		});
@@ -1562,6 +1562,7 @@ function DrawCoinDeskGoogleCharts(){
 // Function for table, located in element with id = datatable-1
 //
 function TestTable1(){
+    //alert("tabla1");
 	$('#datatable-1').dataTable( {
 		"aaSorting": [[ 0, "asc" ]],
 		"sDom": "<'box-content'<'col-sm-6'f><'col-sm-6 text-right'l><'clearfix'>>rt<'box-content'<'col-sm-6'i><'col-sm-6 text-right'p><'clearfix'>>",

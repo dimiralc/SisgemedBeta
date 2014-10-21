@@ -274,7 +274,7 @@ class Profesional extends CI_Controller
             $this->load->view('componentes/header.php', $data);
             $this->load->view('componentes/navbar.php');
             $this->load->view('componentes/sidebar.php');
-            $this->load->view('profesional/historiaClinica.php');
+            $this->load->view('profesional/historiaMedica.php');
             $this->load->view('componentes/modal.php');
             $this->load->view('componentes/footer.php');
           }
@@ -326,3 +326,13 @@ class Profesional extends CI_Controller
 /************************************************************************************************/
 /* Fin Controlador Profesional */
 /************************************************************************************************/
+
+  
+  /*** pruebas con ajax ****/
+  function AjaxDashboard(){
+     
+      echo "<p>Hola esto cambio contenido via ajax</p>";
+  }
+  /** fin pruebas con ajax ***/
+  
+  

@@ -1,0 +1,122 @@
+[
+    {
+        "id": 0,
+        "rut"           :"17484496-8",
+        "nombre"        : "Cristian Alejandro Vidal Muñoz",
+        "parentesco"    : "Hermano",
+        "edad"          :  "47",
+        "enfermedades"  : "Diabetes mellitus,Cardiopatía hipertensiva",
+        "estado"        : "vivo",
+        "observaciones" : "Los síntomas más frecuentes suelen ser dificultad respiratoria, tos —incluyendo tos sanguinolenta— y pérdida de peso,3 así como dolor torácico, ronquera e hinchazón en el cuello y la cara."
+    },
+    {
+        "id": 1,
+        "rut"           :"17484496-7",
+        "nombre"       : "Maria del carmen Muñoz Perez",
+        "parentesco"    : "Abuela",
+        "edad"          : "82",
+        "enfermedades"  : "Diabetes mellitus, Cardiopatía hipertensiva, Cánceres de traquea, bronquios o pulmón",
+        "estado"        : "vivo",
+        "observaciones" : "Diagnosto hecho en 1992."
+    },
+    {
+        "id": 2,
+        "rut"           :"17484496-6",
+        "nombre"        : "Jose Manuel Vidal muñoz",
+        "parentesco"    : "Padre",
+        "edad"          : "47",
+        "enfermedades"  : "Diabetes mellitus,Cardiopatía hipertensiva",
+        "estado"        : "fallecido",
+        "observaciones" : "Diagnosto hecho en 1992."
+    },
+    {
+        "id": 3,
+        "rut"           :"17484496-5",
+        "nombre"       : "Maria andrea Vidal Perez",
+        "parentesco"    : "Hermana",
+        "edad"          : "20",
+        "enfermedades"  : "Diabetes mellitus",
+        "estado"        : "vivo",
+        "observaciones" : "conjunto de trastornos metabólicos,2 que comparten la característica común de presentar concentraciones elevadas de glucosa en la sangre (hiperglicemia) de manera persistente o crónica."
+    },
+    {
+        "id": 4,
+        "rut"           :"17484496-4",
+        "nombre"       : "Maria andrea Vidal Perez44",
+        "parentesco"    : "Hermana",
+        "edad"          : "244",
+        "enfermedades"  : "Diabetes mellitus444",
+        "estado"        : "vivo",
+        "observaciones" : "44conjunto de trastornos metabólicos,2 que comparten la característica común de presentar concentraciones elevadas de glucosa en la sangre (hiperglicemia) de manera persistente o crónica."
+    },
+    {
+        "id": 5,
+        "rut"           :"15484496-5",
+        "nombre"       : "55 Maria andrea Vidal Perez",
+        "parentesco"    : "Hermana",
+        "edad"          : "20",
+        "enfermedades"  : "55 Diabetes mellitus",
+        "estado"        : "vivo",
+        "observaciones" : "55 conjunto de trastornos metabólicos,2 que comparten la característica común de presentar concentraciones elevadas de glucosa en la sangre (hiperglicemia) de manera persistente o crónica."
+    },
+    {
+        "id": 6,
+        "rut"           :"16484496-5",
+        "nombre"       : "66 Maria andrea Vidal Perez",
+        "parentesco"    : "Hermana",
+        "edad"          : "20",
+        "enfermedades"  : "66 Diabetes mellitus",
+        "estado"        : "vivo",
+        "observaciones" : "66 conjunto de trastornos metabólicos,2 que comparten la característica común de presentar concentraciones elevadas de glucosa en la sangre (hiperglicemia) de manera persistente o crónica."
+    },
+    {
+        "id": 7,
+        "rut"           :"17784496-5",
+        "nombre"       : "77 Maria andrea Vidal Perez",
+        "parentesco"    : "Hermana",
+        "edad"          : "20",
+        "enfermedades"  : "77 Diabetes mellitus",
+        "estado"        : "vivo",
+        "observaciones" : "77 conjunto de trastornos metabólicos,2 que comparten la característica común de presentar concentraciones elevadas de glucosa en la sangre (hiperglicemia) de manera persistente o crónica."
+    },
+    {
+        "id": 8,
+        "rut"           :"18484496-5",
+        "nombre"       : "88 Maria andrea Vidal Perez",
+        "parentesco"    : "Hermana",
+        "edad"          : "20",
+        "enfermedades"  : "88 Diabetes mellitus",
+        "estado"        : "vivo",
+        "observaciones" : "88 conjunto de trastornos metabólicos,2 que comparten la característica común de presentar concentraciones elevadas de glucosa en la sangre (hiperglicemia) de manera persistente o crónica."
+    },
+    {
+        "id": 9,
+        "rut"           :"19484496-5",
+        "nombre"       : "99 Maria andrea Vidal Perez",
+        "parentesco"    : "Hermana",
+        "edad"          : "20",
+        "enfermedades"  : "99 Diabetes mellitus",
+        "estado"        : "vivo",
+        "observaciones" : "99 conjunto de trastornos metabólicos,2 que comparten la característica común de presentar concentraciones elevadas de glucosa en la sangre (hiperglicemia) de manera persistente o crónica."
+    },
+    {
+        "id": 10,
+        "rut"           :"11084496-5",
+        "nombre"       : "10 Maria andrea Vidal Perez",
+        "parentesco"    : "Hermana",
+        "edad"          : "20",
+        "enfermedades"  : "10 Diabetes mellitus",
+        "estado"        : "vivo",
+        "observaciones" : "10 conjunto de trastornos metabólicos,2 que comparten la característica común de presentar concentraciones elevadas de glucosa en la sangre (hiperglicemia) de manera persistente o crónica."
+    },
+    {
+        "id": 11,
+        "rut"           :"11484496-5",
+        "nombre"       : "11 Maria andrea Vidal Perez",
+        "parentesco"    : "Hermana",
+        "edad"          : "20",
+        "enfermedades"  : "11 Diabetes mellitus",
+        "estado"        : "vivo",
+        "observaciones" : "11 conjunto de trastornos metabólicos,2 que comparten la característica común de presentar concentraciones elevadas de glucosa en la sangre (hiperglicemia) de manera persistente o crónica."
+    }
+]
