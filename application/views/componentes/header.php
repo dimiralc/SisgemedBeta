@@ -14,6 +14,7 @@
         <link href="<?= base_url();?>css/tags_input/app.css" rel="stylesheet" >
         <link href="<?= base_url();?>css/datepicker.css" rel="stylesheet" type="text/css"/>    
         <link href="<?= base_url();?>css/sweet-alert.css" rel="stylesheet"  type="text/css" />
+        <!-- UserID: dimiralc; Pass: sisgemed1 -->
         <script>
         $(document).ready(function(){
           $("#nuevaConsulta").click(function(){

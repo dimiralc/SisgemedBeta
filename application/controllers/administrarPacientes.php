@@ -18,6 +18,7 @@ class AdministrarPacientes extends CI_Controller {
         function validarDatos_paciente(){
             $this->form_validation->set_rules('txtRut', 'Rut', 'required|max_length[15]');
             $this->form_validation->set_rules('txtNombres', 'Nombres', 'required');
+            $this->form_validation->set_rules('txtSegundoNombre', 'Nombres', 'required');
             $this->form_validation->set_rules('txtPaterno', 'Paterno', 'required');
             $this->form_validation->set_rules('txtMaterno', 'Materno', 'required');
             $this->form_validation->set_rules('txtTelefono', 'Telefono', 'required|numeric');
@@ -42,6 +43,7 @@ class AdministrarPacientes extends CI_Controller {
 		$data = array(
                         'rut' => $this->input-> post('txtRut'), 
                         'nombres' => $this->input->post('txtNombres'),
+                        'snombre' => $this->input->post('txtSegundoNombre'),
                         'paterno' => $this->input->post('txtPaterno'),
                         'materno' => $this->input->post('txtMaterno'),
                         'telefono' => $this->input->post('txtTelefono'),
@@ -62,6 +64,7 @@ class AdministrarPacientes extends CI_Controller {
                         $this->do_upload();
                         $this->administrarpacientes_model->anadirUsuario($data);
                         $this->administrarpacientes_model->anadirPaciente($data);
+                        $this->administrarpacientes_model->anadirHistoriaClinica($data);
                     break;                    
                     case "Cancelar":
                         $this->index();
