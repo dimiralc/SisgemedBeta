@@ -1,4 +1,4 @@
-$("#buscarPaciente").click(function(event)
+$('#buscarPaciente').click(function(event)
     {
      event.preventDefault();
      var datos = $('#formBuscar').serialize();
@@ -9,7 +9,7 @@ $("#buscarPaciente").click(function(event)
          data: datos,
          success: 
               function(resp){
-                  alert("javascript".resp);//datos de busqueda
+                  //alert(datos);//datos de busqueda
                   //desgosar array
                   //agregar valores ($(#loquesea).html(arrAY) )
               }

@@ -3,7 +3,7 @@ class AdministrarCME extends CI_Controller {
 	function __construct(){
 		parent::__construct();
                 $this->load->model('administrarcme_model');  
-                $this->load->helper('form', 'url');
+                $this->load->helper('form');
                 $this->load->library('form_validation');
                 $this->load->model('administrarpacientes_model');  
                 
@@ -92,8 +92,9 @@ class AdministrarCME extends CI_Controller {
         function buscarPaciente(){
              $this->form_validation->set_rules('txtBuscar', 'Buscar', 'required');
              $data = $this->input->post('txtBuscar');
-             //print_r($_POST['txtBuscar']);
-             //exit();
+             echo $data;
+//             var_dump($_POST['txtBuscar']);
+//             exit();
              if ($this->form_validation->run()===false){
                  return $this->administrarpacientes_model->buscarPaciente($data);
              }else{
