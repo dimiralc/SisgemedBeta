@@ -2,6 +2,7 @@
 <script src="<?=base_url();?>plugins/jquery-ui/jquery-ui.min.js"></script>
 <script src="<?=base_url();?>plugins/bootstrap/bootstrap.min.js"></script>
 <script src="<?=base_url();?>js/devoops.js"></script>
+<script src="<?=base_url();?>js/table-master.js"></script>
 <script src="<?=base_url();?>js/bootstrap-table.js"></script>
 <script src="<?=base_url();?>js/validar/bootstrapValidator.js" type="text/javascript" ></script>
 <script src="<?=base_url();?>js/tags_input/typeahead.bundle.min.js"></script>
@@ -10,23 +11,6 @@
 <script src="<?=base_url();?>/js/bootstrap-datepicker.js" type="text/javascript"></script>
 <script src="<?=base_url();?>js/sweet-alert.min.js" type="text/javascript"></script>
 <script src="<?=base_url();?>js/funcionesAgregarConsulta.js" type="text/javascript"></script>
-<script type="text/javascript">
-    $("#buscarPaciente").click(function()
-    { 
-     $.ajax({
-         type: "POST",
-         url: base_url + "administrarCME/buscarPaciente", 
-         data: {textbox: $("#txtBuscar").val()},
-         dataType: "text",  
-         cache:false,
-         success: 
-              function(data){
-                alert(data);  //as a debugging message.
-              }
-          });// you have missed this bracket
-     return false;
-    });
-</script>
 <script type="text/javascript">
     $(function() {
     $( "#fecnac" ).datepicker();
@@ -84,7 +68,7 @@ $(document).ready(function() {
     });
 });
 </script>
-<script src="<?=base_url();?>js/table-master.js"></script>
+
 
 </body>
 </html>

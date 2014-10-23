@@ -90,12 +90,10 @@ class AdministrarCME extends CI_Controller {
         }
         
         function buscarPaciente(){
-             $this->form_validation->set_rules('buscarRut', 'Buscar', 'required');
-             $data = $this->input->post('txtBuscar');//revisar si lega el dato
-             echo $data;
-             exit();
-//             print_r($_POST['txtBuscar']);
-//             exit();
+             $this->form_validation->set_rules('txtBuscar', 'Buscar', 'required');
+             $data = $this->input->post('txtBuscar');
+             //print_r($_POST['txtBuscar']);
+             //exit();
              if ($this->form_validation->run()===false){
                  return $this->administrarpacientes_model->buscarPaciente($data);
              }else{
