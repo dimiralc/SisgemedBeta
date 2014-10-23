@@ -5,7 +5,6 @@
 <script src="<?=base_url();?>js/bootstrap-table.js"></script>
 <script src="<?=base_url();?>js/validar/bootstrapValidator.js" type="text/javascript" ></script>
 <script src="<?=base_url();?>js/tags_input/typeahead.bundle.min.js"></script>
-<script src="<?=base_url();?>js/tags_input/bootstrap-tagsinput.min.js"></script>
 <script src="<?=base_url();?>js/jquery.Rut.min.js" type="text/javascript"></script>
 <script src="<?=base_url();?>js/funciones.js" type="text/javascript"></script>
 <script src="<?=base_url();?>/js/bootstrap-datepicker.js" type="text/javascript"></script>

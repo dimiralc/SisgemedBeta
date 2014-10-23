@@ -3,7 +3,6 @@ $("#buscarPaciente").click(function(event)
      event.preventDefault();
      var datos = $('#formBuscar').serialize();
      var url = $('#formBuscar').attr('action');
-     alert (datos);
      $.ajax({
          type: "POST",
          url: url, 
