@@ -19,7 +19,7 @@ class Login_model extends CI_Model {
         $data['']='Seleccione una institución';
         //cargamos todas las instituciones del sistema
         $this->db->select(['i.id_institucion','i.nom_institucion']);
-        $this->db->from('TBL_instituciones i');
+        $this->db->from('tbl_instituciones i');
         $this->db->order_by("i.nom_institucion", "asc");
         $instituciones = $this->db->get();
         
@@ -45,9 +45,9 @@ class Login_model extends CI_Model {
             'u.fecha_creacion',
             'i.nom_institucion',
             'p.perfil']);
-        $this->db->from('TBL_usuarios u');
-        $this->db->join('TBL_perfiles p', 'p.id_perfil = u.id_perfil');
-        $this->db->join('TBL_instituciones i', 'i.id_institucion = u.id_institucion');
+        $this->db->from('tbl_usuarios u');
+        $this->db->join('tbl_perfiles p', 'p.id_perfil = u.id_perfil');
+        $this->db->join('tbl_instituciones i', 'i.id_institucion = u.id_institucion');
         $this->db->where('u.username', $username);
         $this->db->where('u.password', $password);
         $this->db->where('u.id_institucion', (int)$institucion); 

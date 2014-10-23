@@ -5,6 +5,7 @@ class AdministrarCME extends CI_Controller {
                 $this->load->model('administrarcme_model');  
                 $this->load->helper('form');
                 $this->load->library('form_validation');
+                $this->load->model('administrarpacientes_model');  
                 
                 
 	}
@@ -89,9 +90,12 @@ class AdministrarCME extends CI_Controller {
         }
         
         function buscarPaciente(){
-             $this->form_validation->set_rules('txtBuscar', 'Buscar', 'required|max_length[10]');
-             if ($this->form_validation->run()===true){
-                 
+             $this->form_validation->set_rules('buscarRut', 'Buscar', 'required');
+             $data = $this->input->post('txtBuscar');//revisar si lega el dato
+             //print_r($_POST['txtBuscar']);
+             //exit();
+             if ($this->form_validation->run()===false){
+                 return $this->administrarpacientes_model->buscarPaciente($data);
              }else{
                  echo 'Faltan datos';
              }
