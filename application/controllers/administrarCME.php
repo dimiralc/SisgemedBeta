@@ -89,17 +89,10 @@ class AdministrarCME extends CI_Controller {
             $this->image_lib->resize();
         }
         
-        function buscarPaciente(){
-             $this->form_validation->set_rules('txtBuscar', 'Buscar', 'required');
-             $data = $this->input->post('txtBuscar');
-             echo $data;
-//             var_dump($_POST['txtBuscar']);
-//             exit();
-             if ($this->form_validation->run()===false){
-                 return $this->administrarpacientes_model->buscarPaciente($data);
-             }else{
-                 echo 'Faltan datos';
-             }
+        function buscarPaciente(){             
+            $data = $this->input->post('txtBuscar');
+            $registro = $this->administrarpacientes_model->buscarPaciente($data);
+            print_r($registro);
         }
         
         function ingresarAntecedentesGenerales(){            

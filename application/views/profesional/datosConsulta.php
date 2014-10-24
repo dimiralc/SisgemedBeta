@@ -22,7 +22,7 @@
         );
     $nombres = array(
             'name'=> 'txtNombres',
-            'id' => 'nombres',
+            'id' => 'nombre_paciente',
             'class'=>'form-control',
             'disabled' => 'true'
         );
