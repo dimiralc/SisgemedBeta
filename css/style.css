@@ -1,6 +1,7 @@
 body {
   color: #525252;
   background: #6AA6D6 url(../img/devoops_pattern_b10.png) 0 0 repeat;
+  font-family: 'Ubuntu';
 }
 .body-expanded, .modal-open {
   overflow-y:hidden;
@@ -18,11 +19,11 @@ h1, .h1, h2, .h2, h3, .h3 {
 }
 #logo {
   position:relative;
-  background: #525252 url(../img/devoops_pattern_b10.png) 0 0 repeat;
+  background: #ebebeb 0 0 repeat;
 }
 #logo a {
-  color: #fff;
-  font-family: 'Righteous', cursive;
+  color: #848484;
+  font-family: 'ubuntu';
   display: block;
   font-size: 20px;
   line-height: 50px;
@@ -98,7 +99,8 @@ a.show-sidebar:hover {
 }
 .nav.main-menu > li > a, .nav.msg-menu > li > a {
   text-align: center;
-  color:#f0f0f0;
+  font-family: 'ubuntu';
+  color: #f0f0f0;
   min-height: 40px;
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
@@ -617,7 +619,7 @@ ul.DTTT_dropdown.dropdown-menu > li:hover > a {
   color:#d8d8d8;
 }
 .breadcrumb > li > a:hover, .breadcrumb > li:last-child > a {
-  color:#f8f8f8;
+  color:#d8d8d8;
 }
 .bs-callout {
   padding: 15px;
@@ -2087,7 +2089,7 @@ td.beauty-hover {
 }
 #page-login h3 {
   font-size:20px;
-  font-family: 'Righteous', cursive;
+  font-family: 'Ubuntu', cursive;
 }
 #page-login .text-right {
   margin-top: 15px;
