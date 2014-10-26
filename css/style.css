@@ -604,7 +604,7 @@ ul.DTTT_dropdown.dropdown-menu > li:hover > a {
   padding: 0;
   line-height: 40px;
   background: #525252;
-  background: #5a8db6 url(../img/devoops_pattern_b10.png) 0 0 repeat;
+  background: #ebebeb 0 0 repeat;
   margin-bottom: 20px;
 }
 .breadcrumb {
@@ -616,10 +616,10 @@ ul.DTTT_dropdown.dropdown-menu > li:hover > a {
   margin: 0;
 }
 .breadcrumb > li > a {
-  color:#d8d8d8;
+  color:#585858;
 }
 .breadcrumb > li > a:hover, .breadcrumb > li:last-child > a {
-  color:#d8d8d8;
+  color:#585858;
 }
 .bs-callout {
   padding: 15px;
