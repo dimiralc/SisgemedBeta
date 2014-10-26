@@ -27,3 +27,8 @@ $("#buscarPaciente").click(function(event) {
               }
           });
  });
+ 
+ $("#ant_morbidos").click(function(event){
+    event.preventSwfault();
+    var datos = $('#formAntMorbidos').serializae();
+ });

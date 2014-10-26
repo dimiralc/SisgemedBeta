@@ -100,7 +100,11 @@ class AdministrarCME extends CI_Controller {
             $this->form_validation->set_rules('txtAnamnesisProxima', 'Anamnesis Proxima', 'required');
             $this->form_validation->set_rules('txtDiagnosticoPreliminar', 'Diagnostico Preliminar', 'required');
             if($this->form_validation->run()===true){
-                
+                $data = array(
+                    'motivoConsulta' => $this->input->post('txtMotivoConsulta'),
+                    
+                );
+                $antecendentesGenerales = $this->administrarcme_model->ingresarAntecedentesGenerales($data);
             }else{
                 echo 'Faltan datos';
             }
