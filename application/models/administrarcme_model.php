@@ -17,7 +17,7 @@ class AdministrarCME_model extends CI_Model {
                         'hipotesis_diagnostica' => $data['diagnosticoProeliminar']));
         }
         
-        function ingresarAntecedentesMorbidos(){
+        function ingresarAntecedentesMorbidos($data){
             $this->db->insert(
                     '',
                     array(
@@ -27,7 +27,7 @@ class AdministrarCME_model extends CI_Model {
                         'diagnostico'=>$data['']));
         }
         
-        function ingresarAntecedentesGinecoobstetricos(){
+        function ingresarAntecedentesGinecoobstetricos($data){
             $this->db->insert(
                     '',
                     array(
@@ -46,7 +46,7 @@ class AdministrarCME_model extends CI_Model {
                         'observaciones'=>$data['']));
         }
         
-        function ingresarHabitos(){
+        function ingresarHabitos($data){
             $this->db->insert(
                     '',
                     array(
@@ -56,7 +56,7 @@ class AdministrarCME_model extends CI_Model {
                         'fecha_ingreso'=>$data['']));
         }
         
-        function ingresarMedicamentos(){
+        function ingresarMedicamentos($data){
             $this->db->insert(
                     '',
                     array(
@@ -68,7 +68,7 @@ class AdministrarCME_model extends CI_Model {
                         'indicaciones'=>$data['']));
         }
         
-        function ingresarAlergias(){
+        function ingresarAlergias($data){
             $this->db->insert(
                     '',
                     array(
@@ -79,7 +79,7 @@ class AdministrarCME_model extends CI_Model {
                         'descripcion'=>$data['']));
         }
         
-        function ingresarAntecedentesSP(){
+        function ingresarAntecedentesSP($data){
             $this->db->insert(
                     '',
                     array('id_ant_social'=>$data[''],
@@ -87,7 +87,7 @@ class AdministrarCME_model extends CI_Model {
                         'ant_social'=>$data['']));
         }
         
-        function ingresarAntecedentesFamiliares(){
+        function ingresarAntecedentesFamiliares($data){
             $this->db->insert(
                     '',
                     array(
@@ -95,7 +95,7 @@ class AdministrarCME_model extends CI_Model {
                         'ant_familiar'=>$data['']));
         }
         
-        function ingresarInmunizaciones(){
+        function ingresarInmunizaciones($data){
             $this->db->insert(
                     '',
                     array(
@@ -108,103 +108,103 @@ class AdministrarCME_model extends CI_Model {
         
         // Desde aqui faltan tablas
         
-        function ingresarSintomasGenerales(){
+        function ingresarSintomasGenerales($data){
             $this->db->insert(
                     '',
                     array());
         }
         
-        function ingresarSintomasRespiratorio(){
+        function ingresarSintomasRespiratorio($data){
             $this->db->insert(
                     '',
                     array());
         }
         
-        function ingresarSintomasCardiovascular(){
+        function ingresarSintomasCardiovascular($data){
             $this->db->insert(
                     '',
                     array());
         }
         
-        function ingresarSintomasGastrointestinal(){
+        function ingresarSintomasGastrointestinal($data){
             $this->db->insert(
                     '',
                     array());
         }
         
-        function ingresarSintomasGenitourinario(){
+        function ingresarSintomasGenitourinario($data){
             $this->db->insert(
                     '',
                     array());
         }
         
-        function ingresarSintomasNeurologico(){
+        function ingresarSintomasNeurologico($data){
             $this->db->insert(
                     '',
                     array());
         }
         
-        function ingresarSintomasEndocrino(){
+        function ingresarSintomasEndocrino($data){
             $this->db->insert(
                     '',
                     array());
         }
         
-        function ingresarExamenPosicion(){
+        function ingresarExamenPosicion($data){
             $this->db->insert(
                     '',
                     array());
         }
         
-        function ingresarExamenDeambulacion(){
+        function ingresarExamenDeambulacion($data){
             $this->db->insert(
                     '',
                     array());
         }
         
-        function ingresarExamenFacie(){
+        function ingresarExamenFacie($data){
             $this->db->insert(
                     '',
                     array());
         }
         
-        function ingresarExamenConciencia(){
+        function ingresarExamenConciencia($data){
             $this->db->insert(
                     '',
                     array());
         }
         
-        function ingresarExamenConstitucion(){
+        function ingresarExamenConstitucion($data){
             $this->db->insert(
                     '',
                     array());
         }
         
-        function ingresarExamenPiel(){
+        function ingresarExamenPiel($data){
             $this->db->insert(
                     '',
                     array());
         }
         
-        function ingresarExamenLinfatico(){
+        function ingresarExamenLinfatico($data){
             $this->db->insert(
                     '',
                     array());
         }
         
-        function ingresarExamenRespiracion(){
+        function ingresarExamenRespiracion($data){
             $this->db->insert(
                     '',
                     array());
         }
         
-        function ingresarExamenTemperatura(){
+        function ingresarExamenTemperatura($data){
             $this->db->insert(
                     '',
                     array());
         }
         
-        function ingresarExamenPP(){
+        function ingresarExamenPP($data){
             $this->db->insert(
                     '',
                     array());

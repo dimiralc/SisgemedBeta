@@ -27,5 +27,21 @@ $("#buscarPaciente").click(function(event) {
               }
           });
  });
+ 
+ $("#ingresarConsulta").click(function(event) {
+     event.preventDefault();
+     var datos = $('#formConsultaMedica').serialize();
+     var url = $('#formConsultaMedica').attr('action');
+         $.ajax({
+         type: 'POST',
+         url: url, 
+         data: datos,
+         success: 
+               function(){
+                   sweetAlert('Datos Ingresados Correctamente', 'Los datos han sido ingresados exitosamente a la base de datos', 'success');                         
+                   
+              }
+          });
+ });
 
  
