@@ -17,13 +17,16 @@ $("#buscarPaciente").click(function(event) {
                    var telefono = datos.direccion;
                    var sexo = datos.sexo;
                    var nacionalidad = datos.lugar_nac;
-	           $('#rut').val(rut);
+                   var nhce = datos.id_historia_medica;
+                   $('#rut').val(rut);
                    $('#nombre_paciente').val(firstname);
                    $('#paterno').val(paterno);
                    $('#materno').val(materno);
                    $('#sexo').val(sexo);
-                   $('#nacionalidad').val(nacionalidad);                  
+                   $('#nacionalidad').val(nacionalidad);   
+                   $('#nhce').val(nhce);
                    
+                  
               }
           });
  });

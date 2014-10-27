@@ -71,9 +71,10 @@
     $nhce = array(
             'name'=> 'txtNhce',
             'id' => 'nhce',
-            'class'=>'form-control',
-            'disabled' => 'true'
+            'class'=>'form-control'
+            
         );
+    
     
     /*Datos de consulta / anamnesis proxima */
     $motivoConsulta = array(

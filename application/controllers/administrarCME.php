@@ -90,9 +90,10 @@ class AdministrarCME extends CI_Controller {
             $this->form_validation->set_rules('txtDiagnosticoPreliminar', 'Diagnostico Preliminar', 'required');
             if($this->form_validation->run()===true){
                 $data = array(
+                    'nroHistoriaClinica' => $this->input->post('txtNhce'),
                     'motivoConsulta' => $this->input->post('txtMotivoConsulta'),
                     'anamnesisProxima' => $this->input->post('txtAnamnesisProxima'),
-                    'diagnosticoProeliminar' => $this->input->post('txtDiagnosticoproeliminar')
+                    'diagnosticoPreliminar' => $this->input->post('txtDiagnosticoPreliminar')
                 );
                 $consultaBase = $this->administrarcme_model->ingresarConsultaBase($data);
                 print_r($consultaBase);

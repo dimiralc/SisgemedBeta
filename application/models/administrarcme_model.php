@@ -11,10 +11,10 @@ class AdministrarCME_model extends CI_Model {
                     'tbl_consulta_medica',
                     array(
                         'fecha_consulta' => date("l"), 
-                        'nro_historia_clinica' => "1", 
+                        'nro_historia_clinica' => $data['nroHistoriaClinica'], 
                         'motivo_consulta' => $data['motivoConsulta'], 
                         'anamnesis_proxima'=> $data['anamnesisProxima'], 
-                        'hipotesis_diagnostica' => $data['diagnosticoProeliminar']));
+                        'hipotesis_diagnostica' => $data['diagnosticoPreliminar']));
         }
         
         function ingresarAntecedentesMorbidos($data){
