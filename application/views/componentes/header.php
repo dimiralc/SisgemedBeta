@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <title><?=$titulo;?> </title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="<?=base_url();?>img/favicon.ico" />
         <link href="<?=base_url();?>plugins/bootstrap/bootstrap.css" rel="stylesheet">
         <link href="<?=base_url();?>css/bootstrap-table.css" rel="stylesheet">
-        <link href='http://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
         <link href="<?=base_url();?>css/iniciarSesion.css" rel="stylesheet" type="text/css" />
         <link href="<?=base_url();?>css/font-awesome-4.2.0/css/font-awesome.css" rel="stylesheet">        
         <link href="<?=base_url();?>css/style.css" rel="stylesheet">

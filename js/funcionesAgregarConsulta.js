@@ -27,3 +27,5 @@ $("#buscarPaciente").click(function(event) {
               }
           });
  });
+
+ 
