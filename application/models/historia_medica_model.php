@@ -35,7 +35,9 @@ class Historia_medica_model extends CI_Model {
         FROM tbl_historia_medica h
         LEFT JOIN tbl_consulta_medica c ON c.nro_historia_clinica = h.id_historia_medica
         INNER JOIN tbl_pacientes p      ON p.id_paciente = h.id_paciente
-        GROUP BY h.id_historia_medica');
+        GROUP BY h.id_historia_medica
+        ORDER BY ultimoControl DESC        
+        ');
         
         $results=[];
         foreach($query->result() as $row){
