@@ -37,11 +37,19 @@ class HistoriaMedica extends CI_Controller
         
         if ($this->session->userdata('idperfil') == 2 && $this->session->userdata('is_logued_in') == TRUE)
         {
-            // segment Permite recuperar un segmento específico del url
-            // es decir obtenemos el id del paciente via GET
+            /*************************************************************************************/
+            /** Cargamos EL ID DEL PACIENTE
+             *************************************************************************************/
             $idpaciente =  $this->uri->segment(3);
-            //cargamos los datos personales del paciente y los guardamos en un arreglo
+            
+            /*************************************************************************************/
+            /** Cargamos los datos personales del paciente y los guardamos en un arreglo
+             *************************************************************************************/
             $data["datos_paciente"] = $this->historia_medica_model->datosPaciente($idpaciente);
+            /*************************************************************************************/
+            /** FIN datos personales del paciente
+             *************************************************************************************/
+            
             
             $idusername                = $this->session->userdata('idusuario');
             $data['datos_profesional'] = $this->datos_profesional->datosProfesional($idusername);
@@ -66,23 +74,117 @@ class HistoriaMedica extends CI_Controller
     }
     
     /************************************************************************************************/
-    /* Recepcion de Datos Via JSON ANTECEDENTES FAMILIARES */
+    /* Recepcion de Datos Via JSON #ANTECEDENTES FAMILIARES#                                        */
     /************************************************************************************************/ 
-    public function jsonAntFamiliares(){ 
+    public function jsonAntFamiliares(){
      //obtenemos el id del paciente
      $idpaciente =  $this->uri->segment(3);
+     //retornamos los antecedentes familiares del paciente
      echo $this->historia_medica_model->ant_familiares($idpaciente);
     }
     
     /************************************************************************************************/
-    /* Recepcion de Datos Via JSON ANTECEDENTES MORBIDOS */
+    /* Recepcion de Datos Via JSON #ANTECEDENTES SOCIALES Y PERSONALES#                             */
+    /************************************************************************************************/ 
+    public function jsonAntSocialPersonal(){ 
+     //obtenemos el id del paciente
+     $idpaciente =  $this->uri->segment(3);
+     //retornamos los antecedentes sociales y personales del paciente
+     echo $this->historia_medica_model->antSocialesPersonales($idpaciente);
+    }
+    
+    /************************************************************************************************/
+    /* Recepcion de Datos Via JSON #PERSONAS DE CONTACTO#                                           */
+    /************************************************************************************************/ 
+    public function jsonAntPersonasContacto(){ 
+     //obtenemos el id del paciente
+     $idpaciente =  $this->uri->segment(3);
+     //retornamos las personas de contacto del paciente
+     echo $this->historia_medica_model->ant_personas_contacto($idpaciente);
+    }
+    
+    
+    /************************************************************************************************/
+    /* Recepcion de Datos Via JSON #ANTECEDENTES MORBIDOS#                                          */
     /************************************************************************************************/ 
     public function jsonAntMorbidos(){ 
      //obtenemos el id del paciente
      $idpaciente =  $this->uri->segment(3);
+     //retornamos los antecedentes morbidos del paciente
      echo $this->historia_medica_model->ant_morbidos($idpaciente);
     }
     
+    /************************************************************************************************/
+    /* Recepcion de Datos Via JSON #ANTECEDENTES GINECOOBSTÉTRICOS#                                          */
+    /************************************************************************************************/ 
+    public function jsonAntGineco(){ 
+     //obtenemos el id del paciente
+     $idpaciente =  $this->uri->segment(3);
+     //retornamos los antecedentes gineco... del paciente
+     echo $this->historia_medica_model->ant_gineco($idpaciente);
+    }
+    
+    /************************************************************************************************/
+    /* Recepcion de Datos Via JSON #ANTECEDENTES HABITOS#                                          */
+    /************************************************************************************************/ 
+    public function jsonAntHabitos(){ 
+     //obtenemos el id del paciente
+     $idpaciente =  $this->uri->segment(3);
+     //retornamos los habitos del paciente
+     echo $this->historia_medica_model->ant_habitos($idpaciente);
+    }
+    
+    
+    /************************************************************************************************/
+    /* Recepcion de Datos Via JSON #ANTECEDENTES MEDICAMENTO#                                        */
+    /************************************************************************************************/ 
+    public function jsonAntMedicamentos(){ 
+     //obtenemos el id del paciente
+     $idpaciente =  $this->uri->segment(3);
+     //retornamos los medicamentos del paciente
+     echo $this->historia_medica_model->ant_medicamentos($idpaciente);
+    }
+    
+    
+    /************************************************************************************************/
+    /* Recepcion de Datos Via JSON #ANTECEDENTES ALERGIAS#                                          */
+    /************************************************************************************************/ 
+    public function jsonAntAlergias(){ 
+     //obtenemos el id del paciente
+     $idpaciente =  $this->uri->segment(3);
+     //retornamos las alergias del paciente
+     echo $this->historia_medica_model->ant_alergias($idpaciente);
+    }
+    
+    /************************************************************************************************/
+    /* Recepcion de Datos Via JSON #ANTECEDENTES INMUNOLOGICOS (VACUNAS)#                           */
+    /************************************************************************************************/ 
+    public function jsonAntInmuno(){ 
+     //obtenemos el id del paciente
+     $idpaciente =  $this->uri->segment(3);
+     //retornamos las vacunas del paciente
+     echo $this->historia_medica_model->ant_inmuno($idpaciente);
+    }
+    
+    /************************************************************************************************/
+    /* Recepcion de Datos Via JSON #CONSULTAS MEDICAS#                                              */
+    /************************************************************************************************/ 
+    public function jsonAntConsultasMed(){ 
+     //obtenemos el id del paciente
+     $idpaciente =  $this->uri->segment(3);
+     //retornamos las vacunas del paciente
+     echo $this->historia_medica_model->ant_consultas_med($idpaciente);
+    }
+    
+    /************************************************************************************************/
+    /* Recepcion de Datos Via JSON #HISTORIAS MEDICAS RECIENTES#                                    */
+    /************************************************************************************************/ 
+    public function jsonHceRecientes(){ 
+     //obtenemos el id del paciente
+     $idpaciente =  $this->uri->segment(3);
+     //retornamos las vacunas del paciente
+     echo $this->historia_medica_model->hce_recientes();
+    }
     
   }
 /************************************************************************************************/
