@@ -20,90 +20,90 @@ class AdministrarCME_model extends CI_Model {
         function ingresarAntecedentesMorbidos(){
             $this->db->insert(
                     '',
-                    array('id_ant_morbido' =>,
-                        'id_paciente' =>,
-                        'nombre'=>,
-                        'tipo'=>,
-                        'fecha'=>,
-                        'diagnostico'=>));
+                    array(
+                        'nombre'=>$data[''],
+                        'tipo'=>$data[''],
+                        'fecha'=>$data[''],
+                        'diagnostico'=>$data['']));
         }
         
         function ingresarAntecedentesGinecoobstetricos(){
             $this->db->insert(
                     '',
-                    array('id_ant_gineco'=>,
-                        'id_consulta'=>,
-                        'gestas'=>,
-                        'partos'=>,
-                        'abortos'=>, 
-                        'vivos'=>,
-                        'muertos'=>,
-                        'menarquia'=>,
-                        'menopausia'=>,
-                        'fur'=>, 
-                        'metodo_anticonceptivo'=>, 
-                        'sintomas'=>, 
-                        'observaciones'=>));
+                    array(
+                        'id_consulta'=>$data[''],
+                        'id_consulta'=>$data[''],
+                        'gestas'=>$data[''],
+                        'partos'=>$data[''],
+                        'abortos'=>$data[''], 
+                        'vivos'=>$data[''],
+                        'muertos'=>$data[''],
+                        'menarquia'=>$data[''],
+                        'menopausia'=>$data[''],
+                        'fur'=>$data[''], 
+                        'metodo_anticonceptivo'=>$data[''], 
+                        'sintomas'=>$data[''], 
+                        'observaciones'=>$data['']));
         }
         
         function ingresarHabitos(){
             $this->db->insert(
                     '',
-                    array('id_ant_habitos'=>,
-                        'id_tipo_habito'=>,
-                        'id_consulta'=>,
-                        'descripcion'=>,
-                        'fecha_ingreso'=>));
+                    array(
+                        'id_tipo_habito'=>$data[''],
+                        'id_consulta'=>$data[''],
+                        'descripcion'=>$data[''],
+                        'fecha_ingreso'=>$data['']));
         }
         
         function ingresarMedicamentos(){
             $this->db->insert(
                     '',
-                    array('id_ant_med'=>,
-                        'id_consulta'=>,
-                        'id_med'=>,
-                        'fecha_inicio'=>, 
-                        'fecha_fin'=>,
-                        'duracion'=>,
-                        'indicaciones'=>));
+                    array(
+                        'id_consulta'=>$data[''],
+                        'id_med'=>$data[''],
+                        'fecha_inicio'=>$data[''], 
+                        'fecha_fin'=>$data[''],
+                        'duracion'=>$data[''],
+                        'indicaciones'=>$data['']));
         }
         
         function ingresarAlergias(){
             $this->db->insert(
                     '',
-                    array('id_ant_alergia'=>,
-                        'id_alergia'=>,
-                        'alergia'=>,
-                        'id_consulta'=>,
-                        'fecha_ingreso'=>,
-                        'descripcion'=>));
+                    array(
+                        'id_alergia'=>$data[''],
+                        'alergia'=>$data[''],
+                        'id_consulta'=>$data[''],
+                        'fecha_ingreso'=>$data[''],
+                        'descripcion'=>$data['']));
         }
         
         function ingresarAntecedentesSP(){
             $this->db->insert(
                     '',
-                    array('id_ant_social'=>,
-                        'id_consulta'=>,
-                        'ant_social'=>));
+                    array('id_ant_social'=>$data[''],
+                        'id_consulta'=>$data[''],
+                        'ant_social'=>$data['']));
         }
         
         function ingresarAntecedentesFamiliares(){
             $this->db->insert(
                     '',
-                    array('id_ant_familiares'=>, 
-                        'id_consulta'=>,
-                        'ant_familiar'=>));
+                    array(
+                        'id_consulta'=>$data[''],
+                        'ant_familiar'=>$data['']));
         }
         
         function ingresarInmunizaciones(){
             $this->db->insert(
                     '',
-                    array('id_ant_inmuno'=>, 
-                        'id_consulta'=>, 
-                        'id_inmunizacion'=>,
-                        'fecha_ingreso'=>, 
-                        'otras_inmunizaciones'=>,
-                        'observaciones'=>));
+                    array(
+                        'id_consulta'=>$data[''] ,
+                        'id_inmunizacion'=>$data[''],
+                        'fecha_ingreso'=>$data[''], 
+                        'otras_inmunizaciones'=>$data[''],
+                        'observaciones'=>$data['']));
         }
         
         // Desde aqui faltan tablas
