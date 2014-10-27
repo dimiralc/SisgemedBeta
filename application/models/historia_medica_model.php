@@ -52,6 +52,7 @@ class Historia_medica_model extends CI_Model {
                 'nombres'             =>$row->nombres,
                 'apellidos'           =>$row->apellidos,
                 'ultimoControl'       =>$ultimo_control,
+                'url'                =>'<a href="'.base_url().'historiaMedica/paciente/'.$row->id_paciente.'">Ver Historia Clínica</a>',
             );
         }
         
