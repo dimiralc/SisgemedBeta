@@ -42,7 +42,7 @@
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
                                     <div class="avatar">
-                                            <img src="<?=base_url();?>img/avatar04.png" class="img-rounded" alt="avatar" />
+                                            <img src="<?=base_url();?>img/photo.png" class="img-rounded" alt="avatar" />
                                             <!-- solucionar problema con la carga de imagenes -->
                                     </div>
                                     <i class="fa fa-angle-down pull-right"></i>
