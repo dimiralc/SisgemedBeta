@@ -1,7 +1,8 @@
 body {
   color: #525252;
   background: #6AA6D6 url(../img/devoops_pattern_b10.png) 0 0 repeat;
-  font-family: 'Ubuntu';
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: small;
 }
 .body-expanded, .modal-open {
   overflow-y:hidden;
@@ -23,7 +24,7 @@ h1, .h1, h2, .h2, h3, .h3 {
 }
 #logo a {
   color: #848484;
-  font-family: 'ubuntu';
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   display: block;
   font-size: 20px;
   line-height: 50px;
@@ -70,17 +71,18 @@ a.show-sidebar:hover {
   z-index: inherit;
   padding-bottom: 3000px !important;
   margin-bottom: -3000px !important;
-  background: #6AA6D6 url(../img/devoops_pattern_b10.png) 0 0 repeat;
+  background: #f8f8f8  0 0 repeat;
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
+  box-shadow:  0 6px 0  #131313;
 }
 #content {
   position: relative;
   z-index: 10;
   background: #ebebeb;
-  box-shadow: 0 0 6px #131313;
+  
   padding-bottom: 3000px !important;
   margin-bottom: -2980px !important;
   overflow: hidden;
@@ -99,8 +101,9 @@ a.show-sidebar:hover {
 }
 .nav.main-menu > li > a, .nav.msg-menu > li > a {
   text-align: center;
-  font-family: 'ubuntu';
-  color: #f0f0f0;
+  font-size: small;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  color: #525252;
   min-height: 40px;
   -webkit-transition: 0.2s;
   -moz-transition: 0.2s;
@@ -113,7 +116,7 @@ a.show-sidebar:hover {
 .nav.main-menu > li > a:hover, .nav.main-menu > li > a:focus, .nav.main-menu > li.active > a, .nav.main-menu .open > a, .nav.main-menu .open > a:hover, .nav.main-menu .open > a:focus, .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover, .dropdown-menu > li.active > a,
 .nav.msg-menu > li > a:hover, .nav.msg-menu > li > a:focus, .nav.msg-menu > li.active > a, .nav.msg-menu .open > a, .nav.msg-menu .open > a:hover, .nav.msg-menu .open > a:focus {
   background:rgba(0, 0, 0, 0.1);
-  color:#f0f0f0;
+  color:#f8f8f8;
 }
 .nav.main-menu a.active, .nav.msg-menu a.active {
   background:rgba(0, 0, 0, 0.2);
@@ -146,7 +149,7 @@ a.show-sidebar:hover {
   -moz-border-radius: 0 4px 4px 0;
   border-radius: 0 4px 4px 0;
   padding: 0;
-  background: #6AA6D6 url(../img/devoops_pattern_b10.png) 0 0 repeat;
+  background: #6AA6D6  0 0 repeat;
   box-shadow: none;
   visibility:hidden;
 }
