@@ -112,111 +112,231 @@ class AdministrarCME_model extends CI_Model {
         
         function ingresarSintomasGenerales($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_rev_general',
+                    array('id_rev_general'=>$data[''],
+                        'sintomas_detectados'=>$data[''],
+                        'comentarios'=>$data[''],
+                        'modificado_por'=>$data[''],
+                        'fecha_modificacion'=>$data[''],
+                        'id_consulta'=>$data['']                        
+                    ));
         }
         
         function ingresarSintomasRespiratorio($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_rev_respiratorio',
+                    array('id_rev_respiratorio'=>$data[''],
+                        'sintomas_detectados'=>$data[''],
+                        'comentarios'=>$data[''],
+                        'modificado_por'=>$data[''],
+                        'fecha_modificacion'=>$data[''],
+                        'id_consulta'=>$data['']
+                        ));
         }
         
         function ingresarSintomasCardiovascular($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_rev_cardiovascular',
+                    array('id_rev_cardiovascular'=>$data[''],
+                        'sintomas_detectados'=>$data[''],
+                        'comentarios'=>$data[''],
+                        'modificado_por'=>$data[''],
+                        'fecha_modificacion'=>$data[''],
+                        'id_consulta'=>$data['']
+                        ));
         }
         
         function ingresarSintomasGastrointestinal($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_rev_gastrointestinal',
+                    array('id_rev_gastrointestinal'=>$data[''],
+                        'id_consulta'=>$data[''],
+                        'sintomas_detectados'=>$data[''],
+                        'comentarios'=>$data[''],
+                        'modificado_por'=>$data[''],
+                        'fecha_modificacion'=>$data['']
+                        ));
         }
         
         function ingresarSintomasGenitourinario($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_rev_genitourinario',
+                    array('id_rev_genitourinario'=>$data[''],
+                        'id_consulta'=>$data[''],
+                        'sintomas_detectados'=>$data[''],
+                        'comentarios'=>$data[''],
+                        'modificado_por'=>$data[''],
+                        'fecha_modificacion'=>$data['']
+                        ));
         }
         
         function ingresarSintomasNeurologico($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_rev_neurologico',
+                    array('id_rev_neurologico'=>$data[''],
+                        'id_consulta'=>$data[''],
+                        'sintomas_detectados'=>$data[''],
+                        'comentarios'=>$data[''],
+                        'modificado_por'=>$data[''],
+                        'fecha_modificacion'=>$data['']
+                        ));
         }
         
         function ingresarSintomasEndocrino($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_rev_endocrino',
+                    array('id_rev_endocrino'=>$data[''],
+                        'id_consulta'=>$data[''],
+                        'sintomas_detectados'=>$data[''],
+                        'comentarios'=>$data[''],
+                        'modificado_por'=>$data[''],
+                        'fecha_modificacion'=>$data['']
+                        ));
         }
         
         function ingresarExamenPosicion($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_efg_decubito',
+                    array('id_efg_decubito'=>$data[''],
+                        'id_consulta'=>$data[''],
+                        'descripcion_posicion'=>$data[''],
+                        'descripcion_decubito'=>$data[''],
+                        'archivo'=>$data[''],
+                        'modificado_por'=>$data[''],
+                        'fecha_modificacion'=>$data['']
+                        ));
         }
         
         function ingresarExamenDeambulacion($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_efg_deambulacion',
+                    array('id_efg_deambulacion'=>$data[''],
+                        'id_consulta'=>$data[''],
+                        'trastornos_detectados'=>$data[''],
+                        'comentario'=>$data[''],
+                        'modificado_por'=>$data[''],
+                        'fecha_modificacion'=>$data['']
+                        ));
         }
         
         function ingresarExamenFacie($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_efg_facie',
+                    array('id_efg_facie'=>$data[''],
+                        'id_consulta'=>$data[''],
+                        'trastorno_detectado'=>$data[''],
+                        'comentario'=>$data[''],
+                        'modificado_por'=>$data[''],
+                        'fecha_modificacion'=>$data['']
+                        ));
         }
         
         function ingresarExamenConciencia($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_efg_conciencia',
+                    array('id_efg_conciencia'=>$data[''],
+                        'id_consulta'=>$data[''],
+                        'orientacion_tiempo'=>$data[''],
+                        'orientacion_espacio'=>$data[''],
+                        'reconocimiento_personas'=>$data[''],
+                        'nivel_conciencia'=>$data[''],
+                        'comentarios'=>$data[''],
+                        'modificado_por'=>$data[''],
+                        'fecha_modificacion'=>$data['']
+                        ));
         }
         
         function ingresarExamenConstitucion($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_efg_constitucion',
+                    array('id_efg_constitucion'=>$data[''],
+                        'id_consulta'=>$data[''],
+                        'tipo_constitucion'=>$data[''],
+                        'peso'=>$data[''],
+                        'altura'=>$data[''],
+                        'imc'=>$data[''],
+                        'archivo'=>$data[''],
+                        'modificado_por'=>$data[''],
+                        'fecha_modificacion'=>$data['']
+                        ));
         }
         
         function ingresarExamenPiel($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_efg_piel',
+                    array('id_efg_piel'=>$data[''],
+                        'id_consulta'=>$data[''],
+                        'color'=>$data[''],
+                        'humedad'=>$data[''],
+                        'untuosidad'=>$data[''],
+                        'turgor'=>$data[''],
+                        'elasticidad'=>$data[''],
+                        'temperatura'=>$data[''],
+                        'trastorno_detectado'=>$data[''],
+                        'comentario'=>$data[''],
+                        'archivo'=>$data[''],
+                        'modificado_por'=>$data[''],
+                        'fecha_modifacion'=>$data['']
+                        ));
         }
         
         function ingresarExamenLinfatico($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_efg_linfatico',
+                    array('id_efg_linfatico', 'id_consulta', 'adenopatia', 'cometarios', 'archivo', 'modificado_por', 'fecha_modificacion'
+                        ));
         }
         
         function ingresarExamenRespiracion($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_efg_respiratorio',
+                    array('id_efg_respiratorio'=>$data[''],
+                        'rpm'=>$data[''],
+                        'archivo'=>$data[''],
+                        'modificado_por'=>$data[''],
+                        'fecha_modificacion'=>$data[''],
+                        'id_consulta'=>$data['']
+                        ));
         }
         
         function ingresarExamenTemperatura($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_efg_temperatura',
+                    array('id_efg_temperatura'=>$data[''],
+                        'id_consulta'=>$data[''],
+                        'grados_celcius'=>$data[''],
+                        'archivo'=>$data[''],
+                        'modificado_por'=>$data[''],
+                        'fecha_modificacion'=>$data['']
+                        ));
         }
         
         function ingresarExamenPP($data){
             $this->db->insert(
-                    '',
-                    array());
+                    'tbl_efg_presion_pulso',
+                    array('id_efg_presion_pulso'=>$data[''],
+                        'id_consulta'=>$data[''],
+                        'presion'=>$data[''],
+                        'pulso'=>$data[''],
+                        'archivo'=>$data[''],
+                        'izq_carotideo'=>$data[''],
+                        'izq_braquial'=>$data[''],
+                        'izq_radial'=>$data[''],
+                        'izq_femoral'=>$data[''],
+                        'izq_poplitea'=>$data[''],
+                        'izq_tibial'=>$data[''],
+                        'izq_pedia'=>$data[''],
+                        'der_carotideo'=>$data[''],
+                        'der_braquial'=>$data[''],
+                        'der_radial'=>$data[''],
+                        'der_femoral'=>$data[''],
+                        'der_poplitea'=>$data[''],
+                        'der_tibial'=>$data[''],
+                        'der_pedio'=>$data[''],
+                        'modificado_por'=>$data[''],
+                        'fecha_modificacion'=>$data['']
+                        ));
         }
         
-        
-        
-        
-
-
 }
-
 ?>
