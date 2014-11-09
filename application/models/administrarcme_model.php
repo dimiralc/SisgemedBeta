@@ -8,7 +8,7 @@ class AdministrarCME_model extends CI_Model {
         
         function ingresarConsultaBase($data){
             date_default_timezone_set("Chile/Continental");
-            $fecha=strftime( "%Y-%m-%d-%H-%M-%S", time() );
+            $fecha=strftime( "%Y-%m-%d-%H-%M-%S", time());
             $this->db->insert(
                     'tbl_consulta_medica',
                     array(

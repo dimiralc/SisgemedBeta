@@ -11,6 +11,7 @@
 <script src="<?=base_url();?>/js/bootstrap-datepicker.js" type="text/javascript"></script>
 <script src="<?=base_url();?>js/sweet-alert.min.js" type="text/javascript"></script>
 <script src="<?=base_url();?>js/funcionesAgregarConsulta.js" type="text/javascript"></script>
+<script src="<?=base_url();?>js/funcionesAgregarPaciente.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function() {
     $( "#fecnac" ).datepicker();
