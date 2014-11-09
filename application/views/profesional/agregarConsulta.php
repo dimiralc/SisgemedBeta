@@ -38,9 +38,7 @@
 						<div class="form-group">
 							<label class="col-sm-4 control-label">Busqueda por ID, RUT o DNI de Paciente</label>
                                                         <div class="col-sm-4">
-                                                            <?php $attrBusqueda = array('x-webkit-speech'=>'x-webkit-speech');?>
-                                                            <?= form_input($buscarPaciente)?>
-                                                            <input speech x-webkit-speech name="reconocimiento" />
+                                                            <?= form_input($buscarPaciente)?>                                                            
                                                         </div>
 							<div class="col-sm-4">
                                                             <button type="button" class="btn btn-primary btn-label-left" id="buscarPaciente" name="btoPaciente">
