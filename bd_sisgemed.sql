@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.1.6
+-- version 4.0.9
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-10-2014 a las 20:57:24
--- Versión del servidor: 5.6.16
--- Versión de PHP: 5.5.9
+-- Tiempo de generación: 05-11-2014 a las 01:59:51
+-- Versión del servidor: 5.5.34
+-- Versión de PHP: 5.4.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,6 +19,62 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `bd_sisgemed`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `int_paciente_anticonceptivos`
+--
+
+CREATE TABLE IF NOT EXISTS `int_paciente_anticonceptivos` (
+  `id_paciente_anticonceptivos` int(11) NOT NULL,
+  `id_paciente` int(11) NOT NULL,
+  `id_anticonceptivo` int(11) NOT NULL,
+  `id_consulta` int(11) NOT NULL,
+  PRIMARY KEY (`id_paciente_anticonceptivos`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `int_paciente_ginecoobstetrico`
+--
+
+CREATE TABLE IF NOT EXISTS `int_paciente_ginecoobstetrico` (
+  `id_paciente_ginecoobstetrico` int(11) NOT NULL AUTO_INCREMENT,
+  `id_paciente` int(11) NOT NULL,
+  `id_ginecoobstetrico` int(11) NOT NULL,
+  `id_consulta` int(11) NOT NULL,
+  PRIMARY KEY (`id_paciente_ginecoobstetrico`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `int_paciente_respiratorio`
+--
+
+CREATE TABLE IF NOT EXISTS `int_paciente_respiratorio` (
+  `id_paciente_respiratorio` int(11) NOT NULL AUTO_INCREMENT,
+  `id_paciente` int(11) NOT NULL,
+  `id_respiratorio` int(11) NOT NULL,
+  `id_consulta` int(11) NOT NULL,
+  PRIMARY KEY (`id_paciente_respiratorio`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `int_paciente_sintomas`
+--
+
+CREATE TABLE IF NOT EXISTS `int_paciente_sintomas` (
+  `id_paciente_sintomas` int(11) NOT NULL AUTO_INCREMENT,
+  `id_paciente` int(11) NOT NULL,
+  `id_sintomas` int(11) NOT NULL,
+  `id_consulta` int(11) NOT NULL,
+  PRIMARY KEY (`id_paciente_sintomas`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -66,7 +122,20 @@ CREATE TABLE IF NOT EXISTS `tbl_alergias` (
   `sintomatologia` varchar(150) NOT NULL,
   `indicaciones` varchar(150) NOT NULL,
   PRIMARY KEY (`cod_alergia`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Volcado de datos para la tabla `tbl_alergias`
+--
+
+INSERT INTO `tbl_alergias` (`cod_alergia`, `nombre_alergia`, `alergeno_detectado`, `zona_afectada`, `sintomatologia`, `indicaciones`) VALUES
+(1, 'alimentos', '', '', '', ''),
+(2, 'ambiente', '', '', '', ''),
+(3, 'animales', '', '', '', ''),
+(4, 'medicamentos', '', '', '', ''),
+(5, 'contacto con la Piel', '', '', '', ''),
+(6, 'sustancias', '', '', '', ''),
+(7, 'picaduras', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -75,9 +144,28 @@ CREATE TABLE IF NOT EXISTS `tbl_alergias` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_ant_alergias` (
-  `id_ant_alergias` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_ant_alergias`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `id_ant_alergia` int(11) NOT NULL AUTO_INCREMENT,
+  `id_alergia` int(11) NOT NULL,
+  `alergia` varchar(100) NOT NULL,
+  `id_consulta` int(11) NOT NULL,
+  `fecha_ingreso` date NOT NULL,
+  `descripcion` text NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  PRIMARY KEY (`id_ant_alergia`),
+  KEY `alergias_alergia` (`id_alergia`),
+  KEY `consulta_alergias` (`id_consulta`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `tbl_ant_alergias`
+--
+
+INSERT INTO `tbl_ant_alergias` (`id_ant_alergia`, `id_alergia`, `alergia`, `id_consulta`, `fecha_ingreso`, `descripcion`, `modificado_por`) VALUES
+(1, 4, 'penicilina', 1, '2014-10-24', 'adasdadasd', ''),
+(2, 4, 'antibióticos', 1, '2014-10-24', 'sdasdasd adasd', ''),
+(3, 1, 'mariscos', 1, '2014-10-24', 'Las sustancias causantes de las alergias no son los alimentos en sí mismos, sino algunas de las proteínas que forman parte de su composición que se denominan alérgenos.', ''),
+(4, 6, 'pólen', 1, '2014-10-24', 'La polinización se ve influenciada por las condiciones climáticas: las jornadas con viento y calurosas favorecen la difusión del polen; las jornadas lluviosas, por el contrario, provocan la disminución de la concentración de polen en el ambiente.', ''),
+(5, 7, 'abejas', 1, '2014-10-24', 'Cuando nos pican, inyectan una serie de sustancias tóxicas, que provocan una reacción leve de enrojecimiento en todas las personas, pero que desencadenan la reacción alérgica en las personas alérgicas a las picaduras de ciertos insectos.', '');
 
 -- --------------------------------------------------------
 
@@ -87,29 +175,20 @@ CREATE TABLE IF NOT EXISTS `tbl_ant_alergias` (
 
 CREATE TABLE IF NOT EXISTS `tbl_ant_familiares` (
   `id_ant_familiares` int(11) NOT NULL AUTO_INCREMENT,
-  `id_paciente` int(11) NOT NULL,
-  `nombres` varchar(100) NOT NULL,
-  `apellidos` varchar(100) NOT NULL,
-  `rut` varchar(50) NOT NULL,
-  `parentesco` varchar(100) NOT NULL,
-  `enfermedades` varchar(255) NOT NULL,
-  `edad` int(11) NOT NULL,
-  `estado` tinyint(1) NOT NULL,
-  `observaciones` text NOT NULL,
+  `id_consulta` int(11) NOT NULL,
+  `ant_familiar` text NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
   PRIMARY KEY (`id_ant_familiares`),
-  KEY `familiar_paciente` (`id_paciente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  KEY `fc` (`id_consulta`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `tbl_ant_familiares`
 --
 
-INSERT INTO `tbl_ant_familiares` (`id_ant_familiares`, `id_paciente`, `nombres`, `apellidos`, `rut`, `parentesco`, `enfermedades`, `edad`, `estado`, `observaciones`) VALUES
-(1, 4, 'cristian alejandro', 'vidal muñoz', '17484496-8', 'hermano', 'Diabetes mellitus,Cardiopatía hipertensiva', 24, 1, 'Los síntomas más frecuentes suelen ser dificultad respiratoria, tos —incluyendo tos sanguinolenta— y pérdida de peso,3 así como dolor torácico, ronquera e hinchazón en el cuello y la cara.'),
-(2, 4, 'gustavo alexis', 'vidal muñoz', '17484496-9', 'hermano', 'sin enfermedades', 22, 1, 'Salud perfecta'),
-(3, 4, 'jose manuel', 'vidal flores', '20777777-9', 'padre', 'Diabetes mellitus, Cardiopatía hipertensiva', 47, 1, 'conjunto de trastornos metabólicos...'),
-(4, 4, 'maria del carmen', 'muñoz perez', '88888888-9', 'abuela', 'Diabetes mellitus, Cardiopatía hipertensiva, Cánceres de traquea, bronquios o pulmón', 850, 0, 'paciente cronico, fallecio el 15/03/2014'),
-(6, 4, 'prueba', 'prueba', '99-9', 'nada', '', 20, 0, 'esto es una prueba');
+INSERT INTO `tbl_ant_familiares` (`id_ant_familiares`, `id_consulta`, `ant_familiar`, `modificado_por`, `fecha_modificacion`) VALUES
+(1, 1, 'su padre y una tía fueron diabéticos, su madre fue hipertensa. Ademas sus abuelos están muertos.', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -119,8 +198,30 @@ INSERT INTO `tbl_ant_familiares` (`id_ant_familiares`, `id_paciente`, `nombres`,
 
 CREATE TABLE IF NOT EXISTS `tbl_ant_ginecoobstetricos` (
   `id_ant_gineco` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_ant_gineco`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `id_consulta` int(11) NOT NULL,
+  `gestas` int(11) NOT NULL,
+  `partos` int(11) NOT NULL,
+  `abortos` int(11) NOT NULL,
+  `vivos` int(11) NOT NULL,
+  `muertos` int(11) NOT NULL,
+  `menarquia` varchar(100) NOT NULL,
+  `menopausia` varchar(100) NOT NULL,
+  `fur` date NOT NULL,
+  `metodo_anticonceptivo` varchar(100) NOT NULL,
+  `sintomas` varchar(255) NOT NULL,
+  `observaciones` text NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  PRIMARY KEY (`id_ant_gineco`),
+  KEY `gineco_consulta` (`id_consulta`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Volcado de datos para la tabla `tbl_ant_ginecoobstetricos`
+--
+
+INSERT INTO `tbl_ant_ginecoobstetricos` (`id_ant_gineco`, `id_consulta`, `gestas`, `partos`, `abortos`, `vivos`, `muertos`, `menarquia`, `menopausia`, `fur`, `metodo_anticonceptivo`, `sintomas`, `observaciones`, `modificado_por`, `fecha_modificacion`) VALUES
+(1, 1, 2, 2, 0, 2, 0, 'menor a 10 años', 'entre 45 - 55 años', '2014-10-23', 'píldora anticonceptiva.', 'Dismenorrea, Hipermenorrea, Polimenorrea ', 'ejm: Menopausia a los 52 años. Tuvo 2 hijos de término, uno de los cuales pesó 4.200 gramos al nacer. No se ha efectuado controles ginecológicos ni mamografías en los últimos años.', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -130,8 +231,24 @@ CREATE TABLE IF NOT EXISTS `tbl_ant_ginecoobstetricos` (
 
 CREATE TABLE IF NOT EXISTS `tbl_ant_habitos` (
   `id_ant_habitos` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_ant_habitos`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `id_tipo_habito` int(11) NOT NULL,
+  `id_consulta` int(11) NOT NULL,
+  `descripcion` text NOT NULL,
+  `fecha_ingreso` date NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  PRIMARY KEY (`id_ant_habitos`),
+  KEY `tipo_habito` (`id_tipo_habito`),
+  KEY `habitos_consulta` (`id_consulta`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `tbl_ant_habitos`
+--
+
+INSERT INTO `tbl_ant_habitos` (`id_ant_habitos`, `id_tipo_habito`, `id_consulta`, `descripcion`, `fecha_ingreso`, `modificado_por`) VALUES
+(1, 1, 1, 'Ocasionalmente toma una copa de vino con las comidas. ', '2014-10-24', '0'),
+(2, 4, 1, 'Fumó un promedio de 12 cigarrillos diarios, durante 20 años. Dejó de fumar 10 años atrás.', '2014-10-24', '0'),
+(3, 2, 1, 'Ocasionalmente fuma marihuana.', '2014-10-24', '0');
 
 -- --------------------------------------------------------
 
@@ -141,8 +258,31 @@ CREATE TABLE IF NOT EXISTS `tbl_ant_habitos` (
 
 CREATE TABLE IF NOT EXISTS `tbl_ant_inmunizaciones` (
   `id_ant_inmuno` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_ant_inmuno`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `id_consulta` int(11) NOT NULL,
+  `id_inmunizacion` int(11) NOT NULL,
+  `fecha_ingreso` date NOT NULL,
+  `otras_inmunizaciones` varchar(255) NOT NULL,
+  `observaciones` text NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  PRIMARY KEY (`id_ant_inmuno`),
+  KEY `tipo_inmunizacion` (`id_inmunizacion`),
+  KEY `consulta_inmuno` (`id_consulta`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Volcado de datos para la tabla `tbl_ant_inmunizaciones`
+--
+
+INSERT INTO `tbl_ant_inmunizaciones` (`id_ant_inmuno`, `id_consulta`, `id_inmunizacion`, `fecha_ingreso`, `otras_inmunizaciones`, `observaciones`, `modificado_por`, `fecha_modificacion`) VALUES
+(1, 1, 2, '2014-10-24', '', 'fiebre mayor 37.5°C, Decaimiento , Escalofrios.', '', '0000-00-00'),
+(2, 1, 6, '2014-10-24', '', 'fiebre mayor 37.5°C', '', '0000-00-00'),
+(3, 1, 8, '2014-10-24', '', 'Decaimiento , Puede durar hasta 3 días. ', '', '0000-00-00'),
+(4, 1, 11, '2014-10-24', '', 'sadasd', '', '0000-00-00'),
+(5, 1, 12, '2014-10-24', '', 'fiebre mayor 37.5°C, Decaimiento , Escalofrios. ', '', '0000-00-00'),
+(6, 1, 14, '2014-10-24', '', 'fiebre mayor 37.5°C, Decaimiento , Escalofrios. ', '', '0000-00-00'),
+(7, 1, 15, '2014-10-24', '', 'decaimiento , Puede durar hasta 3 días.', '', '0000-00-00'),
+(8, 1, 16, '2014-10-24', '', 'asdasdasd', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -152,8 +292,30 @@ CREATE TABLE IF NOT EXISTS `tbl_ant_inmunizaciones` (
 
 CREATE TABLE IF NOT EXISTS `tbl_ant_medicamentos` (
   `id_ant_med` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_ant_med`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `id_consulta` int(11) NOT NULL,
+  `id_med` int(11) NOT NULL,
+  `fecha_inicio` date NOT NULL,
+  `fecha_fin` date NOT NULL,
+  `duracion` int(11) NOT NULL,
+  `indicaciones` text NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  PRIMARY KEY (`id_ant_med`),
+  KEY `med_medicamento` (`id_med`),
+  KEY `consulta_med` (`id_consulta`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+
+--
+-- Volcado de datos para la tabla `tbl_ant_medicamentos`
+--
+
+INSERT INTO `tbl_ant_medicamentos` (`id_ant_med`, `id_consulta`, `id_med`, `fecha_inicio`, `fecha_fin`, `duracion`, `indicaciones`, `modificado_por`, `fecha_modificacion`) VALUES
+(12, 1, 1, '2014-10-24', '2014-10-25', 3, '1 tableta en la mañana.', '', '0000-00-00'),
+(13, 1, 300, '2014-10-24', '2014-10-28', 5, '1 tableta al desayuno y 1 tableta con la comida.', '', '0000-00-00'),
+(14, 1, 200, '2014-10-24', '2014-10-29', 6, '1 tableta cada mañana.', '', '0000-00-00'),
+(15, 1, 180, '2014-10-24', '2014-10-30', 8, '1 tableta cada mañana.', '', '0000-00-00'),
+(16, 1, 150, '2014-10-24', '2014-10-25', 2, '1 tableta con la comida.', '', '0000-00-00'),
+(17, 1, 600, '2014-10-24', '2014-10-27', 4, '1 tableta cada mañana.', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -163,23 +325,23 @@ CREATE TABLE IF NOT EXISTS `tbl_ant_medicamentos` (
 
 CREATE TABLE IF NOT EXISTS `tbl_ant_morbidos` (
   `id_ant_morbido` int(11) NOT NULL AUTO_INCREMENT,
-  `id_paciente` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `tipo` char(1) NOT NULL,
   `fecha` date NOT NULL,
   `diagnostico` text NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
   PRIMARY KEY (`id_ant_morbido`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Volcado de datos para la tabla `tbl_ant_morbidos`
 --
 
-INSERT INTO `tbl_ant_morbidos` (`id_ant_morbido`, `id_paciente`, `nombre`, `tipo`, `fecha`, `diagnostico`) VALUES
-(1, 4, 'Diabetes Mellitus', 'E', '2014-10-18', 'Diabetes Mellitus del adulto, diagnosticada 10 años atrás. Se trata con régimen e hipoglicemiantes orales.'),
-(2, 4, 'Hipertensión arterial', 'E', '2014-10-19', 'Hipertensión arterial de 8 años de evolución'),
-(3, 4, 'Contusión', 'T', '2014-10-20', 'Es un tipo de lesión conocido como cardenal y chichón. No existe fractura en la piel recubridora del tejido afectado. Su importancia no depende tanto de la violencia del agente traumático como del órgano adyacente: cerebro, pulmón, abdomen. Los síntomas característicos de las contusiones, según la región afectada y el impacto del golpe, oscilan entre los vértigos y la depresión vital del organismo pasando por los zumbidos de oídos, la taquicardia, los vómitos, la pérdida de conciencia.'),
-(4, 4, 'RINOPLASTIA', 'O', '2014-10-21', 'Nariz inestética (grande o no).Desviación del tabique.');
+INSERT INTO `tbl_ant_morbidos` (`id_ant_morbido`, `nombre`, `tipo`, `fecha`, `diagnostico`, `modificado_por`) VALUES
+(1, 'Diabetes Mellitus', 'E', '2014-10-18', 'Diabetes Mellitus del adulto, diagnosticada 10 años atrás. Se trata con régimen e hipoglicemiantes orales.', ''),
+(2, 'Hipertensión arterial', 'E', '2014-10-19', 'Hipertensión arterial de 8 años de evolución', ''),
+(3, 'Contusión', 'T', '2014-10-20', 'Es un tipo de lesión conocido como cardenal y chichón. No existe fractura en la piel recubridora del tejido afectado. Su importancia no depende tanto de la violencia del agente traumático como del órgano adyacente: cerebro, pulmón, abdomen. Los síntomas característicos de las contusiones, según la región afectada y el impacto del golpe, oscilan entre los vértigos y la depresión vital del organismo pasando por los zumbidos de oídos, la taquicardia, los vómitos, la pérdida de conciencia.', ''),
+(4, 'RINOPLASTIA', 'O', '2014-10-21', 'Nariz inestética (grande o no).Desviación del tabique.', '');
 
 -- --------------------------------------------------------
 
@@ -189,18 +351,20 @@ INSERT INTO `tbl_ant_morbidos` (`id_ant_morbido`, `id_paciente`, `nombre`, `tipo
 
 CREATE TABLE IF NOT EXISTS `tbl_ant_sociales` (
   `id_ant_social` int(11) NOT NULL AUTO_INCREMENT,
-  `id_paciente` int(11) NOT NULL,
+  `id_consulta` int(11) NOT NULL,
   `ant_social` text NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
   PRIMARY KEY (`id_ant_social`),
-  KEY `paciente_ant_social` (`id_paciente`)
+  KEY `consulta_ant_social` (`id_consulta`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Volcado de datos para la tabla `tbl_ant_sociales`
 --
 
-INSERT INTO `tbl_ant_sociales` (`id_ant_social`, `id_paciente`, `ant_social`) VALUES
-(1, 4, 'El paciente vive con su esposa y una hija. Tiene dos hijos casados. Desempeña labores de casa. El apoyo que tiene de su familia es muy bueno');
+INSERT INTO `tbl_ant_sociales` (`id_ant_social`, `id_consulta`, `ant_social`, `modificado_por`, `fecha_modificacion`) VALUES
+(1, 1, 'El paciente vive con su esposa y una hija. Tiene dos hijos casados. Desempeña labores de casa. El apoyo que tiene de su familia es muy bueno', '', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -573,15 +737,29 @@ INSERT INTO `tbl_comunas` (`cod_comuna`, `nom_comuna`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_consulta_medica` (
-  `cod_consulta` int(11) NOT NULL AUTO_INCREMENT,
-  `fecha_consulta` date NOT NULL,
+  `id_consulta` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha_consulta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `nro_historia_clinica` int(11) NOT NULL,
-  `id_paciente` varchar(50) NOT NULL,
   `motivo_consulta` varchar(250) NOT NULL,
-  `anamnesis_proxima` varchar(250) NOT NULL,
-  `hipotesis_diagnostica` varchar(250) NOT NULL,
-  PRIMARY KEY (`cod_consulta`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `anamnesis_proxima` text NOT NULL,
+  `hipotesis_diagnostica` text NOT NULL,
+  PRIMARY KEY (`id_consulta`),
+  KEY `historia_consulta` (`nro_historia_clinica`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
+
+--
+-- Volcado de datos para la tabla `tbl_consulta_medica`
+--
+
+INSERT INTO `tbl_consulta_medica` (`id_consulta`, `fecha_consulta`, `nro_historia_clinica`, `motivo_consulta`, `anamnesis_proxima`, `hipotesis_diagnostica`) VALUES
+(1, '2014-10-24 20:30:54', 1, 'mal control de su diabetes mellitus.', 'paciente portadora de una diabetes mellitus, controlada con régimen (que sigue en forma irregular), e hipoglicemiantes orales. Desde hace unos dos a tres meses presenta polidipsia, poliuria y ha bajado de peso. Las veces que se ha controlado la glicemia, ha estado sobre 200 mg/dL. Desde tres días atrás comenzó a notar disuria dolorosa y poliaquiuria. También ha sentido un dolor sordo ubicado en la región lumbar derecha y cree haber tenido fiebre, pero no se la ha registrado. La orina la ha notado más fuerte de olor.', ''),
+(15, '0000-00-00 00:00:00', 9, 'asdfdgfdg', 'dfgdfgfdg', 'sdfgfdgdfgsdfg'),
+(16, '2014-10-27 21:47:38', 9, 'nñkdfpñdfslkgnjdsfñgijl', '{odfmkgnñsdflkgn.sdfñgkljn.dsfgñkdfg', 'ijñolnke{iñodjgndfñogidsfg'),
+(17, '2014-10-27 17:50:47', 9, 'ñnkd.fklñjdsmfdsf', 'fgdsfsdfasdsa', 'dasdsadsadsad'),
+(18, '2014-10-27 17:56:44', 10, 'sajdnsakd', 'asdsajbdlkads', 'dskjfnsda.lkfn'),
+(19, '2014-10-27 18:05:02', 11, 'mjhkjgjgjg', 'bkhkkjhkh', 'ghfhyfhfhyrf'),
+(20, '2014-10-28 15:51:34', 12, 'Depresion para variar', 'Se va a mejorar muy pronto', 'Cualquier cosa'),
+(21, '2014-11-03 18:21:25', 9, 'Paciente dice sentirse estresado', 'Paciente presenta trastornos de sueño.', 'Se va a morir. Copéro');
 
 -- --------------------------------------------------------
 
@@ -653,6 +831,207 @@ INSERT INTO `tbl_diagnosticos` (`cod_diagnostico`, `sistema_afectado`, `desc_dia
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_efg_conciencia`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_efg_conciencia` (
+  `id_efg_conciencia` int(11) NOT NULL AUTO_INCREMENT,
+  `id_consulta` int(11) NOT NULL,
+  `orientacion_tiempo` varchar(150) NOT NULL,
+  `orientacion_espacio` varchar(150) NOT NULL,
+  `reconocimiento_personas` varchar(150) NOT NULL,
+  `nivel_conciencia` varchar(150) NOT NULL,
+  `comentarios` varchar(200) NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  PRIMARY KEY (`id_efg_conciencia`),
+  KEY `id_consulta` (`id_consulta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_efg_constitucion`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_efg_constitucion` (
+  `id_efg_constitucion` int(11) NOT NULL AUTO_INCREMENT,
+  `id_consulta` int(11) NOT NULL,
+  `tipo_constitucion` varchar(150) NOT NULL,
+  `peso` int(11) NOT NULL,
+  `altura` int(11) NOT NULL,
+  `imc` int(11) NOT NULL,
+  `archivo` varchar(150) NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  PRIMARY KEY (`id_efg_constitucion`),
+  KEY `id_consulta` (`id_consulta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_efg_deambulacion`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_efg_deambulacion` (
+  `id_efg_deambulacion` int(11) NOT NULL AUTO_INCREMENT,
+  `id_consulta` int(11) NOT NULL,
+  `trastornos_detectados` varchar(300) NOT NULL,
+  `comentario` varchar(200) NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  PRIMARY KEY (`id_efg_deambulacion`),
+  KEY `id_consulta` (`id_consulta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_efg_decubito`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_efg_decubito` (
+  `id_efg_decubito` int(11) NOT NULL AUTO_INCREMENT,
+  `id_consulta` int(11) NOT NULL,
+  `descripcion_posicion` varchar(150) NOT NULL,
+  `descripcion_decubito` varchar(150) NOT NULL,
+  `archivo` varchar(150) NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  PRIMARY KEY (`id_efg_decubito`),
+  KEY `id_consulta` (`id_consulta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_efg_facie`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_efg_facie` (
+  `id_efg_facie` int(11) NOT NULL AUTO_INCREMENT,
+  `id_consulta` int(11) NOT NULL,
+  `trastorno_detectado` varchar(300) NOT NULL,
+  `comentario` varchar(200) NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  PRIMARY KEY (`id_efg_facie`),
+  KEY `id_consulta` (`id_consulta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_efg_linfatico`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_efg_linfatico` (
+  `id_efg_linfatico` int(11) NOT NULL AUTO_INCREMENT,
+  `id_consulta` int(11) NOT NULL,
+  `adenopatia` varchar(200) NOT NULL,
+  `cometarios` varchar(150) NOT NULL,
+  `archivo` varchar(150) NOT NULL,
+  `modificado_por` varchar(150) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  PRIMARY KEY (`id_efg_linfatico`),
+  KEY `id_consulta` (`id_consulta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_efg_piel`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_efg_piel` (
+  `id_efg_piel` int(11) NOT NULL AUTO_INCREMENT,
+  `id_consulta` int(11) NOT NULL,
+  `color` varchar(200) NOT NULL,
+  `humedad` varchar(200) NOT NULL,
+  `untuosidad` varchar(200) NOT NULL,
+  `turgor` varchar(200) NOT NULL,
+  `elasticidad` varchar(200) NOT NULL,
+  `temperatura` varchar(150) NOT NULL,
+  `trastorno_detectado` varchar(300) NOT NULL,
+  `comentario` varchar(200) NOT NULL,
+  `archivo` varchar(150) NOT NULL,
+  `modificado_por` varchar(150) NOT NULL,
+  `fecha_modifacion` date NOT NULL,
+  PRIMARY KEY (`id_efg_piel`),
+  KEY `id_consulta` (`id_consulta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_efg_presion_pulso`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_efg_presion_pulso` (
+  `id_efg_presion_pulso` int(11) NOT NULL AUTO_INCREMENT,
+  `id_consulta` int(11) NOT NULL,
+  `presion` int(11) NOT NULL,
+  `pulso` int(11) NOT NULL,
+  `archivo` varchar(150) NOT NULL,
+  `izq_carotideo` varchar(20) NOT NULL,
+  `izq_braquial` varchar(20) NOT NULL,
+  `izq_radial` varchar(20) NOT NULL,
+  `izq_femoral` varchar(20) NOT NULL,
+  `izq_poplitea` varchar(20) NOT NULL,
+  `izq_tibial` varchar(20) NOT NULL,
+  `izq_pedia` varchar(20) NOT NULL,
+  `der_carotideo` varchar(20) NOT NULL,
+  `der_braquial` varchar(20) NOT NULL,
+  `der_radial` varchar(20) NOT NULL,
+  `der_femoral` varchar(20) NOT NULL,
+  `der_poplitea` varchar(20) NOT NULL,
+  `der_tibial` varchar(20) NOT NULL,
+  `der_pedio` varchar(20) NOT NULL,
+  `modificado_por` varchar(150) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  PRIMARY KEY (`id_efg_presion_pulso`),
+  KEY `id_consulta` (`id_consulta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_efg_respiratorio`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_efg_respiratorio` (
+  `id_efg_respiratorio` int(11) NOT NULL AUTO_INCREMENT,
+  `rpm` int(11) NOT NULL,
+  `archivo` varchar(150) NOT NULL,
+  `modificado_por` varchar(150) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  `id_consulta` int(11) NOT NULL,
+  PRIMARY KEY (`id_efg_respiratorio`),
+  KEY `id_consulta` (`id_consulta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_efg_temperatura`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_efg_temperatura` (
+  `id_efg_temperatura` int(11) NOT NULL AUTO_INCREMENT,
+  `id_consulta` int(11) NOT NULL,
+  `grados_celcius` int(11) NOT NULL,
+  `archivo` varchar(150) NOT NULL,
+  `modificado_por` varchar(150) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  PRIMARY KEY (`id_efg_temperatura`),
+  KEY `id_consulta` (`id_consulta`),
+  KEY `id_consulta_2` (`id_consulta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_especialidades`
 --
 
@@ -704,18 +1083,25 @@ INSERT INTO `tbl_estado_civil` (`id_estado_civil`, `estado_civil`) VALUES
 CREATE TABLE IF NOT EXISTS `tbl_historia_medica` (
   `id_historia_medica` int(11) NOT NULL AUTO_INCREMENT,
   `id_paciente` int(11) NOT NULL,
-  `datos` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_historia_medica`,`id_paciente`),
-  KEY `historia_med_paciente` (`id_paciente`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `datos` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_historia_medica`),
+  UNIQUE KEY `historia_med_paciente` (`id_paciente`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
 -- Volcado de datos para la tabla `tbl_historia_medica`
 --
 
-INSERT INTO `tbl_historia_medica` (`id_historia_medica`, `id_paciente`, `datos`) VALUES
-(1, 4, 'adasdasd'),
-(2, 1, 'asdas');
+INSERT INTO `tbl_historia_medica` (`id_historia_medica`, `id_paciente`, `fecha_creacion`, `datos`) VALUES
+(1, 4, '2014-10-24 20:20:54', ''),
+(2, 3, '2014-10-27 02:06:16', ''),
+(9, 12, '2014-10-27 04:39:17', ''),
+(10, 13, '2014-10-27 17:56:02', ''),
+(11, 14, '2014-10-27 18:02:48', ''),
+(12, 15, '2014-10-28 15:50:11', ''),
+(13, 16, '2014-10-30 20:02:16', ''),
+(14, 17, '2014-10-30 20:05:23', '');
 
 -- --------------------------------------------------------
 
@@ -752,6 +1138,45 @@ INSERT INTO `tbl_imagenes` (`id`, `titulo`, `ruta`) VALUES
 (15, 'imagen', 'netbeans2.jpg'),
 (16, 'imagen', 'netbeans3.jpg'),
 (17, 'imagen', '500px-Xampp_logo.svg_.png');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_inmunizaciones`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_inmunizaciones` (
+  `id_inmunizacion` int(11) NOT NULL AUTO_INCREMENT,
+  `id_tipo_inmunizacion` int(11) NOT NULL,
+  `inmunizacion` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_inmunizacion`),
+  KEY `tipo_inmunizacion` (`id_tipo_inmunizacion`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
+
+--
+-- Volcado de datos para la tabla `tbl_inmunizaciones`
+--
+
+INSERT INTO `tbl_inmunizaciones` (`id_inmunizacion`, `id_tipo_inmunizacion`, `inmunizacion`) VALUES
+(1, 1, 'no presenta'),
+(2, 1, 'sarampión '),
+(3, 1, 'coqueluche '),
+(4, 1, 'tétanos '),
+(5, 1, 'difteria'),
+(6, 1, 'tuberculosis'),
+(7, 1, 'Poliomelitis'),
+(8, 1, 'parotiditis '),
+(9, 1, 'rubeóla '),
+(10, 1, 'neumococos'),
+(11, 1, 'hepatitis A'),
+(12, 1, 'hepatitis B'),
+(13, 2, 'no presenta'),
+(14, 2, 'influenza'),
+(15, 2, 'hepatitis A'),
+(16, 2, 'hepatitis B'),
+(17, 2, 'haemophylus influenzae '),
+(18, 2, 'refuerzo de toxoide tetánico'),
+(19, 2, 'otros');
 
 -- --------------------------------------------------------
 
@@ -2062,6 +2487,18 @@ INSERT INTO `tbl_medicamentos` (`cod_medicamento`, `nombre_medicamento`, `fecha_
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_metodos_anticonceptivos`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_metodos_anticonceptivos` (
+  `id_metodo_anti` int(11) NOT NULL DEFAULT '0',
+  `descripcion` varchar(200) NOT NULL,
+  PRIMARY KEY (`id_metodo_anti`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_niveles_estudios`
 --
 
@@ -2117,7 +2554,7 @@ CREATE TABLE IF NOT EXISTS `tbl_pacientes` (
   KEY `nivel_estudio` (`id_nivel_estudio`),
   KEY `estado_civil` (`id_estadocivil`),
   KEY `lugar_nacimiento` (`lugar_nac`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
 -- Volcado de datos para la tabla `tbl_pacientes`
@@ -2126,9 +2563,15 @@ CREATE TABLE IF NOT EXISTS `tbl_pacientes` (
 INSERT INTO `tbl_pacientes` (`id_paciente`, `id_usuario`, `rut`, `primer_nombre`, `segundo_nombre`, `apellido_paterno`, `apellido_materno`, `telefono`, `direccion`, `correo`, `sexo`, `id_estadocivil`, `id_prevision_medica`, `id_nivel_estudio`, `ocupacion`, `imagen`, `fecha_nacimiento`, `lugar_nac`, `fecha_ingreso`) VALUES
 (1, 7, '58745698-9', 'gustavo', 'alexis', 'vidal', 'muñoz', '4234324', 'carlos henrique ,3242,santiago', 'gus@gmail.com', 'M', 1, 1, 5, '', 'gustavo_img.png', '1992-05-01', 13, '2014-08-19'),
 (2, 8, '589632874-5', 'daniel', 'alexis', 'vidal', 'perez', '3423432', 'san alberto hurtado,2342,santiago', 'daniel@gmail.com', 'M', 2, 2, 2, 'Estudiante', 'daniel_img', '1993-07-05', 13, '2014-08-18'),
-(3, 9, '857456321-8', 'daniela', 'fernanda', 'alvares', 'catrileo', '8552145', 'las rejas,323,santiago', 'daniela@gmail.com', 'F', 3, 2, 3, '', 'daniela_img.png', '1985-11-08', 13, '2014-08-15'),
+(3, 9, '16.270.747-8', 'daniela', 'fernanda', 'alvares', 'catrileo', '8552145', 'las rejas,323,santiago', 'daniela@gmail.com', 'F', 3, 2, 3, '', 'daniela_img.png', '1985-11-08', 13, '2014-08-15'),
 (4, 10, '14879632-8', 'denise', 'andrea', 'castillo', 'castro', '424234', 'estacion centra,324,santiago', 'denise@gmail.com', 'F', 4, 2, 2, 'Secretaria', 'denise_img.png', '1990-08-07', 13, '2014-08-19'),
-(5, 5, '213123123', 'sadasd', 'adasd', 'sadasd', 'asdasd', '23412312', 'dasdsad', 'sadsadsad', 'm', 1, 2, 2, '', '', '2014-09-09', 13, '2014-09-22');
+(5, 5, '213123123', 'sadasd', 'adasd', 'sadasd', 'asdasd', '23412312', 'dasdsad', 'sadsadsad', 'm', 1, 2, 2, '', '', '2014-09-09', 13, '2014-09-22'),
+(12, 16, '17.270.747-5', 'Diego', 'Enrique', 'Miranda', 'Alcantar', '7899852', 'VLK.JNH,HJKM', 'diego@gmail.com', 'M', 1, 1, 6, '', '', '0000-00-00', 13, '0000-00-00'),
+(13, 17, '12.656.568-2', 'Daniel', 'Alonso', 'Montero', 'Montero', '546464684', 'antonio varas 666', 'daniel@montero.cl', 'M', 2, 2, 5, '', '', '0000-00-00', 13, '0000-00-00'),
+(14, 18, '1-9', 'Juan', 'Andres', 'Martinez', 'Sepulveda', '55435343', 'Mi casa 1231', 'diego@gmail.com', 'M', 1, 2, 6, '', '', '0000-00-00', 13, '0000-00-00'),
+(15, 19, '9.103.695-9', 'Vicky', 'Del Carmen', 'Alcantar', 'Cereceda', '7899852', 'Pasaje Vitor 0542', 'vicky@gmail.com', 'F', 5, 2, 3, '', '', '0000-00-00', 13, '0000-00-00'),
+(16, 20, '99.999.999-9', 'Primer Nombre', 'Segundo Nombre', 'Apellido Paterno', 'Apellido Materno', '999999999', 'Direccion de residencia', 'alguien@alguien.cl', 'M', 1, 2, 2, '', '', '0000-00-00', 13, '0000-00-00'),
+(17, 21, '88.888.888-8', 'Primer Nombre', 'Segundo Nombre', 'Apellido Paterno', 'Apellido Materno', '999999999', 'Direccion de residencia', 'alguien@alguien.cl', 'M', 1, 2, 2, '', '', '0000-00-00', 13, '2014-10-30');
 
 -- --------------------------------------------------------
 
@@ -14629,6 +15072,32 @@ INSERT INTO `tbl_perfiles` (`id_perfil`, `perfil`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_personas_contacto`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_personas_contacto` (
+  `id_persona_contacto` int(11) NOT NULL AUTO_INCREMENT,
+  `id_paciente` int(11) NOT NULL,
+  `nombres` varchar(100) NOT NULL,
+  `apellidos` varchar(100) NOT NULL,
+  `parentesco` varchar(80) NOT NULL,
+  `telefono` varchar(50) NOT NULL,
+  `correo` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_persona_contacto`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Volcado de datos para la tabla `tbl_personas_contacto`
+--
+
+INSERT INTO `tbl_personas_contacto` (`id_persona_contacto`, `id_paciente`, `nombres`, `apellidos`, `parentesco`, `telefono`, `correo`) VALUES
+(1, 4, 'Gustavo Alexis', 'Vidal muñoz', 'hermano', '09-78965412', 'gustavo@gmail.com'),
+(2, 4, 'Daniel Andres', 'Vidal muñoz', 'hermano', '09-78965412', 'daniel@gmail.com'),
+(3, 4, 'Jose Manuel', 'Vidal Flores', 'padre', '09-78958874', 'jose@gmail.com');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_previsiones_medicas`
 --
 
@@ -14815,12 +15284,103 @@ INSERT INTO `tbl_regiones` (`cod_region`, `nom_region`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_rev_cardiovascular`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_rev_cardiovascular` (
+  `id_rev_cardiovascular` int(11) NOT NULL AUTO_INCREMENT,
+  `sintomas_detectados` varchar(300) NOT NULL,
+  `comentarios` varchar(200) NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  `id_consulta` int(11) NOT NULL,
+  PRIMARY KEY (`id_rev_cardiovascular`),
+  KEY `id_consulta` (`id_consulta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_rev_endocrino`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_rev_endocrino` (
+  `id_rev_endocrino` int(11) NOT NULL AUTO_INCREMENT,
+  `id_consulta` int(11) NOT NULL,
+  `sintomas_detectados` varchar(300) NOT NULL,
+  `comentarios` varchar(200) NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  PRIMARY KEY (`id_rev_endocrino`),
+  KEY `id_consulta` (`id_consulta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_rev_gastrointestinal`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_rev_gastrointestinal` (
+  `id_rev_gastrointestinal` int(11) NOT NULL AUTO_INCREMENT,
+  `id_consulta` int(11) NOT NULL,
+  `sintomas_detectados` varchar(300) NOT NULL,
+  `comentarios` varchar(200) NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  PRIMARY KEY (`id_rev_gastrointestinal`),
+  KEY `id_consulta` (`id_consulta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_rev_general`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_rev_general` (
   `id_rev_general` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_rev_general`)
+  `sintomas_detectados` varchar(300) NOT NULL,
+  `comentarios` varchar(200) NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  `id_consulta` int(11) NOT NULL,
+  PRIMARY KEY (`id_rev_general`),
+  KEY `id_consulta` (`id_consulta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_rev_genitourinario`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_rev_genitourinario` (
+  `id_rev_genitourinario` int(11) NOT NULL AUTO_INCREMENT,
+  `id_consulta` int(11) NOT NULL,
+  `sintomas_detectados` varchar(300) NOT NULL,
+  `comentarios` varchar(200) NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  PRIMARY KEY (`id_rev_genitourinario`),
+  KEY `id_consulta` (`id_consulta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_rev_neurologico`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_rev_neurologico` (
+  `id_rev_neurologico` int(11) NOT NULL AUTO_INCREMENT,
+  `id_consulta` int(11) NOT NULL,
+  `sintomas_detectados` varchar(300) NOT NULL,
+  `comentarios` varchar(200) NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  PRIMARY KEY (`id_rev_neurologico`),
+  KEY `id_consulta` (`id_consulta`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -14831,7 +15391,61 @@ CREATE TABLE IF NOT EXISTS `tbl_rev_general` (
 
 CREATE TABLE IF NOT EXISTS `tbl_rev_respiratorio` (
   `id_rev_respiratorio` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id_rev_respiratorio`)
+  `sintomas_detectados` varchar(300) NOT NULL,
+  `comentarios` varchar(200) NOT NULL,
+  `modificado_por` varchar(200) NOT NULL,
+  `fecha_modificacion` date NOT NULL,
+  `id_consulta` int(11) NOT NULL,
+  PRIMARY KEY (`id_rev_respiratorio`),
+  KEY `id_consulta` (`id_consulta`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_sintomas_cardiovasculares`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_sintomas_cardiovasculares` (
+  `id_sintoma_cardiovascular` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion_sintoma` varchar(200) NOT NULL,
+  PRIMARY KEY (`id_sintoma_cardiovascular`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_sintomas_generales`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_sintomas_generales` (
+  `id_sintoma_general` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion_sintoma_general` varchar(200) NOT NULL,
+  PRIMARY KEY (`id_sintoma_general`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_sintomas_ginecoobstetricos`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_sintomas_ginecoobstetricos` (
+  `id_sintoma_gineco` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(200) NOT NULL,
+  PRIMARY KEY (`id_sintoma_gineco`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_sintomas_respiratorio`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_sintomas_respiratorio` (
+  `id_sintoma_respiratorios` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion_sintoma` int(11) NOT NULL,
+  PRIMARY KEY (`id_sintoma_respiratorios`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -14917,6 +15531,48 @@ INSERT INTO `tbl_sub_especialidades` (`id_sub_especialidad`, `id_especialidad`, 
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_tipos_habitos`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_tipos_habitos` (
+  `id_tipo_habito` int(11) NOT NULL AUTO_INCREMENT,
+  `habito` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_tipo_habito`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `tbl_tipos_habitos`
+--
+
+INSERT INTO `tbl_tipos_habitos` (`id_tipo_habito`, `habito`) VALUES
+(1, 'Alcoholismo'),
+(2, 'Drogas'),
+(3, 'Desórdenes Alimenticios'),
+(4, 'Tabaquismo');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_tipo_inmunizaciones`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_tipo_inmunizaciones` (
+  `id_tipo_inmunizacion` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo_inmunizacion` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_tipo_inmunizacion`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `tbl_tipo_inmunizaciones`
+--
+
+INSERT INTO `tbl_tipo_inmunizaciones` (`id_tipo_inmunizacion`, `tipo_inmunizacion`) VALUES
+(1, 'infancia'),
+(2, 'adultez');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_tratamientos`
 --
 
@@ -14950,7 +15606,7 @@ CREATE TABLE IF NOT EXISTS `tbl_usuarios` (
   PRIMARY KEY (`id_usuario`),
   KEY `perfil` (`id_perfil`),
   KEY `institucion` (`id_institucion`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
 -- Volcado de datos para la tabla `tbl_usuarios`
@@ -14966,7 +15622,13 @@ INSERT INTO `tbl_usuarios` (`id_usuario`, `username`, `password`, `id_perfil`, `
 (7, 'g.vidal', '1a248d7a471ad8d5993aa523c8397ce1d0bafe78', 3, 1, 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
 (8, 'd.vidal', '1a248d7a471ad8d5993aa523c8397ce1d0bafe78', 3, 1, 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
 (9, 'd.alvares', '1a248d7a471ad8d5993aa523c8397ce1d0bafe78', 3, 2, 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
-(10, 'd.castillo', '1a248d7a471ad8d5993aa523c8397ce1d0bafe78', 3, 2, 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00');
+(10, 'd.castillo', '1a248d7a471ad8d5993aa523c8397ce1d0bafe78', 3, 2, 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(16, 'diego.miranda', 'c29411cc289ddced62bd49b4c13972dd71342289', 3, 1, 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(17, 'daniel.montero', '3924d8ebc0dde4267a6349b626acf0e5ce4161dc', 3, 1, 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(18, 'juan.martinez', 'b3f0c7f6bb763af1be91d9e74eabfeb199dc1f1f', 3, 1, 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(19, 'vicky.alcantar', '2c34aa56250efcfb4e896e9fdfea64460be15542', 3, 1, 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(20, 'primer nombre.apellido paterno', 'f91d8f69c042267444b74cc0b3c747757eb0e065', 3, 1, 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00'),
+(21, 'primer nombre.apellido paterno', 'a14b77b7d159a74da1454e7a60a59f8a27ac886d', 3, 1, 0, 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00', 0, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -15218,22 +15880,128 @@ ALTER TABLE `tbl_administradores`
   ADD CONSTRAINT `administrador_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
+-- Filtros para la tabla `tbl_ant_alergias`
+--
+ALTER TABLE `tbl_ant_alergias`
+  ADD CONSTRAINT `alergias_alergia` FOREIGN KEY (`id_alergia`) REFERENCES `tbl_alergias` (`cod_alergia`),
+  ADD CONSTRAINT `aler_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
 -- Filtros para la tabla `tbl_ant_familiares`
 --
 ALTER TABLE `tbl_ant_familiares`
-  ADD CONSTRAINT `familiar_paciente` FOREIGN KEY (`id_paciente`) REFERENCES `tbl_pacientes` (`id_paciente`);
+  ADD CONSTRAINT `f_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_ant_ginecoobstetricos`
+--
+ALTER TABLE `tbl_ant_ginecoobstetricos`
+  ADD CONSTRAINT `tbl_ant_ginecoobstetricos_ibfk_1` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_ant_habitos`
+--
+ALTER TABLE `tbl_ant_habitos`
+  ADD CONSTRAINT `ant_tipo_habito` FOREIGN KEY (`id_tipo_habito`) REFERENCES `tbl_tipos_habitos` (`id_tipo_habito`),
+  ADD CONSTRAINT `tbl_ant_habitos_ibfk_1` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_ant_inmunizaciones`
+--
+ALTER TABLE `tbl_ant_inmunizaciones`
+  ADD CONSTRAINT `inmunizaciones_cons` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`),
+  ADD CONSTRAINT `inmunizacion_tipo` FOREIGN KEY (`id_inmunizacion`) REFERENCES `tbl_inmunizaciones` (`id_inmunizacion`);
+
+--
+-- Filtros para la tabla `tbl_ant_medicamentos`
+--
+ALTER TABLE `tbl_ant_medicamentos`
+  ADD CONSTRAINT `medicamento_med` FOREIGN KEY (`id_med`) REFERENCES `tbl_medicamentos` (`cod_medicamento`),
+  ADD CONSTRAINT `med_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_ant_sociales`
 --
 ALTER TABLE `tbl_ant_sociales`
-  ADD CONSTRAINT `paciente_antecedente_soc` FOREIGN KEY (`id_paciente`) REFERENCES `tbl_pacientes` (`id_paciente`);
+  ADD CONSTRAINT `tbl_ant_sociales_ibfk_1` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_pacientes` (`id_paciente`);
+
+--
+-- Filtros para la tabla `tbl_consulta_medica`
+--
+ALTER TABLE `tbl_consulta_medica`
+  ADD CONSTRAINT `tbl_consulta_medica_ibfk_1` FOREIGN KEY (`nro_historia_clinica`) REFERENCES `tbl_historia_medica` (`id_historia_medica`);
+
+--
+-- Filtros para la tabla `tbl_efg_conciencia`
+--
+ALTER TABLE `tbl_efg_conciencia`
+  ADD CONSTRAINT `conciencia_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_efg_constitucion`
+--
+ALTER TABLE `tbl_efg_constitucion`
+  ADD CONSTRAINT `constitucion_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_efg_deambulacion`
+--
+ALTER TABLE `tbl_efg_deambulacion`
+  ADD CONSTRAINT `deambulacion_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_efg_decubito`
+--
+ALTER TABLE `tbl_efg_decubito`
+  ADD CONSTRAINT `decubito_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_efg_facie`
+--
+ALTER TABLE `tbl_efg_facie`
+  ADD CONSTRAINT `facie_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_efg_linfatico`
+--
+ALTER TABLE `tbl_efg_linfatico`
+  ADD CONSTRAINT `linfatico_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_efg_piel`
+--
+ALTER TABLE `tbl_efg_piel`
+  ADD CONSTRAINT `piel_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_efg_presion_pulso`
+--
+ALTER TABLE `tbl_efg_presion_pulso`
+  ADD CONSTRAINT `presion_pulso_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_efg_respiratorio`
+--
+ALTER TABLE `tbl_efg_respiratorio`
+  ADD CONSTRAINT `resp_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_efg_temperatura`
+--
+ALTER TABLE `tbl_efg_temperatura`
+  ADD CONSTRAINT `temperatura_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_historia_medica`
 --
 ALTER TABLE `tbl_historia_medica`
-  ADD CONSTRAINT `historia_med_paciente` FOREIGN KEY (`id_paciente`) REFERENCES `tbl_pacientes` (`id_paciente`);
+  ADD CONSTRAINT `tbl_historia_medica_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `tbl_pacientes` (`id_paciente`);
+
+--
+-- Filtros para la tabla `tbl_inmunizaciones`
+--
+ALTER TABLE `tbl_inmunizaciones`
+  ADD CONSTRAINT `tbl_inmunizaciones_ibfk_1` FOREIGN KEY (`id_tipo_inmunizacion`) REFERENCES `tbl_tipo_inmunizaciones` (`id_tipo_inmunizacion`);
 
 --
 -- Filtros para la tabla `tbl_pacientes`
@@ -15257,6 +16025,48 @@ ALTER TABLE `tbl_profesionales_especialidades`
   ADD CONSTRAINT `especialidad` FOREIGN KEY (`id_especialidad`) REFERENCES `tbl_especialidades` (`id_especialidad`),
   ADD CONSTRAINT `profesional` FOREIGN KEY (`id_profesional`) REFERENCES `tbl_profesionales` (`id_profesional`),
   ADD CONSTRAINT `sub_especialidad` FOREIGN KEY (`id_sub_especialidad`) REFERENCES `tbl_sub_especialidades` (`id_sub_especialidad`);
+
+--
+-- Filtros para la tabla `tbl_rev_cardiovascular`
+--
+ALTER TABLE `tbl_rev_cardiovascular`
+  ADD CONSTRAINT `cardiovascular_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_rev_endocrino`
+--
+ALTER TABLE `tbl_rev_endocrino`
+  ADD CONSTRAINT `endocrino_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_rev_gastrointestinal`
+--
+ALTER TABLE `tbl_rev_gastrointestinal`
+  ADD CONSTRAINT `gastrointestinal_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_rev_general`
+--
+ALTER TABLE `tbl_rev_general`
+  ADD CONSTRAINT `general_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_rev_genitourinario`
+--
+ALTER TABLE `tbl_rev_genitourinario`
+  ADD CONSTRAINT `genitourinario_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_rev_neurologico`
+--
+ALTER TABLE `tbl_rev_neurologico`
+  ADD CONSTRAINT `neurologico_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+
+--
+-- Filtros para la tabla `tbl_rev_respiratorio`
+--
+ALTER TABLE `tbl_rev_respiratorio`
+  ADD CONSTRAINT `respiratorio_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_sub_especialidades`
