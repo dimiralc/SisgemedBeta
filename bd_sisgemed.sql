@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.9
+-- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 05-11-2014 a las 01:59:51
--- Versión del servidor: 5.5.34
--- Versión de PHP: 5.4.22
+-- Servidor: localhost
+-- Tiempo de generación: 12-11-2014 a las 03:58:13
+-- Versión del servidor: 5.5.39
+-- Versión de PHP: 5.4.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -30,8 +30,7 @@ CREATE TABLE IF NOT EXISTS `int_paciente_anticonceptivos` (
   `id_paciente_anticonceptivos` int(11) NOT NULL,
   `id_paciente` int(11) NOT NULL,
   `id_anticonceptivo` int(11) NOT NULL,
-  `id_consulta` int(11) NOT NULL,
-  PRIMARY KEY (`id_paciente_anticonceptivos`)
+  `id_consulta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -41,11 +40,10 @@ CREATE TABLE IF NOT EXISTS `int_paciente_anticonceptivos` (
 --
 
 CREATE TABLE IF NOT EXISTS `int_paciente_ginecoobstetrico` (
-  `id_paciente_ginecoobstetrico` int(11) NOT NULL AUTO_INCREMENT,
+`id_paciente_ginecoobstetrico` int(11) NOT NULL,
   `id_paciente` int(11) NOT NULL,
   `id_ginecoobstetrico` int(11) NOT NULL,
-  `id_consulta` int(11) NOT NULL,
-  PRIMARY KEY (`id_paciente_ginecoobstetrico`)
+  `id_consulta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -55,11 +53,10 @@ CREATE TABLE IF NOT EXISTS `int_paciente_ginecoobstetrico` (
 --
 
 CREATE TABLE IF NOT EXISTS `int_paciente_respiratorio` (
-  `id_paciente_respiratorio` int(11) NOT NULL AUTO_INCREMENT,
+`id_paciente_respiratorio` int(11) NOT NULL,
   `id_paciente` int(11) NOT NULL,
   `id_respiratorio` int(11) NOT NULL,
-  `id_consulta` int(11) NOT NULL,
-  PRIMARY KEY (`id_paciente_respiratorio`)
+  `id_consulta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -69,11 +66,10 @@ CREATE TABLE IF NOT EXISTS `int_paciente_respiratorio` (
 --
 
 CREATE TABLE IF NOT EXISTS `int_paciente_sintomas` (
-  `id_paciente_sintomas` int(11) NOT NULL AUTO_INCREMENT,
+`id_paciente_sintomas` int(11) NOT NULL,
   `id_paciente` int(11) NOT NULL,
   `id_sintomas` int(11) NOT NULL,
-  `id_consulta` int(11) NOT NULL,
-  PRIMARY KEY (`id_paciente_sintomas`)
+  `id_consulta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -83,7 +79,7 @@ CREATE TABLE IF NOT EXISTS `int_paciente_sintomas` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_administradores` (
-  `id_administrador` int(11) NOT NULL AUTO_INCREMENT,
+`id_administrador` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `rut` varchar(80) NOT NULL,
   `primer_nombre` varchar(80) NOT NULL,
@@ -95,9 +91,7 @@ CREATE TABLE IF NOT EXISTS `tbl_administradores` (
   `correo` varchar(100) NOT NULL,
   `sexo` char(1) NOT NULL,
   `imagen` varchar(100) NOT NULL,
-  `fecha_nacimiento` date NOT NULL,
-  PRIMARY KEY (`id_administrador`),
-  KEY `usuario` (`id_usuario`)
+  `fecha_nacimiento` date NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Administradores del Sistema' AUTO_INCREMENT=3 ;
 
 --
@@ -115,13 +109,12 @@ INSERT INTO `tbl_administradores` (`id_administrador`, `id_usuario`, `rut`, `pri
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_alergias` (
-  `cod_alergia` int(11) NOT NULL AUTO_INCREMENT COMMENT 'PK_alergias',
+`cod_alergia` int(11) NOT NULL COMMENT 'PK_alergias',
   `nombre_alergia` varchar(50) NOT NULL,
   `alergeno_detectado` varchar(50) NOT NULL,
   `zona_afectada` varchar(100) NOT NULL,
   `sintomatologia` varchar(150) NOT NULL,
-  `indicaciones` varchar(150) NOT NULL,
-  PRIMARY KEY (`cod_alergia`)
+  `indicaciones` varchar(150) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
@@ -144,16 +137,13 @@ INSERT INTO `tbl_alergias` (`cod_alergia`, `nombre_alergia`, `alergeno_detectado
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_ant_alergias` (
-  `id_ant_alergia` int(11) NOT NULL AUTO_INCREMENT,
+`id_ant_alergia` int(11) NOT NULL,
   `id_alergia` int(11) NOT NULL,
   `alergia` varchar(100) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `fecha_ingreso` date NOT NULL,
   `descripcion` text NOT NULL,
-  `modificado_por` varchar(200) NOT NULL,
-  PRIMARY KEY (`id_ant_alergia`),
-  KEY `alergias_alergia` (`id_alergia`),
-  KEY `consulta_alergias` (`id_consulta`)
+  `modificado_por` varchar(200) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
@@ -174,13 +164,11 @@ INSERT INTO `tbl_ant_alergias` (`id_ant_alergia`, `id_alergia`, `alergia`, `id_c
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_ant_familiares` (
-  `id_ant_familiares` int(11) NOT NULL AUTO_INCREMENT,
+`id_ant_familiares` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `ant_familiar` text NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_ant_familiares`),
-  KEY `fc` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
@@ -197,7 +185,7 @@ INSERT INTO `tbl_ant_familiares` (`id_ant_familiares`, `id_consulta`, `ant_famil
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_ant_ginecoobstetricos` (
-  `id_ant_gineco` int(11) NOT NULL AUTO_INCREMENT,
+`id_ant_gineco` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `gestas` int(11) NOT NULL,
   `partos` int(11) NOT NULL,
@@ -211,9 +199,7 @@ CREATE TABLE IF NOT EXISTS `tbl_ant_ginecoobstetricos` (
   `sintomas` varchar(255) NOT NULL,
   `observaciones` text NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_ant_gineco`),
-  KEY `gineco_consulta` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
@@ -230,15 +216,12 @@ INSERT INTO `tbl_ant_ginecoobstetricos` (`id_ant_gineco`, `id_consulta`, `gestas
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_ant_habitos` (
-  `id_ant_habitos` int(11) NOT NULL AUTO_INCREMENT,
+`id_ant_habitos` int(11) NOT NULL,
   `id_tipo_habito` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `descripcion` text NOT NULL,
   `fecha_ingreso` date NOT NULL,
-  `modificado_por` varchar(200) NOT NULL,
-  PRIMARY KEY (`id_ant_habitos`),
-  KEY `tipo_habito` (`id_tipo_habito`),
-  KEY `habitos_consulta` (`id_consulta`)
+  `modificado_por` varchar(200) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
@@ -257,17 +240,14 @@ INSERT INTO `tbl_ant_habitos` (`id_ant_habitos`, `id_tipo_habito`, `id_consulta`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_ant_inmunizaciones` (
-  `id_ant_inmuno` int(11) NOT NULL AUTO_INCREMENT,
+`id_ant_inmuno` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `id_inmunizacion` int(11) NOT NULL,
   `fecha_ingreso` date NOT NULL,
   `otras_inmunizaciones` varchar(255) NOT NULL,
   `observaciones` text NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_ant_inmuno`),
-  KEY `tipo_inmunizacion` (`id_inmunizacion`),
-  KEY `consulta_inmuno` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
@@ -291,7 +271,7 @@ INSERT INTO `tbl_ant_inmunizaciones` (`id_ant_inmuno`, `id_consulta`, `id_inmuni
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_ant_medicamentos` (
-  `id_ant_med` int(11) NOT NULL AUTO_INCREMENT,
+`id_ant_med` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `id_med` int(11) NOT NULL,
   `fecha_inicio` date NOT NULL,
@@ -299,10 +279,7 @@ CREATE TABLE IF NOT EXISTS `tbl_ant_medicamentos` (
   `duracion` int(11) NOT NULL,
   `indicaciones` text NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_ant_med`),
-  KEY `med_medicamento` (`id_med`),
-  KEY `consulta_med` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
@@ -324,13 +301,12 @@ INSERT INTO `tbl_ant_medicamentos` (`id_ant_med`, `id_consulta`, `id_med`, `fech
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_ant_morbidos` (
-  `id_ant_morbido` int(11) NOT NULL AUTO_INCREMENT,
+`id_ant_morbido` int(11) NOT NULL,
   `nombre` varchar(255) NOT NULL,
   `tipo` char(1) NOT NULL,
   `fecha` date NOT NULL,
   `diagnostico` text NOT NULL,
-  `modificado_por` varchar(200) NOT NULL,
-  PRIMARY KEY (`id_ant_morbido`)
+  `modificado_por` varchar(200) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
@@ -350,13 +326,11 @@ INSERT INTO `tbl_ant_morbidos` (`id_ant_morbido`, `nombre`, `tipo`, `fecha`, `di
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_ant_sociales` (
-  `id_ant_social` int(11) NOT NULL AUTO_INCREMENT,
+`id_ant_social` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `ant_social` text NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_ant_social`),
-  KEY `consulta_ant_social` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
@@ -374,8 +348,7 @@ INSERT INTO `tbl_ant_sociales` (`id_ant_social`, `id_consulta`, `ant_social`, `m
 
 CREATE TABLE IF NOT EXISTS `tbl_comunas` (
   `cod_comuna` int(11) NOT NULL,
-  `nom_comuna` varchar(80) NOT NULL,
-  PRIMARY KEY (`cod_comuna`)
+  `nom_comuna` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -737,14 +710,12 @@ INSERT INTO `tbl_comunas` (`cod_comuna`, `nom_comuna`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_consulta_medica` (
-  `id_consulta` int(11) NOT NULL AUTO_INCREMENT,
+`id_consulta` int(11) NOT NULL,
   `fecha_consulta` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `nro_historia_clinica` int(11) NOT NULL,
   `motivo_consulta` varchar(250) NOT NULL,
   `anamnesis_proxima` text NOT NULL,
-  `hipotesis_diagnostica` text NOT NULL,
-  PRIMARY KEY (`id_consulta`),
-  KEY `historia_consulta` (`nro_historia_clinica`)
+  `hipotesis_diagnostica` text NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
@@ -771,8 +742,7 @@ CREATE TABLE IF NOT EXISTS `tbl_diagnosticos` (
   `cod_diagnostico` int(11) NOT NULL,
   `sistema_afectado` varchar(100) NOT NULL,
   `desc_diagnostico` varchar(100) NOT NULL,
-  `reposo_indicado` varchar(50) NOT NULL,
-  PRIMARY KEY (`cod_diagnostico`)
+  `reposo_indicado` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -835,7 +805,7 @@ INSERT INTO `tbl_diagnosticos` (`cod_diagnostico`, `sistema_afectado`, `desc_dia
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_efg_conciencia` (
-  `id_efg_conciencia` int(11) NOT NULL AUTO_INCREMENT,
+`id_efg_conciencia` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `orientacion_tiempo` varchar(150) NOT NULL,
   `orientacion_espacio` varchar(150) NOT NULL,
@@ -843,9 +813,7 @@ CREATE TABLE IF NOT EXISTS `tbl_efg_conciencia` (
   `nivel_conciencia` varchar(150) NOT NULL,
   `comentarios` varchar(200) NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_efg_conciencia`),
-  KEY `id_consulta` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -855,7 +823,7 @@ CREATE TABLE IF NOT EXISTS `tbl_efg_conciencia` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_efg_constitucion` (
-  `id_efg_constitucion` int(11) NOT NULL AUTO_INCREMENT,
+`id_efg_constitucion` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `tipo_constitucion` varchar(150) NOT NULL,
   `peso` int(11) NOT NULL,
@@ -863,9 +831,7 @@ CREATE TABLE IF NOT EXISTS `tbl_efg_constitucion` (
   `imc` int(11) NOT NULL,
   `archivo` varchar(150) NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_efg_constitucion`),
-  KEY `id_consulta` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -875,14 +841,12 @@ CREATE TABLE IF NOT EXISTS `tbl_efg_constitucion` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_efg_deambulacion` (
-  `id_efg_deambulacion` int(11) NOT NULL AUTO_INCREMENT,
+`id_efg_deambulacion` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `trastornos_detectados` varchar(300) NOT NULL,
   `comentario` varchar(200) NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_efg_deambulacion`),
-  KEY `id_consulta` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -892,15 +856,13 @@ CREATE TABLE IF NOT EXISTS `tbl_efg_deambulacion` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_efg_decubito` (
-  `id_efg_decubito` int(11) NOT NULL AUTO_INCREMENT,
+`id_efg_decubito` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `descripcion_posicion` varchar(150) NOT NULL,
   `descripcion_decubito` varchar(150) NOT NULL,
   `archivo` varchar(150) NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_efg_decubito`),
-  KEY `id_consulta` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -910,14 +872,12 @@ CREATE TABLE IF NOT EXISTS `tbl_efg_decubito` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_efg_facie` (
-  `id_efg_facie` int(11) NOT NULL AUTO_INCREMENT,
+`id_efg_facie` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `trastorno_detectado` varchar(300) NOT NULL,
   `comentario` varchar(200) NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_efg_facie`),
-  KEY `id_consulta` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -927,15 +887,13 @@ CREATE TABLE IF NOT EXISTS `tbl_efg_facie` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_efg_linfatico` (
-  `id_efg_linfatico` int(11) NOT NULL AUTO_INCREMENT,
+`id_efg_linfatico` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `adenopatia` varchar(200) NOT NULL,
   `cometarios` varchar(150) NOT NULL,
   `archivo` varchar(150) NOT NULL,
   `modificado_por` varchar(150) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_efg_linfatico`),
-  KEY `id_consulta` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -945,7 +903,7 @@ CREATE TABLE IF NOT EXISTS `tbl_efg_linfatico` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_efg_piel` (
-  `id_efg_piel` int(11) NOT NULL AUTO_INCREMENT,
+`id_efg_piel` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `color` varchar(200) NOT NULL,
   `humedad` varchar(200) NOT NULL,
@@ -957,9 +915,7 @@ CREATE TABLE IF NOT EXISTS `tbl_efg_piel` (
   `comentario` varchar(200) NOT NULL,
   `archivo` varchar(150) NOT NULL,
   `modificado_por` varchar(150) NOT NULL,
-  `fecha_modifacion` date NOT NULL,
-  PRIMARY KEY (`id_efg_piel`),
-  KEY `id_consulta` (`id_consulta`)
+  `fecha_modifacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -969,7 +925,7 @@ CREATE TABLE IF NOT EXISTS `tbl_efg_piel` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_efg_presion_pulso` (
-  `id_efg_presion_pulso` int(11) NOT NULL AUTO_INCREMENT,
+`id_efg_presion_pulso` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `presion` int(11) NOT NULL,
   `pulso` int(11) NOT NULL,
@@ -989,9 +945,7 @@ CREATE TABLE IF NOT EXISTS `tbl_efg_presion_pulso` (
   `der_tibial` varchar(20) NOT NULL,
   `der_pedio` varchar(20) NOT NULL,
   `modificado_por` varchar(150) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_efg_presion_pulso`),
-  KEY `id_consulta` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -1001,14 +955,12 @@ CREATE TABLE IF NOT EXISTS `tbl_efg_presion_pulso` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_efg_respiratorio` (
-  `id_efg_respiratorio` int(11) NOT NULL AUTO_INCREMENT,
+`id_efg_respiratorio` int(11) NOT NULL,
   `rpm` int(11) NOT NULL,
   `archivo` varchar(150) NOT NULL,
   `modificado_por` varchar(150) NOT NULL,
   `fecha_modificacion` date NOT NULL,
-  `id_consulta` int(11) NOT NULL,
-  PRIMARY KEY (`id_efg_respiratorio`),
-  KEY `id_consulta` (`id_consulta`)
+  `id_consulta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -1018,15 +970,12 @@ CREATE TABLE IF NOT EXISTS `tbl_efg_respiratorio` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_efg_temperatura` (
-  `id_efg_temperatura` int(11) NOT NULL AUTO_INCREMENT,
+`id_efg_temperatura` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `grados_celcius` int(11) NOT NULL,
   `archivo` varchar(150) NOT NULL,
   `modificado_por` varchar(150) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_efg_temperatura`),
-  KEY `id_consulta` (`id_consulta`),
-  KEY `id_consulta_2` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -1036,9 +985,8 @@ CREATE TABLE IF NOT EXISTS `tbl_efg_temperatura` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_especialidades` (
-  `id_especialidad` int(11) NOT NULL AUTO_INCREMENT,
-  `especialidad` varchar(150) NOT NULL,
-  PRIMARY KEY (`id_especialidad`)
+`id_especialidad` int(11) NOT NULL,
+  `especialidad` varchar(150) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Almacenamiento de especialidades' AUTO_INCREMENT=5 ;
 
 --
@@ -1058,9 +1006,8 @@ INSERT INTO `tbl_especialidades` (`id_especialidad`, `especialidad`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_estado_civil` (
-  `id_estado_civil` int(11) NOT NULL AUTO_INCREMENT,
-  `estado_civil` varchar(80) NOT NULL,
-  PRIMARY KEY (`id_estado_civil`)
+`id_estado_civil` int(11) NOT NULL,
+  `estado_civil` varchar(80) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Estados Civiles' AUTO_INCREMENT=6 ;
 
 --
@@ -1081,12 +1028,10 @@ INSERT INTO `tbl_estado_civil` (`id_estado_civil`, `estado_civil`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_historia_medica` (
-  `id_historia_medica` int(11) NOT NULL AUTO_INCREMENT,
+`id_historia_medica` int(11) NOT NULL,
   `id_paciente` int(11) NOT NULL,
   `fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `datos` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_historia_medica`),
-  UNIQUE KEY `historia_med_paciente` (`id_paciente`)
+  `datos` varchar(50) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
 
 --
@@ -1110,10 +1055,9 @@ INSERT INTO `tbl_historia_medica` (`id_historia_medica`, `id_paciente`, `fecha_c
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_imagenes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+`id` int(11) NOT NULL,
   `titulo` varchar(255) DEFAULT NULL,
-  `ruta` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `ruta` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='Almacenamiento de Imagenes' AUTO_INCREMENT=18 ;
 
 --
@@ -1146,11 +1090,9 @@ INSERT INTO `tbl_imagenes` (`id`, `titulo`, `ruta`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_inmunizaciones` (
-  `id_inmunizacion` int(11) NOT NULL AUTO_INCREMENT,
+`id_inmunizacion` int(11) NOT NULL,
   `id_tipo_inmunizacion` int(11) NOT NULL,
-  `inmunizacion` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_inmunizacion`),
-  KEY `tipo_inmunizacion` (`id_tipo_inmunizacion`)
+  `inmunizacion` varchar(100) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
@@ -1185,7 +1127,7 @@ INSERT INTO `tbl_inmunizaciones` (`id_inmunizacion`, `id_tipo_inmunizacion`, `in
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_instituciones` (
-  `id_institucion` int(11) NOT NULL AUTO_INCREMENT,
+`id_institucion` int(11) NOT NULL,
   `rut` varchar(50) NOT NULL,
   `razon_social` varchar(100) NOT NULL,
   `nom_institucion` varchar(100) NOT NULL,
@@ -1193,8 +1135,7 @@ CREATE TABLE IF NOT EXISTS `tbl_instituciones` (
   `telefono1` varchar(80) NOT NULL,
   `telefono2` varchar(80) NOT NULL,
   `correo` varchar(100) NOT NULL,
-  `fecha_ingreso` datetime NOT NULL,
-  PRIMARY KEY (`id_institucion`)
+  `fecha_ingreso` datetime NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
@@ -1221,8 +1162,7 @@ CREATE TABLE IF NOT EXISTS `tbl_medicamentos` (
   `unididad_medida` varchar(10) NOT NULL,
   `cantidad` double NOT NULL,
   `unidad_referencia` varchar(25) NOT NULL,
-  `nombre_laboratorio` varchar(100) NOT NULL,
-  PRIMARY KEY (`cod_medicamento`)
+  `nombre_laboratorio` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Tabla donde se almacenan Medicamentos';
 
 --
@@ -2492,9 +2432,270 @@ INSERT INTO `tbl_medicamentos` (`cod_medicamento`, `nombre_medicamento`, `fecha_
 
 CREATE TABLE IF NOT EXISTS `tbl_metodos_anticonceptivos` (
   `id_metodo_anti` int(11) NOT NULL DEFAULT '0',
-  `descripcion` varchar(200) NOT NULL,
-  PRIMARY KEY (`id_metodo_anti`)
+  `descripcion` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_nacionalidad`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_nacionalidad` (
+  `cod_pais` int(11) NOT NULL,
+  `nombre` varchar(100) COLLATE utf8_spanish2_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_nacionalidad`
+--
+
+INSERT INTO `tbl_nacionalidad` (`cod_pais`, `nombre`) VALUES
+(101, 'ALBANIA'),
+(102, 'AUSTRIA'),
+(103, 'BELGICA'),
+(104, 'BULGARIA'),
+(106, 'CHIPRE'),
+(107, 'DINAMARCA'),
+(108, 'ESPAÑA'),
+(109, 'FINLANDIA'),
+(110, 'FRANCIA'),
+(111, 'GRECIA'),
+(112, 'HUNGRIA'),
+(113, 'IRLANDA'),
+(114, 'ISLANDIA'),
+(115, 'ITALIA'),
+(116, 'LIECHTENSTEIN'),
+(117, 'LUXEMBURGO'),
+(118, 'MALTA'),
+(119, 'MONACO'),
+(120, 'NORUEGA'),
+(121, 'PAISES BAJOS'),
+(122, 'POLONIA'),
+(123, 'PORTUGAL'),
+(124, 'ANDORRA'),
+(125, 'REINO UNIDO'),
+(126, 'ALEMANIA'),
+(128, 'RUMANIA'),
+(129, 'SAN MARINO'),
+(130, 'SANTA SEDE'),
+(131, 'SUECIA'),
+(132, 'SUIZA'),
+(135, 'UCRANIA'),
+(136, 'LETONIA'),
+(137, 'MOLDAVIA'),
+(138, 'BELARUS'),
+(139, 'GEORGIA'),
+(141, 'ESTONIA'),
+(142, 'LITUANIA'),
+(143, 'REPUBLICA CHECA'),
+(144, 'REPUBLICA ESLOVACA'),
+(145, 'BOSNIA Y HERZEGOVINA'),
+(146, 'CROACIA'),
+(147, 'ESLOVENIA'),
+(148, 'ARMENIA'),
+(154, 'RUSIA'),
+(156, 'MACEDONIA '),
+(157, 'SERBIA'),
+(158, 'MONTENEGRO'),
+(170, 'GUERNESEY'),
+(171, 'SVALBARD Y JAN MAYEN'),
+(172, 'ISLAS FEROE'),
+(173, 'ISLA DE MAN'),
+(174, 'GIBRALTAR'),
+(175, 'ISLAS DEL CANAL'),
+(176, 'JERSEY'),
+(177, 'ISLAS ALAND'),
+(198, 'OTROS PAISES O TERRITORIOS DE LA UNION EUROPEA'),
+(199, 'OTROS PAISES O TERRITORIOS DEL RESTO DE EUROPA'),
+(201, 'BURKINA FASO'),
+(202, 'ANGOLA'),
+(203, 'ARGELIA'),
+(204, 'BENIN'),
+(205, 'BOTSWANA'),
+(206, 'BURUNDI'),
+(207, 'CABO VERDE'),
+(208, 'CAMERUN'),
+(209, 'COMORES'),
+(210, 'CONGO'),
+(211, 'COSTA DE MARFIL'),
+(212, 'DJIBOUTI'),
+(213, 'EGIPTO'),
+(214, 'ETIOPIA'),
+(215, 'GABON'),
+(216, 'GAMBIA'),
+(217, 'GHANA'),
+(218, 'GUINEA'),
+(219, 'GUINEA-BISSAU'),
+(220, 'GUINEA ECUATORIAL'),
+(221, 'KENIA'),
+(222, 'LESOTHO'),
+(223, 'LIBERIA'),
+(224, 'LIBIA'),
+(225, 'MADAGASCAR'),
+(226, 'MALAWI'),
+(227, 'MALI'),
+(228, 'MARRUECOS'),
+(229, 'MAURICIO'),
+(230, 'MAURITANIA'),
+(231, 'MOZAMBIQUE'),
+(232, 'NAMIBIA'),
+(233, 'NIGER'),
+(234, 'NIGERIA'),
+(235, 'REPUBLICA CENTROAFRICANA'),
+(236, 'SUDAFRICA'),
+(237, 'RUANDA'),
+(238, 'SANTO TOME Y PRINCIPE'),
+(239, 'SENEGAL'),
+(240, 'SEYCHELLES'),
+(241, 'SIERRA LEONA'),
+(242, 'SOMALIA'),
+(243, 'SUDAN'),
+(244, 'SWAZILANDIA'),
+(245, 'TANZANIA'),
+(246, 'CHAD'),
+(247, 'TOGO'),
+(248, 'TUNEZ'),
+(249, 'UGANDA'),
+(250, 'REP.DEMOCRATICA DEL CONGO'),
+(251, 'ZAMBIA'),
+(252, 'ZIMBABWE'),
+(253, 'ERITREA'),
+(260, 'SANTA HELENA'),
+(261, 'REUNION'),
+(262, 'MAYOTTE'),
+(263, 'SAHARA OCCIDENTAL'),
+(299, 'OTROS PAISES O TERRITORIOS DE AFRICA'),
+(301, 'CANADA'),
+(302, 'ESTADOS UNIDOS DE AMERICA'),
+(303, 'MEXICO'),
+(310, 'ANTIGUA Y BARBUDA'),
+(311, 'BAHAMAS'),
+(312, 'BARBADOS'),
+(313, 'BELICE'),
+(314, 'COSTA RICA'),
+(315, 'CUBA'),
+(316, 'DOMINICA'),
+(317, 'EL SALVADOR'),
+(318, 'GRANADA'),
+(319, 'GUATEMALA'),
+(320, 'HAITI'),
+(321, 'HONDURAS'),
+(322, 'JAMAICA'),
+(323, 'NICARAGUA'),
+(324, 'PANAMA'),
+(325, 'SAN VICENTE Y LAS GRANADINAS'),
+(326, 'REPUBLICA DOMINICANA'),
+(327, 'TRINIDAD Y TOBAGO'),
+(328, 'SANTA LUCIA'),
+(329, 'SAN CRISTOBAL Y NIEVES'),
+(340, 'ARGENTINA'),
+(341, 'BOLIVIA'),
+(342, 'BRASIL'),
+(343, 'COLOMBIA'),
+(344, 'CHILE'),
+(345, 'ECUADOR'),
+(346, 'GUYANA'),
+(347, 'PARAGUAY'),
+(348, 'PERU'),
+(349, 'SURINAM'),
+(350, 'URUGUAY'),
+(351, 'VENEZUELA'),
+(370, 'SAN PEDRO Y MIQUELON '),
+(371, 'GROENLANDIA'),
+(380, 'ISLAS CAIMÁN'),
+(381, 'ISLAS TURCAS Y CAICOS'),
+(382, 'ISLAS VÍRGENES DE LOS ESTADOS UNIDOS'),
+(383, 'GUADALUPE'),
+(384, 'ANTILLAS HOLANDESAS'),
+(385, 'SAN MARTIN (PARTE FRANCESA)'),
+(386, 'ARUBA'),
+(387, 'MONTSERRAT'),
+(388, 'ANGUILLA'),
+(389, 'SAN BARTOLOME'),
+(390, 'MARTINICA'),
+(391, 'PUERTO RICO'),
+(392, 'BERMUDAS'),
+(393, 'ISLAS VIRGENES BRITANICAS'),
+(394, 'GUAYANA FRANCESA'),
+(395, 'ISLAS MALVINAS'),
+(396, 'OTROS PAISES  O TERRITORIOS DE AMERICA DEL NORTE'),
+(398, 'OTROS PAISES O TERRITORIOS DEL CARIBE Y AMERICA CENTRAL'),
+(399, 'OTROS PAISES O TERRITORIOS  DE SUDAMERICA'),
+(401, 'AFGANISTAN'),
+(402, 'ARABIA SAUDI'),
+(403, 'BAHREIN'),
+(404, 'BANGLADESH'),
+(405, 'MYANMAR'),
+(407, 'CHINA'),
+(408, 'EMIRATOS ARABES UNIDOS'),
+(409, 'FILIPINAS'),
+(410, 'INDIA'),
+(411, 'INDONESIA'),
+(412, 'IRAQ'),
+(413, 'IRAN'),
+(414, 'ISRAEL'),
+(415, 'JAPON'),
+(416, 'JORDANIA'),
+(417, 'CAMBOYA'),
+(418, 'KUWAIT'),
+(419, 'LAOS'),
+(420, 'LIBANO'),
+(421, 'MALASIA'),
+(422, 'MALDIVAS'),
+(423, 'MONGOLIA'),
+(424, 'NEPAL'),
+(425, 'OMAN'),
+(426, 'PAKISTAN'),
+(427, 'QATAR'),
+(430, 'COREA'),
+(431, 'COREA DEL NORTE '),
+(432, 'SINGAPUR'),
+(433, 'SIRIA'),
+(434, 'SRI LANKA'),
+(435, 'TAILANDIA'),
+(436, 'TURQUIA'),
+(437, 'VIETNAM'),
+(439, 'BRUNEI'),
+(440, 'ISLAS MARSHALL'),
+(441, 'YEMEN'),
+(442, 'AZERBAIYAN'),
+(443, 'KAZAJSTAN'),
+(444, 'KIRGUISTAN'),
+(445, 'TADYIKISTAN'),
+(446, 'TURKMENISTAN'),
+(447, 'UZBEKISTAN'),
+(448, 'ISLAS MARIANAS DEL NORTE'),
+(449, 'PALESTINA'),
+(450, 'HONG KONG'),
+(453, 'BHUTÁN'),
+(454, 'GUAM'),
+(455, 'MACAO'),
+(499, 'OTROS PAISES O TERRITORIOS DE ASIA'),
+(501, 'AUSTRALIA'),
+(502, 'FIJI'),
+(504, 'NUEVA ZELANDA'),
+(505, 'PAPUA NUEVA GUINEA'),
+(506, 'ISLAS SALOMON'),
+(507, 'SAMOA'),
+(508, 'TONGA'),
+(509, 'VANUATU'),
+(511, 'MICRONESIA'),
+(512, 'TUVALU'),
+(513, 'ISLAS COOK'),
+(515, 'NAURU'),
+(516, 'PALAOS'),
+(517, 'TIMOR ORIENTAL'),
+(520, 'POLINESIA FRANCESA'),
+(521, 'ISLA NORFOLK'),
+(522, 'KIRIBATI'),
+(523, 'NIUE'),
+(524, 'ISLAS PITCAIRN'),
+(525, 'TOKELAU'),
+(526, 'NUEVA CALEDONIA'),
+(527, 'WALLIS Y FORTUNA'),
+(528, 'SAMOA AMERICANA'),
+(599, 'OTROS PAISES O TERRITORIOS DE OCEANIA');
 
 -- --------------------------------------------------------
 
@@ -2503,9 +2704,8 @@ CREATE TABLE IF NOT EXISTS `tbl_metodos_anticonceptivos` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_niveles_estudios` (
-  `id_nivel_estudio` int(11) NOT NULL AUTO_INCREMENT,
-  `nivel_estudio` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_nivel_estudio`)
+`id_nivel_estudio` int(11) NOT NULL,
+  `nivel_estudio` varchar(100) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
@@ -2525,11 +2725,568 @@ INSERT INTO `tbl_niveles_estudios` (`id_nivel_estudio`, `nivel_estudio`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `tbl_ocupaciones`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_ocupaciones` (
+  `cod_ocupacion` int(11) NOT NULL,
+  `descripcion` varchar(350) CHARACTER SET latin1 COLLATE latin1_spanish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `tbl_ocupaciones`
+--
+
+INSERT INTO `tbl_ocupaciones` (`cod_ocupacion`, `descripcion`) VALUES
+(1, 'Miembros del poder ejecutivo y de los cuerpos legislativos y personal directivo de la administraci?n publica y de empresas'),
+(2, 'Profesionales cient?ficos e intelectuales'),
+(3, 'Técnicos y profesionales de nivel medio'),
+(4, 'Empleados de oficina'),
+(5, 'Trabajadores de los servicios y vendedores de comercios y mercados'),
+(6, 'Agricultores y trabajadores calificados agropecuarios y pesqueros'),
+(7, 'Oficiales, operarios y artesanos de artes mec?nicas y de otros oficios'),
+(8, 'Operadores de instalaciones y maquinas y montadores'),
+(9, 'Trabajadores no calificados'),
+(11, 'Miembros del poder ejecutivo y de los cuerpos legislativos y personal directivo de la administraci?n publica'),
+(12, 'Directores de empresa'),
+(13, 'Gerentes de empresa'),
+(21, 'Profesionales de las ciencias f?sicas, qu?micas y matem?ticas y de la ingenier'),
+(22, 'Profesionales de las ciencias biol?gicas, la medicina y la salud'),
+(23, 'Profesionales de la ense?anza'),
+(24, 'Otros profesionales cient?ficos e intelectuales'),
+(31, 'T?cnicos y profesionales de nivel medio de las ciencias f?sicas y qu?micas, la ingenier?a y afines'),
+(32, 'T?cnicos y profesionales de nivel medio de las ciencias biol?gicas, la medicina y la salud'),
+(33, 'Maestros e instructores de nivel medio'),
+(34, 'Otros t?cnicos y profesionales de nivel medio'),
+(41, 'Oficinistas'),
+(42, 'Empleados en trato directo con el publico'),
+(51, 'Trabajadores de los servicios personales y de los servicios de protecci?n y seguridad'),
+(52, 'Modelos, vendedores y demostradores'),
+(61, 'Agricultores y trabajadores calificados de explotaciones agropecuarias, forestales y pesqueras con destino al mercado'),
+(62, 'Trabajadores agropecuarios y pesqueros de subsistencia'),
+(71, 'Oficiales y operarios de las industrias extractivas y de la construcci'),
+(72, 'Oficiales y operarios de la metalurgia, la construcci?n mec?nica y afines'),
+(73, 'Mec?nicos de precisi?n, artesanos, operarios de las artes graficas y afines'),
+(74, 'Otros oficiales, operarios y artesanos de artes mec?nicas y de otros oficios'),
+(81, 'Operadores de instalaciones fijas y afines'),
+(82, 'Operadores de maquinas y montadores'),
+(83, 'Conductores de veh?culos y operadores de equipos pesados m?viles'),
+(91, 'Trabajadores no calificados de ventas y servicios'),
+(92, 'Peones agropecuarios, forestales, pesqueros y afines'),
+(93, 'Peones de la miner?a, la construcci?n, la industria manufacturera y el transporte'),
+(111, 'Miembros del poder ejecutivo y de los cuerpos legislativos'),
+(112, 'Personal directivo de la administraci?n publica'),
+(113, 'Jefes de peque?as poblaciones'),
+(114, 'Dirigentes y administradores de organizaciones especializadas'),
+(121, 'Directores generales y gerentes generales de empresa'),
+(122, 'Directores de departamentos de producci?n y operaciones '),
+(123, 'Otros directores de departamentos'),
+(131, 'Gerentes de empresa'),
+(211, 'F?sicos, qu?micos y afines'),
+(212, 'Matem?ticos, estad?sticos y afines'),
+(213, 'Profesionales de la inform?tica'),
+(214, 'Arquitectos, ingenieros y afines'),
+(221, 'Profesionales en ciencias biol?gicas y otras disciplinas relativas a los seres org?nicos'),
+(222, 'M?dicos y profesionales afines (excepto el personal de enfermer?a y parter?a)'),
+(223, 'Personal de enfermer?a y parter?a de nivel superior'),
+(231, 'Profesores de universidades y otros establecimientos de la ense?anza superior'),
+(232, 'Profesores de la ense?anza secundaria'),
+(233, 'Maestros de nivel superior de la ense?anza primaria y preescolar'),
+(234, 'Maestros e instructores de nivel superior de la ense?anza especial'),
+(235, 'Otros profesionales de la ense?anza'),
+(241, 'Especialistas en organizaci?n y administraci?n de empresas y afines'),
+(242, 'Profesionales del derecho'),
+(243, 'Archiveros, bibliotecarios, documentalistas y afines'),
+(244, 'Especialistas en ciencias sociales y humanas'),
+(245, 'Escritores, artistas creativos y ejecutantes'),
+(246, 'Sacerdotes de distintas religiones'),
+(311, 'T?cnicos en ciencias f?sicas y qu?micas y en ingenier'),
+(312, 'T?cnicos en programaci?n y control informativos'),
+(313, 'Operadores de equipos ?pticos y electr?nicos'),
+(314, 'T?cnicos en navegaci?n mar?tima y en aeron?utica'),
+(315, 'Inspectores de obras, seguridad y salud y control de calidad'),
+(321, 'T?cnicos de nivel medio en ciencias biol?gicas, agronom?a, zootecnia y afines'),
+(322, 'Profesionales de nivel medio de la medicina moderna y la salud (excepto el personal de enfermer?a y parter?a)'),
+(323, 'Personal de enfermer?a y parter?a de nivel medio'),
+(324, 'Practicantes de la medicina tradicional y curanderos'),
+(331, 'Maestros de nivel medio de la ense?anza primaria'),
+(332, 'Maestros de nivel medio de la ense?anza preescolar'),
+(333, 'Maestros de nivel medio de la ense?anza especial'),
+(334, 'Otros maestros e instructores de nivel medio'),
+(341, 'Profesionales de nivel medio en operaciones financieras y comerciales'),
+(342, 'Agentes comerciales y corredores'),
+(343, 'Profesionales de nivel medio de servicios de administraci'),
+(344, 'Agentes de las administraciones publicas de aduanas, impuestos y afines'),
+(345, 'Inspectores de polic?a y detectives'),
+(346, 'Trabajadores y asistentes sociales de nivel medio'),
+(347, 'Profesionales de nivel medio de actividades art?sticas, espect?culos y deportes'),
+(348, 'Auxiliares laicos de los cultos'),
+(411, 'Secretarios y operadores de maquinas de oficina'),
+(412, 'Auxiliares contables y financieros'),
+(413, 'Empleados encargados del registro de materiales y de transportes'),
+(414, 'Empleados de bibliotecas y servicios de correos y afines'),
+(419, 'Otros oficinistas'),
+(421, 'Cajeros, taquilleros y afines'),
+(422, 'Empleados de servicios de informaci?n a la clientela'),
+(511, 'Personal al servicio directo de los pasajeros'),
+(512, 'Personal de intendencia y de restauraci'),
+(513, 'Trabajadores de los cuidados personales y afines'),
+(514, 'Otros trabajadores de servicios personales a particulares'),
+(515, 'Astr?logos, adivinadores y afines'),
+(516, 'Personal de los servicios de protecci?n y seguridad'),
+(521, 'Modelos de modas, arte y publicidad'),
+(522, 'Vendedores y demostradores de tiendas y almacenes'),
+(523, 'Vendedores de quioscos y de puestos de mercado'),
+(611, 'Agricultores y trabajadores calificados de cultivos para el mercado'),
+(612, 'Criadores y trabajadores pecuarios calificados de la cr?a de animales para el mercado y afines'),
+(613, 'Productores y trabajadores agropecuarios calificados cuya producci?n se destina al mercado'),
+(614, 'Trabajadores forestales calificados y afines'),
+(615, 'Pescadores, cazadores y tramperos'),
+(621, 'Trabajadores agropecuarios y pesqueros de subsistencia'),
+(711, 'Mineros, canteros, pegadores y labrantes de piedra'),
+(712, 'Oficiales y operarios de la construcci?n (obra gruesa) y afines'),
+(713, 'Oficiales y operarios de la construcci?n (trabajos de acabado) y afines'),
+(714, 'Pintores, limpiadores de fachadas y afines'),
+(721, 'Moldeadores, soldadores, chapistas, caldereros, montadores de estructuras met?licas y afines'),
+(722, 'Herreros, herramentistas y afines'),
+(723, 'Mec?nicos y ajustadores de maquinas'),
+(724, 'Mec?nicos y ajustadores de equipos el?ctricos y electr?nicos'),
+(731, 'Mec?nicos de precisi?n en metales y materiales similares'),
+(732, 'Alfareros, operarios de cristaler?as y afines'),
+(733, 'Artesanos de la madera, tejidos, cuero y materiales similares'),
+(734, 'Oficiales y operarios de las artes graficas y afines'),
+(741, 'Oficiales y operarios del procesamiento de alimentos y afines'),
+(742, 'Oficiales y operarios del tratamiento de la madera, ebanistas y afines'),
+(743, 'Oficiales y operarios de los textiles y de la confecci?n y afines'),
+(744, 'Oficiales y operarios de las pieles, cuero y calzado'),
+(811, 'Operadores de instalaciones mineras y de extracci?n y procesamiento de minerales'),
+(812, 'Operadores de instalaciones de procesamiento de metales'),
+(813, 'Operadores de instalaciones de vidrier?a, cer?mica y afines'),
+(814, 'Operadores de instalaciones de procesamiento de la madera y de la fabricaci?n de papel'),
+(815, 'Operadores de instalaciones de tratamientos qu?micos'),
+(816, 'Operadores de instalaciones de producci?n de energ?a y afines'),
+(817, 'Operadores de cadenas de montaje automatizadas y de robots industriales'),
+(821, 'Operadores de maquinas para trabajar metales y productos minerales'),
+(822, 'Operadores de maquinas para fabricar productos qu?micos'),
+(823, 'Operadores de maquinas para fabricar productos de caucho y de material pl?stico'),
+(824, 'Operadores de maquinas para fabricar productos de madera'),
+(825, 'Operadores de maquinas de imprenta, encuadernaci?n y fabricaci?n de productos de papel'),
+(826, 'Operadores de maquinas para fabricar productos textiles y art?culos de piel y cuero'),
+(827, 'Operadores de maquinas para elaborar alimentos y productos afines'),
+(828, 'Montadores'),
+(829, 'Otros operadores de maquinas y montadores'),
+(831, 'Maquinistas de locomotoras y afines'),
+(832, 'Conductores de veh?culos de motor'),
+(833, 'Operadores de maquinaria agr?cola m?vil y de otras maquinas m?viles'),
+(834, 'Marineros de cubierta y afines'),
+(911, 'Vendedores ambulantes y afines'),
+(912, 'Limpiabotas y otros trabajadores callejeros'),
+(913, 'Personal domestico y afines, limpiadores, lavanderos y planchadores'),
+(914, 'Conserjes, lavadores de ventanas y afines'),
+(915, 'Mensajeros, porteadores, porteros y afines'),
+(916, 'Recolectores de basura y afines'),
+(921, 'Peones agropecuarios, forestales, pesqueros y afines'),
+(931, 'Peones de la miner?a y la construcci'),
+(932, 'Peones de la industria manufacturera'),
+(933, 'Peones del transporte'),
+(1110, 'Miembros del poder ejecutivo y de los cuerpos legislativos'),
+(1120, 'Personal directivo de la administraci?n publica'),
+(1130, 'Jefes de peque?as poblaciones'),
+(1141, 'Dirigentes y administradores de partidos pol?ticos'),
+(1142, 'Dirigentes y administradores de organizaciones de empleadores, de trabajadores y de otras de inter?s socioecon?mico'),
+(1143, 'Dirigentes y administradores de organizaciones humanitarias y de otras organizaciones especializadas'),
+(1210, 'Directores generales y gerentes generales de empresa'),
+(1221, 'Directores de departamentos de producci?n y operaciones, agricultura, caza, silvicultura y pesca'),
+(1222, 'Directores de departamentos de producci?n y operaciones, industrias manufactureras'),
+(1223, 'Directores de departamentos de producci?n y operaciones, construcci?n y obras publicas'),
+(1224, 'Directores de departamentos de producci?n y operaciones, comercio mayorista y minorista'),
+(1225, 'Directores de departamentos de producci?n y operaciones, restauraci?n y hosteleria'),
+(1226, 'Directores de departamentos de producci?n y operaciones, transporte, almacenamiento y comunicaciones'),
+(1227, 'Directores de departamentos de producci?n y operaciones, empresas de intermediaci?n y servicios a empresas'),
+(1228, 'Directores de departamentos de producci?n y operaciones, servicios de cuidados personales, limpieza y servicios similares'),
+(1229, 'Directores de departamentos de producci?n y operaciones, no clasificados bajo otros ep?grafes'),
+(1231, 'Directores de departamentos financieros y administrativos'),
+(1232, 'Directores de departamentos de personal y de relaciones laborales'),
+(1233, 'Directores de departamentos de ventas y comercializaci'),
+(1234, 'Directores de departamentos de publicidad y de relaciones publicas'),
+(1235, 'Directores de departamentos de abastecimiento y distribuci'),
+(1236, 'Directores de departamentos de servicios de inform?tica'),
+(1237, 'Directores de departamentos de investigaciones y desarrollo'),
+(1239, 'Otros directores de departamentos, no clasificados bajo otros ep?grafes'),
+(1311, 'Gerentes de empresas de agricultura, caza, silvicultura y pesca'),
+(1312, 'Gerentes de industrias manufactureras'),
+(1313, 'Gerentes de empresas de construcci?n y obras publicas'),
+(1314, 'Gerentes de comercios mayoristas y minoristas'),
+(1315, 'Gerentes de empresas de restauraci?n y hosteleria '),
+(1316, 'Gerentes de empresas de transporte, almacenamiento y comunicaciones'),
+(1317, 'Gerentes de empresas de intermediaci?n y servicios a empresas '),
+(1318, 'Gerentes de empresas de servicios de cuidados personales, limpieza y servicios similares'),
+(1319, 'Gerentes de empresas, no clasificados bajo otros ep?grafes'),
+(2111, 'F?sicos y astr?nomos'),
+(2112, 'Meteor?logos'),
+(2113, 'Qu?micos'),
+(2114, 'Ge?logos y geof?sicos'),
+(2121, 'Matem?ticos y afines'),
+(2122, 'Estad?sticos'),
+(2131, 'Creadores y analistas de sistemas inform?ticos'),
+(2132, 'Programadores inform?ticos'),
+(2139, 'Profesionales de la inform?tica no clasificados bajo otros ep?grafes'),
+(2141, 'Arquitectos, urbanistas e ingenieros de transito'),
+(2142, 'Ingenieros civiles'),
+(2143, 'Ingenieros electricistas'),
+(2144, 'Ingenieros electronicistas y de telecomunicaciones'),
+(2145, 'Ingenieros mec?nicos'),
+(2146, 'Ingenieros qu?micos'),
+(2147, 'Ingenieros de minas y metal?rgicos y afines'),
+(2148, 'Cart?grafos y agrimensores'),
+(2149, 'Arquitectos, ingenieros y afines, no clasificados bajo otros ep?grafes'),
+(2211, 'Bi?logos, bot?nicos, zo?logos y afines'),
+(2212, 'Farmac?logos, pat?logos y afines'),
+(2213, 'Agr?nomos y afines'),
+(2221, 'M?dicos'),
+(2222, 'Odont?logos'),
+(2223, 'Veterinarios'),
+(2224, 'Farmac?uticos'),
+(2229, 'M?dicos y profesionales afines (excepto el personal de enfermer?a y parter?a), no clasificados bajo otros ep?grafes'),
+(2230, 'Personal de enfermer?a y parter?a de nivel superior'),
+(2310, 'Profesores de universidades y otros establecimientos de la ense?anza superior'),
+(2320, 'Profesores de la ense?anza secundaria'),
+(2331, 'Maestros de nivel superior de la ense?anza primaria'),
+(2332, 'Maestros de nivel superior de la ense?anza preescolar'),
+(2340, 'Maestros e instructores de nivel superior de la ense?anza especial'),
+(2351, 'Especialistas en m?todos pedag?gicos y material did?ctico'),
+(2352, 'Inspectores de la ense?anza'),
+(2359, 'Otros profesionales de la ense?anza, no clasificados bajo otros ep?grafes'),
+(2411, 'Contadores'),
+(2412, 'Especialistas en pol?ticas y servicios de personal y afines'),
+(2419, 'Especialistas en organizaci?n y administraci?n de empresas y afines, no clasificados bajo otros ep?grafes'),
+(2421, 'Abogados'),
+(2422, 'Jueces'),
+(2429, 'Profesionales del derecho, no clasificados bajo otros ep?grafes'),
+(2431, 'Archiveros y conservadores de museos'),
+(2432, 'Bibliotecarios, documentalistas y afines'),
+(2441, 'Economistas'),
+(2442, 'Soci?logos, antrop?logos y afines'),
+(2443, 'Fil?sofos, historiadores y especialistas en ciencias pol?ticas'),
+(2444, 'Fil?logos, traductores e interpretes'),
+(2445, 'Psic?logos'),
+(2446, 'Profesionales del trabajo social'),
+(2451, 'Autores, periodistas y otros escritores'),
+(2452, 'Escultores, pintores y afines'),
+(2453, 'Compositores, m?sicos y cantantes'),
+(2454, 'Core?grafos y bailarines'),
+(2455, 'Actores y directores de cine, radio, teatro, televisi?n y afines'),
+(2460, 'Sacerdotes de distintas religiones'),
+(3111, 'T?cnicos en ciencias f?sicas y qu?micas'),
+(3112, 'T?cnicos en ingenier?a civil'),
+(3113, 'Electrot?cnicos'),
+(3114, 'T?cnicos en electr?nica y telecomunicaciones'),
+(3115, 'T?cnicos en mec?nica y construcci?n mec?nica'),
+(3116, 'T?cnicos en qu?mica industrial'),
+(3117, 'T?cnicos en ingenier?a de minas y metalurgia'),
+(3118, 'Delineantes y dibujantes t?cnicos'),
+(3119, 'T?cnicos en ciencias f?sicas y qu?micas y en ingenier?a, no clasificados bajo otros ep?grafes'),
+(3121, 'T?cnicos en programaci?n inform?tica'),
+(3122, 'T?cnicos en control de equipos inform?ticos'),
+(3123, 'T?cnicos en control de robots industriales'),
+(3131, 'Fot?grafos y operadores de equipos de grabaci?n de imagen y sonido'),
+(3132, 'Operadores de equipos de radiodifusi?n, televisi?n y telecomunicaciones'),
+(3133, 'Operadores de aparatos de diagnostico y tratamiento m?dicos'),
+(3139, 'Operadores de equipos ?pticos y electr?nicos, no clasificados bajos otros ep?grafes'),
+(3141, 'Oficiales maquinistas'),
+(3142, 'Capitanes, oficiales de cubierta y pr?cticos'),
+(3143, 'Pilotos de aviaci?n y afines'),
+(3144, 'Controladores de trafico a?reo'),
+(3145, 'T?cnicos en seguridad aeron?utica'),
+(3151, 'Inspectores de edificios y de prevenci?n e investigaci?n de incendios'),
+(3152, 'Inspectores de seguridad y salud y control de calidad'),
+(3211, 'T?cnicos en ciencias biol?gicas y afines'),
+(3212, 'T?cnicos en agronom?a, zootecnia y silvicultura'),
+(3213, 'Consejeros agr?colas y forestales'),
+(3221, 'Practicantes y asistentes m?dicos'),
+(3222, 'Higienistas y otro personal sanitario'),
+(3223, 'T?cnicos en diet?tica y nutrici'),
+(3224, 'T?cnicos en optometr?a y ?pticos'),
+(3225, 'Dentistas auxiliares y ayudantes de odontolog'),
+(3226, 'Fisioterapeutas y afines'),
+(3227, 'T?cnicos y asistentes veterinarios'),
+(3228, 'T?cnicos y asistentes farmac?uticos'),
+(3229, 'Profesionales de nivel medio de la medicina moderna y la salud (excepto el personal de enfermer?a y parter?a), no clasificados bajo otros ep?grafes'),
+(3231, 'Personal de enfermer?a de nivel medio'),
+(3232, 'Personal de parter?a de nivel medio'),
+(3241, 'Practicantes de la medicina tradicional'),
+(3242, 'Curanderos'),
+(3310, 'Maestros de nivel medio de la ense?anza primaria'),
+(3320, 'Maestros de nivel medio de la ense?anza preescolar'),
+(3330, 'Maestros de nivel medio de la ense?anza especial'),
+(3340, 'Otros maestros e instructores de nivel medio'),
+(3411, 'Agentes de bolsa, cambio y otros servicios financieros'),
+(3412, 'Agentes de seguros'),
+(3413, 'Agentes inmobiliarios'),
+(3414, 'Agentes de viajes'),
+(3415, 'Representantes comerciales y t?cnicos de ventas'),
+(3416, 'Compradores'),
+(3417, 'Tasadores y subastadores'),
+(3419, 'Profesionales de nivel medio en operaciones financieras y comerciales, no clasificados bajo otros ep?grafes'),
+(3421, 'Agentes de compras y consignatarios'),
+(3422, 'Declarantes o gestores de aduana'),
+(3423, 'Agentes p?blicos y privados de colocaci?n y contratistas de mano de obra'),
+(3429, 'Agentes comerciales y corredores, no clasificados bajo otros ep?grafes'),
+(3431, 'Profesionales de nivel medio de servicios administrativos y afines'),
+(3432, 'Profesionales de nivel medio del derecho y servicios legales o afines'),
+(3433, 'Tenedores de libros'),
+(3434, 'Profesionales de nivel medio de servicios estad?sticos, matem?ticos y afines'),
+(3439, 'Profesionales de nivel medio de servicios de administraci?n, no clasificados bajo otros ep?grafes'),
+(3441, 'Agentes de aduana e inspectores de fronteras'),
+(3442, 'Funcionarios del fisco'),
+(3443, 'Funcionarios de servicios de seguridad social'),
+(3444, 'Funcionarios de servicios de expedici?n de licencias y permisos'),
+(3449, 'Agentes de las administraciones publicas de aduanas, impuestos y afines, no clasificados bajo otros ep?grafes'),
+(3450, 'Inspectores de polic?a y detectives'),
+(3460, 'Trabajadores y asistentes sociales de nivel medio'),
+(3471, 'Decoradores y dise?adores'),
+(3472, 'Locutores de radio y televisi?n y afines'),
+(3473, 'M?sicos, cantantes y bailarines callejeros, de cabaret y afines'),
+(3474, 'Payasos, prestidigitadores, acr?batas y afines'),
+(3475, 'Atletas, deportistas y afines'),
+(3480, 'Auxiliares laicos de los cultos'),
+(4111, 'Taqu?grafos y mecan?grafos'),
+(4112, 'Operadores de maquinas de tratamiento de textos y afines'),
+(4113, 'Operadores de entrada de datos'),
+(4114, 'Operadores de calculadoras'),
+(4115, 'Secretarios'),
+(4121, 'Empleados de contabilidad y calculo de costos'),
+(4122, 'Empleados de servicios estad?sticos y financieros'),
+(4131, 'Empleados de control de abastecimientos e inventario'),
+(4132, 'Empleados de servicios de apoyo a la producci'),
+(4133, 'Empleados de servicios de transporte'),
+(4141, 'Empleados de bibliotecas y archivos'),
+(4142, 'Empleados de servicios de correos'),
+(4143, 'Codificadores de datos, correctores de pruebas de imprenta y afines'),
+(4144, 'Escribientes p?blicos y afines'),
+(4190, 'Otros oficinistas'),
+(4211, 'Cajeros y expendedores de billetes'),
+(4212, 'Pagadores y cobradores de ventanilla y taquilleros'),
+(4213, 'Receptores de apuestas y afines'),
+(4214, 'Prestamistas'),
+(4215, 'Cobradores y afines'),
+(4221, 'Empleados de agencias de viajes'),
+(4222, 'Recepcionistas y empleados de informaciones'),
+(4223, 'Telefonistas'),
+(5111, 'Camareros y azafatas'),
+(5112, 'Revisores, guardas y cobradores de los transportes p?blicos'),
+(5113, 'Gu?as'),
+(5121, 'Ec?nomos, mayordomos y afines'),
+(5122, 'Cocineros'),
+(5123, 'Camareros y taberneros'),
+(5131, 'Ni?eras y celadoras infantiles'),
+(5132, 'Ayudantes de enfermer?a en instituciones'),
+(5133, 'Ayudantes de enfermer?a a domicilio'),
+(5139, 'Trabajadores de los cuidados personales y afines, no clasificados bajo otros ep?grafes'),
+(5141, 'Peluqueros, especialistas en tratamientos de belleza y afines'),
+(5142, 'Acompa?antes y ayudas de c?mara'),
+(5143, 'Personal de pompas f?nebres y embalsamadores'),
+(5149, 'Otros trabajadores de servicios personales a particulares, no clasificados bajo otros ep?grafes'),
+(5151, 'Astr?logos y afines'),
+(5152, 'Adivinadores, quirom?nticos y afines'),
+(5161, 'Bomberos'),
+(5162, 'Polic?as'),
+(5163, 'Guardianes de prisi'),
+(5169, 'Personal de los servicios de protecci?n y seguridad, no clasificado bajo otros ep?grafes'),
+(5210, 'Modelos de modas, arte y publicidad'),
+(5220, 'Vendedores y demostradores de tiendas y almacenes'),
+(5230, 'Vendedores de quioscos y de puestos de mercado'),
+(6111, 'Agricultores y trabajadores calificados de cultivos extensivos'),
+(6112, 'Agricultores y trabajadores calificados de plantaciones de ?rboles y arbustos'),
+(6113, 'Agricultores y trabajadores calificados de huertas, invernaderos, viveros y jardines'),
+(6114, 'Agricultores y trabajadores calificados de cultivos mixtos'),
+(6121, 'Criadores de ganado y otros animales dom?sticos y productores de leche y sus derivados'),
+(6122, 'Avicultores y trabajadores calificados de la avicultura'),
+(6123, 'Apicultores y sericicultores y trabajadores calificados de la apicultura y la sericicultura'),
+(6124, 'Criadores y trabajadores calificados de la cr?a de animales dom?sticos diversos'),
+(6129, 'Criadores y trabajadores pecuarios calificados de la cr?a de animales para el mercado y afines, no clasificados bajo otros ep?grafes'),
+(6130, 'Productores y trabajadores agropecuarios calificados cuya producci?n se destina al mercado'),
+(6141, 'Taladores y otros trabajadores forestales'),
+(6142, 'Carboneros de carb?n vegetal y afines'),
+(6151, 'Criadores de especies acu?ticas'),
+(6152, 'Pescadores de agua dulce y en aguas costeras'),
+(6153, 'Pescadores de alta mar'),
+(6154, 'Cazadores y tramperos'),
+(6210, 'Trabajadores agropecuarios y pesqueros de subsistencia'),
+(7111, 'Mineros y canteros'),
+(7112, 'Pegadores'),
+(7113, 'Tronzadores, labrantes y grabadores de piedra'),
+(7121, 'Constructores con t?cnicas y materiales tradicionales'),
+(7122, 'Alba?iles y mamposteros'),
+(7123, 'Operarios en cemento armado, enfoscadores y afines'),
+(7124, 'Carpinteros de armar y de blanco '),
+(7129, 'Oficiales y operarios de la construcci?n (obra gruesa) y afines, no clasificados bajo otros ep?grafes'),
+(7131, 'Techadores'),
+(7132, 'Parqueteros y colocadores de suelos'),
+(7133, 'Revocadores'),
+(7134, 'Instaladores de material aislante y de insonorizaci'),
+(7135, 'Cristaleros'),
+(7136, 'Fontaneros e instaladores de tuber?as'),
+(7137, 'Electricistas de obras y afines'),
+(7141, 'Pintores y empapeladores'),
+(7142, 'Barnizadores y afines'),
+(7143, 'Limpiadores de fachadas y deshollinadores'),
+(7211, 'Moldeadores y macheros'),
+(7212, 'Soldadores y oxicortadores'),
+(7213, 'Chapistas y caldereros'),
+(7214, 'Montadores de estructuras met?licas'),
+(7215, 'Aparejadores y empalmadores de cables'),
+(7216, 'Buzos'),
+(7221, 'Herreros y forjadores'),
+(7222, 'Herramentistas y afines'),
+(7223, 'Reguladores y reguladores-operadores de maquinas herramientas'),
+(7224, 'Pulidores de metales y afiladores de herramientas'),
+(7231, 'Mec?nicos y ajustadores de veh?culos de motor'),
+(7232, 'Mec?nicos y ajustadores de motores de avi'),
+(7233, 'Mec?nicos y ajustadores de maquinas agr?colas e industriales'),
+(7241, 'Mec?nicos y ajustadores electricistas'),
+(7242, 'Ajustadores electronicistas'),
+(7243, 'Mec?nicos y reparadores de aparatos electr?nicos'),
+(7244, 'Instaladores y reparadores de tel?grafos y tel?fonos'),
+(7245, 'Instaladores y reparadores de l?neas electrizas'),
+(7311, 'Mec?nicos y reparadores de instrumentos de precisi'),
+(7312, 'Constructores y afinadores de instrumentos musicales'),
+(7313, 'Joyeros, orfebres y plateros'),
+(7321, 'Alfareros y afines (barro, arcilla y abrasivos)'),
+(7322, 'Sopladores, modeladores, laminadores, cortadores y pulidores de vidrio'),
+(7323, 'Grabadores de vidrio'),
+(7324, 'Pintores decoradores de vidrio, cer?mica y otros materiales'),
+(7331, 'Artesanos de la madera y materiales similares'),
+(7332, 'Artesanos de los tejidos, el cuero y materiales similares'),
+(7341, 'Cajistas, tip?grafos y afines'),
+(7342, 'Estereotipistas y galvanotipistas'),
+(7343, 'Grabadores de imprenta y fotograbadores'),
+(7344, 'Operarios de la fotograf?a y afines'),
+(7345, 'Encuadernadores y afines'),
+(7346, 'Impresores de sericigraf?a y estampadores a la plancha y en textiles'),
+(7411, 'Carniceros, pescaderos y afines'),
+(7412, 'Panaderos, pasteleros y confiteros'),
+(7413, 'Operarios de la elaboraci?n de productos l?cteos'),
+(7414, 'Operarios de la conservaci?n de frutas, legumbres, verduras y afines'),
+(7415, 'Catadores y clasificadores de alimentos y bebidas'),
+(7416, 'Preparadores y elaboradores de tabaco y sus productos'),
+(7421, 'Operarios del tratamiento de la madera'),
+(7422, 'Ebanistas y afines'),
+(7423, 'Reguladores y reguladores-operadores de maquinas de labrar madera'),
+(7424, 'Cesteros, bruceros y afines'),
+(7431, ' preparadores de fibras'),
+(7432, 'Tejedores con telares 0 de tejidos de punto y afines'),
+(7433, 'Sastres, modistos y sombrereros'),
+(7434, 'Peleteros y afines'),
+(7435, 'Patronistas y cortadores de tela, cuero y afines'),
+(7436, 'Costureros, bordadores y afines'),
+(7437, 'Tapiceros, colchoneros y afines'),
+(7441, 'Apelambradores, pellejeros y curtidores'),
+(7442, 'Zapateros y afines'),
+(8111, 'Operadores de instalaciones mineras'),
+(8112, 'Operadores de instalaciones de procesamiento de minerales y rocas'),
+(8113, 'Perforadores y sondistas de pozos y afines'),
+(8121, 'Operadores de hornos de minerales y de hornos de primera fusi?n de metales'),
+(8122, 'Operadores de hornos de segunda fusi?n, maquinas de colar y moldear metales y trenes de laminaci'),
+(8123, 'Operadores de instalaciones de tratamiento t?rmico de metales'),
+(8124, 'Operadores de maquinas trefiladoras y estiradoras de metales'),
+(8131, 'Operadores de hornos de vidrier?a y cer?mica y operadores de maquinas afines'),
+(8139, 'Operadores de instalaciones de vidrier?a, cer?mica y afines, no clasificados bajo otros ep?grafes'),
+(8141, 'Operadores de instalaciones de procesamiento de la madera'),
+(8142, 'Operadores de instalaciones para la preparaci?n de pasta para papel'),
+(8143, 'Operadores de instalaciones para la fabricaci?n de papel'),
+(8151, 'Operadores de instalaciones quebrantadoras, trituradoras y mezcladoras de sustancias qu?micas'),
+(8152, 'Operadores de instalaciones de tratamiento qu?mico t?rmico'),
+(8153, 'Operadores de equipos de filtraci?n y separaci?n de sustancias qu?micas'),
+(8154, 'Operadores de equipos de destilaci?n y de reacci?n qu?mica (excepto petr?leo y gas natural)'),
+(8155, 'Operadores de instalaciones de refinaci?n de petr?leo y gas natural'),
+(8159, 'Operadores de instalaciones de tratamientos qu?micos, no clasificados bajo otros ep?grafes'),
+(8161, 'Operadores de instalaciones de producci?n de energ'),
+(8162, 'Operadores de maquinas de vapor y calderas'),
+(8163, 'Operadores de incineradores, instalaciones de tratamiento de agua y afines'),
+(8171, 'Operadores de cadenas de montaje automatizadas'),
+(8172, 'Operadores de robots industriales'),
+(8211, 'Operadores de maquinas herramientas'),
+(8212, 'Operadores de maquinas para fabricar cemento y otros productos minerales'),
+(8221, 'Operadores de maquinas para fabricar productos farmac?uticos y cosm?ticos'),
+(8222, 'Operadores de maquinas para fabricar municiones y explosivos'),
+(8223, 'Operadores de maquinas pulidoras, galvanizadoras y recubridoras de metales'),
+(8224, 'Operadores de maquinas para fabricar accesorios fotogr?ficos'),
+(8229, 'Operadores de maquinas para fabricar productos qu?micos, no clasificados bajo otros ep?grafes'),
+(8231, 'Operadores de maquinas para fabricar productos de caucho'),
+(8232, 'Operadores de maquinas para fabricar productos de material pl?stico'),
+(8240, 'Operadores de maquinas para fabricar productos de madera'),
+(8251, 'Operadores de maquinas de imprenta'),
+(8252, 'Operadores de maquinas de encuadernaci'),
+(8253, 'Operadores de maquinas para fabricar productos de papel'),
+(8261, 'Operadores de maquinas de preparaci?n de fibras, hilado y devanado'),
+(8262, 'Operadores de telares y otras maquinas tejedoras'),
+(8263, 'Operadores de maquinas para coser'),
+(8264, 'Operadores de maquinas de blanqueo, te?ido y tintura'),
+(8265, 'Operadores de maquinas de tratamiento de pieles y cueros'),
+(8266, 'Operadores de maquinas para la fabricaci?n de calzado y afines'),
+(8269, 'Operadores de maquinas para fabricar productos textiles y art?culos de piel y cuero, no clasificados bajo otros ep?grafes'),
+(8271, 'Operadores de maquinas para elaborar carne, pescado y mariscos'),
+(8272, 'Operadores de maquinas para elaborar productos l?cteos'),
+(8273, 'Operadores de maquinas para moler cereales y especias'),
+(8274, 'Operadores de maquinas para elaborar cereales, productos de panader?a y reposter?a y art?culos de chocolate'),
+(8275, 'Operadores de maquinas para elaborar frutos h?medos y secos y hortalizas'),
+(8276, 'Operadores de maquinas para fabricar azucares'),
+(8277, 'Operadores de maquinas para elaborar te, caf? y cacao'),
+(8278, 'Operadores de maquinas para elaborar cerveza, vino y otras bebidas'),
+(8279, 'Operadores de maquinas para elaborar productos del tabaco'),
+(8281, 'Montadores de mecanismos y elementos mec?nicos de maquinas'),
+(8282, 'Montadores de equipos el?ctricos'),
+(8283, 'Montadores de equipos electr?nicos'),
+(8284, 'Montadores de productos met?licos, de caucho y de material pl?stico'),
+(8285, 'Montadores de productos de madera y de materiales afines'),
+(8286, 'Montadores de productos de cart?n, textiles y materiales afines'),
+(8290, 'Otros operadores de maquinas y montadores'),
+(8311, 'Maquinistas de locomotoras'),
+(8312, 'Guardafrenos, guardagujas y agentes de maniobras'),
+(8321, 'Conductores de motocicletas'),
+(8322, 'Conductores de autom?viles, taxis y camionetas'),
+(8323, 'Conductores de autobuses y tranv?as'),
+(8324, 'Conductores de camiones pesados'),
+(8331, 'Operadores de maquinaria agr?cola y forestal motorizada'),
+(8332, 'Operadores de maquinas de movimiento de tierras y afines'),
+(8333, 'Operadores de gr?as, de aparatos elevadores y afines'),
+(8334, 'Operadores de carretillas elevadoras'),
+(8340, 'Marineros de cubierta y afines'),
+(9111, 'Vendedores ambulantes de productos comestibles'),
+(9112, 'Vendedores ambulantes de productos no comestibles'),
+(9113, 'Vendedores a domicilio y por tel?fono'),
+(9120, 'Limpiabotas y otros trabajadores callejeros'),
+(9131, 'Personal domestico'),
+(9132, 'Limpiadores de oficinas, hoteles y otros establecimientos'),
+(9133, 'Lavanderos y planchadores manuales'),
+(9141, 'Conserjes'),
+(9142, 'Lavadores de veh?culos, ventanas y afines'),
+(9151, 'Mensajeros, porteadores y repartidores'),
+(9152, 'Porteros, guardianes y afines'),
+(9153, 'Recolectores de dinero en aparatos de venta autom?tica, lectores de medidores y afines'),
+(9161, 'Recolectores de basura'),
+(9162, 'Barrenderos y afines'),
+(9211, 'Mozos de labranza y peones agropecuarios'),
+(9212, 'Peones forestales'),
+(9213, 'Peones de la pesca, la caza y la trampa'),
+(9311, 'Peones de minas y canteras'),
+(9312, 'Peones de obras publicas y mantenimiento: carreteras, presas y obras similares'),
+(9313, 'Peones de la construcci?n de edificios'),
+(9321, 'Peones de montaje'),
+(9322, 'Embaladores manuales y otros peones de la industria manufacturera'),
+(9331, 'Conductores de veh?culos accionados a pedal o a brazo'),
+(9332, 'Conductores de veh?culos y maquinas de tracci?n animal'),
+(9333, 'Peones de carga');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tbl_pacientes`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_pacientes` (
-  `id_paciente` int(11) NOT NULL AUTO_INCREMENT,
+`id_paciente` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `rut` varchar(80) NOT NULL,
   `primer_nombre` varchar(80) NOT NULL,
@@ -2547,13 +3304,7 @@ CREATE TABLE IF NOT EXISTS `tbl_pacientes` (
   `imagen` varchar(255) NOT NULL,
   `fecha_nacimiento` date NOT NULL,
   `lugar_nac` int(100) NOT NULL,
-  `fecha_ingreso` date NOT NULL,
-  PRIMARY KEY (`id_paciente`),
-  KEY `usuario` (`id_usuario`),
-  KEY `prevision_medica` (`id_prevision_medica`),
-  KEY `nivel_estudio` (`id_nivel_estudio`),
-  KEY `estado_civil` (`id_estadocivil`),
-  KEY `lugar_nacimiento` (`lugar_nac`)
+  `fecha_ingreso` date NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
 
 --
@@ -2583,8 +3334,7 @@ CREATE TABLE IF NOT EXISTS `tbl_patologias` (
   `cod_patologia` varchar(11) NOT NULL,
   `descripcion` varchar(350) NOT NULL,
   `sintomatologia` varchar(250) NOT NULL,
-  `indicaciones_preliminares` varchar(250) NOT NULL,
-  PRIMARY KEY (`cod_patologia`)
+  `indicaciones_preliminares` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -15055,9 +15805,8 @@ INSERT INTO `tbl_patologias` (`cod_patologia`, `descripcion`, `sintomatologia`, 
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_perfiles` (
-  `id_perfil` int(11) NOT NULL AUTO_INCREMENT,
-  `perfil` varchar(50) NOT NULL,
-  PRIMARY KEY (`id_perfil`)
+`id_perfil` int(11) NOT NULL,
+  `perfil` varchar(50) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
@@ -15076,14 +15825,13 @@ INSERT INTO `tbl_perfiles` (`id_perfil`, `perfil`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_personas_contacto` (
-  `id_persona_contacto` int(11) NOT NULL AUTO_INCREMENT,
+`id_persona_contacto` int(11) NOT NULL,
   `id_paciente` int(11) NOT NULL,
   `nombres` varchar(100) NOT NULL,
   `apellidos` varchar(100) NOT NULL,
   `parentesco` varchar(80) NOT NULL,
   `telefono` varchar(50) NOT NULL,
-  `correo` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_persona_contacto`)
+  `correo` varchar(100) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
@@ -15102,9 +15850,8 @@ INSERT INTO `tbl_personas_contacto` (`id_persona_contacto`, `id_paciente`, `nomb
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_previsiones_medicas` (
-  `id_prevision_medica` int(11) NOT NULL AUTO_INCREMENT,
-  `prevision_medica` varchar(80) NOT NULL,
-  PRIMARY KEY (`id_prevision_medica`)
+`id_prevision_medica` int(11) NOT NULL,
+  `prevision_medica` varchar(80) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
@@ -15122,7 +15869,7 @@ INSERT INTO `tbl_previsiones_medicas` (`id_prevision_medica`, `prevision_medica`
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_profesionales` (
-  `id_profesional` int(11) NOT NULL AUTO_INCREMENT,
+`id_profesional` int(11) NOT NULL,
   `id_usuario` int(11) NOT NULL,
   `id_perfil_profesional` int(11) NOT NULL,
   `rut` varchar(80) NOT NULL,
@@ -15135,9 +15882,7 @@ CREATE TABLE IF NOT EXISTS `tbl_profesionales` (
   `correo` varchar(100) NOT NULL,
   `sexo` char(1) NOT NULL,
   `imagen` varchar(80) NOT NULL,
-  `fecha_nacimiento` date NOT NULL,
-  PRIMARY KEY (`id_profesional`),
-  KEY `idusuario` (`id_usuario`)
+  `fecha_nacimiento` date NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
@@ -15157,14 +15902,10 @@ INSERT INTO `tbl_profesionales` (`id_profesional`, `id_usuario`, `id_perfil_prof
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_profesionales_especialidades` (
-  `id_profesional_especialidad` int(11) NOT NULL AUTO_INCREMENT,
+`id_profesional_especialidad` int(11) NOT NULL,
   `id_profesional` int(11) NOT NULL,
   `id_especialidad` int(11) NOT NULL,
-  `id_sub_especialidad` int(11) NOT NULL,
-  PRIMARY KEY (`id_profesional_especialidad`),
-  KEY `profesional` (`id_profesional`),
-  KEY `sub_especialidad` (`id_sub_especialidad`),
-  KEY `especialidad` (`id_especialidad`)
+  `id_sub_especialidad` int(11) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
@@ -15186,8 +15927,7 @@ INSERT INTO `tbl_profesionales_especialidades` (`id_profesional_especialidad`, `
 
 CREATE TABLE IF NOT EXISTS `tbl_provincias` (
   `cod_provincia` int(11) NOT NULL,
-  `nom_provincia` varchar(90) NOT NULL,
-  PRIMARY KEY (`cod_provincia`)
+  `nom_provincia` varchar(90) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -15256,8 +15996,7 @@ INSERT INTO `tbl_provincias` (`cod_provincia`, `nom_provincia`) VALUES
 
 CREATE TABLE IF NOT EXISTS `tbl_regiones` (
   `cod_region` int(11) NOT NULL,
-  `nom_region` varchar(80) NOT NULL,
-  PRIMARY KEY (`cod_region`)
+  `nom_region` varchar(80) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -15288,14 +16027,12 @@ INSERT INTO `tbl_regiones` (`cod_region`, `nom_region`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_rev_cardiovascular` (
-  `id_rev_cardiovascular` int(11) NOT NULL AUTO_INCREMENT,
+`id_rev_cardiovascular` int(11) NOT NULL,
   `sintomas_detectados` varchar(300) NOT NULL,
   `comentarios` varchar(200) NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
   `fecha_modificacion` date NOT NULL,
-  `id_consulta` int(11) NOT NULL,
-  PRIMARY KEY (`id_rev_cardiovascular`),
-  KEY `id_consulta` (`id_consulta`)
+  `id_consulta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -15305,14 +16042,12 @@ CREATE TABLE IF NOT EXISTS `tbl_rev_cardiovascular` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_rev_endocrino` (
-  `id_rev_endocrino` int(11) NOT NULL AUTO_INCREMENT,
+`id_rev_endocrino` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `sintomas_detectados` varchar(300) NOT NULL,
   `comentarios` varchar(200) NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_rev_endocrino`),
-  KEY `id_consulta` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -15322,14 +16057,12 @@ CREATE TABLE IF NOT EXISTS `tbl_rev_endocrino` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_rev_gastrointestinal` (
-  `id_rev_gastrointestinal` int(11) NOT NULL AUTO_INCREMENT,
+`id_rev_gastrointestinal` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `sintomas_detectados` varchar(300) NOT NULL,
   `comentarios` varchar(200) NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_rev_gastrointestinal`),
-  KEY `id_consulta` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -15339,14 +16072,12 @@ CREATE TABLE IF NOT EXISTS `tbl_rev_gastrointestinal` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_rev_general` (
-  `id_rev_general` int(11) NOT NULL AUTO_INCREMENT,
+`id_rev_general` int(11) NOT NULL,
   `sintomas_detectados` varchar(300) NOT NULL,
   `comentarios` varchar(200) NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
   `fecha_modificacion` date NOT NULL,
-  `id_consulta` int(11) NOT NULL,
-  PRIMARY KEY (`id_rev_general`),
-  KEY `id_consulta` (`id_consulta`)
+  `id_consulta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -15356,14 +16087,12 @@ CREATE TABLE IF NOT EXISTS `tbl_rev_general` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_rev_genitourinario` (
-  `id_rev_genitourinario` int(11) NOT NULL AUTO_INCREMENT,
+`id_rev_genitourinario` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `sintomas_detectados` varchar(300) NOT NULL,
   `comentarios` varchar(200) NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_rev_genitourinario`),
-  KEY `id_consulta` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -15373,14 +16102,12 @@ CREATE TABLE IF NOT EXISTS `tbl_rev_genitourinario` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_rev_neurologico` (
-  `id_rev_neurologico` int(11) NOT NULL AUTO_INCREMENT,
+`id_rev_neurologico` int(11) NOT NULL,
   `id_consulta` int(11) NOT NULL,
   `sintomas_detectados` varchar(300) NOT NULL,
   `comentarios` varchar(200) NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
-  `fecha_modificacion` date NOT NULL,
-  PRIMARY KEY (`id_rev_neurologico`),
-  KEY `id_consulta` (`id_consulta`)
+  `fecha_modificacion` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -15390,14 +16117,12 @@ CREATE TABLE IF NOT EXISTS `tbl_rev_neurologico` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_rev_respiratorio` (
-  `id_rev_respiratorio` int(11) NOT NULL AUTO_INCREMENT,
+`id_rev_respiratorio` int(11) NOT NULL,
   `sintomas_detectados` varchar(300) NOT NULL,
   `comentarios` varchar(200) NOT NULL,
   `modificado_por` varchar(200) NOT NULL,
   `fecha_modificacion` date NOT NULL,
-  `id_consulta` int(11) NOT NULL,
-  PRIMARY KEY (`id_rev_respiratorio`),
-  KEY `id_consulta` (`id_consulta`)
+  `id_consulta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -15407,9 +16132,8 @@ CREATE TABLE IF NOT EXISTS `tbl_rev_respiratorio` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_sintomas_cardiovasculares` (
-  `id_sintoma_cardiovascular` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion_sintoma` varchar(200) NOT NULL,
-  PRIMARY KEY (`id_sintoma_cardiovascular`)
+`id_sintoma_cardiovascular` int(11) NOT NULL,
+  `descripcion_sintoma` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -15419,9 +16143,8 @@ CREATE TABLE IF NOT EXISTS `tbl_sintomas_cardiovasculares` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_sintomas_generales` (
-  `id_sintoma_general` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion_sintoma_general` varchar(200) NOT NULL,
-  PRIMARY KEY (`id_sintoma_general`)
+`id_sintoma_general` int(11) NOT NULL,
+  `descripcion_sintoma_general` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -15431,9 +16154,8 @@ CREATE TABLE IF NOT EXISTS `tbl_sintomas_generales` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_sintomas_ginecoobstetricos` (
-  `id_sintoma_gineco` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion` varchar(200) NOT NULL,
-  PRIMARY KEY (`id_sintoma_gineco`)
+`id_sintoma_gineco` int(11) NOT NULL,
+  `descripcion` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -15443,9 +16165,8 @@ CREATE TABLE IF NOT EXISTS `tbl_sintomas_ginecoobstetricos` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_sintomas_respiratorio` (
-  `id_sintoma_respiratorios` int(11) NOT NULL AUTO_INCREMENT,
-  `descripcion_sintoma` int(11) NOT NULL,
-  PRIMARY KEY (`id_sintoma_respiratorios`)
+`id_sintoma_respiratorios` int(11) NOT NULL,
+  `descripcion_sintoma` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -15455,11 +16176,9 @@ CREATE TABLE IF NOT EXISTS `tbl_sintomas_respiratorio` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_sub_especialidades` (
-  `id_sub_especialidad` int(11) NOT NULL AUTO_INCREMENT,
+`id_sub_especialidad` int(11) NOT NULL,
   `id_especialidad` int(11) NOT NULL,
-  `sub_especialidad` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_sub_especialidad`),
-  KEY `especialidad` (`id_especialidad`)
+  `sub_especialidad` varchar(100) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=61 ;
 
 --
@@ -15535,9 +16254,8 @@ INSERT INTO `tbl_sub_especialidades` (`id_sub_especialidad`, `id_especialidad`, 
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_tipos_habitos` (
-  `id_tipo_habito` int(11) NOT NULL AUTO_INCREMENT,
-  `habito` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_tipo_habito`)
+`id_tipo_habito` int(11) NOT NULL,
+  `habito` varchar(100) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
@@ -15557,9 +16275,8 @@ INSERT INTO `tbl_tipos_habitos` (`id_tipo_habito`, `habito`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_tipo_inmunizaciones` (
-  `id_tipo_inmunizacion` int(11) NOT NULL AUTO_INCREMENT,
-  `tipo_inmunizacion` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_tipo_inmunizacion`)
+`id_tipo_inmunizacion` int(11) NOT NULL,
+  `tipo_inmunizacion` varchar(100) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
@@ -15580,8 +16297,7 @@ CREATE TABLE IF NOT EXISTS `tbl_tratamientos` (
   `cod_tratamiento` int(11) NOT NULL,
   `sistema_tratado` varchar(100) NOT NULL,
   `descripcion_tratamiento` varchar(250) NOT NULL,
-  `indicaciones_preliminares` varchar(250) NOT NULL,
-  PRIMARY KEY (`cod_tratamiento`)
+  `indicaciones_preliminares` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Almacenamiento de Tratamientos';
 
 -- --------------------------------------------------------
@@ -15591,7 +16307,7 @@ CREATE TABLE IF NOT EXISTS `tbl_tratamientos` (
 --
 
 CREATE TABLE IF NOT EXISTS `tbl_usuarios` (
-  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+`id_usuario` int(11) NOT NULL,
   `username` varchar(80) NOT NULL,
   `password` varchar(255) NOT NULL,
   `id_perfil` int(11) NOT NULL,
@@ -15602,10 +16318,7 @@ CREATE TABLE IF NOT EXISTS `tbl_usuarios` (
   `creado_por` int(11) NOT NULL,
   `fecha_creacion` datetime NOT NULL,
   `modificado_por` int(11) NOT NULL,
-  `fecha_modificacion` datetime NOT NULL,
-  PRIMARY KEY (`id_usuario`),
-  KEY `perfil` (`id_perfil`),
-  KEY `institucion` (`id_institucion`)
+  `fecha_modificacion` datetime NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ;
 
 --
@@ -15641,8 +16354,7 @@ CREATE TABLE IF NOT EXISTS `tbl_vacunas` (
   `nombre_vacuna` varchar(100) NOT NULL,
   `zona_aplicacion` varchar(100) NOT NULL,
   `efectos_secundarios` varchar(250) NOT NULL,
-  `indicaciones_preliminares` varchar(250) NOT NULL,
-  PRIMARY KEY (`cod_vacuna`)
+  `indicaciones_preliminares` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COMMENT='Almacenamiento de Vacunas';
 
 --
@@ -15870,6 +16582,658 @@ INSERT INTO `tbl_vacunas` (`cod_vacuna`, `nombre_vacuna`, `zona_aplicacion`, `ef
 ('VPH-A3', 'PAPILOMAVIRUS CALEND. [3]', 'Zona Lumbar', 'Enrojecimiento', 'Reposo Parcial');
 
 --
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `int_paciente_anticonceptivos`
+--
+ALTER TABLE `int_paciente_anticonceptivos`
+ ADD PRIMARY KEY (`id_paciente_anticonceptivos`);
+
+--
+-- Indices de la tabla `int_paciente_ginecoobstetrico`
+--
+ALTER TABLE `int_paciente_ginecoobstetrico`
+ ADD PRIMARY KEY (`id_paciente_ginecoobstetrico`);
+
+--
+-- Indices de la tabla `int_paciente_respiratorio`
+--
+ALTER TABLE `int_paciente_respiratorio`
+ ADD PRIMARY KEY (`id_paciente_respiratorio`);
+
+--
+-- Indices de la tabla `int_paciente_sintomas`
+--
+ALTER TABLE `int_paciente_sintomas`
+ ADD PRIMARY KEY (`id_paciente_sintomas`);
+
+--
+-- Indices de la tabla `tbl_administradores`
+--
+ALTER TABLE `tbl_administradores`
+ ADD PRIMARY KEY (`id_administrador`), ADD KEY `usuario` (`id_usuario`);
+
+--
+-- Indices de la tabla `tbl_alergias`
+--
+ALTER TABLE `tbl_alergias`
+ ADD PRIMARY KEY (`cod_alergia`);
+
+--
+-- Indices de la tabla `tbl_ant_alergias`
+--
+ALTER TABLE `tbl_ant_alergias`
+ ADD PRIMARY KEY (`id_ant_alergia`), ADD KEY `alergias_alergia` (`id_alergia`), ADD KEY `consulta_alergias` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_ant_familiares`
+--
+ALTER TABLE `tbl_ant_familiares`
+ ADD PRIMARY KEY (`id_ant_familiares`), ADD KEY `fc` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_ant_ginecoobstetricos`
+--
+ALTER TABLE `tbl_ant_ginecoobstetricos`
+ ADD PRIMARY KEY (`id_ant_gineco`), ADD KEY `gineco_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_ant_habitos`
+--
+ALTER TABLE `tbl_ant_habitos`
+ ADD PRIMARY KEY (`id_ant_habitos`), ADD KEY `tipo_habito` (`id_tipo_habito`), ADD KEY `habitos_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_ant_inmunizaciones`
+--
+ALTER TABLE `tbl_ant_inmunizaciones`
+ ADD PRIMARY KEY (`id_ant_inmuno`), ADD KEY `tipo_inmunizacion` (`id_inmunizacion`), ADD KEY `consulta_inmuno` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_ant_medicamentos`
+--
+ALTER TABLE `tbl_ant_medicamentos`
+ ADD PRIMARY KEY (`id_ant_med`), ADD KEY `med_medicamento` (`id_med`), ADD KEY `consulta_med` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_ant_morbidos`
+--
+ALTER TABLE `tbl_ant_morbidos`
+ ADD PRIMARY KEY (`id_ant_morbido`);
+
+--
+-- Indices de la tabla `tbl_ant_sociales`
+--
+ALTER TABLE `tbl_ant_sociales`
+ ADD PRIMARY KEY (`id_ant_social`), ADD KEY `consulta_ant_social` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_comunas`
+--
+ALTER TABLE `tbl_comunas`
+ ADD PRIMARY KEY (`cod_comuna`);
+
+--
+-- Indices de la tabla `tbl_consulta_medica`
+--
+ALTER TABLE `tbl_consulta_medica`
+ ADD PRIMARY KEY (`id_consulta`), ADD KEY `historia_consulta` (`nro_historia_clinica`);
+
+--
+-- Indices de la tabla `tbl_diagnosticos`
+--
+ALTER TABLE `tbl_diagnosticos`
+ ADD PRIMARY KEY (`cod_diagnostico`);
+
+--
+-- Indices de la tabla `tbl_efg_conciencia`
+--
+ALTER TABLE `tbl_efg_conciencia`
+ ADD PRIMARY KEY (`id_efg_conciencia`), ADD KEY `id_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_efg_constitucion`
+--
+ALTER TABLE `tbl_efg_constitucion`
+ ADD PRIMARY KEY (`id_efg_constitucion`), ADD KEY `id_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_efg_deambulacion`
+--
+ALTER TABLE `tbl_efg_deambulacion`
+ ADD PRIMARY KEY (`id_efg_deambulacion`), ADD KEY `id_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_efg_decubito`
+--
+ALTER TABLE `tbl_efg_decubito`
+ ADD PRIMARY KEY (`id_efg_decubito`), ADD KEY `id_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_efg_facie`
+--
+ALTER TABLE `tbl_efg_facie`
+ ADD PRIMARY KEY (`id_efg_facie`), ADD KEY `id_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_efg_linfatico`
+--
+ALTER TABLE `tbl_efg_linfatico`
+ ADD PRIMARY KEY (`id_efg_linfatico`), ADD KEY `id_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_efg_piel`
+--
+ALTER TABLE `tbl_efg_piel`
+ ADD PRIMARY KEY (`id_efg_piel`), ADD KEY `id_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_efg_presion_pulso`
+--
+ALTER TABLE `tbl_efg_presion_pulso`
+ ADD PRIMARY KEY (`id_efg_presion_pulso`), ADD KEY `id_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_efg_respiratorio`
+--
+ALTER TABLE `tbl_efg_respiratorio`
+ ADD PRIMARY KEY (`id_efg_respiratorio`), ADD KEY `id_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_efg_temperatura`
+--
+ALTER TABLE `tbl_efg_temperatura`
+ ADD PRIMARY KEY (`id_efg_temperatura`), ADD KEY `id_consulta` (`id_consulta`), ADD KEY `id_consulta_2` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_especialidades`
+--
+ALTER TABLE `tbl_especialidades`
+ ADD PRIMARY KEY (`id_especialidad`);
+
+--
+-- Indices de la tabla `tbl_estado_civil`
+--
+ALTER TABLE `tbl_estado_civil`
+ ADD PRIMARY KEY (`id_estado_civil`);
+
+--
+-- Indices de la tabla `tbl_historia_medica`
+--
+ALTER TABLE `tbl_historia_medica`
+ ADD PRIMARY KEY (`id_historia_medica`), ADD UNIQUE KEY `historia_med_paciente` (`id_paciente`);
+
+--
+-- Indices de la tabla `tbl_imagenes`
+--
+ALTER TABLE `tbl_imagenes`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `tbl_inmunizaciones`
+--
+ALTER TABLE `tbl_inmunizaciones`
+ ADD PRIMARY KEY (`id_inmunizacion`), ADD KEY `tipo_inmunizacion` (`id_tipo_inmunizacion`);
+
+--
+-- Indices de la tabla `tbl_instituciones`
+--
+ALTER TABLE `tbl_instituciones`
+ ADD PRIMARY KEY (`id_institucion`);
+
+--
+-- Indices de la tabla `tbl_medicamentos`
+--
+ALTER TABLE `tbl_medicamentos`
+ ADD PRIMARY KEY (`cod_medicamento`);
+
+--
+-- Indices de la tabla `tbl_metodos_anticonceptivos`
+--
+ALTER TABLE `tbl_metodos_anticonceptivos`
+ ADD PRIMARY KEY (`id_metodo_anti`);
+
+--
+-- Indices de la tabla `tbl_nacionalidad`
+--
+ALTER TABLE `tbl_nacionalidad`
+ ADD PRIMARY KEY (`cod_pais`);
+
+--
+-- Indices de la tabla `tbl_niveles_estudios`
+--
+ALTER TABLE `tbl_niveles_estudios`
+ ADD PRIMARY KEY (`id_nivel_estudio`);
+
+--
+-- Indices de la tabla `tbl_ocupaciones`
+--
+ALTER TABLE `tbl_ocupaciones`
+ ADD PRIMARY KEY (`cod_ocupacion`);
+
+--
+-- Indices de la tabla `tbl_pacientes`
+--
+ALTER TABLE `tbl_pacientes`
+ ADD PRIMARY KEY (`id_paciente`), ADD KEY `usuario` (`id_usuario`), ADD KEY `prevision_medica` (`id_prevision_medica`), ADD KEY `nivel_estudio` (`id_nivel_estudio`), ADD KEY `estado_civil` (`id_estadocivil`), ADD KEY `lugar_nacimiento` (`lugar_nac`);
+
+--
+-- Indices de la tabla `tbl_patologias`
+--
+ALTER TABLE `tbl_patologias`
+ ADD PRIMARY KEY (`cod_patologia`);
+
+--
+-- Indices de la tabla `tbl_perfiles`
+--
+ALTER TABLE `tbl_perfiles`
+ ADD PRIMARY KEY (`id_perfil`);
+
+--
+-- Indices de la tabla `tbl_personas_contacto`
+--
+ALTER TABLE `tbl_personas_contacto`
+ ADD PRIMARY KEY (`id_persona_contacto`);
+
+--
+-- Indices de la tabla `tbl_previsiones_medicas`
+--
+ALTER TABLE `tbl_previsiones_medicas`
+ ADD PRIMARY KEY (`id_prevision_medica`);
+
+--
+-- Indices de la tabla `tbl_profesionales`
+--
+ALTER TABLE `tbl_profesionales`
+ ADD PRIMARY KEY (`id_profesional`), ADD KEY `idusuario` (`id_usuario`);
+
+--
+-- Indices de la tabla `tbl_profesionales_especialidades`
+--
+ALTER TABLE `tbl_profesionales_especialidades`
+ ADD PRIMARY KEY (`id_profesional_especialidad`), ADD KEY `profesional` (`id_profesional`), ADD KEY `sub_especialidad` (`id_sub_especialidad`), ADD KEY `especialidad` (`id_especialidad`);
+
+--
+-- Indices de la tabla `tbl_provincias`
+--
+ALTER TABLE `tbl_provincias`
+ ADD PRIMARY KEY (`cod_provincia`);
+
+--
+-- Indices de la tabla `tbl_regiones`
+--
+ALTER TABLE `tbl_regiones`
+ ADD PRIMARY KEY (`cod_region`);
+
+--
+-- Indices de la tabla `tbl_rev_cardiovascular`
+--
+ALTER TABLE `tbl_rev_cardiovascular`
+ ADD PRIMARY KEY (`id_rev_cardiovascular`), ADD KEY `id_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_rev_endocrino`
+--
+ALTER TABLE `tbl_rev_endocrino`
+ ADD PRIMARY KEY (`id_rev_endocrino`), ADD KEY `id_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_rev_gastrointestinal`
+--
+ALTER TABLE `tbl_rev_gastrointestinal`
+ ADD PRIMARY KEY (`id_rev_gastrointestinal`), ADD KEY `id_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_rev_general`
+--
+ALTER TABLE `tbl_rev_general`
+ ADD PRIMARY KEY (`id_rev_general`), ADD KEY `id_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_rev_genitourinario`
+--
+ALTER TABLE `tbl_rev_genitourinario`
+ ADD PRIMARY KEY (`id_rev_genitourinario`), ADD KEY `id_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_rev_neurologico`
+--
+ALTER TABLE `tbl_rev_neurologico`
+ ADD PRIMARY KEY (`id_rev_neurologico`), ADD KEY `id_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_rev_respiratorio`
+--
+ALTER TABLE `tbl_rev_respiratorio`
+ ADD PRIMARY KEY (`id_rev_respiratorio`), ADD KEY `id_consulta` (`id_consulta`);
+
+--
+-- Indices de la tabla `tbl_sintomas_cardiovasculares`
+--
+ALTER TABLE `tbl_sintomas_cardiovasculares`
+ ADD PRIMARY KEY (`id_sintoma_cardiovascular`);
+
+--
+-- Indices de la tabla `tbl_sintomas_generales`
+--
+ALTER TABLE `tbl_sintomas_generales`
+ ADD PRIMARY KEY (`id_sintoma_general`);
+
+--
+-- Indices de la tabla `tbl_sintomas_ginecoobstetricos`
+--
+ALTER TABLE `tbl_sintomas_ginecoobstetricos`
+ ADD PRIMARY KEY (`id_sintoma_gineco`);
+
+--
+-- Indices de la tabla `tbl_sintomas_respiratorio`
+--
+ALTER TABLE `tbl_sintomas_respiratorio`
+ ADD PRIMARY KEY (`id_sintoma_respiratorios`);
+
+--
+-- Indices de la tabla `tbl_sub_especialidades`
+--
+ALTER TABLE `tbl_sub_especialidades`
+ ADD PRIMARY KEY (`id_sub_especialidad`), ADD KEY `especialidad` (`id_especialidad`);
+
+--
+-- Indices de la tabla `tbl_tipos_habitos`
+--
+ALTER TABLE `tbl_tipos_habitos`
+ ADD PRIMARY KEY (`id_tipo_habito`);
+
+--
+-- Indices de la tabla `tbl_tipo_inmunizaciones`
+--
+ALTER TABLE `tbl_tipo_inmunizaciones`
+ ADD PRIMARY KEY (`id_tipo_inmunizacion`);
+
+--
+-- Indices de la tabla `tbl_tratamientos`
+--
+ALTER TABLE `tbl_tratamientos`
+ ADD PRIMARY KEY (`cod_tratamiento`);
+
+--
+-- Indices de la tabla `tbl_usuarios`
+--
+ALTER TABLE `tbl_usuarios`
+ ADD PRIMARY KEY (`id_usuario`), ADD KEY `perfil` (`id_perfil`), ADD KEY `institucion` (`id_institucion`);
+
+--
+-- Indices de la tabla `tbl_vacunas`
+--
+ALTER TABLE `tbl_vacunas`
+ ADD PRIMARY KEY (`cod_vacuna`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `int_paciente_ginecoobstetrico`
+--
+ALTER TABLE `int_paciente_ginecoobstetrico`
+MODIFY `id_paciente_ginecoobstetrico` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `int_paciente_respiratorio`
+--
+ALTER TABLE `int_paciente_respiratorio`
+MODIFY `id_paciente_respiratorio` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `int_paciente_sintomas`
+--
+ALTER TABLE `int_paciente_sintomas`
+MODIFY `id_paciente_sintomas` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_administradores`
+--
+ALTER TABLE `tbl_administradores`
+MODIFY `id_administrador` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `tbl_alergias`
+--
+ALTER TABLE `tbl_alergias`
+MODIFY `cod_alergia` int(11) NOT NULL AUTO_INCREMENT COMMENT 'PK_alergias',AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT de la tabla `tbl_ant_alergias`
+--
+ALTER TABLE `tbl_ant_alergias`
+MODIFY `id_ant_alergia` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT de la tabla `tbl_ant_familiares`
+--
+ALTER TABLE `tbl_ant_familiares`
+MODIFY `id_ant_familiares` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `tbl_ant_ginecoobstetricos`
+--
+ALTER TABLE `tbl_ant_ginecoobstetricos`
+MODIFY `id_ant_gineco` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `tbl_ant_habitos`
+--
+ALTER TABLE `tbl_ant_habitos`
+MODIFY `id_ant_habitos` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT de la tabla `tbl_ant_inmunizaciones`
+--
+ALTER TABLE `tbl_ant_inmunizaciones`
+MODIFY `id_ant_inmuno` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT de la tabla `tbl_ant_medicamentos`
+--
+ALTER TABLE `tbl_ant_medicamentos`
+MODIFY `id_ant_med` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT de la tabla `tbl_ant_morbidos`
+--
+ALTER TABLE `tbl_ant_morbidos`
+MODIFY `id_ant_morbido` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `tbl_ant_sociales`
+--
+ALTER TABLE `tbl_ant_sociales`
+MODIFY `id_ant_social` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT de la tabla `tbl_consulta_medica`
+--
+ALTER TABLE `tbl_consulta_medica`
+MODIFY `id_consulta` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT de la tabla `tbl_efg_conciencia`
+--
+ALTER TABLE `tbl_efg_conciencia`
+MODIFY `id_efg_conciencia` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_efg_constitucion`
+--
+ALTER TABLE `tbl_efg_constitucion`
+MODIFY `id_efg_constitucion` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_efg_deambulacion`
+--
+ALTER TABLE `tbl_efg_deambulacion`
+MODIFY `id_efg_deambulacion` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_efg_decubito`
+--
+ALTER TABLE `tbl_efg_decubito`
+MODIFY `id_efg_decubito` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_efg_facie`
+--
+ALTER TABLE `tbl_efg_facie`
+MODIFY `id_efg_facie` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_efg_linfatico`
+--
+ALTER TABLE `tbl_efg_linfatico`
+MODIFY `id_efg_linfatico` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_efg_piel`
+--
+ALTER TABLE `tbl_efg_piel`
+MODIFY `id_efg_piel` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_efg_presion_pulso`
+--
+ALTER TABLE `tbl_efg_presion_pulso`
+MODIFY `id_efg_presion_pulso` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_efg_respiratorio`
+--
+ALTER TABLE `tbl_efg_respiratorio`
+MODIFY `id_efg_respiratorio` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_efg_temperatura`
+--
+ALTER TABLE `tbl_efg_temperatura`
+MODIFY `id_efg_temperatura` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_especialidades`
+--
+ALTER TABLE `tbl_especialidades`
+MODIFY `id_especialidad` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `tbl_estado_civil`
+--
+ALTER TABLE `tbl_estado_civil`
+MODIFY `id_estado_civil` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT de la tabla `tbl_historia_medica`
+--
+ALTER TABLE `tbl_historia_medica`
+MODIFY `id_historia_medica` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT de la tabla `tbl_imagenes`
+--
+ALTER TABLE `tbl_imagenes`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT de la tabla `tbl_inmunizaciones`
+--
+ALTER TABLE `tbl_inmunizaciones`
+MODIFY `id_inmunizacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT de la tabla `tbl_instituciones`
+--
+ALTER TABLE `tbl_instituciones`
+MODIFY `id_institucion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `tbl_niveles_estudios`
+--
+ALTER TABLE `tbl_niveles_estudios`
+MODIFY `id_nivel_estudio` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT de la tabla `tbl_pacientes`
+--
+ALTER TABLE `tbl_pacientes`
+MODIFY `id_paciente` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+--
+-- AUTO_INCREMENT de la tabla `tbl_perfiles`
+--
+ALTER TABLE `tbl_perfiles`
+MODIFY `id_perfil` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT de la tabla `tbl_personas_contacto`
+--
+ALTER TABLE `tbl_personas_contacto`
+MODIFY `id_persona_contacto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT de la tabla `tbl_previsiones_medicas`
+--
+ALTER TABLE `tbl_previsiones_medicas`
+MODIFY `id_prevision_medica` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `tbl_profesionales`
+--
+ALTER TABLE `tbl_profesionales`
+MODIFY `id_profesional` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `tbl_profesionales_especialidades`
+--
+ALTER TABLE `tbl_profesionales_especialidades`
+MODIFY `id_profesional_especialidad` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT de la tabla `tbl_rev_cardiovascular`
+--
+ALTER TABLE `tbl_rev_cardiovascular`
+MODIFY `id_rev_cardiovascular` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_rev_endocrino`
+--
+ALTER TABLE `tbl_rev_endocrino`
+MODIFY `id_rev_endocrino` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_rev_gastrointestinal`
+--
+ALTER TABLE `tbl_rev_gastrointestinal`
+MODIFY `id_rev_gastrointestinal` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_rev_general`
+--
+ALTER TABLE `tbl_rev_general`
+MODIFY `id_rev_general` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_rev_genitourinario`
+--
+ALTER TABLE `tbl_rev_genitourinario`
+MODIFY `id_rev_genitourinario` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_rev_neurologico`
+--
+ALTER TABLE `tbl_rev_neurologico`
+MODIFY `id_rev_neurologico` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_rev_respiratorio`
+--
+ALTER TABLE `tbl_rev_respiratorio`
+MODIFY `id_rev_respiratorio` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_sintomas_cardiovasculares`
+--
+ALTER TABLE `tbl_sintomas_cardiovasculares`
+MODIFY `id_sintoma_cardiovascular` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_sintomas_generales`
+--
+ALTER TABLE `tbl_sintomas_generales`
+MODIFY `id_sintoma_general` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_sintomas_ginecoobstetricos`
+--
+ALTER TABLE `tbl_sintomas_ginecoobstetricos`
+MODIFY `id_sintoma_gineco` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_sintomas_respiratorio`
+--
+ALTER TABLE `tbl_sintomas_respiratorio`
+MODIFY `id_sintoma_respiratorios` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `tbl_sub_especialidades`
+--
+ALTER TABLE `tbl_sub_especialidades`
+MODIFY `id_sub_especialidad` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=61;
+--
+-- AUTO_INCREMENT de la tabla `tbl_tipos_habitos`
+--
+ALTER TABLE `tbl_tipos_habitos`
+MODIFY `id_tipo_habito` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT de la tabla `tbl_tipo_inmunizaciones`
+--
+ALTER TABLE `tbl_tipo_inmunizaciones`
+MODIFY `id_tipo_inmunizacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT de la tabla `tbl_usuarios`
+--
+ALTER TABLE `tbl_usuarios`
+MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
+--
 -- Restricciones para tablas volcadas
 --
 
@@ -15877,209 +17241,209 @@ INSERT INTO `tbl_vacunas` (`cod_vacuna`, `nombre_vacuna`, `zona_aplicacion`, `ef
 -- Filtros para la tabla `tbl_administradores`
 --
 ALTER TABLE `tbl_administradores`
-  ADD CONSTRAINT `administrador_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuarios` (`id_usuario`);
+ADD CONSTRAINT `administrador_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
 -- Filtros para la tabla `tbl_ant_alergias`
 --
 ALTER TABLE `tbl_ant_alergias`
-  ADD CONSTRAINT `alergias_alergia` FOREIGN KEY (`id_alergia`) REFERENCES `tbl_alergias` (`cod_alergia`),
-  ADD CONSTRAINT `aler_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `aler_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`),
+ADD CONSTRAINT `alergias_alergia` FOREIGN KEY (`id_alergia`) REFERENCES `tbl_alergias` (`cod_alergia`);
 
 --
 -- Filtros para la tabla `tbl_ant_familiares`
 --
 ALTER TABLE `tbl_ant_familiares`
-  ADD CONSTRAINT `f_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `f_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_ant_ginecoobstetricos`
 --
 ALTER TABLE `tbl_ant_ginecoobstetricos`
-  ADD CONSTRAINT `tbl_ant_ginecoobstetricos_ibfk_1` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `tbl_ant_ginecoobstetricos_ibfk_1` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_ant_habitos`
 --
 ALTER TABLE `tbl_ant_habitos`
-  ADD CONSTRAINT `ant_tipo_habito` FOREIGN KEY (`id_tipo_habito`) REFERENCES `tbl_tipos_habitos` (`id_tipo_habito`),
-  ADD CONSTRAINT `tbl_ant_habitos_ibfk_1` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `ant_tipo_habito` FOREIGN KEY (`id_tipo_habito`) REFERENCES `tbl_tipos_habitos` (`id_tipo_habito`),
+ADD CONSTRAINT `tbl_ant_habitos_ibfk_1` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_ant_inmunizaciones`
 --
 ALTER TABLE `tbl_ant_inmunizaciones`
-  ADD CONSTRAINT `inmunizaciones_cons` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`),
-  ADD CONSTRAINT `inmunizacion_tipo` FOREIGN KEY (`id_inmunizacion`) REFERENCES `tbl_inmunizaciones` (`id_inmunizacion`);
+ADD CONSTRAINT `inmunizacion_tipo` FOREIGN KEY (`id_inmunizacion`) REFERENCES `tbl_inmunizaciones` (`id_inmunizacion`),
+ADD CONSTRAINT `inmunizaciones_cons` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_ant_medicamentos`
 --
 ALTER TABLE `tbl_ant_medicamentos`
-  ADD CONSTRAINT `medicamento_med` FOREIGN KEY (`id_med`) REFERENCES `tbl_medicamentos` (`cod_medicamento`),
-  ADD CONSTRAINT `med_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `med_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`),
+ADD CONSTRAINT `medicamento_med` FOREIGN KEY (`id_med`) REFERENCES `tbl_medicamentos` (`cod_medicamento`);
 
 --
 -- Filtros para la tabla `tbl_ant_sociales`
 --
 ALTER TABLE `tbl_ant_sociales`
-  ADD CONSTRAINT `tbl_ant_sociales_ibfk_1` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_pacientes` (`id_paciente`);
+ADD CONSTRAINT `tbl_ant_sociales_ibfk_1` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_pacientes` (`id_paciente`);
 
 --
 -- Filtros para la tabla `tbl_consulta_medica`
 --
 ALTER TABLE `tbl_consulta_medica`
-  ADD CONSTRAINT `tbl_consulta_medica_ibfk_1` FOREIGN KEY (`nro_historia_clinica`) REFERENCES `tbl_historia_medica` (`id_historia_medica`);
+ADD CONSTRAINT `tbl_consulta_medica_ibfk_1` FOREIGN KEY (`nro_historia_clinica`) REFERENCES `tbl_historia_medica` (`id_historia_medica`);
 
 --
 -- Filtros para la tabla `tbl_efg_conciencia`
 --
 ALTER TABLE `tbl_efg_conciencia`
-  ADD CONSTRAINT `conciencia_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `conciencia_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_efg_constitucion`
 --
 ALTER TABLE `tbl_efg_constitucion`
-  ADD CONSTRAINT `constitucion_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `constitucion_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_efg_deambulacion`
 --
 ALTER TABLE `tbl_efg_deambulacion`
-  ADD CONSTRAINT `deambulacion_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `deambulacion_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_efg_decubito`
 --
 ALTER TABLE `tbl_efg_decubito`
-  ADD CONSTRAINT `decubito_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `decubito_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_efg_facie`
 --
 ALTER TABLE `tbl_efg_facie`
-  ADD CONSTRAINT `facie_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `facie_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_efg_linfatico`
 --
 ALTER TABLE `tbl_efg_linfatico`
-  ADD CONSTRAINT `linfatico_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `linfatico_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_efg_piel`
 --
 ALTER TABLE `tbl_efg_piel`
-  ADD CONSTRAINT `piel_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `piel_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_efg_presion_pulso`
 --
 ALTER TABLE `tbl_efg_presion_pulso`
-  ADD CONSTRAINT `presion_pulso_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `presion_pulso_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_efg_respiratorio`
 --
 ALTER TABLE `tbl_efg_respiratorio`
-  ADD CONSTRAINT `resp_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `resp_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_efg_temperatura`
 --
 ALTER TABLE `tbl_efg_temperatura`
-  ADD CONSTRAINT `temperatura_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `temperatura_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_historia_medica`
 --
 ALTER TABLE `tbl_historia_medica`
-  ADD CONSTRAINT `tbl_historia_medica_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `tbl_pacientes` (`id_paciente`);
+ADD CONSTRAINT `tbl_historia_medica_ibfk_1` FOREIGN KEY (`id_paciente`) REFERENCES `tbl_pacientes` (`id_paciente`);
 
 --
 -- Filtros para la tabla `tbl_inmunizaciones`
 --
 ALTER TABLE `tbl_inmunizaciones`
-  ADD CONSTRAINT `tbl_inmunizaciones_ibfk_1` FOREIGN KEY (`id_tipo_inmunizacion`) REFERENCES `tbl_tipo_inmunizaciones` (`id_tipo_inmunizacion`);
+ADD CONSTRAINT `tbl_inmunizaciones_ibfk_1` FOREIGN KEY (`id_tipo_inmunizacion`) REFERENCES `tbl_tipo_inmunizaciones` (`id_tipo_inmunizacion`);
 
 --
 -- Filtros para la tabla `tbl_pacientes`
 --
 ALTER TABLE `tbl_pacientes`
-  ADD CONSTRAINT `paciente_nivel_estudio` FOREIGN KEY (`id_nivel_estudio`) REFERENCES `tbl_niveles_estudios` (`id_nivel_estudio`),
-  ADD CONSTRAINT `paciente_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuarios` (`id_usuario`),
-  ADD CONSTRAINT `peciente_prevision_medica` FOREIGN KEY (`id_prevision_medica`) REFERENCES `tbl_previsiones_medicas` (`id_prevision_medica`),
-  ADD CONSTRAINT `TBL_pacientes_ibfk_1` FOREIGN KEY (`id_estadocivil`) REFERENCES `tbl_estado_civil` (`id_estado_civil`);
+ADD CONSTRAINT `TBL_pacientes_ibfk_1` FOREIGN KEY (`id_estadocivil`) REFERENCES `tbl_estado_civil` (`id_estado_civil`),
+ADD CONSTRAINT `paciente_nivel_estudio` FOREIGN KEY (`id_nivel_estudio`) REFERENCES `tbl_niveles_estudios` (`id_nivel_estudio`),
+ADD CONSTRAINT `paciente_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuarios` (`id_usuario`),
+ADD CONSTRAINT `peciente_prevision_medica` FOREIGN KEY (`id_prevision_medica`) REFERENCES `tbl_previsiones_medicas` (`id_prevision_medica`);
 
 --
 -- Filtros para la tabla `tbl_profesionales`
 --
 ALTER TABLE `tbl_profesionales`
-  ADD CONSTRAINT `dato_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuarios` (`id_usuario`);
+ADD CONSTRAINT `dato_usuario` FOREIGN KEY (`id_usuario`) REFERENCES `tbl_usuarios` (`id_usuario`);
 
 --
 -- Filtros para la tabla `tbl_profesionales_especialidades`
 --
 ALTER TABLE `tbl_profesionales_especialidades`
-  ADD CONSTRAINT `especialidad` FOREIGN KEY (`id_especialidad`) REFERENCES `tbl_especialidades` (`id_especialidad`),
-  ADD CONSTRAINT `profesional` FOREIGN KEY (`id_profesional`) REFERENCES `tbl_profesionales` (`id_profesional`),
-  ADD CONSTRAINT `sub_especialidad` FOREIGN KEY (`id_sub_especialidad`) REFERENCES `tbl_sub_especialidades` (`id_sub_especialidad`);
+ADD CONSTRAINT `especialidad` FOREIGN KEY (`id_especialidad`) REFERENCES `tbl_especialidades` (`id_especialidad`),
+ADD CONSTRAINT `profesional` FOREIGN KEY (`id_profesional`) REFERENCES `tbl_profesionales` (`id_profesional`),
+ADD CONSTRAINT `sub_especialidad` FOREIGN KEY (`id_sub_especialidad`) REFERENCES `tbl_sub_especialidades` (`id_sub_especialidad`);
 
 --
 -- Filtros para la tabla `tbl_rev_cardiovascular`
 --
 ALTER TABLE `tbl_rev_cardiovascular`
-  ADD CONSTRAINT `cardiovascular_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `cardiovascular_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_rev_endocrino`
 --
 ALTER TABLE `tbl_rev_endocrino`
-  ADD CONSTRAINT `endocrino_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `endocrino_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_rev_gastrointestinal`
 --
 ALTER TABLE `tbl_rev_gastrointestinal`
-  ADD CONSTRAINT `gastrointestinal_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `gastrointestinal_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_rev_general`
 --
 ALTER TABLE `tbl_rev_general`
-  ADD CONSTRAINT `general_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `general_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_rev_genitourinario`
 --
 ALTER TABLE `tbl_rev_genitourinario`
-  ADD CONSTRAINT `genitourinario_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `genitourinario_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_rev_neurologico`
 --
 ALTER TABLE `tbl_rev_neurologico`
-  ADD CONSTRAINT `neurologico_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `neurologico_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_rev_respiratorio`
 --
 ALTER TABLE `tbl_rev_respiratorio`
-  ADD CONSTRAINT `respiratorio_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
+ADD CONSTRAINT `respiratorio_consulta` FOREIGN KEY (`id_consulta`) REFERENCES `tbl_consulta_medica` (`id_consulta`);
 
 --
 -- Filtros para la tabla `tbl_sub_especialidades`
 --
 ALTER TABLE `tbl_sub_especialidades`
-  ADD CONSTRAINT `sub_especialidad_especialidad` FOREIGN KEY (`id_especialidad`) REFERENCES `tbl_especialidades` (`id_especialidad`);
+ADD CONSTRAINT `sub_especialidad_especialidad` FOREIGN KEY (`id_especialidad`) REFERENCES `tbl_especialidades` (`id_especialidad`);
 
 --
 -- Filtros para la tabla `tbl_usuarios`
 --
 ALTER TABLE `tbl_usuarios`
-  ADD CONSTRAINT `usuario_institucion` FOREIGN KEY (`id_institucion`) REFERENCES `tbl_instituciones` (`id_institucion`),
-  ADD CONSTRAINT `usuario_perfil` FOREIGN KEY (`id_perfil`) REFERENCES `tbl_perfiles` (`id_perfil`);
+ADD CONSTRAINT `usuario_institucion` FOREIGN KEY (`id_institucion`) REFERENCES `tbl_instituciones` (`id_institucion`),
+ADD CONSTRAINT `usuario_perfil` FOREIGN KEY (`id_perfil`) REFERENCES `tbl_perfiles` (`id_perfil`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -98,11 +98,13 @@ class AdministrarPacientes extends CI_Controller {
   function registrarPaciente(){
     $data["titulo"] = 'Agregar Paciente';
     $data["url_base"] = $this->config->base_url();
-    $datos['arrProfesiones']= $this->administrarpacientes_model->getProfesiones();
+    $data["arrProfesiones"]= $this->administrarpacientes_model->getProfesiones();
+    $data["arrPaises"]= $this->administrarpacientes_model->getPaises();
+    $data["arrEstudios"]= $this->administrarpacientes_model->getEstudios();
     $this->load->view('componentes/header.php', $data);
     $this->load->view('componentes/navbar.php');    
     $this->load->view('componentes/sidebar.php');
-    $this->load->view('profesional/agregarPaciente.php', $datos);
+    $this->load->view('profesional/agregarPaciente.php', $data);
     $this->load->view('componentes/modal.php');
     $this->load->view('componentes/footer.php');
 
