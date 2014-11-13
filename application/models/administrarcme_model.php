@@ -283,7 +283,13 @@ class AdministrarCME_model extends CI_Model {
         function ingresarExamenLinfatico($data){
             $this->db->insert(
                     'tbl_efg_linfatico',
-                    array('id_efg_linfatico', 'id_consulta', 'adenopatia', 'cometarios', 'archivo', 'modificado_por', 'fecha_modificacion'
+                    array('id_efg_linfatico'=>$data[''],
+                            'id_consulta'=>$data[''],
+                            'adenopatia'=>$data[''],
+                            'cometarios'=>$data[''],
+                            'archivo'=>$data[''],
+                            'modificado_por'=>$data[''], 
+                            'fecha_modificacion'=>$data['']
                         ));
         }
         
@@ -336,6 +342,26 @@ class AdministrarCME_model extends CI_Model {
                         'modificado_por'=>$data[''],
                         'fecha_modificacion'=>$data['']
                         ));
+        }
+
+        function getInmunizacionesInfancia(){
+            $this->db->select(['i.inmunizacion']);
+            $this->db->from('tbl_inmunizaciones i');
+            $this->db->where('id_tipo_inmunizacion', '1');
+            $query = $this->db->get();
+            if ($query->num_rows() > 0) {
+                return $query->result();
+            }
+        }
+
+        function getInmunizacionesAdultez(){
+            $this->db->select(['i.inmunizacion']);
+            $this->db->from('tbl_inmunizaciones i');
+            $this->db->where('id_tipo_inmunizacion', '2');
+            $query = $this->db->get();
+            if ($query->num_rows() > 0) {
+                return $query->result();
+            }
         }
         
 }

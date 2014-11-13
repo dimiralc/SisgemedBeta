@@ -17,9 +17,11 @@ class AdministrarCME extends CI_Controller {
 	function agregarCME(){
 		$data["titulo"] = 'Agregar Consulta Medica';
 		$data["url_base"] = $this->config->base_url();
-                $this->load->view('componentes/header.php', $data);
+        $data['arrInmunizacionesInfancia'] = $this->administrarcme_model->getInmunizacionesInfancia();
+        $data['arrInmunizacionesAdultez'] = $this->administrarcme_model->getInmunizacionesAdultez();
+        $this->load->view('componentes/header.php', $data);
 		$this->load->view('componentes/navbar.php');
-                $this->load->view('componentes/sidebar.php');
+        $this->load->view('componentes/sidebar.php');
 		$this->load->view('profesional/agregarConsulta.php');		
 		$this->load->view('componentes/modal.php');
 		$this->load->view('componentes/footer.php');
