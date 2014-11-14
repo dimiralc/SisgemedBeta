@@ -2,10 +2,10 @@
 -- version 4.2.7.1
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 13-11-2014 a las 19:17:27
--- Versión del servidor: 5.6.20
--- Versión de PHP: 5.5.15
+-- Servidor: localhost
+-- Tiempo de generación: 14-11-2014 a las 04:21:22
+-- Versión del servidor: 5.5.39
+-- Versión de PHP: 5.4.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -16189,7 +16189,118 @@ CREATE TABLE IF NOT EXISTS `tbl_rev_respiratorio` (
 CREATE TABLE IF NOT EXISTS `tbl_sintomas_cardiovasculares` (
 `id_sintoma_cardiovascular` int(11) NOT NULL,
   `descripcion_sintoma` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `tbl_sintomas_cardiovasculares`
+--
+
+INSERT INTO `tbl_sintomas_cardiovasculares` (`id_sintoma_cardiovascular`, `descripcion_sintoma`) VALUES
+(1, 'Disnea de Esfuerzo'),
+(2, 'Ortopnea'),
+(3, 'Disnea Paroxística Nocturna'),
+(4, 'Edema de extremidades Inferiores'),
+(5, 'Dolor Precordial');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_sintomas_deambulacion`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_sintomas_deambulacion` (
+`id_sin_deambu` int(11) NOT NULL,
+  `descripcion` varchar(100) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=7 ;
+
+--
+-- Volcado de datos para la tabla `tbl_sintomas_deambulacion`
+--
+
+INSERT INTO `tbl_sintomas_deambulacion` (`id_sin_deambu`, `descripcion`) VALUES
+(1, 'Deambulacion normal'),
+(2, 'Marcha atáxica o tabética'),
+(3, 'Marcha de pacientes con polineutitis (marcha equina o "steppage")'),
+(4, 'Marcha espástica (en tijeras)'),
+(5, 'Marcha del hemipléjico'),
+(6, 'Marcha parkinsoniana');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_sintomas_endocrinos`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_sintomas_endocrinos` (
+`id_sin_endo` int(11) NOT NULL,
+  `descripcion` varchar(50) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=9 ;
+
+--
+-- Volcado de datos para la tabla `tbl_sintomas_endocrinos`
+--
+
+INSERT INTO `tbl_sintomas_endocrinos` (`id_sin_endo`, `descripcion`) VALUES
+(1, 'Baja de peso'),
+(2, 'Intolerancia al frio'),
+(3, 'Intolerancia al calor'),
+(4, 'Temblor fino'),
+(5, 'Polidefecacion'),
+(6, 'Ronquera'),
+(7, 'Somnolencia'),
+(8, 'Sequedad de la piel');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_sintomas_facie`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_sintomas_facie` (
+`id_sin_facie` int(11) NOT NULL,
+  `descripcion` varchar(100) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=11 ;
+
+--
+-- Volcado de datos para la tabla `tbl_sintomas_facie`
+--
+
+INSERT INTO `tbl_sintomas_facie` (`id_sin_facie`, `descripcion`) VALUES
+(1, 'Facie Normal'),
+(2, 'Facie acromegálica'),
+(3, 'Facie cushingoide'),
+(4, 'Facie hipertiroídea'),
+(5, 'Facie hipotiroídea o mixedematosa'),
+(6, 'Facie hipocrática'),
+(7, 'Facie mongólica (del síndrome de Down)'),
+(8, 'Facie parkinsoniana'),
+(9, 'Facie febril'),
+(10, 'Facie mitrálica');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_sintomas_gastrointestinales`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_sintomas_gastrointestinales` (
+`id_sin_gastrico` int(11) NOT NULL,
+  `descripcion` varchar(50) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=9 ;
+
+--
+-- Volcado de datos para la tabla `tbl_sintomas_gastrointestinales`
+--
+
+INSERT INTO `tbl_sintomas_gastrointestinales` (`id_sin_gastrico`, `descripcion`) VALUES
+(1, 'Problemas de Apetito'),
+(2, 'Nauseas'),
+(3, 'Vomitos'),
+(4, 'Disfagia'),
+(5, 'Pirosis'),
+(6, 'Diarrea'),
+(7, 'Constipacion'),
+(8, 'Melena');
 
 -- --------------------------------------------------------
 
@@ -16200,7 +16311,44 @@ CREATE TABLE IF NOT EXISTS `tbl_sintomas_cardiovasculares` (
 CREATE TABLE IF NOT EXISTS `tbl_sintomas_generales` (
 `id_sintoma_general` int(11) NOT NULL,
   `descripcion_sintoma_general` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Volcado de datos para la tabla `tbl_sintomas_generales`
+--
+
+INSERT INTO `tbl_sintomas_generales` (`id_sintoma_general`, `descripcion_sintoma_general`) VALUES
+(1, 'Fiebre'),
+(2, 'Trastornos de Peso'),
+(3, 'Malestar General'),
+(4, 'Problemas con el apetito'),
+(5, 'Sudoracion Nocturna'),
+(6, 'Insomnio'),
+(7, 'Angustia');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_sintomas_genitales`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_sintomas_genitales` (
+`id_sin_genital` int(11) NOT NULL,
+  `descripcion` varchar(50) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=8 ;
+
+--
+-- Volcado de datos para la tabla `tbl_sintomas_genitales`
+--
+
+INSERT INTO `tbl_sintomas_genitales` (`id_sin_genital`, `descripcion`) VALUES
+(1, 'Disuria dolorsa o de esfuerxo'),
+(2, 'Poliaquiuria'),
+(3, 'Poliuria'),
+(4, 'Nicturia'),
+(5, 'Alteracion del chorro urinario'),
+(6, 'Hematuria'),
+(7, 'Dolors en fosas lumbares');
 
 -- --------------------------------------------------------
 
@@ -16211,7 +16359,81 @@ CREATE TABLE IF NOT EXISTS `tbl_sintomas_generales` (
 CREATE TABLE IF NOT EXISTS `tbl_sintomas_ginecoobstetricos` (
 `id_sintoma_gineco` int(11) NOT NULL,
   `descripcion` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Volcado de datos para la tabla `tbl_sintomas_ginecoobstetricos`
+--
+
+INSERT INTO `tbl_sintomas_ginecoobstetricos` (`id_sintoma_gineco`, `descripcion`) VALUES
+(1, 'Dismenorrea'),
+(2, 'Hipermenorrea'),
+(3, 'Polimenorrea'),
+(4, 'Oligomenorrea'),
+(5, 'Amenorrea'),
+(6, 'Metrorragia');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_sintomas_neurologicos`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_sintomas_neurologicos` (
+`id_sin_neuro` int(11) NOT NULL,
+  `descripcion` varchar(50) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=6 ;
+
+--
+-- Volcado de datos para la tabla `tbl_sintomas_neurologicos`
+--
+
+INSERT INTO `tbl_sintomas_neurologicos` (`id_sin_neuro`, `descripcion`) VALUES
+(1, 'Cefalea'),
+(2, 'Mareos'),
+(3, 'Problemas de Coordinacion'),
+(4, 'Paraesias'),
+(5, 'Parestesias');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tbl_sintomas_piel`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_sintomas_piel` (
+`id_sin_piel` int(11) NOT NULL,
+  `descripcion` varchar(50) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=24 ;
+
+--
+-- Volcado de datos para la tabla `tbl_sintomas_piel`
+--
+
+INSERT INTO `tbl_sintomas_piel` (`id_sin_piel`, `descripcion`) VALUES
+(1, 'No presenta lesiones'),
+(2, 'Eritema por exposicion solar'),
+(3, 'Mácula en la cara'),
+(4, 'Pápula'),
+(5, 'Nódulo'),
+(6, 'Tumor'),
+(7, 'Vesícula'),
+(8, 'Ampolla'),
+(9, 'Pústula'),
+(10, 'Placa'),
+(11, 'Eritema'),
+(12, 'Escama'),
+(13, 'Erosión'),
+(14, 'Ulseracion'),
+(15, 'Costra'),
+(16, 'Cicatriz'),
+(17, 'Roncha'),
+(18, 'Liquenificación'),
+(19, 'Telangiectasia'),
+(20, 'Petequia'),
+(21, 'Equímosis'),
+(22, 'Víbice'),
+(23, 'Efélide');
 
 -- --------------------------------------------------------
 
@@ -16221,8 +16443,20 @@ CREATE TABLE IF NOT EXISTS `tbl_sintomas_ginecoobstetricos` (
 
 CREATE TABLE IF NOT EXISTS `tbl_sintomas_respiratorio` (
 `id_sintoma_respiratorios` int(11) NOT NULL,
-  `descripcion_sintoma` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `descripcion_sintoma` varchar(100) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Volcado de datos para la tabla `tbl_sintomas_respiratorio`
+--
+
+INSERT INTO `tbl_sintomas_respiratorio` (`id_sintoma_respiratorios`, `descripcion_sintoma`) VALUES
+(1, 'Disnea'),
+(2, 'Tos'),
+(3, 'Expectoracion'),
+(4, 'Hemoptisis'),
+(5, 'Puntada de Costado'),
+(6, 'Obstruccion bronquial');
 
 -- --------------------------------------------------------
 
@@ -16971,16 +17205,58 @@ ALTER TABLE `tbl_sintomas_cardiovasculares`
  ADD PRIMARY KEY (`id_sintoma_cardiovascular`);
 
 --
+-- Indices de la tabla `tbl_sintomas_deambulacion`
+--
+ALTER TABLE `tbl_sintomas_deambulacion`
+ ADD PRIMARY KEY (`id_sin_deambu`);
+
+--
+-- Indices de la tabla `tbl_sintomas_endocrinos`
+--
+ALTER TABLE `tbl_sintomas_endocrinos`
+ ADD PRIMARY KEY (`id_sin_endo`);
+
+--
+-- Indices de la tabla `tbl_sintomas_facie`
+--
+ALTER TABLE `tbl_sintomas_facie`
+ ADD PRIMARY KEY (`id_sin_facie`);
+
+--
+-- Indices de la tabla `tbl_sintomas_gastrointestinales`
+--
+ALTER TABLE `tbl_sintomas_gastrointestinales`
+ ADD PRIMARY KEY (`id_sin_gastrico`);
+
+--
 -- Indices de la tabla `tbl_sintomas_generales`
 --
 ALTER TABLE `tbl_sintomas_generales`
  ADD PRIMARY KEY (`id_sintoma_general`);
 
 --
+-- Indices de la tabla `tbl_sintomas_genitales`
+--
+ALTER TABLE `tbl_sintomas_genitales`
+ ADD PRIMARY KEY (`id_sin_genital`);
+
+--
 -- Indices de la tabla `tbl_sintomas_ginecoobstetricos`
 --
 ALTER TABLE `tbl_sintomas_ginecoobstetricos`
  ADD PRIMARY KEY (`id_sintoma_gineco`);
+
+--
+-- Indices de la tabla `tbl_sintomas_neurologicos`
+--
+ALTER TABLE `tbl_sintomas_neurologicos`
+ ADD PRIMARY KEY (`id_sin_neuro`);
+
+--
+-- Indices de la tabla `tbl_sintomas_piel`
+--
+ALTER TABLE `tbl_sintomas_piel`
+ ADD PRIMARY KEY (`id_sin_piel`);
 
 --
 -- Indices de la tabla `tbl_sintomas_respiratorio`
@@ -17252,22 +17528,57 @@ MODIFY `id_rev_respiratorio` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `tbl_sintomas_cardiovasculares`
 --
 ALTER TABLE `tbl_sintomas_cardiovasculares`
-MODIFY `id_sintoma_cardiovascular` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_sintoma_cardiovascular` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT de la tabla `tbl_sintomas_deambulacion`
+--
+ALTER TABLE `tbl_sintomas_deambulacion`
+MODIFY `id_sin_deambu` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT de la tabla `tbl_sintomas_endocrinos`
+--
+ALTER TABLE `tbl_sintomas_endocrinos`
+MODIFY `id_sin_endo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT de la tabla `tbl_sintomas_facie`
+--
+ALTER TABLE `tbl_sintomas_facie`
+MODIFY `id_sin_facie` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT de la tabla `tbl_sintomas_gastrointestinales`
+--
+ALTER TABLE `tbl_sintomas_gastrointestinales`
+MODIFY `id_sin_gastrico` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT de la tabla `tbl_sintomas_generales`
 --
 ALTER TABLE `tbl_sintomas_generales`
-MODIFY `id_sintoma_general` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_sintoma_general` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT de la tabla `tbl_sintomas_genitales`
+--
+ALTER TABLE `tbl_sintomas_genitales`
+MODIFY `id_sin_genital` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `tbl_sintomas_ginecoobstetricos`
 --
 ALTER TABLE `tbl_sintomas_ginecoobstetricos`
-MODIFY `id_sintoma_gineco` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_sintoma_gineco` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT de la tabla `tbl_sintomas_neurologicos`
+--
+ALTER TABLE `tbl_sintomas_neurologicos`
+MODIFY `id_sin_neuro` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT de la tabla `tbl_sintomas_piel`
+--
+ALTER TABLE `tbl_sintomas_piel`
+MODIFY `id_sin_piel` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT de la tabla `tbl_sintomas_respiratorio`
 --
 ALTER TABLE `tbl_sintomas_respiratorio`
-MODIFY `id_sintoma_respiratorios` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `id_sintoma_respiratorios` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `tbl_sub_especialidades`
 --

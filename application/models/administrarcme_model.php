@@ -364,5 +364,86 @@ class AdministrarCME_model extends CI_Model {
             }
         }
         
+        function getSintomasGinecoobstetricos(){
+            $this->db->select(['g.descripcion']);
+            $this->db->from('tbl_sintomas_ginecoobstetricos g');
+            $query = $this->db->get();
+            if ($query->num_rows() > 0) {
+                return $query->result();
+            }
+        }
+        /*
+         function getInmunizacionesAdultez(){
+            $this->db->select(['i.inmunizacion']);
+            $this->db->from('tbl_inmunizaciones i');
+            $this->db->where('id_tipo_inmunizacion', '2');
+            $query = $this->db->get();
+            if ($query->num_rows() > 0) {
+                return $query->result();
+            }
+        }
+        
+         function getInmunizacionesAdultez(){
+            $this->db->select(['i.inmunizacion']);
+            $this->db->from('tbl_inmunizaciones i');
+            $this->db->where('id_tipo_inmunizacion', '2');
+            $query = $this->db->get();
+            if ($query->num_rows() > 0) {
+                return $query->result();
+            }
+        }
+        
+         function getInmunizacionesAdultez(){
+            $this->db->select(['i.inmunizacion']);
+            $this->db->from('tbl_inmunizaciones i');
+            $this->db->where('id_tipo_inmunizacion', '2');
+            $query = $this->db->get();
+            if ($query->num_rows() > 0) {
+                return $query->result();
+            }
+        }
+        
+         function getInmunizacionesAdultez(){
+            $this->db->select(['i.inmunizacion']);
+            $this->db->from('tbl_inmunizaciones i');
+            $this->db->where('id_tipo_inmunizacion', '2');
+            $query = $this->db->get();
+            if ($query->num_rows() > 0) {
+                return $query->result();
+            }
+        }
+        
+         function getInmunizacionesAdultez(){
+            $this->db->select(['i.inmunizacion']);
+            $this->db->from('tbl_inmunizaciones i');
+            $this->db->where('id_tipo_inmunizacion', '2');
+            $query = $this->db->get();
+            if ($query->num_rows() > 0) {
+                return $query->result();
+            }
+        }
+        
+         function getInmunizacionesAdultez(){
+            $this->db->select(['i.inmunizacion']);
+            $this->db->from('tbl_inmunizaciones i');
+            $this->db->where('id_tipo_inmunizacion', '2');
+            $query = $this->db->get();
+            if ($query->num_rows() > 0) {
+                return $query->result();
+            }
+        }
+        
+         function getInmunizacionesAdultez(){
+            $this->db->select(['i.inmunizacion']);
+            $this->db->from('tbl_inmunizaciones i');
+            $this->db->where('id_tipo_inmunizacion', '2');
+            $query = $this->db->get();
+            if ($query->num_rows() > 0) {
+                return $query->result();
+            }
+        }
+         
+         */
+        
 }
 ?>
