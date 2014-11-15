@@ -1,5 +1,6 @@
 $("#buscarPaciente").click(function(event) {
      event.preventDefault();
+     $('#nhce').attr('disabled','false');
      var datos = $('#formBuscar').serialize();
      var url = $('#formBuscar').attr('action');
      $.ajax({
@@ -41,10 +42,54 @@ $("#buscarPaciente").click(function(event) {
          data: datos,
          success: 
                function(){
-                   sweetAlert('Datos Ingresados Correctamente', 'Los datos han sido ingresados exitosamente a la base de datos', 'success');                         
+                    sweetAlert('Consulta ingresada satisfactoriamente', 'Redireccionando a la pagina principal...', 'success');
+                    $('#nhce').attr('disabled','true');
+                    setTimeout ("document.location.href='profesional/index';", 2000);
                    
               }
           });
  });
-
+ 
+ $("#ingresarConsulta").click(function(event) {
+     event.preventDefault();
+     var datos = $('#formConsultaMedica').serialize();
+     var url = $('#formConsultaMedica').attr('action');
+         $.ajax({
+         type: 'POST',
+         url: url, 
+         data: datos,
+         success: 
+               function(){
+                    sweetAlert('Consulta ingresada satisfactoriamente', 'Redireccionando a la pagina principal...', 'success');
+                    $('#nhce').attr('disabled','true');
+                    setTimeout ("document.location.href='profesional/index';", 2000);
+                   
+              }
+          });
+ });
+ 
+ $("#chkEnfermedades").change(function() {
+     if($("#chkEnfermedades").is(':checked')){
+        $("#enfermedades").attr('disabled', false);     
+     }else{
+         $("#enfermedades").attr('disabled', true);
+     }     
+ });
+ 
+$("#chkTraumatismos").change(function() {
+     if($("#chkTraumatismos").is(':checked')){
+        $("#traumatismos").attr('disabled', false);     
+     }else{
+         $("#traumatismos").attr('disabled', true);
+     }     
+ });
+ 
+ $("#chkOperaciones").change(function() {
+     if($("#chkOperaciones").is(':checked')){
+        $("#operaciones").attr('disabled', false);     
+     }else{
+         $("#operaciones").attr('disabled', true);
+     }     
+ });
+    
  

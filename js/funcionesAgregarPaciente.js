@@ -8,8 +8,8 @@ $("#agregarPaciente").click(function(event) {
          data: datos,
          success: 
                function(){
-                   sweetAlert('Paciente Ingresado Correctamente', 'Los datos han sido ingresados exitosamente a la base de datos', 'success');                         
-                   
+                   sweetAlert('Paciente Ingresado Correctamente', 'Redireccionando a la pagina principal...', 'success');                         
+                   setTimeout("window.location.replace('http://localhost/sisgemed/profesional/index');", 2000);
               }
              
           });

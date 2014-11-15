@@ -71,7 +71,8 @@
     $nhce = array(
             'name'=> 'txtNhce',
             'id' => 'nhce',
-            'class'=>'form-control'
+            'class'=>'form-control',
+            'disabled' => 'true'
             
         );
     
@@ -95,17 +96,20 @@
     $enfermedades = array(
             'name'=> 'txtEnfermedades',
             'id' => 'enfermedades',
-            'class'=>'form-control'
+            'class'=>'form-control',
+            'disabled'=> 'true'
         );
     $traumatismos = array(
             'name'=> 'txtTraumatismos',
             'id' => 'traumatismos',
-            'class'=>'form-control'
+            'class'=>'form-control',
+            'disabled'=> 'true'
         );
     $operaciones = array(
             'name'=> 'txtOperaciones',
             'id' => 'operaciones',
-            'class'=>'form-control'
+            'class'=>'form-control',
+            'disabled'=> 'true'
         );
     
     /*Antecedentes gineccoobstetricos*/

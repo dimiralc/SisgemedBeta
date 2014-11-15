@@ -2,7 +2,7 @@
     <div class="container-fluid expanded-panel">
         <div class="row">
             <div id="logo"class="col-xs-12 col-sm-2">
-                <a href="#">MEDISIS&reg; </a>
+                <a href="#">MEDISIS <small>&reg;</small> </a>
                 
             </div>
             <div id="top-panel" class="col-xs-12 col-sm-10">
