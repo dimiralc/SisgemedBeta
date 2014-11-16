@@ -2,8 +2,7 @@
     <div class="container-fluid expanded-panel">
         <div class="row">
             <div id="logo"class="col-xs-12 col-sm-2">
-                <a href="#">MEDISIS <small>&reg;</small> </a>
-                
+                <a href="#">MEDISIS™|Beta </a>                
             </div>
             <div id="top-panel" class="col-xs-12 col-sm-10">
                 <div class="row">
@@ -32,13 +31,13 @@
                                         <span class="badge">7</span>
                                 </a>
                             </li>
-                            <li class="hidden-xs">
-                                <a href="#" class="ajax-link">
-                                        <i class="fa fa-envelope"></i>
-                                        <span class="badge">7</span>
-                                </a>
-                            </li>
                             -->
+                            <li class="hidden-xs">
+                                <a href="" class="ajax-link" title="Usuarios en el sistema">
+                                        <i class="fa fa-user"></i>
+                                        <span class="badge">8</span>
+                                </a>
+                            </li>                            
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle account" data-toggle="dropdown">
                                     <div class="avatar">
@@ -48,7 +47,7 @@
                                     <i class="fa fa-angle-down pull-right"></i>
                                     <div class="user-mini pull-right">
                                             <span class="welcome">¡Hola!</span>
-                                            <span>Carlos Perez</span>
+                                            <span class="welcome">Carlos Perez</span>
                                             <!-- solucionar problema con la carga de datos de usuario -->
                                     </div>
                                 </a>

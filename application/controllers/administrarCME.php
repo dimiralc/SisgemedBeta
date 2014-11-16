@@ -15,6 +15,7 @@ class AdministrarCME extends CI_Controller {
 
     function index() {
         $this->agregarCME();
+        
     }
 
     function agregarCME() {

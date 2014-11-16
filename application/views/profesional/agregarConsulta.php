@@ -48,11 +48,6 @@
                         </div>
                         <?= form_close() ?>
                     </div>
-                    <div class="alert alert-info alert-dismissible" role="alert">
-                        <button type="button" class="close fade" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Cerrar</span></button>
-                        <strong>Advertencia!</strong>
-                        Si el Paciente no se encuentra en el sistema, debe ingresarlo en la base de datos utilizando el siguiente <a href="<?= base_url(); ?>administrarPacientes/registrarPaciente" class="alert-link">enlace</a>.
-                    </div>
                 </div>
             </div>
         </div>
@@ -1969,7 +1964,7 @@
                                 <td align="center">
                                     <button  type="button" class="btn btn-primary btn-label-left" id="ingresarConsulta" name="btoPaciente">
                                         <span><i class="fa fa-clock-o"></i></span>Ingresar Consulta Médica </button>
-                                </td>0                                
+                                </td>                               
                             </tr>
                         </tbody>
                         <?= form_close() ?>
