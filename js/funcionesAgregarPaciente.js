@@ -1,3 +1,4 @@
+$(document).ready( function() {
 $("#agregarPaciente").click(function(event) {
      event.preventDefault();
      var datos = $('#validarDatos_paciente').serialize();
@@ -13,6 +14,7 @@ $("#agregarPaciente").click(function(event) {
               }
              
           });
- });
+        });
+  });
  
 
