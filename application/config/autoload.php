@@ -107,7 +107,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array('administrarpacientes_model');
+$autoload['model'] = array('');
 
 
 /* End of file autoload.php */

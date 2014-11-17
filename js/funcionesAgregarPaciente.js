@@ -14,4 +14,5 @@ $("#agregarPaciente").click(function(event) {
              
           });
  });
+ 
 

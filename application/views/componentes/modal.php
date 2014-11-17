@@ -7,7 +7,7 @@
           <h4 class="modal-title">Acerca de</h4>
       </div>
       <div class="modal-body">
-        <img src="<?=base_url();?>img/logotipo.png" width="140" heigth="60" style="margin-right: 5px;">
+        <img src="<?=base_url();?>img/logotipo1.png" width="140" heigth="60" style="margin-right: 5px;">
         <br>
         <p>SISGEMED, Sistema de Gestion Medico Interhospitalario, es un sistema que le permite mantener una correcta gestion de los pacientes que
         son atendidos por usted y sus colegas en los centros medicos a lo largo del pais. Con el, puede crear fichas medicas electronicas,

@@ -1,5 +1,5 @@
 <script type="text/javascript">
-// 
+//  <!-- UserID: dimiralc; Pass: sisgemed1 -->
 ///* TAGS VACUNAS */
 //var vacunas = new Bloodhound({
 //  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('text'),
