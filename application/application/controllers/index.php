@@ -2,7 +2,7 @@
 class Index extends CI_Controller {
 	function __construct(){
 		parent::__construct();
-        $this--->load->helper('url');
+        $this->load->helper('url');
         $data['home'] = strtolower(__CLASS__).'/';
         $this->load->vars($data);
         $this->load->library('highcharts');
