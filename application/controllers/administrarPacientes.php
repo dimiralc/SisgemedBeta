@@ -1,75 +1,75 @@
-<?php
+    <?php
 
-if (!defined('BASEPATH'))
-    exit('No direct script access allowed');
+    if (!defined('BASEPATH'))
+        exit('No direct script access allowed');
 
-class AdministrarPacientes extends CI_Controller {
+    class AdministrarPacientes extends CI_Controller {
 
-    function __construct() {
-        parent::__construct();
-        $this->load->helper('form');
-        $this->load->model('administrarpacientes_model');
-        $this->load->model('upload_model');
-        $this->load->helper('url');
-        $this->load->library('form_validation');
-    }
-
-    function index() {
-        $this->registrarPaciente();
-    }
-
-    function validarDatos_paciente() {
-        $this->form_validation->set_rules('txtRut', 'Rut', 'required|max_length[15]');
-        $this->form_validation->set_rules('txtNombres', 'Nombres', 'required');
-        $this->form_validation->set_rules('txtSegundoNombre', 'Nombres', 'required');
-        $this->form_validation->set_rules('txtPaterno', 'Paterno', 'required');
-        $this->form_validation->set_rules('txtMaterno', 'Materno', 'required');
-        $this->form_validation->set_rules('txtTelefono', 'Telefono', 'required|numeric');
-        $this->form_validation->set_rules('txtEdad', 'Edad', 'required');
-        $this->form_validation->set_rules('txtFecnac', 'Fecha de Naciemiento', 'required');
-        $this->form_validation->set_rules('txtMail', 'Correo Electronico', 'required');
-        $this->form_validation->set_rules('txtFecing', 'Fecha de Ingreso', 'required');
-        $this->form_validation->set_rules('txtDireccion', 'Direccion', 'required');
-        $this->form_validation->set_rules('rbtGenero', 'Genero / Sexo', 'required');
-        $this->form_validation->set_rules('rbtEcivil', 'Estado Civil', 'required');
-        $this->form_validation->set_message('required', 'Este Campo es obligatorio');
-        if ($this->form_validation->run() === true) {
-            $this->recibirDatos_paciente();
-        } else {
-            $this->index();
+        function __construct() {
+            parent::__construct();
+            $this->load->helper('form');
+            $this->load->model('administrarpacientes_model');
+            $this->load->model('upload_model');
+            $this->load->helper('url');
+            $this->load->library('form_validation');
         }
-    }
 
-    function recibirDatos_paciente() {
-        $data = array(
-            'rut' => $this->input->post('txtRut'),
-            'nombres' => $this->input->post('txtNombres'),
-            'snombre' => $this->input->post('txtSegundoNombre'),
-            'paterno' => $this->input->post('txtPaterno'),
-            'materno' => $this->input->post('txtMaterno'),
-            'telefono' => $this->input->post('txtTelefono'),
-            'edad' => $this->input->post('txtEdad'),
-            'genero' => $this->input->post('rbtGenero'),
-            'nacionalidad' => $this->input->post('ddlPais'),
-            'fecnac' => $this->input->post('txtFecnac'),
-            'ecivil' => $this->input->post('rbtEcivil'),
-            'direccion' => $this->input->post('txtDireccion'),
-            'fecing' => $this->input->post('txtFecing'),
-            'mail' => $this->input->post('txtMail'),
-            'prevmedica' => $this->input->post('ddlPrevision'),
-            'ocupacion' => $this->input->post('ddlOcupacion'),
-            'nivelestudios' => $this->input->post('ddlNivelestudios')
-        );
-        switch ($_POST['btoPacientes']) {
-            case "Agregar":
-                $this->do_upload();
-                $this->administrarpacientes_model->anadirUsuario($data);
-                $this->administrarpacientes_model->anadirPaciente($data);
-                $this->administrarpacientes_model->anadirHistoriaClinica($data);
-                break;
-            case "Cancelar":
+        function index() {
+            $this->registrarPaciente();
+        }
+
+        function validarDatos_paciente() {
+            $this->form_validation->set_rules('txtRut', 'Rut', 'required|max_length[15]');
+            $this->form_validation->set_rules('txtNombres', 'Nombres', 'required');
+            $this->form_validation->set_rules('txtSegundoNombre', 'Nombres', 'required');
+            $this->form_validation->set_rules('txtPaterno', 'Paterno', 'required');
+            $this->form_validation->set_rules('txtMaterno', 'Materno', 'required');
+            $this->form_validation->set_rules('txtTelefono', 'Telefono', 'required|numeric');
+            $this->form_validation->set_rules('txtEdad', 'Edad', 'required');
+            $this->form_validation->set_rules('txtFecnac', 'Fecha de Naciemiento', 'required');
+            $this->form_validation->set_rules('txtMail', 'Correo Electronico', 'required');
+            $this->form_validation->set_rules('txtFecing', 'Fecha de Ingreso', 'required');
+            $this->form_validation->set_rules('txtDireccion', 'Direccion', 'required');
+            $this->form_validation->set_rules('rbtGenero', 'Genero / Sexo', 'required');
+            $this->form_validation->set_rules('rbtEcivil', 'Estado Civil', 'required');
+            $this->form_validation->set_message('required', 'Este Campo es obligatorio');
+            if ($this->form_validation->run() === false) {
+                $this->recibirDatos_paciente();
+            } else {
                 $this->index();
+            }
         }
+
+        function recibirDatos_paciente() {
+            $data = array(
+                'rut' => $this->input->post('txtRut'),
+                'nombres' => $this->input->post('txtNombres'),
+                'snombre' => $this->input->post('txtSegundoNombre'),
+                'paterno' => $this->input->post('txtPaterno'),
+                'materno' => $this->input->post('txtMaterno'),
+                'telefono' => $this->input->post('txtTelefono'),
+                'edad' => $this->input->post('txtEdad'),
+                'genero' => $this->input->post('rbtGenero'),
+                'nacionalidad' => $this->input->post('ddlPais'),
+                'fecnac' => $this->input->post('txtFecnac'),
+                'ecivil' => $this->input->post('rbtEcivil'),
+                'direccion' => $this->input->post('txtDireccion'),
+                'fecing' => $this->input->post('txtFecing'),
+                'mail' => $this->input->post('txtMail'),
+                'prevmedica' => $this->input->post('ddlPrevision'),
+                'ocupacion' => $this->input->post('ddlOcupacion'),
+                'nivelestudios' => $this->input->post('ddlNivelestudios')
+                );
+    switch ($_POST['btoPacientes']) {
+        case "Agregar":
+        $this->do_upload();
+        $this->administrarpacientes_model->anadirUsuario($data);
+        $this->administrarpacientes_model->anadirPaciente($data);
+        $this->administrarpacientes_model->anadirHistoriaClinica($data);
+        break;
+        case "Cancelar":
+        $this->index();
+    }
     }
 
     function buscarPaciente() {
@@ -86,13 +86,13 @@ class AdministrarPacientes extends CI_Controller {
         $data = array('runInfo' => $this->input->post('Run'));
         switch ($_POST['btoPaciente']) {
             case "Eliminar Paciente":
-                $this->administrarpacientes_model->eliminarPaciente($data);
-                $this->administrarPaciente();
-                break;
+            $this->administrarpacientes_model->eliminarPaciente($data);
+            $this->administrarPaciente();
+            break;
             case "Actualizar Paciente":
-                $this->administrarpacientes_model->actualizarPaciente($data);
-                $this->administrarPaciente();
-                break;
+            $this->administrarpacientes_model->actualizarPaciente($data);
+            $this->administrarPaciente();
+            break;
         }
     }
 
@@ -155,5 +155,5 @@ class AdministrarPacientes extends CI_Controller {
             echo 'Error';
         }
     }
-
 }
+  

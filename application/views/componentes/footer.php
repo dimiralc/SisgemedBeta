@@ -12,6 +12,7 @@
 <script src="<?= base_url(); ?>js/sweet-alert.min.js" type="text/javascript"></script>
 <script src="<?= base_url(); ?>js/funcionesAgregarConsulta.js" type="text/javascript"></script>
 <script src="<?= base_url(); ?>js/funcionesAgregarPaciente.js" type="text/javascript"></script>
+<script src="<?= base_url(); ?>js/highcharts.js" type="text/javascript"></script>
 <script type="text/javascript">
     $(function () {
         $("#fecnac").datepicker();
@@ -70,6 +71,33 @@
             }
         });
     });
+</script>
+<script type="text/javascript">
+$(function () { 
+    $('#container').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Pacientes en el Sistema'
+        },
+        xAxis: {
+            categories: ['Apples', 'Bananas', 'Oranges']
+        },
+        yAxis: {
+            title: {
+                text: 'Fruit eaten'
+            }
+        },
+        series: [{
+            name: 'Jane',
+            data: [1, 0, 4]
+        }, {
+            name: 'John',
+            data: [5, 7, 3]
+        }]
+    });
+});
 </script>
 </body>
 </html>
