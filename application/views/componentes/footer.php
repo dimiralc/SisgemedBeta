@@ -79,7 +79,7 @@ $(function () {
             type: 'column'
         },
         title: {
-            text: 'Pacientes en el Sistema'
+            text: 'Pacientes en el sistema'
         },
         xAxis: {
             categories: ['Apples', 'Bananas', 'Oranges']
@@ -91,7 +91,7 @@ $(function () {
         },
         series: [{
             name: 'Jane',
-            data: [1, 0, 4]
+            data: [1, 2, 4]
         }, {
             name: 'John',
             data: [5, 7, 3]
