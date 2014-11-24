@@ -48,15 +48,9 @@ $fecha_nacimiento = array(
 /*** OBTENER EDAD DEL PACIENTE
  * 
  **********************************************************************************/
-$edad= $datos_paciente->fecha_nacimiento;
-//Se debe pasar esta funcion a un helper
-function CalculaEdad( $fecha ) {
-    list($Y,$m,$d) = explode("-",$fecha);
-    return( date("md") < $m.$d ? date("Y")-$Y-1 : date("Y")-$Y );
-}
 $edad = array(
     'name'=> 'edad',
-    'placeholder'=>CalculaEdad($edad),
+    'placeholder'=>CalculaEdad($datos_paciente->fecha_nacimiento),
     'class' => 'form-control',
     'id'=>'inputEdad',
     'readonly'=>'true',
