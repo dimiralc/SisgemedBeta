@@ -7,8 +7,7 @@ class Index_model extends CI_Model {
 	}
         
     function getCantidadPacientes(){
-        $query= "select count(*) from 'tbl_pacientes'";
-        return $query->result();
-        
+        $query= $this->db->count_all_results('tbl_pacientes');
+        return $query;
     }    
 }

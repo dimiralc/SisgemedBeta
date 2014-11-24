@@ -15,8 +15,7 @@ class Index extends CI_Controller {
     public function index() {
         $data["titulo"] = 'Index';
         $data["url_base"] = $this->config->base_url();
-        $data = $this->index_model->getCantidadPacientes();
-        print_r($data);
+        $data["numPacientes"] = $this->index_model->getCantidadPacientes();
         $this->load->view('componentes/header.php', $data);
         $this->load->view('componentes/navbar.php');
         $this->load->view('componentes/sidebar.php');

@@ -16,6 +16,7 @@
 
         function index() {
             $this->registrarPaciente();
+            
         }
 
         function validarDatos_paciente() {
