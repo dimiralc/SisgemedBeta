@@ -52,6 +52,8 @@
             </div>
         </div>
     </div>
+    <?php $formConsulta = array('id' => 'formConsultaMedica'); ?>
+    <?= form_open('administrarCME/ingresarConsultaBase', $formConsulta)?>
     <div class="row">
         <div class="col-xs-7">
             <div class="box">
@@ -1547,12 +1549,12 @@
                                                    <?php
                                             foreach ($arrSintomasPiel as $sp => $piel) {
                                                 echo '
-														<div class="checkbox">
-															<label>
-																<input type="checkbox" name="inmuno[]" values="', $piel->descripcion, '">', $piel->descripcion, '<i class="fa fa-square-o"></i>
-															</label>
-														</div>';
-                                            }
+                                                        <div class="checkbox">
+                                                                <label>
+                                                                        <input type="checkbox" name="inmuno[]" values="', $piel->descripcion, '">', $piel->descripcion, '<i class="fa fa-square-o"></i>
+                                                                </label>
+                                                        </div>';
+}
                                             ?>
                                         </td>
                                     <tr>
@@ -1883,6 +1885,7 @@
                 </div>
             </div>
         </div>
+    
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
@@ -1905,9 +1908,7 @@
                     </div>
                 </div>
                 <div class="box-content no-padding">
-                <?php $attrConsulta = array('id' => 'formConsultaMedica'); ?>
-                    <?= form_open('administrarCME/ingresarConsultaBase', $attrConsulta) ?>
-                    <table class="table table-striped table-bordered table-hover table-heading no-border-bottom">
+                    <table class="table table-striped table-bordered table-hover table-heading no-border-bottom">                                
                         <tbody>
                             <tr>
                                 <td>
@@ -1926,6 +1927,7 @@
                                 </td>
                             </tr>
                         </tbody>
+                        
                     </table>
                 </div>
             </div>
@@ -1966,12 +1968,11 @@
                                         <span><i class="fa fa-clock-o"></i></span>Ingresar Consulta Médica </button>
                                 </td>                               
                             </tr>
-                        </tbody>
-                        <?= form_close() ?>
-                    </table>
+                        </tbody>    
                 </div>
             </div>
-        </div>
+        </div>    
     </div>
+    <?= form_close()?>
 </div>
 

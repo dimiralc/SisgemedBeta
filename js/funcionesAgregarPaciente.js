@@ -1,9 +1,9 @@
 $(document).ready( function() {
 $("#agregarPaciente").click(function(event) {
      event.preventDefault();
-     var datos = $('#validarDatos_paciente').serialize();
-     var url = $('#validarDatos_paciente').attr('action');
-         $.ajax({
+     var datos = $('#formularioPaciente').serialize();
+     var url = $('#formularioPaciente').attr('action');
+        $.ajax({
          type: 'POST',
          url: url, 
          data: datos,

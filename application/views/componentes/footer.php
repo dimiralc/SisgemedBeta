@@ -76,25 +76,25 @@
 $(function () { 
     $('#container').highcharts({
         chart: {
-            type: 'column'
+            type: 'bar'
         },
         title: {
             text: 'Pacientes en el sistema'
         },
         xAxis: {
-            categories: ['Apples', 'Bananas', 'Oranges']
+            categories: ['Pacientes por Sexo']
         },
         yAxis: {
             title: {
-                text: 'Fruit eaten'
+                text: 'Numero de Pacientes en el Sistema'
             }
         },
         series: [{
-            name: 'Jane',
-            data: [1, 2, 4]
+            name: 'Hombres',
+            data: [8]
         }, {
-            name: 'John',
-            data: [5, 7, 3]
+            name: 'Mujeres',
+            data: [3]
         }]
     });
 });

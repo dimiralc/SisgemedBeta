@@ -36,7 +36,7 @@
             if ($this->form_validation->run() === false) {
                 $this->recibirDatos_paciente();
             } else {
-                $this->index();
+                echo 'Hubo un problema';
             }
         }
 
@@ -56,20 +56,15 @@
                 'direccion' => $this->input->post('txtDireccion'),
                 'fecing' => $this->input->post('txtFecing'),
                 'mail' => $this->input->post('txtMail'),
-                'prevmedica' => $this->input->post('ddlPrevision'),
+                'prevmedica' => $this->input->post('rbtPrevision'),
                 'ocupacion' => $this->input->post('ddlOcupacion'),
                 'nivelestudios' => $this->input->post('ddlNivelestudios')
                 );
-    switch ($_POST['btoPacientes']) {
-        case "Agregar":
-        $this->do_upload();
+        //$this->do_upload();
         $this->administrarpacientes_model->anadirUsuario($data);
         $this->administrarpacientes_model->anadirPaciente($data);
         $this->administrarpacientes_model->anadirHistoriaClinica($data);
-        break;
-        case "Cancelar":
-        $this->index();
-    }
+        
     }
 
     function buscarPaciente() {
