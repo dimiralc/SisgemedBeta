@@ -37,8 +37,7 @@ $(document).ready(function () {
     $("#ingresarConsulta").click(function (event) {
         event.preventDefault();
         var datos = $('#formConsultaMedica').serialize();
-        var url = $('#formConsultaMedica').attr('action');
-        alert(url);
+        var url = $('#formConsultaMedica').attr('action');        
         $.ajax({
             type: 'POST',
             url: url,

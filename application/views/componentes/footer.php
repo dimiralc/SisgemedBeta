@@ -74,7 +74,7 @@
 </script>
 <script type="text/javascript">
 $(function () { 
-    $('#container').highcharts({
+    $('#genero').highcharts({
         chart: {
             type: 'bar'
         },
@@ -95,6 +95,110 @@ $(function () {
         }, {
             name: 'Mujeres',
             data: [3]
+        }]
+    });
+});
+</script>
+<script type="text/javascript">
+$(function () { 
+    $('#enfermedades').highcharts({
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Enfermedades mas Frecuentes'
+        },
+        xAxis: {
+            categories: ['Colera', 'Hepatitis', 'Henteropatogenia', 'Shigelosois', 'Enteritis']
+        },
+        yAxis: {
+            title: {
+                text: 'Cantidad de Pacientes'
+            }
+        },
+        series: [ {
+            name: 'N° Pac.',
+            data: [8, 14, 7, 9, 11]
+        }]
+    });
+});
+</script>
+<script type="text/javascript">
+$(function () { 
+        $('#patologias').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 0,//null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Patologías mas frecuentes'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: false,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Enfermedades',
+            data: [
+                ['Coli',   45.0],
+                ['Tifoidea',       26.8],
+                ['Hepatitis',    8.5],
+                ['Enteritis',     6.2],
+                ['Colera',   0.7]
+            ]
+        }]
+    });
+});
+</script>
+<script type="text/javascript">
+$(function () { 
+        $('#pacientes').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 0,//null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Pacientes por Genero'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: false,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Género',
+            data: [
+                ['Hombres',   45.0],
+                ['Mujeres',       26.8],
+                
+            ]
         }]
     });
 });
