@@ -17,7 +17,7 @@ class Historia_medica_model extends CI_Model {
     /** @Funcion que permite retornar la informacion sobre las
      *  HISTORIAS CLINICAS RECIENTES
     /******************************************************************************************/
-    function hce_recientes(){     
+    function hce_recientes($id_institucion){     
        
         /* Cargamos todas las historias medicas recientes, junto con los datos del paciente
          * y la fecha de la ultima consulta medica realizada.*/
@@ -35,6 +35,9 @@ class Historia_medica_model extends CI_Model {
         FROM tbl_historia_medica h
         LEFT JOIN tbl_consulta_medica c ON c.nro_historia_clinica = h.id_historia_medica
         INNER JOIN tbl_pacientes p      ON p.id_paciente = h.id_paciente
+        INNER JOIN tbl_usuarios u 		ON u.id_usuario = p.id_usuario
+        INNER JOIN tbl_instituciones i 	ON i.id_institucion = u.id_institucion
+        WHERE i.id_institucion = '.$id_institucion.'
         GROUP BY h.id_historia_medica
         ORDER BY ultimoControl DESC        
         ');
