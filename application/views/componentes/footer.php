@@ -50,6 +50,20 @@
         });
     });
 </script>
+
+<!-- Script Validar Rut Reportes -->
+<script type="text/javascript">
+    $(function () {
+        $('#buscarRutReporte').Rut({
+            on_error: function () {
+                sweetAlert('Rut Inválido', 'Debe ingresar un rut válido', 'error');
+                $('#buscarRutReporte').val('');
+                $('#buscarRutReporte').focus();
+            }
+        });
+    });
+</script>
+<!-- fin script rut reporte -->
 <script language=javascript type=text/javascript>
     function stopRKey(evt) {
         var evt = (evt) ? evt : ((event) ? event : null);

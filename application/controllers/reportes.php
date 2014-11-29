@@ -249,7 +249,7 @@ class Reportes extends CI_Controller
         
         if ($this->form_validation->run() == FALSE) {
            
-           echo "ERROR: Problemas al generar PDF - Informacion paciente";
+           echo "ERROR: Problemas al generar PDF - Información paciente";
            
         } else {
             
@@ -276,23 +276,34 @@ class Reportes extends CI_Controller
             date_default_timezone_set('America/Santiago');
             $fecha_creacion = date("d-m-Y H:i:s");
             $fecha          = date("d-m-Y");
+            
+            
+            //Validar antecedentes Sociales
+            $arr_ant_soc = $this->reportes_model->antSocialesPersonales($this->input->post('txtRutPaciente'));
+            $arr_ant_soc = $arr_ant_soc!="false" ? $arr_ant_soc->ant_social : "Sin Información";
+            //Validar Antecedentes Familiares
+            $arr_ant_fam = $this->reportes_model->ant_familiares($this->input->post('txtRutPaciente'));
+            $arr_ant_fam = $arr_ant_fam!="false" ? $arr_ant_fam->ant_familiar :"Sin Información";
+            //Validar Personas de contacto
+            $arr_per_cont = $this->reportes_model->ant_personas_contacto($this->input->post('txtRutPaciente'));
+            $arr_per_cont = isset($arr_per_cont) ? $arr_per_cont : "0";
+            
             //creamos arreglos con la informacion del reporte
             $data = array(
-                'titulo'        => 'Reporte Informacion Paciente',
-                'nombre'        => $nombre,
-                'rut'           => $rut,
-                'razon'         => $razon_social,
-                'direccion'     => $direccion,
-                'telefono'      => $telefono,
-                'correo'        => $correo,
-                'fecha_creacion'=> $fecha_creacion,
-                'fecha'         => $fecha,   
-                'paciente'      => $this->reportes_model->datosFiliatoriosPaciente($this->input->post('txtRutPaciente')),
-                'antSocialesPersonales' => $this->reportes_model->antSocialesPersonales($this->input->post('txtRutPaciente')),
-                'ant_familiares' => $this->reportes_model->ant_familiares($this->input->post('txtRutPaciente')),
-                'personas_contacto' =>$this->reportes_model->ant_personas_contacto($this->input->post('txtRutPaciente'))
+                'titulo'            => 'Reporte Informacion Paciente',
+                'nombre'            => $nombre,
+                'rut'               => $rut,
+                'razon'             => $razon_social,
+                'direccion'         => $direccion,
+                'telefono'          => $telefono,
+                'correo'            => $correo,
+                'fecha_creacion'    => $fecha_creacion,
+                'fecha'             => $fecha,   
+                'paciente'          => $this->reportes_model->datosFiliatoriosPaciente($this->input->post('txtRutPaciente')),
+                'antSocialesPersonales'=> $arr_ant_soc,
+                'ant_familiares'    => $arr_ant_fam,
+                'personas_contacto' => $arr_per_cont
             );
-
             //hacemos que coja la vista como datos a imprimir
             //importante utf8_decode para mostrar bien las tildes, ñ y demás
             $this->html2pdf->html(utf8_decode($this->load->view('reportes_views/reporte_datos_paciente', $data, true)));

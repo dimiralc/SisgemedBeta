@@ -181,7 +181,7 @@
         </tr>
         <tr>
              <td style="width:100%;background: #FFFFFF;" colspan="6">
-                <?=$ant_familiares->ant_familiar;?>
+                <?=$ant_familiares;?>
              </td>
         </tr>
         <tr>
@@ -189,7 +189,7 @@
         </tr>
         <tr>
              <td style="width:100%;background: #FFFFFF;" colspan="6">
-                <?=$antSocialesPersonales->ant_social;?>
+                <?=$antSocialesPersonales;?>
              </td>
         </tr>
     </table>
@@ -204,7 +204,11 @@
             <th style="width: 15%; text-align:left">Telefono</th>
             <th style="width: 25%; text-align:left">Email</th>
         </tr>
-        <?php foreach ($personas_contacto->result() as $persona){ ?>
+        <?php 
+        if($personas_contacto!="0"){
+            
+            foreach ($personas_contacto->result() as $persona){
+            ?>
             <tr>
             <td style="width: 20%;background: #FFFFFF; text-align: left; font-size: 10pt"><?=$persona->nombres;?></td>
             <td style="width: 20%;background: #FFFFFF; text-align: left; font-size: 10pt"><?=$persona->apellidos;?></td>
@@ -212,7 +216,19 @@
             <td style="width: 15%;background: #FFFFFF; text-align: left; font-size: 10pt"><?=$persona->telefono;?></td>
             <td style="width: 20%;background: #FFFFFF; text-align: left; font-size: 10pt"><?=$persona->correo;?></td>
             </tr>
-         <?php } ?>
+            
+            <?php
+            }
+            
+        }else{
+            
+            ?>
+            <tr>
+                <td colspan="5" style="width:100%;background: #FFFFFF; text-align: left; font-size: 10pt">Sin Información</td>
+            </tr>
+            <?php
+        }
+        ?>
     </table>
     <!--<table cellspacing="0" style="width: 100%; border: solid 1px black; background: #E7E7E7; text-align: center; font-size: 10pt;">
         <tr>

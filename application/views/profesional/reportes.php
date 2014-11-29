@@ -1,7 +1,3 @@
-<?php
-
-
-?>
 <div id="content" class="col-xs-12 col-sm-10">
     
     <div class="row">
@@ -119,7 +115,7 @@
                             $attributes = 'id="r_info_paciente" target="_blank"'; 
                             $buscarPaciente = array(
                             'name'=> 'txtRutPaciente',
-                            'id' => 'rut_paciente',
+                            'id' => 'buscarRutReporte',
                             'placeholder'=>'Rut del Paciente',
                             'class' => 'form-control',
                             'value'=>""    

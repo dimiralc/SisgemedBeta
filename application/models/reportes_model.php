@@ -314,7 +314,7 @@ class Reportes_model extends CI_Model {
 
         }else{
             
-            return false;
+            return "false";
            //echo "Error: Problemas al cargar los antecedentes Sociales del paciente.";exit();
            // redirect(base_url().'login','refresh');
         }
@@ -345,7 +345,7 @@ class Reportes_model extends CI_Model {
             return $ant_familiares->row();
 
         }else{
-            return false;
+            return "false";
            //echo "Error: Problemas al cargar los antecedentes Familiares del paciente.";exit();
            // redirect(base_url().'login','refresh');
         }
