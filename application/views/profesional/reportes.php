@@ -48,15 +48,9 @@
                 
                 <ul class="nav nav-tabs" role="tablist" id="myTab">
                     <li class="active">
-                    <!-- id="refreshAntMorbido" data-method="refresh" permite recargar
-                    la pagina al momento de seleccionar la pestaña -->
-                    <a href="#informes" role="tab" data-toggle="tab"              >Informes</a></li>
+                    <a href="#informes" role="tab"  accesskey=""data-toggle="tab"              >Informes</a></li>
                     <li><a href="#revision_sistemas" role="tab" data-toggle="tab" >Información Paciente</a></li>
-                    <li><a href="#ginecoobstetricos" role="tab" data-toggle="tab" >Ant. Clínicos(alergias)</a></li>
-                    <li><a href="#habitos" role="tab" data-toggle="tab"           >Ant. Clínicos(Habitos)</a></li>
-                    <li><a href="#medicamentos" role="tab" data-toggle="tab"      >Ant. Clínicos(Morbidos)</a></li>
-                    <li><a href="#alergias" role="tab" data-toggle="tab"          >Ant. Clínicos(Inmunizaciones)</a></li>
-                    <!--<li><a href="#inmunizaciones" role="tab" data-toggle="tab"    >Consulta Medica</a></li> --> 
+                    <li><a href="#ginecoobstetricos" role="tab" data-toggle="tab" >Antecedentes Clínicos</a></li>
                 </ul>
 
                 <div class="tab-content">
@@ -126,35 +120,52 @@
                             <label class="col-sm-4 control-label">Ingrese RUT del Paciente</label>
                             <div class="col-sm-4">
                                 <?= form_input($buscarPaciente) ?>
+                                <?php echo form_error('txtRutPaciente'); ?>
                             </div>
                             <div class="col-sm-4">
                                 <button type="submit" class="btn btn-primary btn-label-left" name="btoPaciente">
                                     <span><i class="fa fa-clock-o"></i></span>
-                                    Generar PDF </button>
+                                    Generar Reporte </button>
                             </div>
                         </div>
                         <?= form_close() ?>
                     
                     </div>
                     <div class="tab-pane" id="ginecoobstetricos">
-                       ASDADS
-                    </div>
-                    
-                    <div class="tab-pane" id="habitos">    
-                       ASDSADAS
-                    </div>
-                    
-                    <div class="tab-pane" id="medicamentos">
+                        
+                        <form action="<?=  base_url()?>reportes/antecedentesClinicos/" 
+                              method="POST" class="form-horizontal" role="form" target="_blank">
+                          <div class="form-group">
+                            <label for="ejemplo_email_3" class="col-lg-2 control-label">Rut Paciente</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" name="txtRutAntCln" id="buscarRutReporteAntCln"
+                                       placeholder="Ingrese Rut del Paciente" value="">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label for="ejemplo_password_3" class="col-lg-2 control-label">Antecedente Clínico</label>
+                            <div class="col-lg-10">
+                                <select name="ant_clinicos" id="ant_clinicos" class="form-control">
+                                <option value="">>>> Seleccione Antecedente Clínico <<<</option>
+                                <option value="M">Antecedentes Mórbidos</option>
+                                <option value="H">Antecedentes Hábitos</option>
+                                <option value="MED">Antecedentes Medicamentos</option>
+                                <option value="A">Antecedentes Alergias</option>
+                                <option value="I">Antecedentes Inmunizaciones</option>
+                                <option style="color: red;" value="G">Antecentes Ginecoobstétricos >> (SIN REALIZAR)</option>
+                                <option style="color: red;" value="R">Antecedentes Revisión por sistemas >> (SIN REALIZAR)</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                              <button type="submit" class="btn btn-primary btn-label-left">Generar Reporte</button>
+                            </div>
+                          </div>
+                        </form>
                         
                     </div>
                     
-                    <div class="tab-pane" id="alergias">
-                       SDSADAS
-                    </div>
-                    
-                    <div class="tab-pane" id="inmunizaciones">
-                        ADASDS      
-                    </div>
                 </div>
                 <hr>
                

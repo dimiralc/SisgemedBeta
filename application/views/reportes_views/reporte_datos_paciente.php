@@ -230,24 +230,6 @@
         }
         ?>
     </table>
-    <!--<table cellspacing="0" style="width: 100%; border: solid 1px black; background: #E7E7E7; text-align: center; font-size: 10pt;">
-        <tr>
-            <th style="width: 20%; text-align:left">Nombres</th>
-            <th style="width: 20%; text-align:left">Apellidos</th>
-            <th style="width: 20%; text-align:left">Parentesco</th>
-            <th style="width: 20%; text-align:left">Telefono</th>
-            <th style="width: 20%; text-align:left">Email</th>
-        </tr>
-        
-       
-            <tr>
-            <td style="background: #FFFFFF; text-align: left; font-size: 10pt">Cristian Alejadro</td>
-            <td style="background: #FFFFFF; text-align: left; font-size: 10pt">Vidal Muñoz</td>
-            <td style="background: #FFFFFF; text-align: left; font-size: 10pt">Padre</td>
-            <td style="background: #FFFFFF; text-align: left; font-size: 10pt">56-97854122</td>
-            <td style="background: #FFFFFF; text-align: left; font-size: 10pt">cris.vidal04@gmail.com</td>
-            </tr>
-    </table>-->
     <br>
 </body>
 </html>

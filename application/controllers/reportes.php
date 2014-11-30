@@ -95,7 +95,7 @@ class Reportes extends CI_Controller
         
         //datos que queremos enviar a la vista, lo mismo de siempre
         $ins            = $this->reportes_model->datosInstitucion($this->session->userdata('idinstitucion'));
-        $nombre         = $ins->nom_institucion;
+        $nombre         = ucwords($ins->nom_institucion);
         $rut            = $ins->rut;
         $razon_social   = $ins->razon_social;
         $direccion      = $ins->direccion;
@@ -123,7 +123,7 @@ class Reportes extends CI_Controller
         
         //hacemos que coja la vista como datos a imprimir
         //importante utf8_decode para mostrar bien las tildes, ñ y demás
-        $this->html2pdf->html(utf8_decode($this->load->view('reportes_views/reporte_pacientes', $data, true)));
+        $this->html2pdf->html($this->load->view('reportes_views/reporte_pacientes', $data, true));
         //si el pdf se guarda correctamente lo mostramos en pantalla
         if($this->html2pdf->create('save')) 
         {
@@ -150,7 +150,7 @@ class Reportes extends CI_Controller
         
         //datos que queremos enviar a la vista, lo mismo de siempre
         $ins            = $this->reportes_model->datosInstitucion($this->session->userdata('idinstitucion'));
-        $nombre         = $ins->nom_institucion;
+        $nombre         = ucwords($ins->nom_institucion);
         $rut            = $ins->rut;
         $razon_social   = $ins->razon_social;
         $direccion      = $ins->direccion;
@@ -178,7 +178,7 @@ class Reportes extends CI_Controller
         
         //hacemos que coja la vista como datos a imprimir
         //importante utf8_decode para mostrar bien las tildes, ñ y demás
-        $this->html2pdf->html(utf8_decode($this->load->view('reportes_views/reporte_listado_hce', $data, true)));
+        $this->html2pdf->html($this->load->view('reportes_views/reporte_listado_hce', $data, true));
         //si el pdf se guarda correctamente lo mostramos en pantalla
         if($this->html2pdf->create('save')) 
         {
@@ -204,7 +204,7 @@ class Reportes extends CI_Controller
         
         //datos que queremos enviar a la vista, lo mismo de siempre
         $ins            = $this->reportes_model->datosInstitucion($this->session->userdata('idinstitucion'));
-        $nombre         = $ins->nom_institucion;
+        $nombre         = ucwords($ins->nom_institucion);
         $rut            = $ins->rut;
         $razon_social   = $ins->razon_social;
         $direccion      = $ins->direccion;
@@ -232,7 +232,7 @@ class Reportes extends CI_Controller
         
         //hacemos que coja la vista como datos a imprimir
         //importante utf8_decode para mostrar bien las tildes, ñ y demás
-        $this->html2pdf->html(utf8_decode($this->load->view('reportes_views/reporte_consultas_medicas', $data, true)));
+        $this->html2pdf->html($this->load->view('reportes_views/reporte_consultas_medicas', $data, true));
         //si el pdf se guarda correctamente lo mostramos en pantalla
         if($this->html2pdf->create('save')) 
         {
@@ -249,7 +249,7 @@ class Reportes extends CI_Controller
         
         if ($this->form_validation->run() == FALSE) {
            
-           echo "ERROR: Problemas al generar PDF - Información paciente";
+           echo "ERROR: Problemas al generar PDF";
            
         } else {
             
@@ -265,7 +265,7 @@ class Reportes extends CI_Controller
 
             //datos que queremos enviar a la vista, lo mismo de siempre
             $ins            = $this->reportes_model->datosInstitucion($this->session->userdata('idinstitucion'));
-            $nombre         = $ins->nom_institucion;
+            $nombre         = ucwords($ins->nom_institucion);
             $rut            = $ins->rut;
             $razon_social   = $ins->razon_social;
             $direccion      = $ins->direccion;
@@ -306,17 +306,322 @@ class Reportes extends CI_Controller
             );
             //hacemos que coja la vista como datos a imprimir
             //importante utf8_decode para mostrar bien las tildes, ñ y demás
-            $this->html2pdf->html(utf8_decode($this->load->view('reportes_views/reporte_datos_paciente', $data, true)));
+            $this->html2pdf->html($this->load->view('reportes_views/reporte_datos_paciente', $data, true));
             //si el pdf se guarda correctamente lo mostramos en pantalla
             if($this->html2pdf->create('save')) 
             {
                 $this->show();
             }
         }
+    }
+    
+    /************************************************************************************************/
+    /* @Funcion que permite generar reporte pdf - antecedentes clinicos                             */
+    /************************************************************************************************/ 
+    function antecedentesClinicos(){
+       
+        $this->form_validation->set_rules('txtRutAntCln','rut paciente','required|trim|');
+        $this->form_validation->set_rules('ant_clinicos','ant. clinico','required|trim|');
+        
+        if ($this->form_validation->run() == FALSE) {
+           
+           echo "ERROR: Problemas al generar Reporte Antecedentes Cl&iacute;nicos<br>"
+            . "Ingrese los datos requeridos.";
+           
+        } else {
+            
+            //Seteamos variables de ingreso
+            $rutpaciente =$this->input->post('txtRutAntCln');
+            $ant_clinico =$this->input->post('ant_clinicos');
+            
+            //Validar Antecedente clinico seleccionado
+            switch ($ant_clinico) {
+                
+                case "M":
+                    $this->reportAntMorb($rutpaciente);
+                    break;
+                
+                case "G":
+                    $this->reportAntGineco($rutpaciente);
+                    break;
+                
+                case "H":
+                    $this->reportAntHab($rutpaciente);
+                    break;
+                
+                case "MED":
+                    $this->reportAntMed($rutpaciente);
+                    break;
+                
+                case "A":
+                    $this->reportAntAlerg($rutpaciente);
+                    break; 
+                
+                case "I":
+                    $this->reportAntInmuno($rutpaciente);
+                    break;
+                
+                case "R":
+                    $this->reportAntRev($rutpaciente);
+                    break;
+                
+                default:
+                   echo "Seleccione un Antecedente Cl&iacute;nico";
+            }
+        }
+   } 
+   
+   /************************************************************************************************/
+   /* @Funciones que permite generar reportes pdf - informacion clinica paciente                   */
+   /************************************************************************************************/ 
+   function reportAntMorb($rutpaciente){
+       
+        //establecemos la carpeta en la que queremos guardar los pdfs,
+        //si no existen las creamos y damos permisos
+        $this->createFolder();
+        //importante el slash del final o no funcionará correctamente
+        $this->html2pdf->folder('./files/pdfs/');
+        //establecemos el nombre del archivo
+        $this->html2pdf->filename('test.pdf');
+        //establecemos el tipo de papel
+        $this->html2pdf->paper('a4', 'portrait');
+        
+        //datos que queremos enviar a la vista, lo mismo de siempre
+        $ins            = $this->reportes_model->datosInstitucion($this->session->userdata('idinstitucion'));
+        $arr_ant_morb   = $this->reportes_model->ant_morbidos($rutpaciente);
+        $arr_ant_morb   = isset($arr_ant_morb) ? $this->reportes_model->ant_morbidos($rutpaciente) : "0";
+        $paciente       = $this->reportes_model->datosFiliatoriosPaciente($rutpaciente);
+        $rut            = $paciente->rut;
+        $nombre         = ucwords($paciente->primer_nombre)." ".ucwords($paciente->segundo_nombre)." ".ucwords($paciente->apellido_paterno)." ".ucwords($paciente->apellido_materno);
+        
+        //obtener fecha-hora segun zona horaria
+        date_default_timezone_set('America/Santiago');
+        $fecha_creacion = date("d-m-Y H:i:s");
+        $fecha          = date("d-m-Y");
+        $data = array(
+            'titulo'            => 'Reporte Antecedentes Morbidos',
+            'nombre'            => ucwords($ins->nom_institucion),
+            'rut'               => $ins->rut,
+            'razon'             => $ins->razon_social,
+            'direccion'         => $ins->direccion,
+            'telefono'          => $ins->telefono1,
+            'correo'            => $ins->correo,
+            'fecha_creacion'    => $fecha_creacion,
+            'fecha'             => $fecha,
+            'rutpaciente'       => $rut,
+            'nombrepaciente'    => $nombre,
+            'ant_morbidos'      => $arr_ant_morb
+         );
+        //hacemos que coja la vista como datos a imprimir
+        //importante utf8_decode para mostrar bien las tildes, ñ y demás
+        $this->html2pdf->html($this->load->view('reportes_views/reporte_ant_morbidos', $data, true));
+        //si el pdf se guarda correctamente lo mostramos en pantalla
+        if($this->html2pdf->create('save')) 
+        {
+             $this->show();
+        }
    }
-    
-    
-    
+   function reportAntGineco($rutpaciente){   
+       
+       echo "Ant. Gineco...(Sin Realizar)";
+   }
+   function reportAntHab($rutpaciente){
+       
+        //establecemos la carpeta en la que queremos guardar los pdfs,
+        //si no existen las creamos y damos permisos
+        $this->createFolder();
+        //importante el slash del final o no funcionará correctamente
+        $this->html2pdf->folder('./files/pdfs/');
+        //establecemos el nombre del archivo
+        $this->html2pdf->filename('test.pdf');
+        //establecemos el tipo de papel
+        $this->html2pdf->paper('a4', 'portrait');
+        
+        //datos que queremos enviar a la vista, lo mismo de siempre
+        $ins            = $this->reportes_model->datosInstitucion($this->session->userdata('idinstitucion'));
+        $arr_ant_hab   = $this->reportes_model->ant_habitos($rutpaciente);
+        $arr_ant_hab   = isset($arr_ant_hab) ? $arr_ant_hab : "0";
+        $paciente       = $this->reportes_model->datosFiliatoriosPaciente($rutpaciente);
+        $rut            = $paciente->rut;
+        $nombre         = ucwords($paciente->primer_nombre)." ".ucwords($paciente->segundo_nombre)." ".ucwords($paciente->apellido_paterno)." ".ucwords($paciente->apellido_materno);
+        
+        //obtener fecha-hora segun zona horaria
+        date_default_timezone_set('America/Santiago');
+        $fecha_creacion = date("d-m-Y H:i:s");
+        $fecha          = date("d-m-Y");
+        $data = array(
+            'titulo'            => 'Reporte Antecedentes Habitos',
+            'nombre'            => ucwords($ins->nom_institucion),
+            'rut'               => $ins->rut,
+            'razon'             => $ins->razon_social,
+            'direccion'         => $ins->direccion,
+            'telefono'          => $ins->telefono1,
+            'correo'            => $ins->correo,
+            'fecha_creacion'    => $fecha_creacion,
+            'fecha'             => $fecha,
+            'rutpaciente'       => $rut,
+            'nombrepaciente'    => $nombre,
+            'ant_habitos'      => $arr_ant_hab
+         );
+        //hacemos que coja la vista como datos a imprimir
+        //importante utf8_decode para mostrar bien las tildes, ñ y demás
+        $this->html2pdf->html($this->load->view('reportes_views/reporte_ant_habitos', $data, true));
+        //si el pdf se guarda correctamente lo mostramos en pantalla
+        if($this->html2pdf->create('save')) 
+        {
+             $this->show();
+        }
+   }
+   function reportAntMed($rutpaciente){
+       
+        //establecemos la carpeta en la que queremos guardar los pdfs,
+        //si no existen las creamos y damos permisos
+        $this->createFolder();
+        //importante el slash del final o no funcionará correctamente
+        $this->html2pdf->folder('./files/pdfs/');
+        //establecemos el nombre del archivo
+        $this->html2pdf->filename('test.pdf');
+        //establecemos el tipo de papel
+        $this->html2pdf->paper('a4', 'portrait');
+        
+        //datos que queremos enviar a la vista, lo mismo de siempre
+        $ins            = $this->reportes_model->datosInstitucion($this->session->userdata('idinstitucion'));
+        $arr_ant_med   = $this->reportes_model->ant_medicamentos($rutpaciente);
+        $arr_ant_med   = isset($arr_ant_med) ? $arr_ant_med : "0";
+        $paciente       = $this->reportes_model->datosFiliatoriosPaciente($rutpaciente);
+        $rut            = $paciente->rut;
+        $nombre         = ucwords($paciente->primer_nombre)." ".ucwords($paciente->segundo_nombre)." ".ucwords($paciente->apellido_paterno)." ".ucwords($paciente->apellido_materno);
+        
+        //obtener fecha-hora segun zona horaria
+        date_default_timezone_set('America/Santiago');
+        $fecha_creacion = date("d-m-Y H:i:s");
+        $fecha          = date("d-m-Y");
+        $data = array(
+            'titulo'            => 'Reporte Antecedentes Medicamentos',
+            'nombre'            => ucwords($ins->nom_institucion),
+            'rut'               => $ins->rut,
+            'razon'             => $ins->razon_social,
+            'direccion'         => $ins->direccion,
+            'telefono'          => $ins->telefono1,
+            'correo'            => $ins->correo,
+            'fecha_creacion'    => $fecha_creacion,
+            'fecha'             => $fecha,
+            'rutpaciente'       => $rut,
+            'nombrepaciente'    => $nombre,
+            'ant_medicamentos'  => $arr_ant_med
+         );
+        //hacemos que coja la vista como datos a imprimir
+        //importante utf8_decode para mostrar bien las tildes, ñ y demás
+        $this->html2pdf->html($this->load->view('reportes_views/reporte_ant_medicamentos', $data, true));
+        //si el pdf se guarda correctamente lo mostramos en pantalla
+        if($this->html2pdf->create('save')) 
+        {
+             $this->show();
+        }
+   }
+   function reportAntAlerg($rutpaciente){
+       
+       //establecemos la carpeta en la que queremos guardar los pdfs,
+        //si no existen las creamos y damos permisos
+        $this->createFolder();
+        //importante el slash del final o no funcionará correctamente
+        $this->html2pdf->folder('./files/pdfs/');
+        //establecemos el nombre del archivo
+        $this->html2pdf->filename('test.pdf');
+        //establecemos el tipo de papel
+        $this->html2pdf->paper('a4', 'portrait');
+        
+        //datos que queremos enviar a la vista, lo mismo de siempre
+        $ins            = $this->reportes_model->datosInstitucion($this->session->userdata('idinstitucion'));
+        $arr_ant_alerg   = $this->reportes_model->ant_alergias($rutpaciente);
+        $arr_ant_alerg   = isset($arr_ant_alerg) ? $arr_ant_alerg : "0";
+        $paciente       = $this->reportes_model->datosFiliatoriosPaciente($rutpaciente);
+        $rut            = $paciente->rut;
+        $nombre         = ucwords($paciente->primer_nombre)." ".ucwords($paciente->segundo_nombre)." ".ucwords($paciente->apellido_paterno)." ".ucwords($paciente->apellido_materno);
+        
+        //obtener fecha-hora segun zona horaria
+        date_default_timezone_set('America/Santiago');
+        $fecha_creacion = date("d-m-Y H:i:s");
+        $fecha          = date("d-m-Y");
+        $data = array(
+            'titulo'            => 'Reporte Antecedentes Alergias',
+            'nombre'            => ucwords($ins->nom_institucion),
+            'rut'               => $ins->rut,
+            'razon'             => $ins->razon_social,
+            'direccion'         => $ins->direccion,
+            'telefono'          => $ins->telefono1,
+            'correo'            => $ins->correo,
+            'fecha_creacion'    => $fecha_creacion,
+            'fecha'             => $fecha,
+            'rutpaciente'       => $rut,
+            'nombrepaciente'    => $nombre,
+            'ant_alergias'  => $arr_ant_alerg
+         );
+        //hacemos que coja la vista como datos a imprimir
+        //importante utf8_decode para mostrar bien las tildes, ñ y demás
+        $this->html2pdf->html($this->load->view('reportes_views/reporte_ant_alergias', $data, true));
+        //si el pdf se guarda correctamente lo mostramos en pantalla
+        if($this->html2pdf->create('save')) 
+        {
+             $this->show();
+        }
+   }
+   function reportAntInmuno($rutpaciente){
+       
+              //establecemos la carpeta en la que queremos guardar los pdfs,
+        //si no existen las creamos y damos permisos
+        $this->createFolder();
+        //importante el slash del final o no funcionará correctamente
+        $this->html2pdf->folder('./files/pdfs/');
+        //establecemos el nombre del archivo
+        $this->html2pdf->filename('test.pdf');
+        //establecemos el tipo de papel
+        $this->html2pdf->paper('a4', 'portrait');
+        
+        //datos que queremos enviar a la vista, lo mismo de siempre
+        $ins            = $this->reportes_model->datosInstitucion($this->session->userdata('idinstitucion'));
+        $arr_ant_inmuno   = $this->reportes_model->ant_inmunizaciones($rutpaciente);
+        $arr_ant_inmuno   = isset($arr_ant_inmuno) ? $arr_ant_inmuno : "0";
+        $paciente       = $this->reportes_model->datosFiliatoriosPaciente($rutpaciente);
+        $rut            = $paciente->rut;
+        $nombre         = ucwords($paciente->primer_nombre)." ".ucwords($paciente->segundo_nombre)." ".ucwords($paciente->apellido_paterno)." ".ucwords($paciente->apellido_materno);
+        
+        //obtener fecha-hora segun zona horaria
+        date_default_timezone_set('America/Santiago');
+        $fecha_creacion = date("d-m-Y H:i:s");
+        $fecha          = date("d-m-Y");
+        $data = array(
+            'titulo'            => 'Reporte Antecedentes Inmunizaciones',
+            'nombre'            => ucwords($ins->nom_institucion),
+            'rut'               => $ins->rut,
+            'razon'             => $ins->razon_social,
+            'direccion'         => $ins->direccion,
+            'telefono'          => $ins->telefono1,
+            'correo'            => $ins->correo,
+            'fecha_creacion'    => $fecha_creacion,
+            'fecha'             => $fecha,
+            'rutpaciente'       => $rut,
+            'nombrepaciente'    => $nombre,
+            'ant_inmunizaciones'=> $arr_ant_inmuno
+         );
+        //hacemos que coja la vista como datos a imprimir
+        //importante utf8_decode para mostrar bien las tildes, ñ y demás
+        $this->html2pdf->html($this->load->view('reportes_views/reporte_ant_inmunizaciones', $data, true));
+        //si el pdf se guarda correctamente lo mostramos en pantalla
+        if($this->html2pdf->create('save')) 
+        {
+             $this->show();
+        }
+   }
+   function reportAntRev($rutpaciente){
+       
+       echo "Ant. Revision por sistemas (Sin Realizar)";
+   }
+   /************************************************************************************************/
+   /* @FIN REPORTES ANTECEDENTES CLINICOS                                                          */
+   /************************************************************************************************/ 
+   
+   
     /************************************************************************************************/
     /* @Funcion que permite descargar el reporte pdf                                                                */
     /************************************************************************************************/

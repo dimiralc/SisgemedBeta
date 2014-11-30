@@ -62,6 +62,17 @@
             }
         });
     });
+    
+    $(function () {
+        $('#buscarRutReporteAntCln').Rut({
+            on_error: function () {
+                sweetAlert('Rut Inválido', 'Debe ingresar un rut válido', 'error');
+                $('#buscarRutReporteAntCln').val('');
+                $('#buscarRutReporteAntCln').focus();
+            }
+        });
+    });
+    
 </script>
 <!-- fin script rut reporte -->
 <script language=javascript type=text/javascript>

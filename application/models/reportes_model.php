@@ -382,6 +382,187 @@ class Reportes_model extends CI_Model {
            return false;
         }        
     }
+    
+    /********************************************************************************
+    * @Funcion que permite retornar la informacion de #antecedentes morbidos#
+    ********************************************************************************/
+    function ant_morbidos($rut){
+        
+        $this->db->select([
+            'm.id_ant_morbido',
+            'h.id_paciente',
+            'p.rut',
+            'p.primer_nombre',
+            'p.segundo_nombre',
+            'p.apellido_paterno',
+            'p.apellido_materno',
+            'm.nombre',
+            'm.tipo',
+            'm.fecha',
+            'm.diagnostico'
+            ]);
+        $this->db->from('tbl_ant_morbidos m');
+        $this->db->join('tbl_consulta_medica c','m.id_consulta = c.id_consulta');
+        $this->db->join('tbl_historia_medica h','c.nro_historia_clinica = h.id_historia_medica');
+        $this->db->join('tbl_pacientes p','p.id_paciente = h.id_paciente');
+        $this->db->where('p.rut',$rut);
+        $this->db->order_by("m.fecha","desc");
+        $ant_morb = $this->db->get();
+        
+        if ($ant_morb->num_rows() > 0)
+        {
+            return $ant_morb;
+
+        }else{
+            
+           return false;
+        }        
+    }
+   
+    
+    /********************************************************************************
+    * @Funcion que permite retornar la informacion de #antecedentes habitos#
+    ********************************************************************************/
+    function ant_habitos($rut){
+        
+        $this->db->select([
+            'h.id_ant_habitos',
+            'h.id_tipo_habito',
+            'th.habito',
+            'hm.id_paciente',
+            'h.descripcion',
+            'h.fecha_ingreso'
+        ]);
+        
+        $this->db->from('tbl_ant_habitos h');
+        $this->db->join('tbl_consulta_medica c','h.id_consulta = c.id_consulta');
+        $this->db->join('tbl_tipos_habitos th','th.id_tipo_habito = h.id_tipo_habito');
+        $this->db->join('tbl_historia_medica hm','c.nro_historia_clinica = hm.id_historia_medica');
+        $this->db->join('tbl_pacientes p','p.id_paciente = hm.id_paciente');
+        $this->db->where('p.rut',$rut);
+        $this->db->order_by("h.fecha_ingreso","desc");
+        $ant_habitos = $this->db->get();
+        
+        if ($ant_habitos->num_rows() > 0)
+        {
+            return $ant_habitos;
+
+        }else{
+            
+           return false;
+        }        
+    }
+    
+    
+    /********************************************************************************
+    * @Funcion que permite retornar la informacion de #antecedentes medicamento#
+    ********************************************************************************/
+    function ant_medicamentos($rut){
+        
+        $this->db->select([
+            'm.id_ant_med',
+            'h.id_paciente',
+            'm.id_med',
+            'med.nombre_medicamento',
+            'm.fecha_inicio',
+            'm.fecha_fin',
+            'm.duracion',
+            'm.indicaciones',
+        ]);
+        
+        $this->db->from('tbl_ant_medicamentos m');
+        $this->db->join('tbl_consulta_medica c','m.id_consulta = c.id_consulta');
+        $this->db->join('tbl_historia_medica h','c.nro_historia_clinica = h.id_historia_medica');
+        $this->db->join('tbl_medicamentos med','m.id_med = med.cod_medicamento');
+        $this->db->join('tbl_pacientes p','p.id_paciente = h.id_paciente');
+        $this->db->where('p.rut',$rut);
+        $this->db->order_by("m.fecha_inicio","desc"); 
+        $this->db->order_by("m.fecha_fin","desc"); 
+        $ant_med = $this->db->get();
+        
+        if ($ant_med->num_rows() > 0)
+        {
+            return $ant_med;
+
+        }else{
+            
+           return false;
+        }        
+    }
+    
+    
+    /********************************************************************************
+    * @Funcion que permite retornar la informacion de #antecedentes alergias#
+    ********************************************************************************/
+    function ant_alergias($rut){
+        
+        $this->db->select([
+            'a.id_ant_alergia',
+            'a.id_alergia',
+            'al.nombre_alergia',
+            'a.alergia',
+            'h.id_paciente',
+            'a.fecha_ingreso',
+            'a.descripcion',
+        ]);
+        
+        $this->db->from('tbl_ant_alergias a');
+        $this->db->join('tbl_consulta_medica c','a.id_consulta = c.id_consulta');
+        $this->db->join('tbl_historia_medica h','c.nro_historia_clinica = h.id_historia_medica');
+        $this->db->join('tbl_alergias al','a.id_alergia = al.cod_alergia');
+        $this->db->join('tbl_pacientes p','p.id_paciente = h.id_paciente');
+        $this->db->where('p.rut',$rut);
+        $this->db->order_by("a.fecha_ingreso","desc");
+        $ant_alergias = $this->db->get();
+        
+        if ($ant_alergias->num_rows() > 0)
+        {
+            return $ant_alergias;
+
+        }else{
+            
+           return false;
+        }        
+    }
+    
+    
+    /********************************************************************************
+    * @Funcion que permite retornar la informacion de #antecedentes inmunizaciones#
+    ********************************************************************************/
+    function ant_inmunizaciones($rut){
+        
+        $this->db->select([
+            'i.id_ant_inmuno',
+            'h.id_paciente',
+            'i.id_inmunizacion',
+            'i.id_inmunizacion',
+            'ii.inmunizacion',
+            'ii.id_tipo_inmunizacion',
+            't.tipo_inmunizacion',
+            'i.fecha_ingreso',
+            'i.otras_inmunizaciones',
+            'i.observaciones'
+        ]);
+        
+        $this->db->from('tbl_ant_inmunizaciones i');
+        $this->db->join('tbl_consulta_medica c','i.id_consulta = c.id_consulta');
+        $this->db->join('tbl_historia_medica h','c.nro_historia_clinica = h.id_historia_medica');
+        $this->db->join('tbl_inmunizaciones ii','i.id_inmunizacion = ii.id_inmunizacion');
+        $this->db->join('tbl_tipo_inmunizaciones t','ii.id_tipo_inmunizacion = t.id_tipo_inmunizacion');
+        $this->db->join('tbl_pacientes p','p.id_paciente = h.id_paciente');
+        $this->db->where('p.rut',$rut);
+        $this->db->order_by("i.fecha_ingreso","desc");
+        $ant_inmuno = $this->db->get();
+        
+        if ($ant_inmuno->num_rows() > 0)
+        {
+            return $ant_inmuno;
+
+        }else{
+            
+           return false;
+        }        
+    }
 }
 
 ?>
